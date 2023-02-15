@@ -1,4 +1,4 @@
-import 'package:car_rental_for_customer/pages/home/views/home_view.dart';
+import 'package:car_rental_for_car_owner/pages/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

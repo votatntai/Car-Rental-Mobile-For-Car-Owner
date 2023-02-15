@@ -1,4 +1,4 @@
-import 'package:car_rental_for_customer/pages/profile/views/profile_view.dart';
+import 'package:car_rental_for_car_owner/pages/profile/views/profile_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:car_rental_for_customer/pages/login/views/login_view.dart';
+import 'package:car_rental_for_car_owner/pages/login/views/login_view.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {

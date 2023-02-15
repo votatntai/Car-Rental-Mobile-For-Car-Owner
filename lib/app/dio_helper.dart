@@ -1,5 +1,5 @@
-import 'package:car_rental_for_customer/commons/constants/authentication.dart';
-import 'package:car_rental_for_customer/repositories/authentication_repository.dart';
+import 'package:car_rental_for_car_owner/commons/constants/authentication.dart';
+import 'package:car_rental_for_car_owner/repositories/authentication_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';

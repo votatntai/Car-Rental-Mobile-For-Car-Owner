@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:car_rental_for_customer/commons/constants/constants.dart';
-import 'package:car_rental_for_customer/commons/extensions.dart';
-import 'package:car_rental_for_customer/models/api_response.dart';
-import 'package:car_rental_for_customer/models/authentication_result.dart';
+import 'package:car_rental_for_car_owner/commons/constants/constants.dart';
+import 'package:car_rental_for_car_owner/commons/extensions.dart';
+import 'package:car_rental_for_car_owner/models/api_response.dart';
+import 'package:car_rental_for_car_owner/models/authentication_result.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

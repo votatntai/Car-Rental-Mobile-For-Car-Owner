@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:car_rental_for_customer/app/dio_helper.dart';
-import 'package:car_rental_for_customer/di.dart';
-import 'package:car_rental_for_customer/repositories/authentication_repository.dart';
+import 'package:car_rental_for_car_owner/app/dio_helper.dart';
+import 'package:car_rental_for_car_owner/di.dart';
+import 'package:car_rental_for_car_owner/repositories/authentication_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'authentication_bloc.freezed.dart';

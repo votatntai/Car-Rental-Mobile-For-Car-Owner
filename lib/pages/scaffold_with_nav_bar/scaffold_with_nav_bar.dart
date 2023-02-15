@@ -1,5 +1,5 @@
-import 'package:car_rental_for_customer/app/route/route_name.dart';
-import 'package:car_rental_for_customer/commons/constants/colors.dart';
+import 'package:car_rental_for_car_owner/app/route/route_name.dart';
+import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

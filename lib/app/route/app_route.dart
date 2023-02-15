@@ -1,10 +1,10 @@
-import 'package:car_rental_for_customer/app/route/observers.dart';
-import 'package:car_rental_for_customer/app/route/route_name.dart';
-import 'package:car_rental_for_customer/pages/home/home.dart';
-import 'package:car_rental_for_customer/pages/login/login.dart';
-import 'package:car_rental_for_customer/pages/profile/profile.dart';
-import 'package:car_rental_for_customer/pages/scaffold_with_nav_bar/scaffold_with_nav_bar.dart';
-import 'package:car_rental_for_customer/pages/splash/splash_page.dart';
+import 'package:car_rental_for_car_owner/app/route/observers.dart';
+import 'package:car_rental_for_car_owner/app/route/route_name.dart';
+import 'package:car_rental_for_car_owner/pages/home/home.dart';
+import 'package:car_rental_for_car_owner/pages/login/login.dart';
+import 'package:car_rental_for_car_owner/pages/profile/profile.dart';
+import 'package:car_rental_for_car_owner/pages/scaffold_with_nav_bar/scaffold_with_nav_bar.dart';
+import 'package:car_rental_for_car_owner/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

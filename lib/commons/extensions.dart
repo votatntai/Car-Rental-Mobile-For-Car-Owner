@@ -1,4 +1,4 @@
-import 'package:car_rental_for_customer/models/api_response.dart';
+import 'package:car_rental_for_car_owner/models/api_response.dart';
 import 'package:dio/dio.dart';
 
 extension ApiErrorX on DioError {

@@ -1,9 +1,9 @@
-import 'package:car_rental_for_customer/app/bloc/authentication_bloc.dart';
-import 'package:car_rental_for_customer/app/route/app_route.dart';
-import 'package:car_rental_for_customer/app/route/route_name.dart';
-import 'package:car_rental_for_customer/commons/constants/theme.dart';
-import 'package:car_rental_for_customer/di.dart';
-import 'package:car_rental_for_customer/repositories/authentication_repository.dart';
+import 'package:car_rental_for_car_owner/app/bloc/authentication_bloc.dart';
+import 'package:car_rental_for_car_owner/app/route/app_route.dart';
+import 'package:car_rental_for_car_owner/app/route/route_name.dart';
+import 'package:car_rental_for_car_owner/commons/constants/theme.dart';
+import 'package:car_rental_for_car_owner/di.dart';
+import 'package:car_rental_for_car_owner/repositories/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
