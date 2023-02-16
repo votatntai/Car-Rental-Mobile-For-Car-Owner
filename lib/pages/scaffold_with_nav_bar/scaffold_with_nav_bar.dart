@@ -17,7 +17,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
       body: child,
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: CustomColors.background,
-        selectedItemColor: CustomColors.primary,
+        selectedItemColor: CustomColors.primaryMaterialColor,
         unselectedItemColor: CustomColors.silver,
         items: const [
           BottomNavigationBarItem(

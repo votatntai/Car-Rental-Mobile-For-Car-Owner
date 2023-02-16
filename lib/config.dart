@@ -1,6 +1,6 @@
 import 'package:car_rental_for_car_owner/app/dio_helper.dart';
 import 'package:car_rental_for_car_owner/app/route/app_route.dart';
-import 'package:car_rental_for_car_owner/commons/constants/constants.dart';
+import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/di.dart';
 import 'package:car_rental_for_car_owner/repositories/repositories.dart';
 import 'package:dio/dio.dart';

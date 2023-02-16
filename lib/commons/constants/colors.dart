@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
 
 mixin CustomColors {
-  static const primary = Colors.green;
+  static const primaryMaterialColor = MaterialColor(
+    0xFF343434,
+    <int, Color>{
+      50: Color(0xFF999999),
+      100: Color(0xFF858585),
+      200: Color(0xFF707070),
+      300: Color(0xFF5c5c5c),
+      400: Color(0xFF484848),
+      500: Color(0xFF343434),
+      600: Color(0xff292929),
+      700: Color(0xFF1f1f1f),
+      800: Color(0xFF141414),
+      900: Color(0xFF0a0a0a),
+    },
+  );
+  static const primary = Color(0xFF343434);
   static const red = Color(0xFFD43860);
   static const gold = Color(0xFFFFCA51);
   static const background = Color(0xFFFFFFFF);
+  static const editTextBgColor = gainsboro;
 
   // Complementary
   static const ochre = Color(0xFFE39F48);
