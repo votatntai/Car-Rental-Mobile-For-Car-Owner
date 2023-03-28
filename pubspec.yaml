@@ -1,11 +1,11 @@
 name: car_rental_for_car_owner
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: ">=2.19.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -22,6 +22,14 @@ dependencies:
   get_it: ^7.2.0
   nb_utils: ^5.0.5
   intl: ^0.18.0
+  google_fonts: ^4.0.3
+  smooth_page_indicator: ^1.0.1
+  geolocator: ^9.0.2
+  timeago: ^3.4.0
+  cached_network_image: ^3.2.3
+  flutter_dotenv: ^5.0.2
+  google_maps_flutter: ^2.2.5
+  tab_indicator_styler: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +44,7 @@ flutter:
 
   assets:
     - assets/
+    - .env
 
   # fonts:
   #   - family: Schyler

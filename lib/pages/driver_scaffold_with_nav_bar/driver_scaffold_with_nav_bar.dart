@@ -3,8 +3,8 @@ import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ScaffoldWithNavBar extends StatelessWidget {
-  const ScaffoldWithNavBar({
+class DriverScaffoldWithNavBar extends StatelessWidget {
+  const DriverScaffoldWithNavBar({
     required this.child,
     Key? key,
   }) : super(key: key);
@@ -21,17 +21,26 @@ class ScaffoldWithNavBar extends StatelessWidget {
         unselectedItemColor: CustomColors.silver,
         items: const [
           BottomNavigationBarItem(
-              label: 'Home',
-              icon: Icon(
-                Icons.home_outlined,
-              ),
-              activeIcon: Icon(Icons.home)),
+            label: 'Trang chủ',
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+            activeIcon: Icon(Icons.home),
+          ),
           BottomNavigationBarItem(
-              label: 'Profile',
-              icon: Icon(
-                Icons.person_outline,
-              ),
-              activeIcon: Icon(Icons.person)),
+            label: 'Thông báo',
+            icon: Icon(
+              Icons.notifications_outlined,
+            ),
+            activeIcon: Icon(Icons.notifications),
+          ),
+          BottomNavigationBarItem(
+            label: 'Hồ sơ',
+            icon: Icon(
+              Icons.person_outline,
+            ),
+            activeIcon: Icon(Icons.person),
+          ),
         ],
         currentIndex: _calculateSelectedIndex(context),
         onTap: (int idx) => _onItemTapped(idx, context),
@@ -41,11 +50,15 @@ class ScaffoldWithNavBar extends StatelessWidget {
 
   static int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).location;
-    if (location.startsWith('/home')) {
+    if (location.startsWith('/driver-home')) {
       return 0;
     }
-    if (location.startsWith('/profile')) {
+
+    if (location.startsWith('/driver-notification')) {
       return 1;
+    }
+    if (location.startsWith('/driver-profile')) {
+      return 2;
     }
     return 0;
   }
@@ -53,10 +66,13 @@ class ScaffoldWithNavBar extends StatelessWidget {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        context.goNamed(RouteName.home);
+        context.goNamed(RouteName.driverHome);
         break;
       case 1:
-        context.goNamed(RouteName.profile);
+        context.goNamed(RouteName.driverNotification);
+        break;
+      case 2:
+        context.goNamed(RouteName.driverProfile);
         break;
     }
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+class DriverHomeView extends StatelessWidget {
+  const DriverHomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

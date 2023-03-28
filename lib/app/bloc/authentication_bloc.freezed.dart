@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthenticationEvent {
-  AuthenticationStatus get status => throw _privateConstructorUsedError;
+  AuthData get authData => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatus status) statusChanged,
+    required TResult Function(AuthData authData) statusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatus status)? statusChanged,
+    TResult? Function(AuthData authData)? statusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatus status)? statusChanged,
+    TResult Function(AuthData authData)? statusChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +61,9 @@ abstract class $AuthenticationEventCopyWith<$Res> {
           AuthenticationEvent value, $Res Function(AuthenticationEvent) then) =
       _$AuthenticationEventCopyWithImpl<$Res, AuthenticationEvent>;
   @useResult
-  $Res call({AuthenticationStatus status});
+  $Res call({AuthData authData});
+
+  $AuthDataCopyWith<$Res> get authData;
 }
 
 /// @nodoc
@@ -77,14 +79,22 @@ class _$AuthenticationEventCopyWithImpl<$Res, $Val extends AuthenticationEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? authData = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
+      authData: null == authData
+          ? _value.authData
+          : authData // ignore: cast_nullable_to_non_nullable
+              as AuthData,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthDataCopyWith<$Res> get authData {
+    return $AuthDataCopyWith<$Res>(_value.authData, (value) {
+      return _then(_value.copyWith(authData: value) as $Val);
+    });
   }
 }
 
@@ -96,7 +106,10 @@ abstract class _$$_StatusChangedEventCopyWith<$Res>
       __$$_StatusChangedEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthenticationStatus status});
+  $Res call({AuthData authData});
+
+  @override
+  $AuthDataCopyWith<$Res> get authData;
 }
 
 /// @nodoc
@@ -110,13 +123,13 @@ class __$$_StatusChangedEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? authData = null,
   }) {
     return _then(_$_StatusChangedEvent(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
+      authData: null == authData
+          ? _value.authData
+          : authData // ignore: cast_nullable_to_non_nullable
+              as AuthData,
     ));
   }
 }
@@ -124,14 +137,14 @@ class __$$_StatusChangedEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StatusChangedEvent implements _StatusChangedEvent {
-  const _$_StatusChangedEvent({required this.status});
+  const _$_StatusChangedEvent({required this.authData});
 
   @override
-  final AuthenticationStatus status;
+  final AuthData authData;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.statusChanged(status: $status)';
+    return 'AuthenticationEvent.statusChanged(authData: $authData)';
   }
 
   @override
@@ -139,11 +152,12 @@ class _$_StatusChangedEvent implements _StatusChangedEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StatusChangedEvent &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.authData, authData) ||
+                other.authData == authData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode => Object.hash(runtimeType, authData);
 
   @JsonKey(ignore: true)
   @override
@@ -155,27 +169,27 @@ class _$_StatusChangedEvent implements _StatusChangedEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatus status) statusChanged,
+    required TResult Function(AuthData authData) statusChanged,
   }) {
-    return statusChanged(status);
+    return statusChanged(authData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatus status)? statusChanged,
+    TResult? Function(AuthData authData)? statusChanged,
   }) {
-    return statusChanged?.call(status);
+    return statusChanged?.call(authData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatus status)? statusChanged,
+    TResult Function(AuthData authData)? statusChanged,
     required TResult orElse(),
   }) {
     if (statusChanged != null) {
-      return statusChanged(status);
+      return statusChanged(authData);
     }
     return orElse();
   }
@@ -210,11 +224,11 @@ class _$_StatusChangedEvent implements _StatusChangedEvent {
 }
 
 abstract class _StatusChangedEvent implements AuthenticationEvent {
-  const factory _StatusChangedEvent(
-      {required final AuthenticationStatus status}) = _$_StatusChangedEvent;
+  const factory _StatusChangedEvent({required final AuthData authData}) =
+      _$_StatusChangedEvent;
 
   @override
-  AuthenticationStatus get status;
+  AuthData get authData;
   @override
   @JsonKey(ignore: true)
   _$$_StatusChangedEventCopyWith<_$_StatusChangedEvent> get copyWith =>
@@ -223,7 +237,7 @@ abstract class _StatusChangedEvent implements AuthenticationEvent {
 
 /// @nodoc
 mixin _$AuthenticationState {
-  AuthenticationStatus get status => throw _privateConstructorUsedError;
+  AuthData get authData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthenticationStateCopyWith<AuthenticationState> get copyWith =>
@@ -236,7 +250,9 @@ abstract class $AuthenticationStateCopyWith<$Res> {
           AuthenticationState value, $Res Function(AuthenticationState) then) =
       _$AuthenticationStateCopyWithImpl<$Res, AuthenticationState>;
   @useResult
-  $Res call({AuthenticationStatus status});
+  $Res call({AuthData authData});
+
+  $AuthDataCopyWith<$Res> get authData;
 }
 
 /// @nodoc
@@ -252,14 +268,22 @@ class _$AuthenticationStateCopyWithImpl<$Res, $Val extends AuthenticationState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? authData = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
+      authData: null == authData
+          ? _value.authData
+          : authData // ignore: cast_nullable_to_non_nullable
+              as AuthData,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthDataCopyWith<$Res> get authData {
+    return $AuthDataCopyWith<$Res>(_value.authData, (value) {
+      return _then(_value.copyWith(authData: value) as $Val);
+    });
   }
 }
 
@@ -271,7 +295,10 @@ abstract class _$$_AuthenticationStateCopyWith<$Res>
       __$$_AuthenticationStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthenticationStatus status});
+  $Res call({AuthData authData});
+
+  @override
+  $AuthDataCopyWith<$Res> get authData;
 }
 
 /// @nodoc
@@ -285,13 +312,13 @@ class __$$_AuthenticationStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? authData = null,
   }) {
     return _then(_$_AuthenticationState(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
+      authData: null == authData
+          ? _value.authData
+          : authData // ignore: cast_nullable_to_non_nullable
+              as AuthData,
     ));
   }
 }
@@ -299,14 +326,14 @@ class __$$_AuthenticationStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthenticationState implements _AuthenticationState {
-  const _$_AuthenticationState({required this.status});
+  const _$_AuthenticationState({required this.authData});
 
   @override
-  final AuthenticationStatus status;
+  final AuthData authData;
 
   @override
   String toString() {
-    return 'AuthenticationState(status: $status)';
+    return 'AuthenticationState(authData: $authData)';
   }
 
   @override
@@ -314,11 +341,12 @@ class _$_AuthenticationState implements _AuthenticationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthenticationState &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.authData, authData) ||
+                other.authData == authData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode => Object.hash(runtimeType, authData);
 
   @JsonKey(ignore: true)
   @override
@@ -329,11 +357,11 @@ class _$_AuthenticationState implements _AuthenticationState {
 }
 
 abstract class _AuthenticationState implements AuthenticationState {
-  const factory _AuthenticationState(
-      {required final AuthenticationStatus status}) = _$_AuthenticationState;
+  const factory _AuthenticationState({required final AuthData authData}) =
+      _$_AuthenticationState;
 
   @override
-  AuthenticationStatus get status;
+  AuthData get authData;
   @override
   @JsonKey(ignore: true)
   _$$_AuthenticationStateCopyWith<_$_AuthenticationState> get copyWith =>

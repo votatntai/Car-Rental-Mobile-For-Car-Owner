@@ -4,11 +4,11 @@ import 'package:car_rental_for_car_owner/commons/constants/authentication.dart';
 import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/commons/extensions.dart';
 import 'package:car_rental_for_car_owner/models/api_response.dart';
+import 'package:car_rental_for_car_owner/models/auth_data.dart';
 import 'package:car_rental_for_car_owner/models/authentication_result.dart';
+import 'package:car_rental_for_car_owner/models/enums/role.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
 class AuthenticationRepository {
   AuthenticationRepository({
@@ -19,24 +19,32 @@ class AuthenticationRepository {
   final Dio dio;
   final SharedPreferences sharedPreferences;
 
-  final StreamController<AuthenticationStatus> _authenticationController =
-      StreamController<AuthenticationStatus>.broadcast();
+  final StreamController<AuthData> _authenticationController =
+      StreamController<AuthData>.broadcast();
 
-  Stream<AuthenticationStatus> get status async* {
+  Stream<AuthData> get status async* {
     final token = sharedPreferences.getString(accessTokenRefs);
-    if (token != null && token.isNotEmpty) {
-      yield AuthenticationStatus.authenticated;
+    final role = sharedPreferences.getString(roleRefs);
+    if (token != null && token.isNotEmpty && role != null && role.isNotEmpty) {
+      yield AuthData(
+        status: AuthenticationStatus.authenticated,
+        role: role.toRole(),
+      );
     } else {
-      yield AuthenticationStatus.unauthenticated;
+      yield AuthData(
+        status: AuthenticationStatus.unauthenticated,
+        role: Role.carOwner,
+      );
     }
 
     yield* _authenticationController.stream;
   }
 
-  Future<ApiResponse<bool>> login(String username, String password) async {
+  Future<ApiResponse<bool>> driverLogin(
+      String username, String password) async {
     try {
       final result = await dio.post<Map<String, dynamic>>(
-        '/auth/login',
+        'auth/drivers',
         data: {
           'username': username.toLowerCase().trim(),
           'password': password.toLowerCase().trim(),
@@ -48,41 +56,31 @@ class AuthenticationRepository {
 
         // save token
         await sharedPreferences.setString(accessTokenRefs, auth.token);
-        await sharedPreferences.setString(
-          refreshTokenRefs,
-          auth.refreshToken,
-        );
+        await sharedPreferences.setString(roleRefs, Role.driver.name);
 
         // update auth status
-        _authenticationController.add(AuthenticationStatus.authenticated);
+        _authenticationController.add(AuthData(
+          status: AuthenticationStatus.authenticated,
+          role: Role.driver,
+        ));
 
         return const ApiResponse.success(true);
       }
 
-      return const ApiError(error: 'Unknown error');
+      return const ApiError(error: 'Lỗi không xác định');
     } on DioError catch (e) {
       return e.getErrorMessage();
     }
   }
 
-  Future<ApiResponse<bool>> signUp({
-    required String email,
-    required String password,
-    required String firstName,
-    required String lastName,
-    String? phoneNumber,
-    String? address,
-  }) async {
+  Future<ApiResponse<bool>> carOwnerLogin(
+      String username, String password) async {
     try {
       final result = await dio.post<Map<String, dynamic>>(
-        '/auth/register',
+        'auth/car-owners',
         data: {
-          'firstName': firstName.trim(),
-          'lastName': lastName.trim(),
-          'email': email.toLowerCase().trim(),
+          'username': username.toLowerCase().trim(),
           'password': password.toLowerCase().trim(),
-          'phoneNumber': phoneNumber?.toLowerCase().trim(),
-          'address': address?.trim()
         },
       );
 
@@ -91,57 +89,36 @@ class AuthenticationRepository {
 
         // save token
         await sharedPreferences.setString(accessTokenRefs, auth.token);
-        await sharedPreferences.setString(
-          refreshTokenRefs,
-          auth.refreshToken,
-        );
+        await sharedPreferences.setString(roleRefs, Role.carOwner.name);
 
         // update auth status
-        _authenticationController.add(AuthenticationStatus.authenticated);
+        _authenticationController.add(AuthData(
+          status: AuthenticationStatus.authenticated,
+          role: Role.carOwner,
+        ));
 
         return const ApiResponse.success(true);
       }
 
-      return const ApiError(error: 'Unknown error');
+      return const ApiError(error: 'Lỗi không xác định');
     } on DioError catch (e) {
       return e.getErrorMessage();
     }
   }
 
-  Future<ApiResponse<bool>> changePassword({
-    required String currentPassword,
-    required String newPassword,
-  }) async {
-    try {
-      final result = await dio.put<dynamic>(
-        '/auth/change-password',
-        data: {
-          'password': currentPassword,
-          'newPassword': newPassword,
-        },
-      );
-      if (result.data != null &&
-          result.statusCode == StatusCodes.status204NoContent) {
-        return const ApiResponse.success(true);
-      }
-
-      return const ApiError(error: 'Unknown error');
-    } on DioError catch (e) {
-      if (e.response?.statusCode == StatusCodes.status400BadRequest) {
-        return const ApiResponse.error(error: 'Invalid password');
-      } else {
-        return e.getErrorMessage();
-      }
-    }
-  }
-
   Future<void> logOut() async {
+    _authenticationController.add(AuthData(
+      status: AuthenticationStatus.unauthenticated,
+      role: Role.carOwner,
+    ));
+
     await sharedPreferences.setString(accessTokenRefs, '');
     await sharedPreferences.setString(
       refreshTokenRefs,
       '',
     );
-    _authenticationController.add(AuthenticationStatus.unauthenticated);
+
+    await sharedPreferences.setString(roleRefs, '');
   }
 
   Future<void> dispose() async {

@@ -2,9 +2,12 @@ import 'package:car_rental_for_car_owner/app/dio_helper.dart';
 import 'package:car_rental_for_car_owner/app/route/app_route.dart';
 import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/di.dart';
+import 'package:car_rental_for_car_owner/repositories/notification_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/repositories.dart';
+import 'package:car_rental_for_car_owner/repositories/user_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 Future<void> configDI() async {
   final appRoute = AppRoute();
@@ -14,6 +17,7 @@ Future<void> configDI() async {
     baseUrl: baseUrl,
     connectTimeout: const Duration(milliseconds: connectTimeout),
     receiveTimeout: const Duration(milliseconds: receiveTimeout),
+    contentType: Headers.jsonContentType,
   );
   final dio = Dio(dioOptions);
 
@@ -32,5 +36,12 @@ Future<void> configDI() async {
     ..registerSingleton<SharedPreferences>(sharedPreferences)
     ..registerSingleton<Dio>(dio)
     ..registerSingleton<DioHelper>(helper)
-    ..registerSingleton<AuthenticationRepository>(authenticationRepository);
+    ..registerSingleton<AuthenticationRepository>(authenticationRepository)
+    ..registerSingleton<UserRepository>(UserRepository(dio: dio))
+    ..registerSingleton<NotificationRepository>(
+        NotificationRepository(dio: dio));
+}
+
+void configureTimeago() {
+  timeago.setLocaleMessages('vi', timeago.ViMessages());
 }

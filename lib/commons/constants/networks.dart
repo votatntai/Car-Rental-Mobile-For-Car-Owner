@@ -1,4 +1,6 @@
-String baseUrl = 'https://api.carea.app/api/v1/';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+String baseUrl = dotenv.env['BASE_URL'] ?? '';
 const int connectTimeout = 15000;
 const int receiveTimeout = 15000;
 const int sendTimeout = 15000;

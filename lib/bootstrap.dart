@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:car_rental_for_car_owner/config.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -30,8 +32,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
 
+      Intl.defaultLocale = 'vi_VN';
+      await initializeDateFormatting('vi_VN', null);
+
       //* configure
       await configDI();
+      configureTimeago();
 
       return runApp(await builder());
     },

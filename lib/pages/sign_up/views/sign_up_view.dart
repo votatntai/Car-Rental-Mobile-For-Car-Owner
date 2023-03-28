@@ -323,7 +323,7 @@ class _SignUpViewState extends State<SignUpView> {
     if (_formKey.currentState!.validate()) {
       //TODO: sign up
 
-      context.goNamed(RouteName.home);
+      // context.goNamed(RouteName.home);
     }
   }
 }

@@ -20,13 +20,7 @@ AuthenticationResult _$AuthenticationResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthenticationResult {
-  String get id => throw _privateConstructorUsedError;
-  String get firstName => throw _privateConstructorUsedError;
-  String get lastName => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
   String get token => throw _privateConstructorUsedError;
-  String get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,14 +34,7 @@ abstract class $AuthenticationResultCopyWith<$Res> {
           $Res Function(AuthenticationResult) then) =
       _$AuthenticationResultCopyWithImpl<$Res, AuthenticationResult>;
   @useResult
-  $Res call(
-      {String id,
-      String firstName,
-      String lastName,
-      String email,
-      String phoneNumber,
-      String token,
-      String refreshToken});
+  $Res call({String token});
 }
 
 /// @nodoc
@@ -64,42 +51,12 @@ class _$AuthenticationResultCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? email = null,
-    Object? phoneNumber = null,
     Object? token = null,
-    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -113,14 +70,7 @@ abstract class _$$_AuthenticationResultCopyWith<$Res>
       __$$_AuthenticationResultCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String firstName,
-      String lastName,
-      String email,
-      String phoneNumber,
-      String token,
-      String refreshToken});
+  $Res call({String token});
 }
 
 /// @nodoc
@@ -134,42 +84,12 @@ class __$$_AuthenticationResultCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? email = null,
-    Object? phoneNumber = null,
     Object? token = null,
-    Object? refreshToken = null,
   }) {
     return _then(_$_AuthenticationResult(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -178,36 +98,17 @@ class __$$_AuthenticationResultCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AuthenticationResult implements _AuthenticationResult {
-  _$_AuthenticationResult(
-      {required this.id,
-      required this.firstName,
-      required this.lastName,
-      required this.email,
-      required this.phoneNumber,
-      required this.token,
-      required this.refreshToken});
+  _$_AuthenticationResult({required this.token});
 
   factory _$_AuthenticationResult.fromJson(Map<String, dynamic> json) =>
       _$$_AuthenticationResultFromJson(json);
 
   @override
-  final String id;
-  @override
-  final String firstName;
-  @override
-  final String lastName;
-  @override
-  final String email;
-  @override
-  final String phoneNumber;
-  @override
   final String token;
-  @override
-  final String refreshToken;
 
   @override
   String toString() {
-    return 'AuthenticationResult(id: $id, firstName: $firstName, lastName: $lastName, email: $email, phoneNumber: $phoneNumber, token: $token, refreshToken: $refreshToken)';
+    return 'AuthenticationResult(token: $token)';
   }
 
   @override
@@ -215,23 +116,12 @@ class _$_AuthenticationResult implements _AuthenticationResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthenticationResult &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+            (identical(other.token, token) || other.token == token));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, firstName, lastName, email,
-      phoneNumber, token, refreshToken);
+  int get hashCode => Object.hash(runtimeType, token);
 
   @JsonKey(ignore: true)
   @override
@@ -249,32 +139,14 @@ class _$_AuthenticationResult implements _AuthenticationResult {
 }
 
 abstract class _AuthenticationResult implements AuthenticationResult {
-  factory _AuthenticationResult(
-      {required final String id,
-      required final String firstName,
-      required final String lastName,
-      required final String email,
-      required final String phoneNumber,
-      required final String token,
-      required final String refreshToken}) = _$_AuthenticationResult;
+  factory _AuthenticationResult({required final String token}) =
+      _$_AuthenticationResult;
 
   factory _AuthenticationResult.fromJson(Map<String, dynamic> json) =
       _$_AuthenticationResult.fromJson;
 
   @override
-  String get id;
-  @override
-  String get firstName;
-  @override
-  String get lastName;
-  @override
-  String get email;
-  @override
-  String get phoneNumber;
-  @override
   String get token;
-  @override
-  String get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$_AuthenticationResultCopyWith<_$_AuthenticationResult> get copyWith =>

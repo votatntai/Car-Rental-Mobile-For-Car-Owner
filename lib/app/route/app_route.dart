@@ -1,9 +1,10 @@
 import 'package:car_rental_for_car_owner/app/route/observers.dart';
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
-import 'package:car_rental_for_car_owner/pages/home/home.dart';
+import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
+import 'package:car_rental_for_car_owner/pages/driver_scaffold_with_nav_bar/driver_scaffold_with_nav_bar.dart';
+import 'package:car_rental_for_car_owner/pages/driver_home/driver_home.dart';
 import 'package:car_rental_for_car_owner/pages/login/login.dart';
-import 'package:car_rental_for_car_owner/pages/profile/profile.dart';
-import 'package:car_rental_for_car_owner/pages/scaffold_with_nav_bar/scaffold_with_nav_bar.dart';
+import 'package:car_rental_for_car_owner/pages/driver_profile/driver_profile.dart';
 import 'package:car_rental_for_car_owner/pages/sign_up/sign_up.dart';
 import 'package:car_rental_for_car_owner/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,8 @@ import 'package:go_router/go_router.dart';
 class AppRoute {
   final GlobalKey<NavigatorState> rootNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'root');
-  final GlobalKey<NavigatorState> shellNavigatorKey =
-      GlobalKey<NavigatorState>(debugLabel: 'shell');
+  final GlobalKey<NavigatorState> driverShellNavigatorKey =
+      GlobalKey<NavigatorState>(debugLabel: 'driver-shell');
 
   final ValueKey<String> _shellNavigationKey =
       const ValueKey<String>('Shell Navigator Key');
@@ -38,23 +39,32 @@ class AppRoute {
         ],
       ),
       ShellRoute(
-        navigatorKey: shellNavigatorKey,
-        builder: (context, state, child) => ScaffoldWithNavBar(child: child),
+        navigatorKey: driverShellNavigatorKey,
+        builder: (context, state, child) =>
+            DriverScaffoldWithNavBar(child: child),
         routes: [
           GoRoute(
-            path: '/home',
-            name: RouteName.home,
+            path: '/driver-home',
+            name: RouteName.driverHome,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const HomePage(),
+              child: const DriverHomePage(),
             ),
           ),
           GoRoute(
-            path: '/profile',
-            name: RouteName.profile,
+            path: '/driver-profile',
+            name: RouteName.driverProfile,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const ProfilePage(),
+              child: const DriverProfilePage(),
+            ),
+          ),
+          GoRoute(
+            path: '/driver-notification',
+            name: RouteName.driverNotification,
+            pageBuilder: (context, state) => FadeTransitionPage(
+              key: _shellNavigationKey,
+              child: const DriverNotificationPage(),
             ),
           ),
         ],
