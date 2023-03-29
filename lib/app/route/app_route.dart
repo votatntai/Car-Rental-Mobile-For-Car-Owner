@@ -109,9 +109,10 @@ class AppRoute {
         ],
       ),
 
-// driver
+      // driver
       GoRoute(
         path: '/driver-order-detail',
+        parentNavigatorKey: rootNavigatorKey,
         name: RouteName.driverOrderDetail,
         builder: (context, state) {
           final order = state.extra as Order?;
@@ -133,18 +134,19 @@ class FadeTransitionPage extends CustomTransitionPage<void> {
     required LocalKey key,
     required Widget child,
   }) : super(
-            key: key,
-            transitionsBuilder: (
-              BuildContext context,
-              Animation<double> animation,
-              Animation<double> secondaryAnimation,
-              Widget child,
-            ) =>
-                FadeTransition(
-                  opacity: animation.drive(_curveTween),
-                  child: child,
-                ),
-            child: child);
+          key: key,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              FadeTransition(
+            opacity: animation.drive(_curveTween),
+            child: child,
+          ),
+          child: child,
+        );
 
   static final CurveTween _curveTween = CurveTween(curve: Curves.easeIn);
 }

@@ -25,6 +25,8 @@ class DriverOrderDetailBloc
       return;
     }
 
+    print(event);
+
     emit(_Success(order: event.order!));
   }
 }

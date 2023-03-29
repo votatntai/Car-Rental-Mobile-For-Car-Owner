@@ -1,7 +1,9 @@
 import 'package:car_rental_for_car_owner/app/dio_helper.dart';
 import 'package:car_rental_for_car_owner/app/route/app_route.dart';
+import 'package:car_rental_for_car_owner/commons/constants/maps.dart';
 import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/di.dart';
+import 'package:car_rental_for_car_owner/repositories/maps_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/notification_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/order_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/repositories.dart';
@@ -45,7 +47,10 @@ Future<void> configDI() async {
         NotificationRepository(dio: dio))
     ..registerSingleton<TransactionRepository>(TransactionRepository(dio: dio))
     ..registerSingleton<WalletRepository>(WalletRepository(dio: dio))
-    ..registerSingleton<OrderRepository>(OrderRepository(dio: dio));
+    ..registerSingleton<OrderRepository>(OrderRepository(dio: dio))
+    ..registerSingleton<MapsRepository>(
+      MapsRepository(key: mapsApiKey, options: dioOptions),
+    );
 }
 
 void configureTimeago() {

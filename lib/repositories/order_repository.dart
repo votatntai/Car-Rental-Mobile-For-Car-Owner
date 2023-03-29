@@ -1,12 +1,79 @@
 import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/commons/extensions.dart';
 import 'package:car_rental_for_car_owner/commons/type.dart';
+import 'package:car_rental_for_car_owner/models/additional_charge.dart';
 import 'package:car_rental_for_car_owner/models/api_response.dart';
+import 'package:car_rental_for_car_owner/models/car.dart';
+import 'package:car_rental_for_car_owner/models/car_model.dart';
+import 'package:car_rental_for_car_owner/models/car_owner.dart';
 import 'package:car_rental_for_car_owner/models/customer.dart';
 import 'package:car_rental_for_car_owner/models/enums/gender.dart';
 import 'package:car_rental_for_car_owner/models/enums/order_status.dart';
+import 'package:car_rental_for_car_owner/models/location.dart';
 import 'package:car_rental_for_car_owner/models/order.dart';
+import 'package:car_rental_for_car_owner/models/order_detail.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+
+final orderDetail = OrderDetail(
+  id: '1',
+  deliveryLocation: Location(
+    id: '1',
+    longitude: 106.7599045,
+    latitude: 10.8529679,
+  ),
+  pickupLocation: Location(
+    id: '1',
+    longitude: 106.7599045,
+    latitude: 10.8529679,
+  ),
+  car: Car(
+    id: '1',
+    licensePlate: 'DB',
+    name: 'car',
+    price: 100000,
+    rented: 2121,
+    images: [],
+    feedBacks: [],
+    carFeatures: [],
+    carTypes: [],
+    model: CarModel(
+      id: '1',
+      name: 'car model',
+      transmissionType: 'fuld',
+      fuelType: 'f',
+      chassis: 'df',
+      seater: 10,
+      yearOfManufacture: 1,
+      fuelConsumption: '121',
+    ),
+    location: Location(
+      id: '1',
+      longitude: 12,
+      latitude: 21,
+    ),
+    additionalCharge: AdditionalCharge(
+      id: '1',
+      maximumDistance: 100,
+      distanceSurcharge: 100,
+      timeSurcharge: 111,
+    ),
+    star: 2,
+    status: 'hoạt động',
+    receiveStartTime: const TimeOfDay(hour: 10, minute: 30),
+    receiveEndTime: const TimeOfDay(hour: 10, minute: 30),
+    returnStartTime: const TimeOfDay(hour: 10, minute: 30),
+    returnEndTime: const TimeOfDay(hour: 10, minute: 30),
+    carOwner: const CarOwner(
+      id: '1',
+      name: 'Trung Hieu Nguyen',
+      phone: '09',
+      gender: 'nam',
+    ),
+  ),
+  deliveryTime: DateTime.now(),
+  pickupTime: DateTime.now(),
+);
 
 class OrderRepository {
   OrderRepository({
@@ -38,6 +105,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         )
       ];
 
@@ -74,6 +142,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         ),
         Order(
           id: '2',
@@ -97,6 +166,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         ),
         Order(
           id: '3',
@@ -120,6 +190,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         ),
         Order(
           id: '4',
@@ -143,6 +214,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         ),
         Order(
           id: '5',
@@ -166,6 +238,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         )
       ];
 
@@ -202,6 +275,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         ),
         Order(
           id: '1',
@@ -225,6 +299,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         ),
         Order(
           id: '1',
@@ -248,6 +323,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         ),
         Order(
           id: '1',
@@ -271,6 +347,7 @@ class OrderRepository {
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
+          orderDetail: orderDetail,
         )
       ];
 
