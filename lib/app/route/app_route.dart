@@ -1,6 +1,13 @@
 import 'package:car_rental_for_car_owner/app/route/observers.dart';
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/models/order.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_home/car_owner_home.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_notification/bloc/car_owner_notification_bloc.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_notification/views/car_owner_notification_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_profile/bloc/car_owner_profile_bloc.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner_profile_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_wallet/views/car_owner_wallet_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_detail/views/driver_order_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_history/views/driver_order_history_page.dart';
@@ -18,6 +25,8 @@ class AppRoute {
   final GlobalKey<NavigatorState> rootNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'root');
   final GlobalKey<NavigatorState> driverShellNavigatorKey =
+      GlobalKey<NavigatorState>(debugLabel: 'driver-shell');
+  final GlobalKey<NavigatorState> carOwnerShellNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'driver-shell');
 
   final ValueKey<String> _shellNavigationKey =
@@ -104,6 +113,46 @@ class AppRoute {
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
               child: const DriverOrderHistoryPage(),
+            ),
+          ),
+        ],
+      ),
+
+      ShellRoute(
+        navigatorKey: carOwnerShellNavigatorKey,
+        builder: (context, state, child) =>
+            CarOwnerScaffoldWithNavBar(child: child),
+        routes: [
+          GoRoute(
+            path: '/car-owner-home',
+            name: RouteName.carOwnerHome,
+            pageBuilder: (context, state) => FadeTransitionPage(
+              key: _shellNavigationKey,
+              child: const CarOwnerHomePage(),
+            ),
+          ),
+          GoRoute(
+            path: '/car-owner-profile',
+            name: RouteName.carOwnerProfile,
+            pageBuilder: (context, state) => FadeTransitionPage(
+              key: _shellNavigationKey,
+              child: const CarOwnerProfilePage(),
+            ),
+          ),
+          GoRoute(
+            path: '/car-owner-wallet',
+            name: RouteName.carOwnerWallet,
+            pageBuilder: (context, state) => FadeTransitionPage(
+              key: _shellNavigationKey,
+              child: const CarOwnerWalletPage(),
+            ),
+          ),
+          GoRoute(
+            path: '/car-owner-notification',
+            name: RouteName.carOwnerNotification,
+            pageBuilder: (context, state) => FadeTransitionPage(
+              key: _shellNavigationKey,
+              child: const CarOwnerNotificationPage(),
             ),
           ),
         ],

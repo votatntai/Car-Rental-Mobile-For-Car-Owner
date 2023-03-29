@@ -17,10 +17,10 @@ class DriverWalletPage extends StatelessWidget {
       builder: (context, state) {
         return BlocProvider.value(
           value: DriverWalletBloc(
-              transactionRepository: getIt.get<TransactionRepository>(),
-              walletRepository: getIt.get<WalletRepository>(),
-              userRepository: getIt.get<UserRepository>())
-            ..add(
+            transactionRepository: getIt.get<TransactionRepository>(),
+            walletRepository: getIt.get<WalletRepository>(),
+            userRepository: getIt.get<UserRepository>(),
+          )..add(
               const DriverWalletEvent.started(),
             ),
           child: const DriverWalletView(),

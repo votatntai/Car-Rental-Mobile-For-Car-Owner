@@ -17,4 +17,5 @@ mixin RouteName {
   static const carOwnerDashboard = 'car-owner-dashboard';
   static const carOwnerProfile = 'car-owner-profile';
   static const carOwnerNotification = 'car-owner-notification';
+  static const carOwnerWallet = 'car-owner-wallet';
 }

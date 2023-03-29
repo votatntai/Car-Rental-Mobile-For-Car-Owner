@@ -205,7 +205,7 @@ class _LoginViewState extends State<LoginView> {
                             const SizedBox(height: 8),
                             TextButton(
                               onPressed: () {
-                                context.goNamed(RouteName.signUp);
+                                // context.goNamed(RouteName.signUp);
                               },
                               child: Text.rich(
                                 TextSpan(
