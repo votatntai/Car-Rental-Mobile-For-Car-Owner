@@ -7,6 +7,8 @@ import 'package:car_rental_for_car_owner/models/auth_data.dart';
 import 'package:car_rental_for_car_owner/models/enums/role.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
 class AppView extends StatefulWidget {
   const AppView({super.key});
@@ -55,6 +57,16 @@ class _AppViewState extends State<AppView> {
         darkTheme: lightTheme,
         debugShowCheckedModeBanner: false,
         routerConfig: _router,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          SfGlobalLocalizations.delegate
+        ],
+        supportedLocales: const [
+          Locale('vi'),
+        ],
+        locale: const Locale('vi', 'VN'),
       ),
     );
   }

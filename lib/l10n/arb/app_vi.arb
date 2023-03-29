@@ -1,0 +1,11 @@
+{
+  "@@locale": "vi",
+  "hello": "Xin chào {name}",
+  "@hello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
+}

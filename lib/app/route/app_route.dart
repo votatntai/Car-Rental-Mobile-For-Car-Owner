@@ -3,6 +3,7 @@ import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_scaffold_with_nav_bar/driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/driver_home/driver_home.dart';
+import 'package:car_rental_for_car_owner/pages/driver_wallet/views/driver_wallet_page.dart';
 import 'package:car_rental_for_car_owner/pages/login/login.dart';
 import 'package:car_rental_for_car_owner/pages/driver_profile/driver_profile.dart';
 import 'package:car_rental_for_car_owner/pages/sign_up/sign_up.dart';
@@ -58,6 +59,33 @@ class AppRoute {
               key: _shellNavigationKey,
               child: const DriverProfilePage(),
             ),
+          ),
+          GoRoute(
+            path: '/driver-wallet',
+            name: RouteName.driverWallet,
+            pageBuilder: (context, state) => FadeTransitionPage(
+              key: _shellNavigationKey,
+              child: const DriverWalletPage(),
+            ),
+            // routes: [
+            //   GoRoute(
+            //     path: 'transaction-history',
+            //     name: RouteName.transactionHistory,
+            //     builder: (context, state) {
+            //       return const TransactionHistoryPage();
+            //     },
+            //   ),
+            //   GoRoute(
+            //     path: 'transaction-detail',
+            //     name: RouteName.transactionDetail,
+            //     builder: (context, state) {
+            //       final transactionId = state.queryParams['transaction-id'];
+            //       return TransactionDetailPage(
+            //         transactionId: transactionId,
+            //       );
+            //     },
+            //   ),
+            // ]
           ),
           GoRoute(
             path: '/driver-notification',

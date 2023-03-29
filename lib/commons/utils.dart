@@ -44,6 +44,12 @@ String dateRangeToString(
   return '$startTime, $startDateString - $endTime, $endDateString';
 }
 
+extension DateTimeExtension on DateTime {
+  String format(String format) {
+    return DateFormat(format).format(this);
+  }
+}
+
 String dateToString(DateTime date) {
   final time = DateFormat.jm().format(date);
   final dateString = DateFormat('dd/MM/yyyy').format(date);

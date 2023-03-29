@@ -28,6 +28,13 @@ class DriverScaffoldWithNavBar extends StatelessWidget {
             activeIcon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
+            label: 'Ví',
+            icon: Icon(
+              Icons.wallet_outlined,
+            ),
+            activeIcon: Icon(Icons.wallet),
+          ),
+          BottomNavigationBarItem(
             label: 'Thông báo',
             icon: Icon(
               Icons.notifications_outlined,
@@ -54,11 +61,14 @@ class DriverScaffoldWithNavBar extends StatelessWidget {
       return 0;
     }
 
-    if (location.startsWith('/driver-notification')) {
+    if (location.startsWith('/driver-wallet')) {
       return 1;
     }
-    if (location.startsWith('/driver-profile')) {
+    if (location.startsWith('/driver-notification')) {
       return 2;
+    }
+    if (location.startsWith('/driver-profile')) {
+      return 3;
     }
     return 0;
   }
@@ -69,9 +79,12 @@ class DriverScaffoldWithNavBar extends StatelessWidget {
         context.goNamed(RouteName.driverHome);
         break;
       case 1:
-        context.goNamed(RouteName.driverNotification);
+        context.goNamed(RouteName.driverWallet);
         break;
       case 2:
+        context.goNamed(RouteName.driverNotification);
+        break;
+      case 3:
         context.goNamed(RouteName.driverProfile);
         break;
     }

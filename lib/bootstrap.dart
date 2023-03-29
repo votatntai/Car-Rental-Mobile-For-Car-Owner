@@ -32,8 +32,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
 
-      Intl.defaultLocale = 'vi_VN';
-      await initializeDateFormatting('vi_VN', null);
+      // Intl.defaultLocale = 'vi_VN';
+      // await initializeDateFormatting('vi_VN', null);
 
       //* configure
       await configDI();

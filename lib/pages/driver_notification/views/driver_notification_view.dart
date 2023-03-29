@@ -3,8 +3,6 @@ import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/bloc/driver_notification_bloc.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/widget/notification_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:car_rental_for_car_owner/models/notification.dart'
