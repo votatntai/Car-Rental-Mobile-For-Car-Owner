@@ -9,6 +9,8 @@ mixin RouteName {
   static const driverProfile = 'driver-profile';
   static const driverNotification = 'driver-notification';
   static const driverWallet = 'driver-wallet';
+  static const driverOrderHistory = 'driver-order-history';
+  static const driverOrderDetail = 'driver-order-detail';
 
   // car owner
   static const carOwnerHome = 'car-owner-home';

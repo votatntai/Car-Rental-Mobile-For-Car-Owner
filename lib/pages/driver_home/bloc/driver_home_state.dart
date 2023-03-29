@@ -6,7 +6,7 @@ class DriverHomeState with _$DriverHomeState {
   const factory DriverHomeState.loading() = _Loading;
   const factory DriverHomeState.success({
     required List<Order> currentOrders,
-    required List<Order> historyOrders,
+    required List<Order> calendarOrders,
   }) = _Success;
   const factory DriverHomeState.failure({required String message}) = _Failure;
 }

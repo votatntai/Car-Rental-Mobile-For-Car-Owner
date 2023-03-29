@@ -1,3 +1,4 @@
+import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
 import 'package:car_rental_for_car_owner/pages/driver_home/bloc/driver_home_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:car_rental_for_car_owner/pages/driver_home/order_data_source.dar
 import 'package:car_rental_for_car_owner/pages/driver_home/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class DriverHomeView extends StatefulWidget {
@@ -47,7 +49,15 @@ class _DriverHomeViewState extends State<DriverHomeView> {
                   ),
                   ...successState.currentOrders.map(
                     (order) {
-                      return OrderItem(order: order, onTap: (order) {});
+                      return OrderItem(
+                        order: order,
+                        onTap: (order) {
+                          context.pushNamed(
+                            RouteName.driverOrderDetail,
+                            extra: order,
+                          );
+                        },
+                      );
                     },
                   ),
                   const SizedBox(height: 16),
@@ -58,17 +68,31 @@ class _DriverHomeViewState extends State<DriverHomeView> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SfCalendar(
-                    view: CalendarView.week,
-                    dataSource: OrderDataSource(
-                      successState.historyOrders,
+                  SizedBox(
+                    height: 500,
+                    child: SfCalendar(
+                      view: CalendarView.month,
+                      // dataSource: _getCalendarDataSource(),
+                      dataSource: OrderDataSource(
+                        successState.calendarOrders,
+                      ),
+
+                      monthViewSettings: const MonthViewSettings(
+                        showAgenda: true,
+
+                        // appointmentDisplayMode:
+                        //     MonthAppointmentDisplayMode.appointment,
+                      ),
+                      onTap: (calendarTapDetails) {
+                        if (calendarTapDetails.targetElement ==
+                            CalendarElement.appointment) {
+                          context.pushNamed(
+                            RouteName.driverOrderDetail,
+                            extra: calendarTapDetails.appointments?.first,
+                          );
+                        }
+                      },
                     ),
-
-                    // monthViewSettings: const MonthViewSettings(
-                    //   appointmentDisplayMode:
-                    //       MonthAppointmentDisplayMode.appointment,
-
-                    // ),
                   ),
                 ],
               ),

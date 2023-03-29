@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'driver_home_bloc.dart';
+part of 'driver_order_history_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DriverHomeEvent {
+mixin _$DriverOrderHistoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
@@ -51,16 +51,17 @@ mixin _$DriverHomeEvent {
 }
 
 /// @nodoc
-abstract class $DriverHomeEventCopyWith<$Res> {
-  factory $DriverHomeEventCopyWith(
-          DriverHomeEvent value, $Res Function(DriverHomeEvent) then) =
-      _$DriverHomeEventCopyWithImpl<$Res, DriverHomeEvent>;
+abstract class $DriverOrderHistoryEventCopyWith<$Res> {
+  factory $DriverOrderHistoryEventCopyWith(DriverOrderHistoryEvent value,
+          $Res Function(DriverOrderHistoryEvent) then) =
+      _$DriverOrderHistoryEventCopyWithImpl<$Res, DriverOrderHistoryEvent>;
 }
 
 /// @nodoc
-class _$DriverHomeEventCopyWithImpl<$Res, $Val extends DriverHomeEvent>
-    implements $DriverHomeEventCopyWith<$Res> {
-  _$DriverHomeEventCopyWithImpl(this._value, this._then);
+class _$DriverOrderHistoryEventCopyWithImpl<$Res,
+        $Val extends DriverOrderHistoryEvent>
+    implements $DriverOrderHistoryEventCopyWith<$Res> {
+  _$DriverOrderHistoryEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -77,7 +78,7 @@ abstract class _$$_StartedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StartedCopyWithImpl<$Res>
-    extends _$DriverHomeEventCopyWithImpl<$Res, _$_Started>
+    extends _$DriverOrderHistoryEventCopyWithImpl<$Res, _$_Started>
     implements _$$_StartedCopyWith<$Res> {
   __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
       : super(_value, _then);
@@ -90,7 +91,7 @@ class _$_Started implements _Started {
 
   @override
   String toString() {
-    return 'DriverHomeEvent.started()';
+    return 'DriverOrderHistoryEvent.started()';
   }
 
   @override
@@ -159,19 +160,17 @@ class _$_Started implements _Started {
   }
 }
 
-abstract class _Started implements DriverHomeEvent {
+abstract class _Started implements DriverOrderHistoryEvent {
   const factory _Started() = _$_Started;
 }
 
 /// @nodoc
-mixin _$DriverHomeState {
+mixin _$DriverOrderHistoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Order> currentOrders, List<Order> calendarOrders)
-        success,
+    required TResult Function(List<Order> historyOrders) success,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -179,8 +178,7 @@ mixin _$DriverHomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult? Function(List<Order> historyOrders)? success,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -188,8 +186,7 @@ mixin _$DriverHomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult Function(List<Order> historyOrders)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -222,16 +219,17 @@ mixin _$DriverHomeState {
 }
 
 /// @nodoc
-abstract class $DriverHomeStateCopyWith<$Res> {
-  factory $DriverHomeStateCopyWith(
-          DriverHomeState value, $Res Function(DriverHomeState) then) =
-      _$DriverHomeStateCopyWithImpl<$Res, DriverHomeState>;
+abstract class $DriverOrderHistoryStateCopyWith<$Res> {
+  factory $DriverOrderHistoryStateCopyWith(DriverOrderHistoryState value,
+          $Res Function(DriverOrderHistoryState) then) =
+      _$DriverOrderHistoryStateCopyWithImpl<$Res, DriverOrderHistoryState>;
 }
 
 /// @nodoc
-class _$DriverHomeStateCopyWithImpl<$Res, $Val extends DriverHomeState>
-    implements $DriverHomeStateCopyWith<$Res> {
-  _$DriverHomeStateCopyWithImpl(this._value, this._then);
+class _$DriverOrderHistoryStateCopyWithImpl<$Res,
+        $Val extends DriverOrderHistoryState>
+    implements $DriverOrderHistoryStateCopyWith<$Res> {
+  _$DriverOrderHistoryStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -248,7 +246,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$DriverHomeStateCopyWithImpl<$Res, _$_Initial>
+    extends _$DriverOrderHistoryStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -261,7 +259,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'DriverHomeState.initial()';
+    return 'DriverOrderHistoryState.initial()';
   }
 
   @override
@@ -278,9 +276,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Order> currentOrders, List<Order> calendarOrders)
-        success,
+    required TResult Function(List<Order> historyOrders) success,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -291,8 +287,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult? Function(List<Order> historyOrders)? success,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -303,8 +298,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult Function(List<Order> historyOrders)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -352,7 +346,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements DriverHomeState {
+abstract class _Initial implements DriverOrderHistoryState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -365,7 +359,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$DriverHomeStateCopyWithImpl<$Res, _$_Loading>
+    extends _$DriverOrderHistoryStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -378,7 +372,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'DriverHomeState.loading()';
+    return 'DriverOrderHistoryState.loading()';
   }
 
   @override
@@ -395,9 +389,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Order> currentOrders, List<Order> calendarOrders)
-        success,
+    required TResult Function(List<Order> historyOrders) success,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -408,8 +400,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult? Function(List<Order> historyOrders)? success,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -420,8 +411,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult Function(List<Order> historyOrders)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -469,7 +459,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements DriverHomeState {
+abstract class _Loading implements DriverOrderHistoryState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -479,12 +469,12 @@ abstract class _$$_SuccessCopyWith<$Res> {
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Order> currentOrders, List<Order> calendarOrders});
+  $Res call({List<Order> historyOrders});
 }
 
 /// @nodoc
 class __$$_SuccessCopyWithImpl<$Res>
-    extends _$DriverHomeStateCopyWithImpl<$Res, _$_Success>
+    extends _$DriverOrderHistoryStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
@@ -492,17 +482,12 @@ class __$$_SuccessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentOrders = null,
-    Object? calendarOrders = null,
+    Object? historyOrders = null,
   }) {
     return _then(_$_Success(
-      currentOrders: null == currentOrders
-          ? _value._currentOrders
-          : currentOrders // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
-      calendarOrders: null == calendarOrders
-          ? _value._calendarOrders
-          : calendarOrders // ignore: cast_nullable_to_non_nullable
+      historyOrders: null == historyOrders
+          ? _value._historyOrders
+          : historyOrders // ignore: cast_nullable_to_non_nullable
               as List<Order>,
     ));
   }
@@ -511,31 +496,20 @@ class __$$_SuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success(
-      {required final List<Order> currentOrders,
-      required final List<Order> calendarOrders})
-      : _currentOrders = currentOrders,
-        _calendarOrders = calendarOrders;
+  const _$_Success({required final List<Order> historyOrders})
+      : _historyOrders = historyOrders;
 
-  final List<Order> _currentOrders;
+  final List<Order> _historyOrders;
   @override
-  List<Order> get currentOrders {
-    if (_currentOrders is EqualUnmodifiableListView) return _currentOrders;
+  List<Order> get historyOrders {
+    if (_historyOrders is EqualUnmodifiableListView) return _historyOrders;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_currentOrders);
-  }
-
-  final List<Order> _calendarOrders;
-  @override
-  List<Order> get calendarOrders {
-    if (_calendarOrders is EqualUnmodifiableListView) return _calendarOrders;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_calendarOrders);
+    return EqualUnmodifiableListView(_historyOrders);
   }
 
   @override
   String toString() {
-    return 'DriverHomeState.success(currentOrders: $currentOrders, calendarOrders: $calendarOrders)';
+    return 'DriverOrderHistoryState.success(historyOrders: $historyOrders)';
   }
 
   @override
@@ -544,16 +518,12 @@ class _$_Success implements _Success {
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
             const DeepCollectionEquality()
-                .equals(other._currentOrders, _currentOrders) &&
-            const DeepCollectionEquality()
-                .equals(other._calendarOrders, _calendarOrders));
+                .equals(other._historyOrders, _historyOrders));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_currentOrders),
-      const DeepCollectionEquality().hash(_calendarOrders));
+      runtimeType, const DeepCollectionEquality().hash(_historyOrders));
 
   @JsonKey(ignore: true)
   @override
@@ -566,12 +536,10 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Order> currentOrders, List<Order> calendarOrders)
-        success,
+    required TResult Function(List<Order> historyOrders) success,
     required TResult Function(String message) failure,
   }) {
-    return success(currentOrders, calendarOrders);
+    return success(historyOrders);
   }
 
   @override
@@ -579,11 +547,10 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult? Function(List<Order> historyOrders)? success,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(currentOrders, calendarOrders);
+    return success?.call(historyOrders);
   }
 
   @override
@@ -591,13 +558,12 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult Function(List<Order> historyOrders)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(currentOrders, calendarOrders);
+      return success(historyOrders);
     }
     return orElse();
   }
@@ -640,13 +606,11 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements DriverHomeState {
-  const factory _Success(
-      {required final List<Order> currentOrders,
-      required final List<Order> calendarOrders}) = _$_Success;
+abstract class _Success implements DriverOrderHistoryState {
+  const factory _Success({required final List<Order> historyOrders}) =
+      _$_Success;
 
-  List<Order> get currentOrders;
-  List<Order> get calendarOrders;
+  List<Order> get historyOrders;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -663,7 +627,7 @@ abstract class _$$_FailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_FailureCopyWithImpl<$Res>
-    extends _$DriverHomeStateCopyWithImpl<$Res, _$_Failure>
+    extends _$DriverOrderHistoryStateCopyWithImpl<$Res, _$_Failure>
     implements _$$_FailureCopyWith<$Res> {
   __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
       : super(_value, _then);
@@ -692,7 +656,7 @@ class _$_Failure implements _Failure {
 
   @override
   String toString() {
-    return 'DriverHomeState.failure(message: $message)';
+    return 'DriverOrderHistoryState.failure(message: $message)';
   }
 
   @override
@@ -717,9 +681,7 @@ class _$_Failure implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<Order> currentOrders, List<Order> calendarOrders)
-        success,
+    required TResult Function(List<Order> historyOrders) success,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -730,8 +692,7 @@ class _$_Failure implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult? Function(List<Order> historyOrders)? success,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -742,8 +703,7 @@ class _$_Failure implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Order> currentOrders, List<Order> calendarOrders)?
-        success,
+    TResult Function(List<Order> historyOrders)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -791,7 +751,7 @@ class _$_Failure implements _Failure {
   }
 }
 
-abstract class _Failure implements DriverHomeState {
+abstract class _Failure implements DriverOrderHistoryState {
   const factory _Failure({required final String message}) = _$_Failure;
 
   String get message;

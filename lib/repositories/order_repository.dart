@@ -31,11 +31,138 @@ class OrderRepository {
           isPaid: true,
           status: OrderStatus.accepted,
           createdAt: DateTime.now(),
-          startTime: DateTime.now()..add(const Duration(days: 1)),
-          endTime: DateTime.now()
-            ..add(
-              const Duration(days: -100),
+          startTime: DateTime.now().add(const Duration(days: 1)),
+          endTime: DateTime.now().add(
+            const Duration(days: 2),
+          ),
+          rentalUnitPrice: 100000,
+          deliveryCost: 100000,
+          deposit: 10000,
+        )
+      ];
+
+      return ApiSuccess(currentOrder);
+    } on DioError catch (e) {
+      return e.getErrorMessage();
+    }
+  }
+
+  Future<ApiResponse<List<Order>>> calendarOrders() async {
+    try {
+      final currentOrder = [
+        Order(
+          id: '1',
+          customer: Customer(
+            id: '1',
+            name: 'Trung Hieu',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
+          ),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.accepted,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now(),
+          endTime: DateTime.now().add(
+            const Duration(
+              hours: 10,
             ),
+          ),
+          rentalUnitPrice: 100000,
+          deliveryCost: 100000,
+          deposit: 10000,
+        ),
+        Order(
+          id: '2',
+          customer: Customer(
+            id: '1',
+            name: 'Hoang',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
+          ),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.accepted,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now().add(const Duration(days: -10, minutes: 10)),
+          endTime: DateTime.now().add(
+            const Duration(days: -9),
+          ),
+          rentalUnitPrice: 100000,
+          deliveryCost: 100000,
+          deposit: 10000,
+        ),
+        Order(
+          id: '3',
+          customer: Customer(
+            id: '1',
+            name: 'Long',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
+          ),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.accepted,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now().add(const Duration(days: -7)),
+          endTime: DateTime.now().add(
+            const Duration(days: -6),
+          ),
+          rentalUnitPrice: 100000,
+          deliveryCost: 100000,
+          deposit: 10000,
+        ),
+        Order(
+          id: '4',
+          customer: Customer(
+            id: '1',
+            name: 'Trung Hieu',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
+          ),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.accepted,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now().add(const Duration(days: -5)),
+          endTime: DateTime.now().add(
+            const Duration(days: -2),
+          ),
+          rentalUnitPrice: 100000,
+          deliveryCost: 100000,
+          deposit: 10000,
+        ),
+        Order(
+          id: '5',
+          customer: Customer(
+            id: '1',
+            name: 'Test',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
+          ),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.accepted,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now().add(const Duration(days: -5)),
+          endTime: DateTime.now().add(
+            const Duration(days: -2),
+          ),
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
@@ -59,21 +186,65 @@ class OrderRepository {
             phone: '090909090',
             gender: Gender.male,
           ),
-          rentalTime: DateTime.now()
-            ..add(
-              const Duration(days: -100),
-            ),
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
+          ),
           amount: 1000000,
           isPaid: true,
-          status: OrderStatus.accepted,
+          status: OrderStatus.finished,
           createdAt: DateTime.now(),
           startTime: DateTime.now(),
-          endTime: DateTime.now()
-            ..add(
-              const Duration(
-                hours: 10,
-              ),
+          endTime: DateTime.now().add(
+            const Duration(
+              hours: 10,
             ),
+          ),
+          rentalUnitPrice: 100000,
+          deliveryCost: 100000,
+          deposit: 10000,
+        ),
+        Order(
+          id: '1',
+          customer: Customer(
+            id: '1',
+            name: 'Hoang',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
+          ),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.finished,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now().add(const Duration(days: -10, minutes: 10)),
+          endTime: DateTime.now().add(
+            const Duration(days: -9),
+          ),
+          rentalUnitPrice: 100000,
+          deliveryCost: 100000,
+          deposit: 10000,
+        ),
+        Order(
+          id: '1',
+          customer: Customer(
+            id: '1',
+            name: 'Long',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
+          ),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.finished,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now().add(const Duration(days: -7)),
+          endTime: DateTime.now().add(
+            const Duration(days: -6),
+          ),
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,
@@ -86,70 +257,17 @@ class OrderRepository {
             phone: '090909090',
             gender: Gender.male,
           ),
-          rentalTime: DateTime.now()
-            ..add(
-              const Duration(days: -100),
-            ),
-          amount: 1000000,
-          isPaid: true,
-          status: OrderStatus.accepted,
-          createdAt: DateTime.now(),
-          startTime: DateTime.now()
-            ..add(const Duration(days: -10, minutes: 10)),
-          endTime: DateTime.now()
-            ..add(
-              const Duration(days: -9),
-            ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
-          deposit: 10000,
-        ),
-        Order(
-          id: '1',
-          customer: Customer(
-            id: '1',
-            name: 'Trung Hieu',
-            phone: '090909090',
-            gender: Gender.male,
+          rentalTime: DateTime.now().add(
+            const Duration(days: -100),
           ),
-          rentalTime: DateTime.now()
-            ..add(
-              const Duration(days: -100),
-            ),
           amount: 1000000,
           isPaid: true,
-          status: OrderStatus.accepted,
+          status: OrderStatus.finished,
           createdAt: DateTime.now(),
-          startTime: DateTime.now()..add(const Duration(days: -7)),
-          endTime: DateTime.now()
-            ..add(
-              const Duration(days: -6),
-            ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
-          deposit: 10000,
-        ),
-        Order(
-          id: '1',
-          customer: Customer(
-            id: '1',
-            name: 'Trung Hieu',
-            phone: '090909090',
-            gender: Gender.male,
+          startTime: DateTime.now().add(const Duration(days: -5)),
+          endTime: DateTime.now().add(
+            const Duration(days: -2),
           ),
-          rentalTime: DateTime.now()
-            ..add(
-              const Duration(days: -100),
-            ),
-          amount: 1000000,
-          isPaid: true,
-          status: OrderStatus.accepted,
-          createdAt: DateTime.now(),
-          startTime: DateTime.now()..add(const Duration(days: -5)),
-          endTime: DateTime.now()
-            ..add(
-              const Duration(days: -2),
-            ),
           rentalUnitPrice: 100000,
           deliveryCost: 100000,
           deposit: 10000,

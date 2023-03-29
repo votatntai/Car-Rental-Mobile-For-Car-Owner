@@ -1,6 +1,9 @@
 import 'package:car_rental_for_car_owner/app/route/observers.dart';
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
+import 'package:car_rental_for_car_owner/models/order.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
+import 'package:car_rental_for_car_owner/pages/driver_order_detail/views/driver_order_detail_page.dart';
+import 'package:car_rental_for_car_owner/pages/driver_order_history/views/driver_order_history_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_scaffold_with_nav_bar/driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/driver_home/driver_home.dart';
 import 'package:car_rental_for_car_owner/pages/driver_wallet/views/driver_wallet_page.dart';
@@ -95,7 +98,27 @@ class AppRoute {
               child: const DriverNotificationPage(),
             ),
           ),
+          GoRoute(
+            path: '/driver-order-history',
+            name: RouteName.driverOrderHistory,
+            pageBuilder: (context, state) => FadeTransitionPage(
+              key: _shellNavigationKey,
+              child: const DriverOrderHistoryPage(),
+            ),
+          ),
         ],
+      ),
+
+// driver
+      GoRoute(
+        path: '/driver-order-detail',
+        name: RouteName.driverOrderDetail,
+        builder: (context, state) {
+          final order = state.extra as Order?;
+          return DriverOrderDetailPage(
+            order: order,
+          );
+        },
       ),
     ],
     initialLocation: '/splash',

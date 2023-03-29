@@ -26,16 +26,18 @@ class DriverHomeBloc extends Bloc<DriverHomeEvent, DriverHomeState> {
     emit(const _Loading());
 
     final currentOrderResult = await orderRepository.currentOrders();
-    final historyOrderResult = await orderRepository.historyOrders();
+    final calendarOrdersResult = await orderRepository.calendarOrders();
 
-    if (currentOrderResult is ApiError || historyOrderResult is ApiError) {
+    if (currentOrderResult is ApiError || calendarOrdersResult is ApiError) {
       emit(const _Failure(message: 'Something went wrong'));
       return;
     }
 
-    final currentOrders = (currentOrderResult as ApiSuccess).value;
-    final historyOrders = (historyOrderResult as ApiSuccess).value;
+    final currentOrders = (currentOrderResult as ApiSuccess<List<Order>>).value;
+    final calendarOrders =
+        (calendarOrdersResult as ApiSuccess<List<Order>>).value;
 
-    emit(_Success(currentOrders: currentOrders, historyOrders: historyOrders));
+    emit(
+        _Success(currentOrders: currentOrders, calendarOrders: calendarOrders));
   }
 }
