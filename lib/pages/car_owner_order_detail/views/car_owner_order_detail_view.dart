@@ -85,19 +85,44 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: s16,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: s16),
                   child: ContainerWithLabel(
                     label: 'Trạng thái',
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Row(
                       children: [
                         Text(
                           successState.order.status.displayName,
                           style: const TextStyle(
-                            fontSize: 12,
+                            fontSize: 16,
                           ),
                         ),
+                        const Spacer(),
+                        if (successState.order.status == OrderStatus.pending)
+                          ElevatedButton(
+                            onPressed: () {
+                              showConfirmDialogCustom(
+                                context,
+                                onAccept: (c) async {},
+                                dialogType: DialogType.CONFIRMATION,
+                                customCenterWidget: const Center(
+                                  child: Icon(
+                                    Icons.check_circle,
+                                    color: CustomColors.flamingo,
+                                    size: 100,
+                                  ),
+                                ),
+                                primaryColor: CustomColors.flamingo,
+                                title: 'Bạn muốn xác nhận?',
+                                negativeText: 'Hủy',
+                                positiveText: 'Đồng ý',
+                              );
+                            },
+                            child: const Text('Xác nhận'),
+                          ),
                       ],
                     ),
                   ),

@@ -1,12 +1,11 @@
 import 'package:car_rental_for_car_owner/app/route/observers.dart';
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/models/order.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/car_owner_car_detail.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_driver_detail/views/car_owner_driver_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/car_owner_home.dart';
-import 'package:car_rental_for_car_owner/pages/car_owner_notification/bloc/car_owner_notification_bloc.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_notification/views/car_owner_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_order_detail/views/car_owner_order_detail_page.dart';
-import 'package:car_rental_for_car_owner/pages/car_owner_profile/bloc/car_owner_profile_bloc.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner_profile_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_wallet/views/car_owner_wallet_page.dart';
@@ -194,6 +193,19 @@ class AppRoute {
 
           return CarOwnerDriverDetailPage(
             driverId: driverId,
+          );
+        },
+      ),
+
+      GoRoute(
+        path: '/car-owner-car-detail',
+        name: RouteName.carOwnerCarDetail,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          final carId = state.queryParams['car-id'] ?? '';
+
+          return CarOwnerCarDetailPage(
+            carId: carId,
           );
         },
       ),

@@ -81,7 +81,12 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                         (e) => CarItem(
                           car: e,
                           onTap: (id) {
-                            //TODO: navigate to car detail
+                            context.pushNamed(
+                              RouteName.carOwnerCarDetail,
+                              queryParams: {
+                                'car-id': id,
+                              },
+                            );
                           },
                         ),
                       )
