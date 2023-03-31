@@ -15,6 +15,9 @@ class Order with _$Order {
     OrderDetail? orderDetail,
     required DateTime rentalTime,
     required double amount,
+    required double unitPrice,
+    required double deliveryFee,
+    required double deposit,
     required bool isPaid,
     required OrderStatus status,
     String? description,
@@ -22,9 +25,6 @@ class Order with _$Order {
     Promotion? promotion,
     required DateTime startTime,
     required DateTime endTime,
-    required double rentalUnitPrice,
-    required double deliveryCost,
-    required double deposit,
   }) = _Order;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);

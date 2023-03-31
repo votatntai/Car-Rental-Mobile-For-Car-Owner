@@ -3,6 +3,8 @@ import 'package:car_rental_for_car_owner/app/route/app_route.dart';
 import 'package:car_rental_for_car_owner/commons/constants/maps.dart';
 import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/di.dart';
+import 'package:car_rental_for_car_owner/repositories/car_repository.dart';
+import 'package:car_rental_for_car_owner/repositories/driver_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/maps_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/notification_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/order_repository.dart';
@@ -37,20 +39,21 @@ Future<void> configDI() async {
   );
 
   getIt
-    ..registerSingleton<AppRoute>(appRoute)
-    ..registerSingleton<SharedPreferences>(sharedPreferences)
-    ..registerSingleton<Dio>(dio)
-    ..registerSingleton<DioHelper>(helper)
-    ..registerSingleton<AuthenticationRepository>(authenticationRepository)
-    ..registerSingleton<UserRepository>(UserRepository(dio: dio))
-    ..registerSingleton<NotificationRepository>(
-        NotificationRepository(dio: dio))
-    ..registerSingleton<TransactionRepository>(TransactionRepository(dio: dio))
-    ..registerSingleton<WalletRepository>(WalletRepository(dio: dio))
-    ..registerSingleton<OrderRepository>(OrderRepository(dio: dio))
-    ..registerSingleton<MapsRepository>(
+    ..registerSingleton(appRoute)
+    ..registerSingleton(sharedPreferences)
+    ..registerSingleton(dio)
+    ..registerSingleton(helper)
+    ..registerSingleton(authenticationRepository)
+    ..registerSingleton(UserRepository(dio: dio))
+    ..registerSingleton(NotificationRepository(dio: dio))
+    ..registerSingleton(TransactionRepository(dio: dio))
+    ..registerSingleton(WalletRepository(dio: dio))
+    ..registerSingleton(OrderRepository(dio: dio))
+    ..registerSingleton(
       MapsRepository(key: mapsApiKey, options: dioOptions),
-    );
+    )
+    ..registerSingleton(CarRepository(dio: dio))
+    ..registerSingleton(DriverRepository(dio: dio));
 }
 
 void configureTimeago() {

@@ -25,6 +25,9 @@ mixin _$Order {
   OrderDetail? get orderDetail => throw _privateConstructorUsedError;
   DateTime get rentalTime => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
+  double get unitPrice => throw _privateConstructorUsedError;
+  double get deliveryFee => throw _privateConstructorUsedError;
+  double get deposit => throw _privateConstructorUsedError;
   bool get isPaid => throw _privateConstructorUsedError;
   OrderStatus get status => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -32,9 +35,6 @@ mixin _$Order {
   Promotion? get promotion => throw _privateConstructorUsedError;
   DateTime get startTime => throw _privateConstructorUsedError;
   DateTime get endTime => throw _privateConstructorUsedError;
-  double get rentalUnitPrice => throw _privateConstructorUsedError;
-  double get deliveryCost => throw _privateConstructorUsedError;
-  double get deposit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,16 +52,16 @@ abstract class $OrderCopyWith<$Res> {
       OrderDetail? orderDetail,
       DateTime rentalTime,
       double amount,
+      double unitPrice,
+      double deliveryFee,
+      double deposit,
       bool isPaid,
       OrderStatus status,
       String? description,
       DateTime createdAt,
       Promotion? promotion,
       DateTime startTime,
-      DateTime endTime,
-      double rentalUnitPrice,
-      double deliveryCost,
-      double deposit});
+      DateTime endTime});
 
   $CustomerCopyWith<$Res> get customer;
   $OrderDetailCopyWith<$Res>? get orderDetail;
@@ -86,6 +86,9 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? orderDetail = freezed,
     Object? rentalTime = null,
     Object? amount = null,
+    Object? unitPrice = null,
+    Object? deliveryFee = null,
+    Object? deposit = null,
     Object? isPaid = null,
     Object? status = null,
     Object? description = freezed,
@@ -93,9 +96,6 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? promotion = freezed,
     Object? startTime = null,
     Object? endTime = null,
-    Object? rentalUnitPrice = null,
-    Object? deliveryCost = null,
-    Object? deposit = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -117,6 +117,18 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      unitPrice: null == unitPrice
+          ? _value.unitPrice
+          : unitPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      deliveryFee: null == deliveryFee
+          ? _value.deliveryFee
+          : deliveryFee // ignore: cast_nullable_to_non_nullable
+              as double,
+      deposit: null == deposit
+          ? _value.deposit
+          : deposit // ignore: cast_nullable_to_non_nullable
               as double,
       isPaid: null == isPaid
           ? _value.isPaid
@@ -146,18 +158,6 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      rentalUnitPrice: null == rentalUnitPrice
-          ? _value.rentalUnitPrice
-          : rentalUnitPrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      deliveryCost: null == deliveryCost
-          ? _value.deliveryCost
-          : deliveryCost // ignore: cast_nullable_to_non_nullable
-              as double,
-      deposit: null == deposit
-          ? _value.deposit
-          : deposit // ignore: cast_nullable_to_non_nullable
-              as double,
     ) as $Val);
   }
 
@@ -206,16 +206,16 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       OrderDetail? orderDetail,
       DateTime rentalTime,
       double amount,
+      double unitPrice,
+      double deliveryFee,
+      double deposit,
       bool isPaid,
       OrderStatus status,
       String? description,
       DateTime createdAt,
       Promotion? promotion,
       DateTime startTime,
-      DateTime endTime,
-      double rentalUnitPrice,
-      double deliveryCost,
-      double deposit});
+      DateTime endTime});
 
   @override
   $CustomerCopyWith<$Res> get customer;
@@ -239,6 +239,9 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
     Object? orderDetail = freezed,
     Object? rentalTime = null,
     Object? amount = null,
+    Object? unitPrice = null,
+    Object? deliveryFee = null,
+    Object? deposit = null,
     Object? isPaid = null,
     Object? status = null,
     Object? description = freezed,
@@ -246,9 +249,6 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
     Object? promotion = freezed,
     Object? startTime = null,
     Object? endTime = null,
-    Object? rentalUnitPrice = null,
-    Object? deliveryCost = null,
-    Object? deposit = null,
   }) {
     return _then(_$_Order(
       id: null == id
@@ -270,6 +270,18 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      unitPrice: null == unitPrice
+          ? _value.unitPrice
+          : unitPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      deliveryFee: null == deliveryFee
+          ? _value.deliveryFee
+          : deliveryFee // ignore: cast_nullable_to_non_nullable
+              as double,
+      deposit: null == deposit
+          ? _value.deposit
+          : deposit // ignore: cast_nullable_to_non_nullable
               as double,
       isPaid: null == isPaid
           ? _value.isPaid
@@ -299,18 +311,6 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      rentalUnitPrice: null == rentalUnitPrice
-          ? _value.rentalUnitPrice
-          : rentalUnitPrice // ignore: cast_nullable_to_non_nullable
-              as double,
-      deliveryCost: null == deliveryCost
-          ? _value.deliveryCost
-          : deliveryCost // ignore: cast_nullable_to_non_nullable
-              as double,
-      deposit: null == deposit
-          ? _value.deposit
-          : deposit // ignore: cast_nullable_to_non_nullable
-              as double,
     ));
   }
 }
@@ -324,16 +324,16 @@ class _$_Order implements _Order {
       this.orderDetail,
       required this.rentalTime,
       required this.amount,
+      required this.unitPrice,
+      required this.deliveryFee,
+      required this.deposit,
       required this.isPaid,
       required this.status,
       this.description,
       required this.createdAt,
       this.promotion,
       required this.startTime,
-      required this.endTime,
-      required this.rentalUnitPrice,
-      required this.deliveryCost,
-      required this.deposit});
+      required this.endTime});
 
   factory _$_Order.fromJson(Map<String, dynamic> json) =>
       _$$_OrderFromJson(json);
@@ -349,6 +349,12 @@ class _$_Order implements _Order {
   @override
   final double amount;
   @override
+  final double unitPrice;
+  @override
+  final double deliveryFee;
+  @override
+  final double deposit;
+  @override
   final bool isPaid;
   @override
   final OrderStatus status;
@@ -362,16 +368,10 @@ class _$_Order implements _Order {
   final DateTime startTime;
   @override
   final DateTime endTime;
-  @override
-  final double rentalUnitPrice;
-  @override
-  final double deliveryCost;
-  @override
-  final double deposit;
 
   @override
   String toString() {
-    return 'Order(id: $id, customer: $customer, orderDetail: $orderDetail, rentalTime: $rentalTime, amount: $amount, isPaid: $isPaid, status: $status, description: $description, createdAt: $createdAt, promotion: $promotion, startTime: $startTime, endTime: $endTime, rentalUnitPrice: $rentalUnitPrice, deliveryCost: $deliveryCost, deposit: $deposit)';
+    return 'Order(id: $id, customer: $customer, orderDetail: $orderDetail, rentalTime: $rentalTime, amount: $amount, unitPrice: $unitPrice, deliveryFee: $deliveryFee, deposit: $deposit, isPaid: $isPaid, status: $status, description: $description, createdAt: $createdAt, promotion: $promotion, startTime: $startTime, endTime: $endTime)';
   }
 
   @override
@@ -387,6 +387,11 @@ class _$_Order implements _Order {
             (identical(other.rentalTime, rentalTime) ||
                 other.rentalTime == rentalTime) &&
             (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.unitPrice, unitPrice) ||
+                other.unitPrice == unitPrice) &&
+            (identical(other.deliveryFee, deliveryFee) ||
+                other.deliveryFee == deliveryFee) &&
+            (identical(other.deposit, deposit) || other.deposit == deposit) &&
             (identical(other.isPaid, isPaid) || other.isPaid == isPaid) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.description, description) ||
@@ -397,12 +402,7 @@ class _$_Order implements _Order {
                 other.promotion == promotion) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
-            (identical(other.endTime, endTime) || other.endTime == endTime) &&
-            (identical(other.rentalUnitPrice, rentalUnitPrice) ||
-                other.rentalUnitPrice == rentalUnitPrice) &&
-            (identical(other.deliveryCost, deliveryCost) ||
-                other.deliveryCost == deliveryCost) &&
-            (identical(other.deposit, deposit) || other.deposit == deposit));
+            (identical(other.endTime, endTime) || other.endTime == endTime));
   }
 
   @JsonKey(ignore: true)
@@ -414,16 +414,16 @@ class _$_Order implements _Order {
       orderDetail,
       rentalTime,
       amount,
+      unitPrice,
+      deliveryFee,
+      deposit,
       isPaid,
       status,
       description,
       createdAt,
       promotion,
       startTime,
-      endTime,
-      rentalUnitPrice,
-      deliveryCost,
-      deposit);
+      endTime);
 
   @JsonKey(ignore: true)
   @override
@@ -446,16 +446,16 @@ abstract class _Order implements Order {
       final OrderDetail? orderDetail,
       required final DateTime rentalTime,
       required final double amount,
+      required final double unitPrice,
+      required final double deliveryFee,
+      required final double deposit,
       required final bool isPaid,
       required final OrderStatus status,
       final String? description,
       required final DateTime createdAt,
       final Promotion? promotion,
       required final DateTime startTime,
-      required final DateTime endTime,
-      required final double rentalUnitPrice,
-      required final double deliveryCost,
-      required final double deposit}) = _$_Order;
+      required final DateTime endTime}) = _$_Order;
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
 
@@ -470,6 +470,12 @@ abstract class _Order implements Order {
   @override
   double get amount;
   @override
+  double get unitPrice;
+  @override
+  double get deliveryFee;
+  @override
+  double get deposit;
+  @override
   bool get isPaid;
   @override
   OrderStatus get status;
@@ -483,12 +489,6 @@ abstract class _Order implements Order {
   DateTime get startTime;
   @override
   DateTime get endTime;
-  @override
-  double get rentalUnitPrice;
-  @override
-  double get deliveryCost;
-  @override
-  double get deposit;
   @override
   @JsonKey(ignore: true)
   _$$_OrderCopyWith<_$_Order> get copyWith =>

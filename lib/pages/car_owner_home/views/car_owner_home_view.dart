@@ -1,5 +1,14 @@
+import 'package:car_rental_for_car_owner/app/route/route_name.dart';
+import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
+import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
+import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_home/bloc/car_owner_home_bloc.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_home/widgets/car_item.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_home/widgets/order_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CarOwnerHomeView extends StatefulWidget {
   const CarOwnerHomeView({super.key});
@@ -11,12 +20,89 @@ class CarOwnerHomeView extends StatefulWidget {
 class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appAppBar(
-        context,
-        titleText: 'Trang chủ',
-        leading: false,
-      ),
+    return BlocBuilder<CarOwnerHomeBloc, CarOwnerHomeState>(
+      builder: (context, state) {
+        final successState = state.mapOrNull(success: (state) => state);
+
+        print(state);
+
+        if (successState == null) {
+          return const Scaffold(
+            body: LoadingWidget(),
+          );
+        }
+
+        return Scaffold(
+          appBar: appAppBar(
+            context,
+            titleText: 'Trang chủ',
+            leading: false,
+          ),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (successState.pendingOrders.isNotEmpty)
+                    const Text(
+                      'Yêu cầu thuê xe',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  const SizedBox(height: s08),
+                  if (successState.pendingOrders.isNotEmpty)
+                    ...successState.pendingOrders.map(
+                      (order) {
+                        return OrderItemForCarOwner(
+                          order: order,
+                          onTap: (order) {
+                            context.pushNamed(
+                              RouteName.carOwnerOrderDetail,
+                              extra: order,
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Xe của tôi',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: s08),
+                  ...successState.myCars
+                      .map(
+                        (e) => CarItem(
+                          car: e,
+                          onTap: (id) {
+                            //TODO: navigate to car detail
+                          },
+                        ),
+                      )
+                      .toList()
+                ],
+              ),
+            ),
+          ),
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {},
+            backgroundColor: CustomColors.jetBlack,
+            elevation: 0,
+            label: const Center(
+              child: Text(
+                'Thêm xe',
+              ),
+            ),
+            icon: const Icon(Icons.add),
+          ),
+        );
+      },
     );
   }
 }

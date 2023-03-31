@@ -7,6 +7,7 @@ import 'package:car_rental_for_car_owner/models/car.dart';
 import 'package:car_rental_for_car_owner/models/car_model.dart';
 import 'package:car_rental_for_car_owner/models/car_owner.dart';
 import 'package:car_rental_for_car_owner/models/customer.dart';
+import 'package:car_rental_for_car_owner/models/driver.dart';
 import 'package:car_rental_for_car_owner/models/enums/gender.dart';
 import 'package:car_rental_for_car_owner/models/enums/order_status.dart';
 import 'package:car_rental_for_car_owner/models/location.dart';
@@ -73,6 +74,15 @@ final orderDetail = OrderDetail(
   ),
   deliveryTime: DateTime.now(),
   pickupTime: DateTime.now(),
+  driver: Driver(
+    id: 'E88AC41C-CF83-4996-814F-4552311A8142',
+    name: 'Driver demo',
+    address: '45 chuong duong',
+    phone: '090909090',
+    gender: Gender.male.name,
+    status: 'status',
+    accountStatus: true,
+  ),
 );
 
 class OrderRepository {
@@ -102,8 +112,8 @@ class OrderRepository {
           endTime: DateTime.now().add(
             const Duration(days: 2),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         )
@@ -139,8 +149,8 @@ class OrderRepository {
               hours: 10,
             ),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         ),
@@ -163,8 +173,8 @@ class OrderRepository {
           endTime: DateTime.now().add(
             const Duration(days: -9),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         ),
@@ -187,8 +197,8 @@ class OrderRepository {
           endTime: DateTime.now().add(
             const Duration(days: -6),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         ),
@@ -211,8 +221,8 @@ class OrderRepository {
           endTime: DateTime.now().add(
             const Duration(days: -2),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         ),
@@ -235,8 +245,8 @@ class OrderRepository {
           endTime: DateTime.now().add(
             const Duration(days: -2),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         )
@@ -272,8 +282,8 @@ class OrderRepository {
               hours: 10,
             ),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         ),
@@ -296,8 +306,8 @@ class OrderRepository {
           endTime: DateTime.now().add(
             const Duration(days: -9),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         ),
@@ -320,8 +330,8 @@ class OrderRepository {
           endTime: DateTime.now().add(
             const Duration(days: -6),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         ),
@@ -344,8 +354,8 @@ class OrderRepository {
           endTime: DateTime.now().add(
             const Duration(days: -2),
           ),
-          rentalUnitPrice: 100000,
-          deliveryCost: 100000,
+          unitPrice: 100000,
+          deliveryFee: 100000,
           deposit: 10000,
           orderDetail: orderDetail,
         )
@@ -374,6 +384,61 @@ class OrderRepository {
       return const ApiError(
         error: 'Không tìm thấy đơn hàng',
       );
+    } on DioError catch (e) {
+      return e.getErrorMessage();
+    }
+  }
+
+  Future<ApiResponse<List<Order>>> pendingOrders() async {
+    try {
+      final currentOrder = [
+        Order(
+          id: '1',
+          customer: Customer(
+            id: '1',
+            name: 'Trung Hieu',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now(),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.pending,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now().add(const Duration(days: 1)),
+          endTime: DateTime.now().add(
+            const Duration(days: 2),
+          ),
+          unitPrice: 100000,
+          deliveryFee: 100000,
+          deposit: 10000,
+          orderDetail: orderDetail,
+        ),
+        Order(
+          id: '2',
+          customer: Customer(
+            id: '2',
+            name: 'Hai Nam',
+            phone: '090909090',
+            gender: Gender.male,
+          ),
+          rentalTime: DateTime.now(),
+          amount: 1000000,
+          isPaid: true,
+          status: OrderStatus.pending,
+          createdAt: DateTime.now(),
+          startTime: DateTime.now().add(const Duration(days: 1)),
+          endTime: DateTime.now().add(
+            const Duration(days: 2),
+          ),
+          unitPrice: 100000,
+          deliveryFee: 100000,
+          deposit: 10000,
+          orderDetail: orderDetail,
+        )
+      ];
+
+      return ApiSuccess(currentOrder);
     } on DioError catch (e) {
       return e.getErrorMessage();
     }

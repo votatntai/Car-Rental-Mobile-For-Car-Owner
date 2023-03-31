@@ -1,9 +1,11 @@
 import 'package:car_rental_for_car_owner/app/route/observers.dart';
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/models/order.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_driver_detail/views/car_owner_driver_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/car_owner_home.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_notification/bloc/car_owner_notification_bloc.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_notification/views/car_owner_notification_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_order_detail/views/car_owner_order_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_profile/bloc/car_owner_profile_bloc.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner_profile_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
@@ -167,6 +169,31 @@ class AppRoute {
           final order = state.extra as Order?;
           return DriverOrderDetailPage(
             order: order,
+          );
+        },
+      ),
+
+      // car owner
+      GoRoute(
+        path: '/car-owner-order-detail',
+        parentNavigatorKey: rootNavigatorKey,
+        name: RouteName.carOwnerOrderDetail,
+        builder: (context, state) {
+          final order = state.extra as Order?;
+          return CarOwnerOrderDetailPage(
+            order: order,
+          );
+        },
+      ),
+      GoRoute(
+        path: '/car-owner-driver-detail',
+        name: RouteName.carOwnerDriverDetail,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          final driverId = state.queryParams['driver-id'] ?? '';
+
+          return CarOwnerDriverDetailPage(
+            driverId: driverId,
           );
         },
       ),

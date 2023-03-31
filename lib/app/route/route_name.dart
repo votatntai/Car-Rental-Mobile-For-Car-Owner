@@ -18,4 +18,6 @@ mixin RouteName {
   static const carOwnerProfile = 'car-owner-profile';
   static const carOwnerNotification = 'car-owner-notification';
   static const carOwnerWallet = 'car-owner-wallet';
+  static const carOwnerOrderDetail = 'car-owner-order-detail';
+  static const carOwnerDriverDetail = 'car-owner-driver-detail';
 }

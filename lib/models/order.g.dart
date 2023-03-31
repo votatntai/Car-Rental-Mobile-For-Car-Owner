@@ -14,6 +14,9 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
           : OrderDetail.fromJson(json['orderDetail'] as Map<String, dynamic>),
       rentalTime: DateTime.parse(json['rentalTime'] as String),
       amount: (json['amount'] as num).toDouble(),
+      unitPrice: (json['unitPrice'] as num).toDouble(),
+      deliveryFee: (json['deliveryFee'] as num).toDouble(),
+      deposit: (json['deposit'] as num).toDouble(),
       isPaid: json['isPaid'] as bool,
       status: $enumDecode(_$OrderStatusEnumMap, json['status']),
       description: json['description'] as String?,
@@ -23,9 +26,6 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
           : Promotion.fromJson(json['promotion'] as Map<String, dynamic>),
       startTime: DateTime.parse(json['startTime'] as String),
       endTime: DateTime.parse(json['endTime'] as String),
-      rentalUnitPrice: (json['rentalUnitPrice'] as num).toDouble(),
-      deliveryCost: (json['deliveryCost'] as num).toDouble(),
-      deposit: (json['deposit'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
@@ -34,6 +34,9 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'orderDetail': instance.orderDetail,
       'rentalTime': instance.rentalTime.toIso8601String(),
       'amount': instance.amount,
+      'unitPrice': instance.unitPrice,
+      'deliveryFee': instance.deliveryFee,
+      'deposit': instance.deposit,
       'isPaid': instance.isPaid,
       'status': _$OrderStatusEnumMap[instance.status]!,
       'description': instance.description,
@@ -41,9 +44,6 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'promotion': instance.promotion,
       'startTime': instance.startTime.toIso8601String(),
       'endTime': instance.endTime.toIso8601String(),
-      'rentalUnitPrice': instance.rentalUnitPrice,
-      'deliveryCost': instance.deliveryCost,
-      'deposit': instance.deposit,
     };
 
 const _$OrderStatusEnumMap = {
