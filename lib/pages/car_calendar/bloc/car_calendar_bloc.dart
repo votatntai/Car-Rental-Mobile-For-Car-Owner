@@ -1,0 +1,107 @@
+import 'dart:async';
+
+import 'package:bloc/bloc.dart';
+import 'package:car_rental_for_car_owner/models/api_response.dart';
+import 'package:car_rental_for_car_owner/models/calendar.dart';
+import 'package:car_rental_for_car_owner/models/enums/weekday.dart';
+import 'package:car_rental_for_car_owner/repositories/calendar_repository.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'car_calendar_event.dart';
+part 'car_calendar_state.dart';
+part 'car_calendar_bloc.freezed.dart';
+
+class CarCalendarBloc extends Bloc<CarCalendarEvent, CarCalendarState> {
+  CarCalendarBloc({
+    required this.calendarRepository,
+  }) : super(const _Initial()) {
+    on<_Started>(_onStarted);
+    on<_UpdateCalendar>(_onUpdateCalendar);
+  }
+
+  final CalendarRepository calendarRepository;
+
+  FutureOr<void> _onStarted(
+    _Started event,
+    Emitter<CarCalendarState> emit,
+  ) async {
+    emit(const _Loading());
+
+    if (event.carId == null) {
+      emit(const CarCalendarState.failure(message: 'Lỗi không xác định'));
+      return;
+    }
+
+    final carCalendarResult =
+        await calendarRepository.carCalendar(carId: event.carId!);
+
+    if (carCalendarResult is ApiError) {
+      emit(const CarCalendarState.failure(message: 'Lỗi không xác định'));
+      return;
+    }
+
+    final carCalendars = (carCalendarResult as ApiSuccess).value;
+    final calendars = <Calendar>[];
+
+    for (final weekday in Weekday.values) {
+      // find calendar
+      final calendar = carCalendars.firstWhere(
+        (element) => element.weekDay == weekday,
+        orElse: () => Calendar(
+          id: weekday.name,
+          weekDay: weekday,
+          startTime: const TimeOfDay(
+            hour: 0,
+            minute: 0,
+          ),
+          endTime: const TimeOfDay(
+            hour: 0,
+            minute: 0,
+          ),
+        ),
+      );
+
+      calendars.add(calendar);
+    }
+
+    calendars.sort(
+      (a, b) => a.weekDay.index.compareTo(b.weekDay.index),
+    );
+
+    emit(
+      CarCalendarState.success(
+        calendars: calendars,
+      ),
+    );
+  }
+
+  FutureOr<void> _onUpdateCalendar(
+    _UpdateCalendar event,
+    Emitter<CarCalendarState> emit,
+  ) async {
+    if (state is! _Success) {
+      return;
+    }
+
+    final currentState = state as _Success;
+    List<Calendar> calendars = currentState.calendars;
+    calendars = calendars
+        .where(
+          (calendar) => calendar.id != event.calendar.id,
+        )
+        .toList();
+    calendars.add(event.calendar);
+
+    calendars.sort(
+      (a, b) => a.weekDay.index.compareTo(b.weekDay.index),
+    );
+
+    emit(
+      CarCalendarState.success(
+        calendars: calendars,
+      ),
+    );
+  }
+}

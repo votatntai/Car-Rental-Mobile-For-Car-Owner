@@ -81,6 +81,21 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
               },
             ),
             actionWidget2: IconButton(
+              onPressed: () {
+                context.pushNamed(
+                  RouteName.carCalendar,
+                  queryParams: {
+                    'car-id': successState.car.id,
+                  },
+                );
+              },
+              icon: const Icon(
+                Icons.calendar_month_outlined,
+                color: Colors.black,
+                size: 24,
+              ),
+            ),
+            actionWidget3: IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.edit_outlined,

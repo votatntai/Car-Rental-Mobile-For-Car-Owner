@@ -6,6 +6,7 @@ PreferredSizeWidget appAppBar(
   String? titleText,
   Widget? actionWidget,
   Widget? actionWidget2,
+  Widget? actionWidget3,
   bool? leading = true,
 }) {
   return AppBar(
@@ -20,7 +21,8 @@ PreferredSizeWidget appAppBar(
         : null,
     actions: [
       actionWidget ?? const SizedBox(),
-      actionWidget2 ?? const SizedBox()
+      actionWidget2 ?? const SizedBox(),
+      actionWidget3 ?? const SizedBox()
     ],
     title: Text(titleText ?? '', style: boldTextStyle(size: 18)),
     elevation: 0.0,

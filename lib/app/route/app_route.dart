@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:car_rental_for_car_owner/app/route/observers.dart';
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/models/order.dart';
+import 'package:car_rental_for_car_owner/pages/car_calendar/views/car_calendar_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/car_owner_car_detail.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_driver_detail/views/car_owner_driver_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/car_owner_home.dart';
@@ -239,6 +240,18 @@ class AppRoute {
 
           return CarTrackingPage(
             carIds: carIds,
+          );
+        },
+      ),
+
+      GoRoute(
+        path: '/car-calendar',
+        name: RouteName.carCalendar,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          final carId = state.queryParams['car-id'] ?? '';
+          return CarCalendarPage(
+            carId: carId,
           );
         },
       ),

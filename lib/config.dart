@@ -3,6 +3,7 @@ import 'package:car_rental_for_car_owner/app/route/app_route.dart';
 import 'package:car_rental_for_car_owner/commons/constants/maps.dart';
 import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/di.dart';
+import 'package:car_rental_for_car_owner/repositories/calendar_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/car_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/driver_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/maps_repository.dart';
@@ -53,7 +54,8 @@ Future<void> configDI() async {
       MapsRepository(key: mapsApiKey, options: dioOptions),
     )
     ..registerSingleton(CarRepository(dio: dio))
-    ..registerSingleton(DriverRepository(dio: dio));
+    ..registerSingleton(DriverRepository(dio: dio))
+    ..registerSingleton(CalendarRepository(dio: dio));
 }
 
 void configureTimeago() {
