@@ -8,9 +8,13 @@ import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/utils.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/car_card_tag.dart';
+import 'package:car_rental_for_car_owner/commons/widgets/container_with_label.dart';
+import 'package:car_rental_for_car_owner/commons/widgets/google_map_widget.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
+import 'package:car_rental_for_car_owner/commons/widgets/location_text.dart';
 import 'package:car_rental_for_car_owner/models/car.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/bloc/car_owner_car_detail_bloc.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/widgets/surcharge_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -76,6 +80,14 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                 });
               },
             ),
+            actionWidget2: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.edit_outlined,
+                color: Colors.black,
+                size: 24,
+              ),
+            ),
           ),
           body: SingleChildScrollView(
             child: Container(
@@ -87,6 +99,256 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                 children: [
                   carImage(context, successState.car),
                   carTitle(context, successState.car),
+                  divider,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: s16),
+                    child: ContainerWithLabel(
+                      label: 'Thời gian nhận/trả xe',
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              const Text(
+                                'Thời gian nhận xe',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                              const Spacer(),
+                              Text(
+                                '${formatTimeOfDay(successState.car.receiveStartTime)}-${formatTimeOfDay(successState.car.receiveEndTime)}',
+                                style: const TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: s04,
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                'Thời gian trả xe',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                              const Spacer(),
+                              Text(
+                                '${formatTimeOfDay(successState.car.returnStartTime)}-${formatTimeOfDay(successState.car.returnEndTime)}',
+                                style: const TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  divider,
+                  if (successState.car.carFeatures.isNotEmpty)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: s16),
+                          child: ContainerWithLabel(
+                            label: 'Tính năng',
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: successState.car.carFeatures
+                                  .map(
+                                    (e) => Padding(
+                                      padding: const EdgeInsets.only(
+                                        bottom: s04,
+                                      ),
+                                      child: Text(
+                                        '- ${e.feature.name}',
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                        ),
+                        divider,
+                      ],
+                    ),
+                  if (successState.car.carTypes.isNotEmpty)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: s16),
+                          child: ContainerWithLabel(
+                            label: 'Loại xe',
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: successState.car.carTypes
+                                  .map(
+                                    (e) => Padding(
+                                      padding: const EdgeInsets.only(
+                                        bottom: s04,
+                                      ),
+                                      child: Text(
+                                        '- ${e.type.name}',
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                        ),
+                        divider,
+                      ],
+                    ),
+                  if (successState.car.productionCompany != null)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: s16),
+                          child: ContainerWithLabel(
+                            label: 'Hãng sản xuất',
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    bottom: s04,
+                                  ),
+                                  child: Text(
+                                    '- ${successState.car.productionCompany!.name}',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        divider,
+                      ],
+                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: s16),
+                    child: ContainerWithLabel(
+                      label: 'Địa điểm giao nhận xe',
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const Icon(
+                                Icons.location_on_outlined,
+                                size: 20,
+                              ),
+                              const SizedBox(width: 2),
+                              SizedBox(
+                                width: context.width() * 0.8,
+                                child: LocationText(
+                                  longitude:
+                                      successState.car.location.longitude,
+                                  latitude: successState.car.location.latitude,
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w500,
+                                    color: CustomColors.jetBlack,
+                                  ),
+                                ),
+                                // child: Text(
+                                //   successState.order.address,
+                                //   style: const TextStyle(
+                                //     fontSize: 13,
+                                //     fontWeight: FontWeight.w500,
+                                //     color: CustomColors.jetBlack,
+                                //   ),
+                                // ),
+                              ),
+                            ],
+                          ),
+                          GoogleMapWidget(
+                            longitude: successState.car.location.longitude,
+                            latitude: successState.car.location.latitude,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  divider,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: s16),
+                    child: ContainerWithLabel(
+                      label: 'Phụ phí',
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SurchargeItem(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Text(
+                                      'Giới hạn quãng đường',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    Text(
+                                      '${successState.car.additionalCharge.maximumDistance} km/ngày',
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: s04,
+                                ),
+                                Text(
+                                  'Phí: ${formatCurrency(successState.car.additionalCharge.distanceSurcharge)}/km vượt qua giới hạn',
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: s08,
+                          ),
+                          SurchargeItem(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Quá giờ',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: s04,
+                                ),
+                                Text(
+                                  'Phí: ${formatCurrency(successState.car.additionalCharge.timeSurcharge)}/giờ. Quá 5 giờ tính bằng giá thuê 1 ngày',
+                                  style: const TextStyle(fontSize: 12),
+                                )
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: s08,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   divider,
                 ],
               ),
@@ -133,22 +395,30 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
               ),
             ],
           ),
+          const SizedBox(
+            height: s04,
+          ),
           Row(
             children: [
-              Text(car.licensePlate,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: CustomColors.dimGray,
-                  )),
+              Text(
+                car.licensePlate,
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                  color: CustomColors.dimGray,
+                ),
+              ),
             ],
+          ),
+          const SizedBox(
+            height: s04,
           ),
           Row(
             children: [
               Text(
                 car.star.toString(),
                 style: const TextStyle(
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: CustomColors.dimGray,
                 ),
@@ -174,7 +444,7 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
               Text(
                 '${car.rented} chuyến',
                 style: const TextStyle(
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: CustomColors.dimGray,
                 ),

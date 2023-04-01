@@ -13,12 +13,12 @@ class CarCardTag extends StatelessWidget {
         color: CustomColors.gainsboro,
         borderRadius: BorderRadius.circular(3),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: Center(
         child: Text(
           text,
           style: const TextStyle(
-            fontSize: 10,
+            fontSize: 11,
           ),
         ),
       ),

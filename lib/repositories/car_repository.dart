@@ -4,12 +4,16 @@ import 'package:car_rental_for_car_owner/commons/type.dart';
 import 'package:car_rental_for_car_owner/models/additional_charge.dart';
 import 'package:car_rental_for_car_owner/models/api_response.dart';
 import 'package:car_rental_for_car_owner/models/car.dart';
+import 'package:car_rental_for_car_owner/models/car_feature.dart';
 import 'package:car_rental_for_car_owner/models/car_model.dart';
+import 'package:car_rental_for_car_owner/models/car_owner.dart';
+import 'package:car_rental_for_car_owner/models/car_type.dart';
+import 'package:car_rental_for_car_owner/models/feature.dart';
 import 'package:car_rental_for_car_owner/models/location.dart';
+import 'package:car_rental_for_car_owner/models/production_company.dart';
+import 'package:car_rental_for_car_owner/models/type_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
-import '../models/car_owner.dart';
 
 final car = Car(
   id: '089b2727-efef-4858-8932-8ad868428201',
@@ -19,8 +23,47 @@ final car = Car(
   rented: 112,
   images: [],
   feedBacks: [],
-  carFeatures: [],
-  carTypes: [],
+  carFeatures: [
+    CarFeature(
+      description: 'description',
+      feature: const Feature(
+        id: '1',
+        name: 'feature',
+        description: 'description',
+      ),
+    ),
+    CarFeature(
+      description: 'description 2',
+      feature: const Feature(
+        id: '2',
+        name: 'feature 2',
+        description: 'description 2',
+      ),
+    ),
+  ],
+  carTypes: [
+    CarType(
+      type: TypeModel(
+        id: 'id',
+        name: 'type',
+        description: 'description',
+      ),
+      description: 'description',
+    ),
+    CarType(
+      type: TypeModel(
+        id: 'id2',
+        name: 'type2',
+        description: 'description2',
+      ),
+      description: 'description2',
+    ),
+  ],
+  productionCompany: ProductionCompany(
+    id: '1',
+    name: 'Audi',
+    description: 'Audi',
+  ),
   model: CarModel(
     id: '1',
     name: 'car model',
@@ -33,8 +76,8 @@ final car = Car(
   ),
   location: Location(
     id: '1',
-    longitude: 106.7599045,
-    latitude: 10.8529679,
+    longitude: 106.7590913,
+    latitude: 10.8538939,
   ),
   additionalCharge: AdditionalCharge(
     id: '1',
@@ -110,15 +153,17 @@ class CarRepository {
 
   Future<ApiResponse<Car>> carById(String carId) async {
     try {
-      final result = await dio.get<JsonObject>(
-        'cars/$carId',
-      );
+      // final result = await dio.get<JsonObject>(
+      //   'cars/$carId',
+      // );
 
-      if (result.data != null && result.statusCode == StatusCodes.status200OK) {
-        return ApiSuccess(
-          Car.fromJson(result.data!),
-        );
-      }
+      // if (result.data != null && result.statusCode == StatusCodes.status200OK) {
+      //   return ApiSuccess(
+      //     Car.fromJson(result.data!),
+      //   );
+      // }
+
+      return ApiSuccess(car);
 
       return const ApiError(error: 'Lỗi không xác định');
     } on DioError catch (e) {
