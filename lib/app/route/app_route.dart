@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:car_rental_for_car_owner/app/route/observers.dart';
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/models/order.dart';
@@ -6,9 +8,11 @@ import 'package:car_rental_for_car_owner/pages/car_owner_driver_detail/views/car
 import 'package:car_rental_for_car_owner/pages/car_owner_home/car_owner_home.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_notification/views/car_owner_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_order_detail/views/car_owner_order_detail_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_order_history/views/car_owner_order_history_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner_profile_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_wallet/views/car_owner_wallet_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_tracking/views/car_tracking_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_detail/views/driver_order_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_history/views/driver_order_history_page.dart';
@@ -156,6 +160,14 @@ class AppRoute {
               child: const CarOwnerNotificationPage(),
             ),
           ),
+          GoRoute(
+            path: '/car-owner-order-history',
+            name: RouteName.carOwnerOrderHistory,
+            pageBuilder: (context, state) => FadeTransitionPage(
+              key: _shellNavigationKey,
+              child: const CarOwnerOrderHistoryPage(),
+            ),
+          ),
         ],
       ),
 
@@ -206,6 +218,27 @@ class AppRoute {
 
           return CarOwnerCarDetailPage(
             carId: carId,
+          );
+        },
+      ),
+
+      GoRoute(
+        path: '/car-tracking',
+        name: RouteName.carTracking,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          List<String> carIds = [];
+          try {
+            final json = state.queryParams['car-ids'];
+
+            carIds = List<String>.from(jsonDecode(json!));
+            // ignore: empty_catches
+          } catch (e) {
+            print(e);
+          }
+
+          return CarTrackingPage(
+            carIds: carIds,
           );
         },
       ),

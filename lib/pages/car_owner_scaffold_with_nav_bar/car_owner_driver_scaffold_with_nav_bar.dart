@@ -28,6 +28,13 @@ class CarOwnerScaffoldWithNavBar extends StatelessWidget {
             activeIcon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
+            label: 'Lịch sử',
+            icon: Icon(
+              Icons.receipt_long_outlined,
+            ),
+            activeIcon: Icon(Icons.receipt_long),
+          ),
+          BottomNavigationBarItem(
             label: 'Ví',
             icon: Icon(
               Icons.wallet_outlined,
@@ -61,14 +68,18 @@ class CarOwnerScaffoldWithNavBar extends StatelessWidget {
       return 0;
     }
 
-    if (location.startsWith('/car-owner-wallet')) {
+    if (location.startsWith('/car-owner-order-history')) {
       return 1;
     }
-    if (location.startsWith('/car-owner-notification')) {
+
+    if (location.startsWith('/car-owner-wallet')) {
       return 2;
     }
-    if (location.startsWith('/car-owner-profile')) {
+    if (location.startsWith('/car-owner-notification')) {
       return 3;
+    }
+    if (location.startsWith('/car-owner-profile')) {
+      return 4;
     }
     return 0;
   }
@@ -79,12 +90,15 @@ class CarOwnerScaffoldWithNavBar extends StatelessWidget {
         context.goNamed(RouteName.carOwnerHome);
         break;
       case 1:
-        context.goNamed(RouteName.carOwnerWallet);
+        context.goNamed(RouteName.carOwnerOrderHistory);
         break;
       case 2:
-        context.goNamed(RouteName.carOwnerNotification);
+        context.goNamed(RouteName.carOwnerWallet);
         break;
       case 3:
+        context.goNamed(RouteName.carOwnerNotification);
+        break;
+      case 4:
         context.goNamed(RouteName.carOwnerProfile);
         break;
     }

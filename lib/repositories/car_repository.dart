@@ -33,8 +33,8 @@ final car = Car(
   ),
   location: Location(
     id: '1',
-    longitude: 12,
-    latitude: 21,
+    longitude: 106.7599045,
+    latitude: 10.8529679,
   ),
   additionalCharge: AdditionalCharge(
     id: '1',
@@ -80,8 +80,24 @@ class CarRepository {
 
       final cars = [
         car,
-        car.copyWith(id: '2', name: 'BMW I9'),
-        car.copyWith(id: '3', name: 'BMW I10'),
+        car.copyWith(
+          id: '2',
+          name: 'BMW I9',
+          location: Location(
+            id: '2',
+            longitude: 106.6911163,
+            latitude: 10.8215675,
+          ),
+        ),
+        car.copyWith(
+          id: '3',
+          name: 'BMW I10',
+          location: Location(
+            id: '3',
+            longitude: 106.8389884,
+            latitude: 10.8370098,
+          ),
+        ),
       ];
 
       return ApiResponse.success(cars);

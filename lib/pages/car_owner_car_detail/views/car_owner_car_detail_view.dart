@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:car_rental_for_car_owner/commons/constants/images.dart';
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
@@ -10,6 +13,7 @@ import 'package:car_rental_for_car_owner/models/car.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/bloc/car_owner_car_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -60,6 +64,18 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
           appBar: appAppBar(
             context,
             titleText: successState.car.name ?? '',
+            actionWidget: IconButton(
+              icon: const Icon(
+                Icons.my_location_outlined,
+                color: Colors.black,
+                size: 24,
+              ),
+              onPressed: () {
+                context.pushNamed(RouteName.carTracking, queryParams: {
+                  'car-ids': jsonEncode([successState.car.id]),
+                });
+              },
+            ),
           ),
           body: SingleChildScrollView(
             child: Container(

@@ -22,7 +22,7 @@ PreferredSizeWidget appAppBar(
       actionWidget ?? const SizedBox(),
       actionWidget2 ?? const SizedBox()
     ],
-    title: Text(titleText ?? "", style: boldTextStyle(size: 18)),
+    title: Text(titleText ?? '', style: boldTextStyle(size: 18)),
     elevation: 0.0,
   );
 }

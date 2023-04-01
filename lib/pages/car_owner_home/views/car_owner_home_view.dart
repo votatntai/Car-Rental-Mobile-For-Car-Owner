@@ -24,8 +24,6 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
       builder: (context, state) {
         final successState = state.mapOrNull(success: (state) => state);
 
-        print(state);
-
         if (successState == null) {
           return const Scaffold(
             body: LoadingWidget(),
