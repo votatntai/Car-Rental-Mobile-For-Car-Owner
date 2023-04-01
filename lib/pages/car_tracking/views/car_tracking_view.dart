@@ -47,7 +47,7 @@ class _CarTrackingViewState extends State<CarTrackingView> {
               title: car.name ?? '',
               snippet: car.licensePlate,
             ),
-            // icon: markerBitmap,
+            icon: markerBitmap,
           ),
         );
       }
@@ -66,7 +66,7 @@ class _CarTrackingViewState extends State<CarTrackingView> {
             title: car.name ?? '',
             snippet: car.licensePlate,
           ),
-          // icon: markerBitmap,
+          icon: markerBitmap,
         ),
       );
     }
