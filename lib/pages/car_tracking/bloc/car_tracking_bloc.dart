@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:car_rental_for_car_owner/models/api_response.dart';
 import 'package:car_rental_for_car_owner/models/car.dart';
 import 'package:car_rental_for_car_owner/repositories/car_repository.dart';
+import 'package:car_rental_for_car_owner/repositories/user_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'car_tracking_event.dart';
@@ -13,6 +14,7 @@ part 'car_tracking_bloc.freezed.dart';
 class CarTrackingBloc extends Bloc<CarTrackingEvent, CarTrackingState> {
   CarTrackingBloc({
     required this.carRepository,
+    required this.userRepository,
   }) : super(const CarTrackingState(
           myCars: [],
           selectedCars: [],
@@ -22,12 +24,21 @@ class CarTrackingBloc extends Bloc<CarTrackingEvent, CarTrackingState> {
   }
 
   final CarRepository carRepository;
+  final UserRepository userRepository;
 
   FutureOr<void> _onStarted(
     _Started event,
     Emitter<CarTrackingState> emit,
   ) async {
-    final myCarsResult = await carRepository.myCars();
+    final carOwner = await userRepository.getCarOwner();
+
+    if (carOwner == null) {
+      return;
+    }
+
+    final myCarsResult = await carRepository.myCars(
+      carOwnerId: carOwner.id,
+    );
 
     if (myCarsResult is ApiError) {
       return;

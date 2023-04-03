@@ -13,6 +13,7 @@ import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/location_text.dart';
 import 'package:car_rental_for_car_owner/models/car.dart';
 import 'package:car_rental_for_car_owner/models/enums/order_status.dart';
+import 'package:car_rental_for_car_owner/models/enums/rental_car_type.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_order_detail/bloc/car_owner_order_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -113,12 +114,22 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                           ),
                         ),
                         const Spacer(),
-                        if (successState.order.status == OrderStatus.pending)
+                        if (successState.order.status ==
+                            OrderStatus.managerConfirmed)
                           ElevatedButton(
                             onPressed: () {
                               showConfirmDialogCustom(
                                 context,
-                                onAccept: (c) async {},
+                                onAccept: (c) async {
+                                  context.read<CarOwnerOrderDetailBloc>().add(
+                                        CarOwnerOrderDetailEvent
+                                            .orderStatusChanged(
+                                          orderId: successState.order.id,
+                                          orderStatus:
+                                              OrderStatus.carOwnerApproved,
+                                        ),
+                                      );
+                                },
                                 dialogType: DialogType.CONFIRMATION,
                                 customCenterWidget: const Center(
                                   child: Icon(
@@ -133,8 +144,159 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                 positiveText: 'Đồng ý',
                               );
                             },
-                            child: const Text('Xác nhận'),
+                            child: const Text('Xác nhận cho thuê'),
                           ),
+                        if (successState.order.status ==
+                                OrderStatus.carOwnerApproved &&
+                            successState.order.orderDetails.isNotEmpty &&
+                            successState.order.orderDetails.first.driver ==
+                                null)
+                          ElevatedButton(
+                            onPressed: () {
+                              showConfirmDialogCustom(
+                                context,
+                                onAccept: (c) async {
+                                  // context.read<CarOwnerOrderDetailBloc>().add(
+                                  //       CarOwnerOrderDetailEvent
+                                  //           .orderStatusChanged(
+                                  //         orderId: successState.order.id,
+                                  //         orderStatus:
+                                  //             OrderStatus.receivedTheCar,
+                                  //       ),
+                                  //     );
+                                  context.read<CarOwnerOrderDetailBloc>().add(
+                                        CarOwnerOrderDetailEvent
+                                            .orderStatusChanged(
+                                          orderId: successState.order.id,
+                                          orderStatus: OrderStatus.ongoing,
+                                        ),
+                                      );
+                                },
+                                dialogType: DialogType.CONFIRMATION,
+                                customCenterWidget: const Center(
+                                  child: Icon(
+                                    Icons.check_circle,
+                                    color: CustomColors.flamingo,
+                                    size: 100,
+                                  ),
+                                ),
+                                primaryColor: CustomColors.flamingo,
+                                title: 'Bạn muốn xác nhận?',
+                                negativeText: 'Hủy',
+                                positiveText: 'Xác nhận',
+                              );
+                            },
+                            child: const Text('Nhận xe'),
+                          ),
+                        if (successState.order.status == OrderStatus.ongoing)
+                          ElevatedButton(
+                            onPressed: () {
+                              showConfirmDialogCustom(
+                                context,
+                                onAccept: (c) async {
+                                  context.read<CarOwnerOrderDetailBloc>().add(
+                                        CarOwnerOrderDetailEvent
+                                            .orderStatusChanged(
+                                          orderId: successState.order.id,
+                                          orderStatus: OrderStatus.paid,
+                                        ),
+                                      );
+                                },
+                                dialogType: DialogType.CONFIRMATION,
+                                customCenterWidget: const Center(
+                                  child: Icon(
+                                    Icons.check_circle,
+                                    color: CustomColors.flamingo,
+                                    size: 100,
+                                  ),
+                                ),
+                                primaryColor: CustomColors.flamingo,
+                                title: 'Bạn muốn xác nhận?',
+                                negativeText: 'Hủy',
+                                positiveText: 'Xác nhận',
+                              );
+                            },
+                            child: const Text('Đã thanh toán'),
+                          ),
+                        if (successState.order.status == OrderStatus.paid)
+                          ElevatedButton(
+                            onPressed: () {
+                              showConfirmDialogCustom(
+                                context,
+                                onAccept: (c) async {
+                                  context.read<CarOwnerOrderDetailBloc>().add(
+                                        CarOwnerOrderDetailEvent
+                                            .orderStatusChanged(
+                                          orderId: successState.order.id,
+                                          orderStatus:
+                                              OrderStatus.returnedTheCar,
+                                        ),
+                                      );
+                                },
+                                dialogType: DialogType.CONFIRMATION,
+                                customCenterWidget: const Center(
+                                  child: Icon(
+                                    Icons.check_circle,
+                                    color: CustomColors.flamingo,
+                                    size: 100,
+                                  ),
+                                ),
+                                primaryColor: CustomColors.flamingo,
+                                title: 'Bạn muốn xác nhận?',
+                                negativeText: 'Hủy',
+                                positiveText: 'Xác nhận',
+                              );
+                            },
+                            child: const Text('Trả xe'),
+                          ),
+                        if (successState.order.status ==
+                            OrderStatus.returnedTheCar)
+                          ElevatedButton(
+                            onPressed: () {
+                              showConfirmDialogCustom(
+                                context,
+                                onAccept: (c) async {
+                                  context.read<CarOwnerOrderDetailBloc>().add(
+                                        CarOwnerOrderDetailEvent
+                                            .orderStatusChanged(
+                                          orderId: successState.order.id,
+                                          orderStatus: OrderStatus.finished,
+                                        ),
+                                      );
+                                },
+                                dialogType: DialogType.CONFIRMATION,
+                                customCenterWidget: const Center(
+                                  child: Icon(
+                                    Icons.check_circle,
+                                    color: CustomColors.flamingo,
+                                    size: 100,
+                                  ),
+                                ),
+                                primaryColor: CustomColors.flamingo,
+                                title: 'Bạn muốn xác nhận?',
+                                negativeText: 'Hủy',
+                                positiveText: 'Xác nhận',
+                              );
+                            },
+                            child: const Text('Hoàn thành'),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+                divider,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: s16),
+                  child: ContainerWithLabel(
+                    label: 'Loại thuê xe',
+                    child: Column(
+                      children: [
+                        Text(
+                          successState.order.orderDetails.first.car.driver ==
+                                  null
+                              ? RentalCarType.selfDrivingCar.getDisplayName()
+                              : RentalCarType.carWithDriver.getDisplayName(),
+                        )
                       ],
                     ),
                   ),
@@ -355,8 +517,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                   ),
                                 ],
                               ),
-                              if (successState.order.status !=
-                                  OrderStatus.canceled)
+                              if (successState.order.isPaid == true)
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -542,6 +703,44 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                   ),
                 ),
                 divider,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            showConfirmDialogCustom(
+                              context,
+                              onAccept: (c) async {
+                                context.read<CarOwnerOrderDetailBloc>().add(
+                                      CarOwnerOrderDetailEvent
+                                          .orderStatusChanged(
+                                        orderId: successState.order.id,
+                                        orderStatus: OrderStatus.canceled,
+                                      ),
+                                    );
+                              },
+                              dialogType: DialogType.CONFIRMATION,
+                              customCenterWidget: const Center(
+                                child: Icon(
+                                  Icons.check_circle,
+                                  color: CustomColors.flamingo,
+                                  size: 100,
+                                ),
+                              ),
+                              primaryColor: CustomColors.flamingo,
+                              title: 'Bạn muốn xác nhận?',
+                              negativeText: 'Hủy',
+                              positiveText: 'Đồng ý',
+                            );
+                          },
+                          child: const Text('Hủy chuyến'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 const SizedBox(
                   height: s32,
                 ),

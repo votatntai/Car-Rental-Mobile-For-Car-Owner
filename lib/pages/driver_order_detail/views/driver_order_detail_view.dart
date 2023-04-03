@@ -120,7 +120,7 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                                 primaryColor: CustomColors.flamingo,
                                 title: 'Bạn muốn xác nhận?',
                                 negativeText: 'Hủy',
-                                positiveText: 'Nhận xe',
+                                positiveText: 'Đồng ý',
                               );
                             },
                             child: const Text('Nhận xe'),
@@ -219,67 +219,67 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                             },
                             child: const Text('Đang di chuyển'),
                           ),
-                        if (successState.order.status == OrderStatus.paid)
-                          ElevatedButton(
-                            onPressed: () {
-                              showConfirmDialogCustom(
-                                context,
-                                onAccept: (c) async {
-                                  context.read<DriverOrderDetailBloc>().add(
-                                        DriverOrderDetailEvent
-                                            .orderStatusChanged(
-                                          orderId: successState.order.id,
-                                          status: OrderStatus.returnedTheCar,
-                                        ),
-                                      );
-                                },
-                                dialogType: DialogType.CONFIRMATION,
-                                customCenterWidget: const Center(
-                                  child: Icon(
-                                    Icons.check_circle,
-                                    color: CustomColors.flamingo,
-                                    size: 100,
-                                  ),
-                                ),
-                                primaryColor: CustomColors.flamingo,
-                                title: 'Bạn muốn xác nhận?',
-                                negativeText: 'Hủy',
-                                positiveText: 'Đồng ý',
-                              );
-                            },
-                            child: const Text('Trả xe'),
-                          ),
-                        if (successState.order.status ==
-                            OrderStatus.returnedTheCar)
-                          ElevatedButton(
-                            onPressed: () {
-                              showConfirmDialogCustom(
-                                context,
-                                onAccept: (c) async {
-                                  context.read<DriverOrderDetailBloc>().add(
-                                        DriverOrderDetailEvent
-                                            .orderStatusChanged(
-                                          orderId: successState.order.id,
-                                          status: OrderStatus.finished,
-                                        ),
-                                      );
-                                },
-                                dialogType: DialogType.CONFIRMATION,
-                                customCenterWidget: const Center(
-                                  child: Icon(
-                                    Icons.check_circle,
-                                    color: CustomColors.flamingo,
-                                    size: 100,
-                                  ),
-                                ),
-                                primaryColor: CustomColors.flamingo,
-                                title: 'Bạn muốn xác nhận?',
-                                negativeText: 'Hủy',
-                                positiveText: 'Đồng ý',
-                              );
-                            },
-                            child: const Text('Hoàn thành'),
-                          ),
+                        // if (successState.order.status == OrderStatus.paid)
+                        //   ElevatedButton(
+                        //     onPressed: () {
+                        //       showConfirmDialogCustom(
+                        //         context,
+                        //         onAccept: (c) async {
+                        //           context.read<DriverOrderDetailBloc>().add(
+                        //                 DriverOrderDetailEvent
+                        //                     .orderStatusChanged(
+                        //                   orderId: successState.order.id,
+                        //                   status: OrderStatus.returnedTheCar,
+                        //                 ),
+                        //               );
+                        //         },
+                        //         dialogType: DialogType.CONFIRMATION,
+                        //         customCenterWidget: const Center(
+                        //           child: Icon(
+                        //             Icons.check_circle,
+                        //             color: CustomColors.flamingo,
+                        //             size: 100,
+                        //           ),
+                        //         ),
+                        //         primaryColor: CustomColors.flamingo,
+                        //         title: 'Bạn muốn xác nhận?',
+                        //         negativeText: 'Hủy',
+                        //         positiveText: 'Đồng ý',
+                        //       );
+                        //     },
+                        //     child: const Text('Trả xe'),
+                        //   ),
+                        // if (successState.order.status ==
+                        //     OrderStatus.returnedTheCar)
+                        //   ElevatedButton(
+                        //     onPressed: () {
+                        //       showConfirmDialogCustom(
+                        //         context,
+                        //         onAccept: (c) async {
+                        //           context.read<DriverOrderDetailBloc>().add(
+                        //                 DriverOrderDetailEvent
+                        //                     .orderStatusChanged(
+                        //                   orderId: successState.order.id,
+                        //                   status: OrderStatus.finished,
+                        //                 ),
+                        //               );
+                        //         },
+                        //         dialogType: DialogType.CONFIRMATION,
+                        //         customCenterWidget: const Center(
+                        //           child: Icon(
+                        //             Icons.check_circle,
+                        //             color: CustomColors.flamingo,
+                        //             size: 100,
+                        //           ),
+                        //         ),
+                        //         primaryColor: CustomColors.flamingo,
+                        //         title: 'Bạn muốn xác nhận?',
+                        //         negativeText: 'Hủy',
+                        //         positiveText: 'Đồng ý',
+                        //       );
+                        //     },
+                        //     child: const Text('Hoàn thành'),
+                        //   ),
                       ],
                     ),
                   ),

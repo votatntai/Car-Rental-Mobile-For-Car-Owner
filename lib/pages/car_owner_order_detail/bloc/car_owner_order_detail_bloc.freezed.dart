@@ -16,42 +16,46 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CarOwnerOrderDetailEvent {
-  Order? get order => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Order? order) started,
+    required TResult Function(String orderId, OrderStatus orderStatus)
+        orderStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Order? order)? started,
+    TResult? Function(String orderId, OrderStatus orderStatus)?
+        orderStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Order? order)? started,
+    TResult Function(String orderId, OrderStatus orderStatus)?
+        orderStatusChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_OrderStatusChanged value) orderStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_OrderStatusChanged value)? orderStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_OrderStatusChanged value)? orderStatusChanged,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CarOwnerOrderDetailEventCopyWith<CarOwnerOrderDetailEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +64,6 @@ abstract class $CarOwnerOrderDetailEventCopyWith<$Res> {
   factory $CarOwnerOrderDetailEventCopyWith(CarOwnerOrderDetailEvent value,
           $Res Function(CarOwnerOrderDetailEvent) then) =
       _$CarOwnerOrderDetailEventCopyWithImpl<$Res, CarOwnerOrderDetailEvent>;
-  @useResult
-  $Res call({Order? order});
-
-  $OrderCopyWith<$Res>? get order;
 }
 
 /// @nodoc
@@ -76,44 +76,16 @@ class _$CarOwnerOrderDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? order = freezed,
-  }) {
-    return _then(_value.copyWith(
-      order: freezed == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res>? get order {
-    if (_value.order == null) {
-      return null;
-    }
-
-    return $OrderCopyWith<$Res>(_value.order!, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res>
-    implements $CarOwnerOrderDetailEventCopyWith<$Res> {
+abstract class _$$_StartedCopyWith<$Res> {
   factory _$$_StartedCopyWith(
           _$_Started value, $Res Function(_$_Started) then) =
       __$$_StartedCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({Order? order});
 
-  @override
   $OrderCopyWith<$Res>? get order;
 }
 
@@ -135,6 +107,18 @@ class __$$_StartedCopyWithImpl<$Res>
           : order // ignore: cast_nullable_to_non_nullable
               as Order?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderCopyWith<$Res>? get order {
+    if (_value.order == null) {
+      return null;
+    }
+
+    return $OrderCopyWith<$Res>(_value.order!, (value) {
+      return _then(_value.copyWith(order: value));
+    });
   }
 }
 
@@ -172,6 +156,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Order? order) started,
+    required TResult Function(String orderId, OrderStatus orderStatus)
+        orderStatusChanged,
   }) {
     return started(order);
   }
@@ -180,6 +166,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Order? order)? started,
+    TResult? Function(String orderId, OrderStatus orderStatus)?
+        orderStatusChanged,
   }) {
     return started?.call(order);
   }
@@ -188,6 +176,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Order? order)? started,
+    TResult Function(String orderId, OrderStatus orderStatus)?
+        orderStatusChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -200,6 +190,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_OrderStatusChanged value) orderStatusChanged,
   }) {
     return started(this);
   }
@@ -208,6 +199,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_OrderStatusChanged value)? orderStatusChanged,
   }) {
     return started?.call(this);
   }
@@ -216,6 +208,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_OrderStatusChanged value)? orderStatusChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -228,11 +221,159 @@ class _$_Started implements _Started {
 abstract class _Started implements CarOwnerOrderDetailEvent {
   const factory _Started({final Order? order}) = _$_Started;
 
-  @override
   Order? get order;
-  @override
   @JsonKey(ignore: true)
   _$$_StartedCopyWith<_$_Started> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OrderStatusChangedCopyWith<$Res> {
+  factory _$$_OrderStatusChangedCopyWith(_$_OrderStatusChanged value,
+          $Res Function(_$_OrderStatusChanged) then) =
+      __$$_OrderStatusChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String orderId, OrderStatus orderStatus});
+}
+
+/// @nodoc
+class __$$_OrderStatusChangedCopyWithImpl<$Res>
+    extends _$CarOwnerOrderDetailEventCopyWithImpl<$Res, _$_OrderStatusChanged>
+    implements _$$_OrderStatusChangedCopyWith<$Res> {
+  __$$_OrderStatusChangedCopyWithImpl(
+      _$_OrderStatusChanged _value, $Res Function(_$_OrderStatusChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+    Object? orderStatus = null,
+  }) {
+    return _then(_$_OrderStatusChanged(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderStatus: null == orderStatus
+          ? _value.orderStatus
+          : orderStatus // ignore: cast_nullable_to_non_nullable
+              as OrderStatus,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderStatusChanged implements _OrderStatusChanged {
+  const _$_OrderStatusChanged(
+      {required this.orderId, required this.orderStatus});
+
+  @override
+  final String orderId;
+  @override
+  final OrderStatus orderStatus;
+
+  @override
+  String toString() {
+    return 'CarOwnerOrderDetailEvent.orderStatusChanged(orderId: $orderId, orderStatus: $orderStatus)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OrderStatusChanged &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.orderStatus, orderStatus) ||
+                other.orderStatus == orderStatus));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId, orderStatus);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OrderStatusChangedCopyWith<_$_OrderStatusChanged> get copyWith =>
+      __$$_OrderStatusChangedCopyWithImpl<_$_OrderStatusChanged>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Order? order) started,
+    required TResult Function(String orderId, OrderStatus orderStatus)
+        orderStatusChanged,
+  }) {
+    return orderStatusChanged(orderId, orderStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Order? order)? started,
+    TResult? Function(String orderId, OrderStatus orderStatus)?
+        orderStatusChanged,
+  }) {
+    return orderStatusChanged?.call(orderId, orderStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Order? order)? started,
+    TResult Function(String orderId, OrderStatus orderStatus)?
+        orderStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (orderStatusChanged != null) {
+      return orderStatusChanged(orderId, orderStatus);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_OrderStatusChanged value) orderStatusChanged,
+  }) {
+    return orderStatusChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_OrderStatusChanged value)? orderStatusChanged,
+  }) {
+    return orderStatusChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_OrderStatusChanged value)? orderStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (orderStatusChanged != null) {
+      return orderStatusChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderStatusChanged implements CarOwnerOrderDetailEvent {
+  const factory _OrderStatusChanged(
+      {required final String orderId,
+      required final OrderStatus orderStatus}) = _$_OrderStatusChanged;
+
+  String get orderId;
+  OrderStatus get orderStatus;
+  @JsonKey(ignore: true)
+  _$$_OrderStatusChangedCopyWith<_$_OrderStatusChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

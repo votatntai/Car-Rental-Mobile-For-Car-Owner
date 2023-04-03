@@ -5,4 +5,9 @@ class CarOwnerOrderDetailEvent with _$CarOwnerOrderDetailEvent {
   const factory CarOwnerOrderDetailEvent.started({
     Order? order,
   }) = _Started;
+
+  const factory CarOwnerOrderDetailEvent.orderStatusChanged({
+    required String orderId,
+    required OrderStatus orderStatus,
+  }) = _OrderStatusChanged;
 }

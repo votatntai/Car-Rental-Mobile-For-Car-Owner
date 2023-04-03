@@ -68,7 +68,7 @@ class OrderRepository {
     }
   }
 
-  // driver
+  // driver, car Owner
   Future<ApiResponse<List<Order>>> historyOrders() async {
     try {
       //TODO: Update
@@ -109,10 +109,21 @@ class OrderRepository {
     }
   }
 
+  // car owner
   Future<ApiResponse<List<Order>>> pendingOrders() async {
     try {
-      final currentOrder = <Order>[];
+      //TODO: Update
+      final orderResults = await fakeOrders(pageNumber: 1, pageSize: 1000);
 
+      List<Order> currentOrder = <Order>[];
+
+      if (orderResults is ApiSuccess<PaginationResult<Order>>) {
+        currentOrder = orderResults.value.data
+            .where((element) =>
+                element.status != OrderStatus.canceled &&
+                element.status != OrderStatus.finished)
+            .toList();
+      }
       return ApiSuccess(currentOrder);
     } on DioError catch (e) {
       return e.getErrorMessage();
