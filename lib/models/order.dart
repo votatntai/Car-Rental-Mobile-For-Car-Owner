@@ -12,19 +12,18 @@ class Order with _$Order {
   const factory Order({
     required String id,
     required Customer customer,
-    OrderDetail? orderDetail,
-    required DateTime rentalTime,
+    required List<OrderDetail> orderDetails,
+    required int rentalTime,
     required double amount,
     required double unitPrice,
     required double deliveryFee,
+    required double deliveryDistance,
     required double deposit,
     required bool isPaid,
     required OrderStatus status,
     String? description,
-    required DateTime createdAt,
+    DateTime? createAt,
     Promotion? promotion,
-    required DateTime startTime,
-    required DateTime endTime,
   }) = _Order;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);

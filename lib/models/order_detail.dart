@@ -11,10 +11,12 @@ class OrderDetail with _$OrderDetail {
   factory OrderDetail({
     required String id,
     required Car car,
+    required DateTime startTime,
+    required DateTime endTime,
     Location? deliveryLocation,
-    Location? pickupLocation,
+    Location? pickUpLocation,
     required DateTime deliveryTime,
-    required DateTime pickupTime,
+    required DateTime pickUpTime,
     Driver? driver,
   }) = _OrderDetail;
 

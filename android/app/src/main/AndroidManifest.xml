@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.carental.car_rental_for_car_owner">
+
+ <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
    <application
         android:label="car_rental_for_car_owner"
         android:name="${applicationName}"
@@ -33,5 +37,9 @@
 
         <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="${GM_API_KEY}"/>
+
+            <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+              android:exported="false"> 
+                 </receiver>   
     </application>
 </manifest>

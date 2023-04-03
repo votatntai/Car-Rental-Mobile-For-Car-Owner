@@ -11,10 +11,9 @@ _$_Notification _$$_NotificationFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       title: json['title'] as String,
       body: json['body'] as String,
-      link: json['link'] as String?,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      isRead: json['isRead'] as bool,
-      accountId: json['accountId'] as String,
+      data: json['data'] == null
+          ? null
+          : NotificationData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_NotificationToJson(_$_Notification instance) =>
@@ -22,8 +21,5 @@ Map<String, dynamic> _$$_NotificationToJson(_$_Notification instance) =>
       'id': instance.id,
       'title': instance.title,
       'body': instance.body,
-      'link': instance.link,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'isRead': instance.isRead,
-      'accountId': instance.accountId,
+      'data': instance.data,
     };

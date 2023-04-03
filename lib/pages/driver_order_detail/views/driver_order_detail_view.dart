@@ -55,7 +55,19 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
           );
         }
 
-        final car = successState.order.orderDetail!.car;
+        if (successState.order.orderDetails.isEmpty) {
+          return Scaffold(
+            appBar: appAppBar(
+              context,
+              titleText: 'Chi tiết',
+            ),
+            body: const Center(
+              child: Text('Không có thông tin'),
+            ),
+          );
+        }
+
+        final car = successState.order.orderDetails.first.car;
 
         return Scaffold(
           appBar: appAppBar(
@@ -66,8 +78,8 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                carImage(context, successState.order.orderDetail!.car),
-                carTitle(context, successState.order.orderDetail!.car),
+                carImage(context, successState.order.orderDetails.first.car),
+                carTitle(context, successState.order.orderDetails.first.car),
                 divider,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: s16),
@@ -106,7 +118,8 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                               children: [
                                 Text(
                                   DateFormat('HH:mm E, dd/MM/yyyy').format(
-                                    successState.order.startTime,
+                                    successState
+                                        .order.orderDetails.first.startTime,
                                   ),
                                   style: const TextStyle(
                                     fontSize: 12,
@@ -114,7 +127,8 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                                 ),
                                 Text(
                                   DateFormat('HH:mm E, dd/MM/yyyy').format(
-                                    successState.order.endTime,
+                                    successState
+                                        .order.orderDetails.first.endTime,
                                   ),
                                   style: const TextStyle(
                                     fontSize: 12,
@@ -188,11 +202,11 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                             SizedBox(
                               width: context.width() * 0.8,
                               child: LocationText(
-                                longitude: successState.order.orderDetail
-                                        ?.pickupLocation?.longitude ??
+                                longitude: successState.order.orderDetails.first
+                                        .pickUpLocation?.longitude ??
                                     0,
-                                latitude: successState.order.orderDetail
-                                        ?.pickupLocation?.latitude ??
+                                latitude: successState.order.orderDetails.first
+                                        .pickUpLocation?.latitude ??
                                     0,
                                 style: const TextStyle(
                                   fontSize: 13,
@@ -204,11 +218,11 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                           ],
                         ),
                         GoogleMapWidget(
-                          latitude: successState.order.orderDetail
-                                  ?.pickupLocation?.latitude ??
+                          latitude: successState.order.orderDetails.first
+                                  .pickUpLocation?.latitude ??
                               0,
-                          longitude: successState.order.orderDetail
-                                  ?.pickupLocation?.longitude ??
+                          longitude: successState.order.orderDetails.first
+                                  .pickUpLocation?.longitude ??
                               0,
                         ),
                       ],
@@ -234,11 +248,11 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                             SizedBox(
                               width: context.width() * 0.8,
                               child: LocationText(
-                                longitude: successState.order.orderDetail
-                                        ?.deliveryLocation?.longitude ??
+                                longitude: successState.order.orderDetails.first
+                                        .deliveryLocation?.longitude ??
                                     0,
-                                latitude: successState.order.orderDetail
-                                        ?.deliveryLocation?.latitude ??
+                                latitude: successState.order.orderDetails.first
+                                        .deliveryLocation?.latitude ??
                                     0,
                                 style: const TextStyle(
                                   fontSize: 13,
@@ -250,11 +264,11 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                           ],
                         ),
                         GoogleMapWidget(
-                          latitude: successState.order.orderDetail
-                                  ?.deliveryLocation?.latitude ??
+                          latitude: successState.order.orderDetails.first
+                                  .deliveryLocation?.latitude ??
                               0,
-                          longitude: successState.order.orderDetail
-                                  ?.deliveryLocation?.longitude ??
+                          longitude: successState.order.orderDetails.first
+                                  .deliveryLocation?.longitude ??
                               0,
                         ),
                       ],
@@ -262,17 +276,16 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                   ),
                 ),
                 divider,
-                if (successState.order.orderDetail != null)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: s16),
-                    child: ContainerWithLabel(
-                      label: 'Chủ xe',
-                      child: CarOwnerWidget(
-                        car: successState.order.orderDetail!.car,
-                        onTap: () {},
-                      ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: s16),
+                  child: ContainerWithLabel(
+                    label: 'Chủ xe',
+                    child: CarOwnerWidget(
+                      car: successState.order.orderDetails.first.car,
+                      onTap: () {},
                     ),
                   ),
+                ),
                 const SizedBox(
                   height: s32,
                 ),

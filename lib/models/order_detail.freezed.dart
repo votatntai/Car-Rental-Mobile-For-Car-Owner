@@ -22,10 +22,12 @@ OrderDetail _$OrderDetailFromJson(Map<String, dynamic> json) {
 mixin _$OrderDetail {
   String get id => throw _privateConstructorUsedError;
   Car get car => throw _privateConstructorUsedError;
+  DateTime get startTime => throw _privateConstructorUsedError;
+  DateTime get endTime => throw _privateConstructorUsedError;
   Location? get deliveryLocation => throw _privateConstructorUsedError;
-  Location? get pickupLocation => throw _privateConstructorUsedError;
+  Location? get pickUpLocation => throw _privateConstructorUsedError;
   DateTime get deliveryTime => throw _privateConstructorUsedError;
-  DateTime get pickupTime => throw _privateConstructorUsedError;
+  DateTime get pickUpTime => throw _privateConstructorUsedError;
   Driver? get driver => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,15 +45,17 @@ abstract class $OrderDetailCopyWith<$Res> {
   $Res call(
       {String id,
       Car car,
+      DateTime startTime,
+      DateTime endTime,
       Location? deliveryLocation,
-      Location? pickupLocation,
+      Location? pickUpLocation,
       DateTime deliveryTime,
-      DateTime pickupTime,
+      DateTime pickUpTime,
       Driver? driver});
 
   $CarCopyWith<$Res> get car;
   $LocationCopyWith<$Res>? get deliveryLocation;
-  $LocationCopyWith<$Res>? get pickupLocation;
+  $LocationCopyWith<$Res>? get pickUpLocation;
   $DriverCopyWith<$Res>? get driver;
 }
 
@@ -70,10 +74,12 @@ class _$OrderDetailCopyWithImpl<$Res, $Val extends OrderDetail>
   $Res call({
     Object? id = null,
     Object? car = null,
+    Object? startTime = null,
+    Object? endTime = null,
     Object? deliveryLocation = freezed,
-    Object? pickupLocation = freezed,
+    Object? pickUpLocation = freezed,
     Object? deliveryTime = null,
-    Object? pickupTime = null,
+    Object? pickUpTime = null,
     Object? driver = freezed,
   }) {
     return _then(_value.copyWith(
@@ -85,21 +91,29 @@ class _$OrderDetailCopyWithImpl<$Res, $Val extends OrderDetail>
           ? _value.car
           : car // ignore: cast_nullable_to_non_nullable
               as Car,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       deliveryLocation: freezed == deliveryLocation
           ? _value.deliveryLocation
           : deliveryLocation // ignore: cast_nullable_to_non_nullable
               as Location?,
-      pickupLocation: freezed == pickupLocation
-          ? _value.pickupLocation
-          : pickupLocation // ignore: cast_nullable_to_non_nullable
+      pickUpLocation: freezed == pickUpLocation
+          ? _value.pickUpLocation
+          : pickUpLocation // ignore: cast_nullable_to_non_nullable
               as Location?,
       deliveryTime: null == deliveryTime
           ? _value.deliveryTime
           : deliveryTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      pickupTime: null == pickupTime
-          ? _value.pickupTime
-          : pickupTime // ignore: cast_nullable_to_non_nullable
+      pickUpTime: null == pickUpTime
+          ? _value.pickUpTime
+          : pickUpTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       driver: freezed == driver
           ? _value.driver
@@ -130,13 +144,13 @@ class _$OrderDetailCopyWithImpl<$Res, $Val extends OrderDetail>
 
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res>? get pickupLocation {
-    if (_value.pickupLocation == null) {
+  $LocationCopyWith<$Res>? get pickUpLocation {
+    if (_value.pickUpLocation == null) {
       return null;
     }
 
-    return $LocationCopyWith<$Res>(_value.pickupLocation!, (value) {
-      return _then(_value.copyWith(pickupLocation: value) as $Val);
+    return $LocationCopyWith<$Res>(_value.pickUpLocation!, (value) {
+      return _then(_value.copyWith(pickUpLocation: value) as $Val);
     });
   }
 
@@ -164,10 +178,12 @@ abstract class _$$_OrderDetailCopyWith<$Res>
   $Res call(
       {String id,
       Car car,
+      DateTime startTime,
+      DateTime endTime,
       Location? deliveryLocation,
-      Location? pickupLocation,
+      Location? pickUpLocation,
       DateTime deliveryTime,
-      DateTime pickupTime,
+      DateTime pickUpTime,
       Driver? driver});
 
   @override
@@ -175,7 +191,7 @@ abstract class _$$_OrderDetailCopyWith<$Res>
   @override
   $LocationCopyWith<$Res>? get deliveryLocation;
   @override
-  $LocationCopyWith<$Res>? get pickupLocation;
+  $LocationCopyWith<$Res>? get pickUpLocation;
   @override
   $DriverCopyWith<$Res>? get driver;
 }
@@ -193,10 +209,12 @@ class __$$_OrderDetailCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? car = null,
+    Object? startTime = null,
+    Object? endTime = null,
     Object? deliveryLocation = freezed,
-    Object? pickupLocation = freezed,
+    Object? pickUpLocation = freezed,
     Object? deliveryTime = null,
-    Object? pickupTime = null,
+    Object? pickUpTime = null,
     Object? driver = freezed,
   }) {
     return _then(_$_OrderDetail(
@@ -208,21 +226,29 @@ class __$$_OrderDetailCopyWithImpl<$Res>
           ? _value.car
           : car // ignore: cast_nullable_to_non_nullable
               as Car,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       deliveryLocation: freezed == deliveryLocation
           ? _value.deliveryLocation
           : deliveryLocation // ignore: cast_nullable_to_non_nullable
               as Location?,
-      pickupLocation: freezed == pickupLocation
-          ? _value.pickupLocation
-          : pickupLocation // ignore: cast_nullable_to_non_nullable
+      pickUpLocation: freezed == pickUpLocation
+          ? _value.pickUpLocation
+          : pickUpLocation // ignore: cast_nullable_to_non_nullable
               as Location?,
       deliveryTime: null == deliveryTime
           ? _value.deliveryTime
           : deliveryTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      pickupTime: null == pickupTime
-          ? _value.pickupTime
-          : pickupTime // ignore: cast_nullable_to_non_nullable
+      pickUpTime: null == pickUpTime
+          ? _value.pickUpTime
+          : pickUpTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       driver: freezed == driver
           ? _value.driver
@@ -238,10 +264,12 @@ class _$_OrderDetail implements _OrderDetail {
   _$_OrderDetail(
       {required this.id,
       required this.car,
+      required this.startTime,
+      required this.endTime,
       this.deliveryLocation,
-      this.pickupLocation,
+      this.pickUpLocation,
       required this.deliveryTime,
-      required this.pickupTime,
+      required this.pickUpTime,
       this.driver});
 
   factory _$_OrderDetail.fromJson(Map<String, dynamic> json) =>
@@ -252,19 +280,23 @@ class _$_OrderDetail implements _OrderDetail {
   @override
   final Car car;
   @override
+  final DateTime startTime;
+  @override
+  final DateTime endTime;
+  @override
   final Location? deliveryLocation;
   @override
-  final Location? pickupLocation;
+  final Location? pickUpLocation;
   @override
   final DateTime deliveryTime;
   @override
-  final DateTime pickupTime;
+  final DateTime pickUpTime;
   @override
   final Driver? driver;
 
   @override
   String toString() {
-    return 'OrderDetail(id: $id, car: $car, deliveryLocation: $deliveryLocation, pickupLocation: $pickupLocation, deliveryTime: $deliveryTime, pickupTime: $pickupTime, driver: $driver)';
+    return 'OrderDetail(id: $id, car: $car, startTime: $startTime, endTime: $endTime, deliveryLocation: $deliveryLocation, pickUpLocation: $pickUpLocation, deliveryTime: $deliveryTime, pickUpTime: $pickUpTime, driver: $driver)';
   }
 
   @override
@@ -274,21 +306,24 @@ class _$_OrderDetail implements _OrderDetail {
             other is _$_OrderDetail &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.car, car) || other.car == car) &&
+            (identical(other.startTime, startTime) ||
+                other.startTime == startTime) &&
+            (identical(other.endTime, endTime) || other.endTime == endTime) &&
             (identical(other.deliveryLocation, deliveryLocation) ||
                 other.deliveryLocation == deliveryLocation) &&
-            (identical(other.pickupLocation, pickupLocation) ||
-                other.pickupLocation == pickupLocation) &&
+            (identical(other.pickUpLocation, pickUpLocation) ||
+                other.pickUpLocation == pickUpLocation) &&
             (identical(other.deliveryTime, deliveryTime) ||
                 other.deliveryTime == deliveryTime) &&
-            (identical(other.pickupTime, pickupTime) ||
-                other.pickupTime == pickupTime) &&
+            (identical(other.pickUpTime, pickUpTime) ||
+                other.pickUpTime == pickUpTime) &&
             (identical(other.driver, driver) || other.driver == driver));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, car, deliveryLocation,
-      pickupLocation, deliveryTime, pickupTime, driver);
+  int get hashCode => Object.hash(runtimeType, id, car, startTime, endTime,
+      deliveryLocation, pickUpLocation, deliveryTime, pickUpTime, driver);
 
   @JsonKey(ignore: true)
   @override
@@ -308,10 +343,12 @@ abstract class _OrderDetail implements OrderDetail {
   factory _OrderDetail(
       {required final String id,
       required final Car car,
+      required final DateTime startTime,
+      required final DateTime endTime,
       final Location? deliveryLocation,
-      final Location? pickupLocation,
+      final Location? pickUpLocation,
       required final DateTime deliveryTime,
-      required final DateTime pickupTime,
+      required final DateTime pickUpTime,
       final Driver? driver}) = _$_OrderDetail;
 
   factory _OrderDetail.fromJson(Map<String, dynamic> json) =
@@ -322,13 +359,17 @@ abstract class _OrderDetail implements OrderDetail {
   @override
   Car get car;
   @override
+  DateTime get startTime;
+  @override
+  DateTime get endTime;
+  @override
   Location? get deliveryLocation;
   @override
-  Location? get pickupLocation;
+  Location? get pickUpLocation;
   @override
   DateTime get deliveryTime;
   @override
-  DateTime get pickupTime;
+  DateTime get pickUpTime;
   @override
   Driver? get driver;
   @override

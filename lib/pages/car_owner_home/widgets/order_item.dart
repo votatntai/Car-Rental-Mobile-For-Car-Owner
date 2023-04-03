@@ -13,6 +13,9 @@ class OrderItemForCarOwner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (order.orderDetails.isEmpty) {
+      return Container();
+    }
     return InkWell(
       onTap: () => onTap(order),
       child: Padding(
@@ -47,10 +50,11 @@ class OrderItemForCarOwner extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          order.startTime.format('HH:mm'),
+                          order.orderDetails.first.startTime.format('HH:mm'),
                         ),
                         Text(
-                          order.startTime.format('dd/MM/yyyy'),
+                          order.orderDetails.first.startTime
+                              .format('dd/MM/yyyy'),
                         ),
                       ],
                     ),
@@ -60,10 +64,10 @@ class OrderItemForCarOwner extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          order.endTime.format('HH:mm'),
+                          order.orderDetails.first.endTime.format('HH:mm'),
                         ),
                         Text(
-                          order.endTime.format('dd/MM/yyyy'),
+                          order.orderDetails.first.endTime.format('dd/MM/yyyy'),
                         ),
                       ],
                     ),

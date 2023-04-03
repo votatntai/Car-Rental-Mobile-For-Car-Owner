@@ -14,13 +14,16 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final timeagoString = timeago.format(notification.createdAt, locale: 'vi');
+    final timeagoString = timeago
+        .format(notification.data?.createAt ?? DateTime.now(), locale: 'vi');
     return Column(
       children: [
         Container(
           height: 85,
           padding: const EdgeInsets.all(s04),
-          color: notification.isRead ? Colors.white : Colors.grey[100],
+          color: notification.data?.isRead ?? true
+              ? Colors.white
+              : Colors.grey[100],
           child: Row(
             children: [
               ClipRRect(

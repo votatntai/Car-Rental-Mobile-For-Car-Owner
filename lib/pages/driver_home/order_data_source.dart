@@ -10,12 +10,16 @@ class OrderDataSource extends CalendarDataSource {
 
   @override
   DateTime getStartTime(int index) {
-    return _getOrderData(index).startTime;
+    final order = _getOrderData(index);
+    if (order.orderDetails.isEmpty) return DateTime.now();
+    return order.orderDetails.first.startTime;
   }
 
   @override
   DateTime getEndTime(int index) {
-    return _getOrderData(index).endTime;
+    final order = _getOrderData(index);
+    if (order.orderDetails.isEmpty) return DateTime.now();
+    return order.orderDetails.first.endTime;
   }
 
   @override

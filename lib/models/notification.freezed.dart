@@ -23,10 +23,7 @@ mixin _$Notification {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
-  String? get link => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  bool get isRead => throw _privateConstructorUsedError;
-  String get accountId => throw _privateConstructorUsedError;
+  NotificationData? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,14 +37,9 @@ abstract class $NotificationCopyWith<$Res> {
           Notification value, $Res Function(Notification) then) =
       _$NotificationCopyWithImpl<$Res, Notification>;
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String body,
-      String? link,
-      DateTime createdAt,
-      bool isRead,
-      String accountId});
+  $Res call({String id, String title, String body, NotificationData? data});
+
+  $NotificationDataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -66,10 +58,7 @@ class _$NotificationCopyWithImpl<$Res, $Val extends Notification>
     Object? id = null,
     Object? title = null,
     Object? body = null,
-    Object? link = freezed,
-    Object? createdAt = null,
-    Object? isRead = null,
-    Object? accountId = null,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -84,23 +73,23 @@ class _$NotificationCopyWithImpl<$Res, $Val extends Notification>
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
-      link: freezed == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isRead: null == isRead
-          ? _value.isRead
-          : isRead // ignore: cast_nullable_to_non_nullable
-              as bool,
-      accountId: null == accountId
-          ? _value.accountId
-          : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as NotificationData?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NotificationDataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $NotificationDataCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -112,14 +101,10 @@ abstract class _$$_NotificationCopyWith<$Res>
       __$$_NotificationCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String body,
-      String? link,
-      DateTime createdAt,
-      bool isRead,
-      String accountId});
+  $Res call({String id, String title, String body, NotificationData? data});
+
+  @override
+  $NotificationDataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -136,10 +121,7 @@ class __$$_NotificationCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? body = null,
-    Object? link = freezed,
-    Object? createdAt = null,
-    Object? isRead = null,
-    Object? accountId = null,
+    Object? data = freezed,
   }) {
     return _then(_$_Notification(
       id: null == id
@@ -154,22 +136,10 @@ class __$$_NotificationCopyWithImpl<$Res>
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
-      link: freezed == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isRead: null == isRead
-          ? _value.isRead
-          : isRead // ignore: cast_nullable_to_non_nullable
-              as bool,
-      accountId: null == accountId
-          ? _value.accountId
-          : accountId // ignore: cast_nullable_to_non_nullable
-              as String,
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as NotificationData?,
     ));
   }
 }
@@ -178,13 +148,7 @@ class __$$_NotificationCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Notification implements _Notification {
   const _$_Notification(
-      {required this.id,
-      required this.title,
-      required this.body,
-      this.link,
-      required this.createdAt,
-      required this.isRead,
-      required this.accountId});
+      {required this.id, required this.title, required this.body, this.data});
 
   factory _$_Notification.fromJson(Map<String, dynamic> json) =>
       _$$_NotificationFromJson(json);
@@ -196,17 +160,11 @@ class _$_Notification implements _Notification {
   @override
   final String body;
   @override
-  final String? link;
-  @override
-  final DateTime createdAt;
-  @override
-  final bool isRead;
-  @override
-  final String accountId;
+  final NotificationData? data;
 
   @override
   String toString() {
-    return 'Notification(id: $id, title: $title, body: $body, link: $link, createdAt: $createdAt, isRead: $isRead, accountId: $accountId)';
+    return 'Notification(id: $id, title: $title, body: $body, data: $data)';
   }
 
   @override
@@ -217,18 +175,12 @@ class _$_Notification implements _Notification {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.body, body) || other.body == body) &&
-            (identical(other.link, link) || other.link == link) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.isRead, isRead) || other.isRead == isRead) &&
-            (identical(other.accountId, accountId) ||
-                other.accountId == accountId));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, body, link, createdAt, isRead, accountId);
+  int get hashCode => Object.hash(runtimeType, id, title, body, data);
 
   @JsonKey(ignore: true)
   @override
@@ -249,10 +201,7 @@ abstract class _Notification implements Notification {
       {required final String id,
       required final String title,
       required final String body,
-      final String? link,
-      required final DateTime createdAt,
-      required final bool isRead,
-      required final String accountId}) = _$_Notification;
+      final NotificationData? data}) = _$_Notification;
 
   factory _Notification.fromJson(Map<String, dynamic> json) =
       _$_Notification.fromJson;
@@ -264,13 +213,7 @@ abstract class _Notification implements Notification {
   @override
   String get body;
   @override
-  String? get link;
-  @override
-  DateTime get createdAt;
-  @override
-  bool get isRead;
-  @override
-  String get accountId;
+  NotificationData? get data;
   @override
   @JsonKey(ignore: true)
   _$$_NotificationCopyWith<_$_Notification> get copyWith =>

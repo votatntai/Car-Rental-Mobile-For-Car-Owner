@@ -59,11 +59,23 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
           );
         }
 
-        final car = successState.order.orderDetail!.car;
+        if (successState.order.orderDetails.isEmpty) {
+          return Scaffold(
+            appBar: appAppBar(
+              context,
+              titleText: 'Chi tiết',
+            ),
+            body: const Center(
+              child: Text('Không có chi tiết đơn hàng'),
+            ),
+          );
+        }
+
+        final car = successState.order.orderDetails.first.car;
 
         final rentCost = calculateDays(
-              successState.order.startTime,
-              successState.order.endTime,
+              successState.order.orderDetails.first.startTime,
+              successState.order.orderDetails.first.endTime,
             ) *
             successState.order.unitPrice;
 
@@ -147,7 +159,8 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                               children: [
                                 Text(
                                   DateFormat('HH:mm E, dd/MM/yyyy').format(
-                                    successState.order.startTime,
+                                    successState
+                                        .order.orderDetails.first.startTime,
                                   ),
                                   style: const TextStyle(
                                     fontSize: 12,
@@ -155,7 +168,8 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                 ),
                                 Text(
                                   DateFormat('HH:mm E, dd/MM/yyyy').format(
-                                    successState.order.endTime,
+                                    successState
+                                        .order.orderDetails.first.endTime,
                                   ),
                                   style: const TextStyle(
                                     fontSize: 12,
@@ -200,8 +214,8 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                             const Spacer(),
                             Text(
                               '${formatCurrency(successState.order.unitPrice)} x ${calculateDays(
-                                successState.order.startTime,
-                                successState.order.endTime,
+                                successState.order.orderDetails.first.startTime,
+                                successState.order.orderDetails.first.endTime,
                               )} ngày',
                               style: const TextStyle(fontSize: 12),
                             ),
@@ -420,13 +434,13 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                   ),
                 ),
                 divider,
-                if (successState.order.orderDetail?.driver != null)
+                if (successState.order.orderDetails.first.driver != null)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: s16),
                     child: ContainerWithLabel(
                       label: 'Tài xế',
                       child: DriverWidget(
-                        driver: successState.order.orderDetail!.driver!,
+                        driver: successState.order.orderDetails.first.driver!,
                         onTap: (driver) {
                           context.pushNamed(
                             RouteName.carOwnerDriverDetail,
@@ -457,11 +471,11 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                             SizedBox(
                               width: context.width() * 0.8,
                               child: LocationText(
-                                longitude: successState.order.orderDetail
-                                        ?.pickupLocation?.longitude ??
+                                longitude: successState.order.orderDetails.first
+                                        .pickUpLocation?.longitude ??
                                     0,
-                                latitude: successState.order.orderDetail
-                                        ?.pickupLocation?.latitude ??
+                                latitude: successState.order.orderDetails.first
+                                        .pickUpLocation?.latitude ??
                                     0,
                                 style: const TextStyle(
                                   fontSize: 13,
@@ -473,11 +487,11 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                           ],
                         ),
                         GoogleMapWidget(
-                          latitude: successState.order.orderDetail
-                                  ?.pickupLocation?.latitude ??
+                          latitude: successState.order.orderDetails.first
+                                  .pickUpLocation?.latitude ??
                               0,
-                          longitude: successState.order.orderDetail
-                                  ?.pickupLocation?.longitude ??
+                          longitude: successState.order.orderDetails.first
+                                  .pickUpLocation?.longitude ??
                               0,
                         ),
                       ],
@@ -503,10 +517,10 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                             SizedBox(
                               width: context.width() * 0.8,
                               child: LocationText(
-                                longitude: successState.order.orderDetail
+                                longitude: successState.order.orderDetails.first
                                         ?.deliveryLocation?.longitude ??
                                     0,
-                                latitude: successState.order.orderDetail
+                                latitude: successState.order.orderDetails.first
                                         ?.deliveryLocation?.latitude ??
                                     0,
                                 style: const TextStyle(
@@ -519,10 +533,10 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                           ],
                         ),
                         GoogleMapWidget(
-                          latitude: successState.order.orderDetail
+                          latitude: successState.order.orderDetails.first
                                   ?.deliveryLocation?.latitude ??
                               0,
-                          longitude: successState.order.orderDetail
+                          longitude: successState.order.orderDetails.first
                                   ?.deliveryLocation?.longitude ??
                               0,
                         ),

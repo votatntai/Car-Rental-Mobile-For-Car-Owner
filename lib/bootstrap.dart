@@ -35,6 +35,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       // Intl.defaultLocale = 'vi_VN';
       // await initializeDateFormatting('vi_VN', null);
 
+      await configureNotification();
+      await configureFCM();
+
       //* configure
       await configDI();
       configureTimeago();

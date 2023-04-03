@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "805399031928",
+    "project_id": "car-rental-236aa",
+    "storage_bucket": "car-rental-236aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805399031928:android:fe1b4db73ae1fa2f41fd8d",
+        "android_client_info": {
+          "package_name": "com.example.car_rental_for_customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805399031928-7koj76egqvubun3n3l6cl3qquvomp6um.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW6figldkXHsV1SqRH7MKXDIsBzpboQe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805399031928-7koj76egqvubun3n3l6cl3qquvomp6um.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "805399031928-15r3spgrei5qneqbfqoprbkhhjh4dnca.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.carRentalForCustomer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805399031928:android:f221098bd1642c7c41fd8d",
+        "android_client_info": {
+          "package_name": "com.example.carental.car_rental_for_car_owner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805399031928-7koj76egqvubun3n3l6cl3qquvomp6um.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW6figldkXHsV1SqRH7MKXDIsBzpboQe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805399031928-7koj76egqvubun3n3l6cl3qquvomp6um.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "805399031928-15r3spgrei5qneqbfqoprbkhhjh4dnca.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.carRentalForCustomer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
