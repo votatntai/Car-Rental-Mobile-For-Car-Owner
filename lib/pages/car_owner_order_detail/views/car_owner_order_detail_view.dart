@@ -550,44 +550,54 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                   padding: const EdgeInsets.symmetric(horizontal: s16),
                   child: ContainerWithLabel(
                     label: 'Xe',
-                    child: Row(
-                      children: [
-                        car.images.isNotEmpty
-                            ? CachedNetworkImage(
-                                height: 60,
-                                width: 60,
-                                imageUrl: car.images[0].url,
-                                fit: BoxFit.fill,
-                                errorWidget: (context, url, error) {
-                                  return const Icon(Icons.error);
-                                })
-                            : const Image(
-                                height: 60,
-                                width: 60,
-                                fit: BoxFit.fill,
-                                image: AssetImage(
-                                  Images.carExample,
+                    child: GestureDetector(
+                      onTap: () {
+                        context.pushNamed(
+                          RouteName.carOwnerCarDetail,
+                          queryParams: {
+                            'car-id': car.id,
+                          },
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          car.images.isNotEmpty
+                              ? CachedNetworkImage(
+                                  height: 60,
+                                  width: 60,
+                                  imageUrl: car.images[0].url,
+                                  fit: BoxFit.fill,
+                                  errorWidget: (context, url, error) {
+                                    return const Icon(Icons.error);
+                                  })
+                              : const Image(
+                                  height: 60,
+                                  width: 60,
+                                  fit: BoxFit.fill,
+                                  image: AssetImage(
+                                    Images.carExample,
+                                  ),
                                 ),
+                          const SizedBox(width: s16),
+                          Column(children: [
+                            Text(
+                              car.name ?? '',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                        const SizedBox(width: s16),
-                        Column(children: [
-                          Text(
-                            car.name ?? '',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
                             ),
-                          ),
-                          const SizedBox(height: s08),
-                          Text(
-                            car.licensePlate,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
+                            const SizedBox(height: s08),
+                            Text(
+                              car.licensePlate,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                        ]),
-                      ],
+                          ]),
+                        ],
+                      ),
                     ),
                   ),
                 ),

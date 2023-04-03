@@ -9,4 +9,8 @@ class CarTrackingEvent with _$CarTrackingEvent {
   const factory CarTrackingEvent.selectedCarsChanged({
     required List<Car> selectedCars,
   }) = _SelectedCarsChanged;
+
+  const factory CarTrackingEvent.carLocationChanged({
+    required TrackingModel trackingModel,
+  }) = _CarLocationChanged;
 }

@@ -15,6 +15,7 @@ import 'package:car_rental_for_car_owner/repositories/maps_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/notification_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/order_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/repositories.dart';
+import 'package:car_rental_for_car_owner/repositories/tracking_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/transaction_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/user_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/wallet_repository.dart';
@@ -47,6 +48,8 @@ Future<void> configDI() async {
     options: dioOptions,
   );
 
+  final tracking = TrackingRepository();
+
   getIt
     ..registerSingleton(appRoute)
     ..registerSingleton(sharedPreferences)
@@ -64,7 +67,11 @@ Future<void> configDI() async {
     ..registerSingleton(CarRepository(dio: dio))
     ..registerSingleton(DriverRepository(dio: dio))
     ..registerSingleton(CalendarRepository(dio: dio))
-    ..registerSingleton(FCMTokenRepository(dio: dio));
+    ..registerSingleton(FCMTokenRepository(dio: dio))
+    ..registerSingleton(tracking);
+
+  await tracking.connect();
+  await tracking.startListening();
 }
 
 void configureTimeago() {

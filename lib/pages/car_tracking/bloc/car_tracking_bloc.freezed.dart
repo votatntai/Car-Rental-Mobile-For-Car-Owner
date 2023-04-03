@@ -20,18 +20,21 @@ mixin _$CarTrackingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<String> carIds) started,
     required TResult Function(List<Car> selectedCars) selectedCarsChanged,
+    required TResult Function(TrackingModel trackingModel) carLocationChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<String> carIds)? started,
     TResult? Function(List<Car> selectedCars)? selectedCarsChanged,
+    TResult? Function(TrackingModel trackingModel)? carLocationChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<String> carIds)? started,
     TResult Function(List<Car> selectedCars)? selectedCarsChanged,
+    TResult Function(TrackingModel trackingModel)? carLocationChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$CarTrackingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SelectedCarsChanged value) selectedCarsChanged,
+    required TResult Function(_CarLocationChanged value) carLocationChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SelectedCarsChanged value)? selectedCarsChanged,
+    TResult? Function(_CarLocationChanged value)? carLocationChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SelectedCarsChanged value)? selectedCarsChanged,
+    TResult Function(_CarLocationChanged value)? carLocationChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +151,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function(List<String> carIds) started,
     required TResult Function(List<Car> selectedCars) selectedCarsChanged,
+    required TResult Function(TrackingModel trackingModel) carLocationChanged,
   }) {
     return started(carIds);
   }
@@ -154,6 +161,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<String> carIds)? started,
     TResult? Function(List<Car> selectedCars)? selectedCarsChanged,
+    TResult? Function(TrackingModel trackingModel)? carLocationChanged,
   }) {
     return started?.call(carIds);
   }
@@ -163,6 +171,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<String> carIds)? started,
     TResult Function(List<Car> selectedCars)? selectedCarsChanged,
+    TResult Function(TrackingModel trackingModel)? carLocationChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -176,6 +185,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SelectedCarsChanged value) selectedCarsChanged,
+    required TResult Function(_CarLocationChanged value) carLocationChanged,
   }) {
     return started(this);
   }
@@ -185,6 +195,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SelectedCarsChanged value)? selectedCarsChanged,
+    TResult? Function(_CarLocationChanged value)? carLocationChanged,
   }) {
     return started?.call(this);
   }
@@ -194,6 +205,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SelectedCarsChanged value)? selectedCarsChanged,
+    TResult Function(_CarLocationChanged value)? carLocationChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -287,6 +299,7 @@ class _$_SelectedCarsChanged implements _SelectedCarsChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(List<String> carIds) started,
     required TResult Function(List<Car> selectedCars) selectedCarsChanged,
+    required TResult Function(TrackingModel trackingModel) carLocationChanged,
   }) {
     return selectedCarsChanged(selectedCars);
   }
@@ -296,6 +309,7 @@ class _$_SelectedCarsChanged implements _SelectedCarsChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<String> carIds)? started,
     TResult? Function(List<Car> selectedCars)? selectedCarsChanged,
+    TResult? Function(TrackingModel trackingModel)? carLocationChanged,
   }) {
     return selectedCarsChanged?.call(selectedCars);
   }
@@ -305,6 +319,7 @@ class _$_SelectedCarsChanged implements _SelectedCarsChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<String> carIds)? started,
     TResult Function(List<Car> selectedCars)? selectedCarsChanged,
+    TResult Function(TrackingModel trackingModel)? carLocationChanged,
     required TResult orElse(),
   }) {
     if (selectedCarsChanged != null) {
@@ -318,6 +333,7 @@ class _$_SelectedCarsChanged implements _SelectedCarsChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SelectedCarsChanged value) selectedCarsChanged,
+    required TResult Function(_CarLocationChanged value) carLocationChanged,
   }) {
     return selectedCarsChanged(this);
   }
@@ -327,6 +343,7 @@ class _$_SelectedCarsChanged implements _SelectedCarsChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SelectedCarsChanged value)? selectedCarsChanged,
+    TResult? Function(_CarLocationChanged value)? carLocationChanged,
   }) {
     return selectedCarsChanged?.call(this);
   }
@@ -336,6 +353,7 @@ class _$_SelectedCarsChanged implements _SelectedCarsChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SelectedCarsChanged value)? selectedCarsChanged,
+    TResult Function(_CarLocationChanged value)? carLocationChanged,
     required TResult orElse(),
   }) {
     if (selectedCarsChanged != null) {
@@ -356,9 +374,162 @@ abstract class _SelectedCarsChanged implements CarTrackingEvent {
 }
 
 /// @nodoc
+abstract class _$$_CarLocationChangedCopyWith<$Res> {
+  factory _$$_CarLocationChangedCopyWith(_$_CarLocationChanged value,
+          $Res Function(_$_CarLocationChanged) then) =
+      __$$_CarLocationChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TrackingModel trackingModel});
+
+  $TrackingModelCopyWith<$Res> get trackingModel;
+}
+
+/// @nodoc
+class __$$_CarLocationChangedCopyWithImpl<$Res>
+    extends _$CarTrackingEventCopyWithImpl<$Res, _$_CarLocationChanged>
+    implements _$$_CarLocationChangedCopyWith<$Res> {
+  __$$_CarLocationChangedCopyWithImpl(
+      _$_CarLocationChanged _value, $Res Function(_$_CarLocationChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trackingModel = null,
+  }) {
+    return _then(_$_CarLocationChanged(
+      trackingModel: null == trackingModel
+          ? _value.trackingModel
+          : trackingModel // ignore: cast_nullable_to_non_nullable
+              as TrackingModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TrackingModelCopyWith<$Res> get trackingModel {
+    return $TrackingModelCopyWith<$Res>(_value.trackingModel, (value) {
+      return _then(_value.copyWith(trackingModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_CarLocationChanged implements _CarLocationChanged {
+  const _$_CarLocationChanged({required this.trackingModel});
+
+  @override
+  final TrackingModel trackingModel;
+
+  @override
+  String toString() {
+    return 'CarTrackingEvent.carLocationChanged(trackingModel: $trackingModel)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CarLocationChanged &&
+            (identical(other.trackingModel, trackingModel) ||
+                other.trackingModel == trackingModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, trackingModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CarLocationChangedCopyWith<_$_CarLocationChanged> get copyWith =>
+      __$$_CarLocationChangedCopyWithImpl<_$_CarLocationChanged>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<String> carIds) started,
+    required TResult Function(List<Car> selectedCars) selectedCarsChanged,
+    required TResult Function(TrackingModel trackingModel) carLocationChanged,
+  }) {
+    return carLocationChanged(trackingModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<String> carIds)? started,
+    TResult? Function(List<Car> selectedCars)? selectedCarsChanged,
+    TResult? Function(TrackingModel trackingModel)? carLocationChanged,
+  }) {
+    return carLocationChanged?.call(trackingModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<String> carIds)? started,
+    TResult Function(List<Car> selectedCars)? selectedCarsChanged,
+    TResult Function(TrackingModel trackingModel)? carLocationChanged,
+    required TResult orElse(),
+  }) {
+    if (carLocationChanged != null) {
+      return carLocationChanged(trackingModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SelectedCarsChanged value) selectedCarsChanged,
+    required TResult Function(_CarLocationChanged value) carLocationChanged,
+  }) {
+    return carLocationChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SelectedCarsChanged value)? selectedCarsChanged,
+    TResult? Function(_CarLocationChanged value)? carLocationChanged,
+  }) {
+    return carLocationChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SelectedCarsChanged value)? selectedCarsChanged,
+    TResult Function(_CarLocationChanged value)? carLocationChanged,
+    required TResult orElse(),
+  }) {
+    if (carLocationChanged != null) {
+      return carLocationChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CarLocationChanged implements CarTrackingEvent {
+  const factory _CarLocationChanged(
+      {required final TrackingModel trackingModel}) = _$_CarLocationChanged;
+
+  TrackingModel get trackingModel;
+  @JsonKey(ignore: true)
+  _$$_CarLocationChangedCopyWith<_$_CarLocationChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CarTrackingState {
   List<Car> get myCars => throw _privateConstructorUsedError;
   List<Car> get selectedCars => throw _privateConstructorUsedError;
+  Set<Marker> get markers => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CarTrackingStateCopyWith<CarTrackingState> get copyWith =>
@@ -371,7 +542,7 @@ abstract class $CarTrackingStateCopyWith<$Res> {
           CarTrackingState value, $Res Function(CarTrackingState) then) =
       _$CarTrackingStateCopyWithImpl<$Res, CarTrackingState>;
   @useResult
-  $Res call({List<Car> myCars, List<Car> selectedCars});
+  $Res call({List<Car> myCars, List<Car> selectedCars, Set<Marker> markers});
 }
 
 /// @nodoc
@@ -389,6 +560,7 @@ class _$CarTrackingStateCopyWithImpl<$Res, $Val extends CarTrackingState>
   $Res call({
     Object? myCars = null,
     Object? selectedCars = null,
+    Object? markers = null,
   }) {
     return _then(_value.copyWith(
       myCars: null == myCars
@@ -399,6 +571,10 @@ class _$CarTrackingStateCopyWithImpl<$Res, $Val extends CarTrackingState>
           ? _value.selectedCars
           : selectedCars // ignore: cast_nullable_to_non_nullable
               as List<Car>,
+      markers: null == markers
+          ? _value.markers
+          : markers // ignore: cast_nullable_to_non_nullable
+              as Set<Marker>,
     ) as $Val);
   }
 }
@@ -411,7 +587,7 @@ abstract class _$$_CarTrackingStateCopyWith<$Res>
       __$$_CarTrackingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Car> myCars, List<Car> selectedCars});
+  $Res call({List<Car> myCars, List<Car> selectedCars, Set<Marker> markers});
 }
 
 /// @nodoc
@@ -427,6 +603,7 @@ class __$$_CarTrackingStateCopyWithImpl<$Res>
   $Res call({
     Object? myCars = null,
     Object? selectedCars = null,
+    Object? markers = null,
   }) {
     return _then(_$_CarTrackingState(
       myCars: null == myCars
@@ -437,6 +614,10 @@ class __$$_CarTrackingStateCopyWithImpl<$Res>
           ? _value._selectedCars
           : selectedCars // ignore: cast_nullable_to_non_nullable
               as List<Car>,
+      markers: null == markers
+          ? _value._markers
+          : markers // ignore: cast_nullable_to_non_nullable
+              as Set<Marker>,
     ));
   }
 }
@@ -445,9 +626,12 @@ class __$$_CarTrackingStateCopyWithImpl<$Res>
 
 class _$_CarTrackingState implements _CarTrackingState {
   const _$_CarTrackingState(
-      {required final List<Car> myCars, required final List<Car> selectedCars})
+      {required final List<Car> myCars,
+      required final List<Car> selectedCars,
+      required final Set<Marker> markers})
       : _myCars = myCars,
-        _selectedCars = selectedCars;
+        _selectedCars = selectedCars,
+        _markers = markers;
 
   final List<Car> _myCars;
   @override
@@ -465,9 +649,17 @@ class _$_CarTrackingState implements _CarTrackingState {
     return EqualUnmodifiableListView(_selectedCars);
   }
 
+  final Set<Marker> _markers;
+  @override
+  Set<Marker> get markers {
+    if (_markers is EqualUnmodifiableSetView) return _markers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_markers);
+  }
+
   @override
   String toString() {
-    return 'CarTrackingState(myCars: $myCars, selectedCars: $selectedCars)';
+    return 'CarTrackingState(myCars: $myCars, selectedCars: $selectedCars, markers: $markers)';
   }
 
   @override
@@ -477,14 +669,16 @@ class _$_CarTrackingState implements _CarTrackingState {
             other is _$_CarTrackingState &&
             const DeepCollectionEquality().equals(other._myCars, _myCars) &&
             const DeepCollectionEquality()
-                .equals(other._selectedCars, _selectedCars));
+                .equals(other._selectedCars, _selectedCars) &&
+            const DeepCollectionEquality().equals(other._markers, _markers));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_myCars),
-      const DeepCollectionEquality().hash(_selectedCars));
+      const DeepCollectionEquality().hash(_selectedCars),
+      const DeepCollectionEquality().hash(_markers));
 
   @JsonKey(ignore: true)
   @override
@@ -496,12 +690,15 @@ class _$_CarTrackingState implements _CarTrackingState {
 abstract class _CarTrackingState implements CarTrackingState {
   const factory _CarTrackingState(
       {required final List<Car> myCars,
-      required final List<Car> selectedCars}) = _$_CarTrackingState;
+      required final List<Car> selectedCars,
+      required final Set<Marker> markers}) = _$_CarTrackingState;
 
   @override
   List<Car> get myCars;
   @override
   List<Car> get selectedCars;
+  @override
+  Set<Marker> get markers;
   @override
   @JsonKey(ignore: true)
   _$$_CarTrackingStateCopyWith<_$_CarTrackingState> get copyWith =>
