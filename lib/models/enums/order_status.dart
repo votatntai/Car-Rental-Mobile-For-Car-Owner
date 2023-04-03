@@ -1,63 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 enum OrderStatus {
+  @JsonValue('Canceled')
+  canceled,
+  @JsonValue('Pending')
   pending,
-  accepted,
-  rejected,
-  cancelled,
-  started,
-  finished,
+  @JsonValue('ManagerConfirmed')
+  managerConfirmed,
+  @JsonValue('CarOwnerApproved')
+  carOwnerApproved,
+  @JsonValue('ReceivedTheCar')
+  receivedTheCar,
+  @JsonValue('ArrivedAtPickUpPoint')
+  arrivedAtPickUpPoint,
+  @JsonValue('ReceivedGuests')
+  receivedGuests,
+  @JsonValue('Ongoing')
+  ongoing,
+  @JsonValue('Paid')
+  paid,
+  @JsonValue('ReturnedTheCar')
+  returnedTheCar,
+  @JsonValue('Finished')
+  finished
 }
 
 extension OrderStatusX on OrderStatus {
   String get displayName {
     switch (this) {
+      case OrderStatus.canceled:
+        return 'Từ chối';
       case OrderStatus.pending:
-        return 'Chờ duyệt yêu cầu';
-      case OrderStatus.accepted:
-        return 'Đã duyệt yêu cầu';
-      case OrderStatus.rejected:
-        return 'Đã từ chối';
-      case OrderStatus.cancelled:
-        return 'Đã hủy';
-      case OrderStatus.started:
-        return 'Khởi hành';
+        return 'Chờ xác nhận';
+      case OrderStatus.managerConfirmed:
+        return 'Quản lý đã xác nhận';
+      case OrderStatus.carOwnerApproved:
+        return 'Chủ xe đã xác nhận';
+      case OrderStatus.receivedTheCar:
+        return 'Đã nhận xe';
+      case OrderStatus.arrivedAtPickUpPoint:
+        return 'Đã đến điểm đón khách';
+      case OrderStatus.receivedGuests:
+        return 'Đã nhận khách';
+      case OrderStatus.ongoing:
+        return 'Đang di chuyển';
+      case OrderStatus.paid:
+        return 'Đã thanh toán';
+      case OrderStatus.returnedTheCar:
+        return 'Đã trả xe';
       case OrderStatus.finished:
-        return 'Kết thúc';
+        return 'Đã kết thúc';
     }
   }
 
   Color get displayColor {
     switch (this) {
-      case OrderStatus.pending:
-        return Colors.yellow;
-      case OrderStatus.accepted:
-        return Colors.green;
-      case OrderStatus.rejected:
+      case OrderStatus.canceled:
         return Colors.red;
-      case OrderStatus.cancelled:
-        return Colors.grey;
-      case OrderStatus.started:
-        return Colors.blue;
-      case OrderStatus.finished:
-        return Colors.purple;
-    }
-  }
-
-  int get step {
-    switch (this) {
       case OrderStatus.pending:
-        return 0;
-      case OrderStatus.accepted:
-        return 1;
-      case OrderStatus.rejected:
-        return 1;
-      case OrderStatus.cancelled:
-        return 0;
-      case OrderStatus.started:
-        return 2;
+        return Colors.orange;
+      case OrderStatus.managerConfirmed:
+        return Colors.orange;
+      case OrderStatus.carOwnerApproved:
+        return Colors.orange;
+      case OrderStatus.receivedTheCar:
+        return Colors.orange;
+      case OrderStatus.arrivedAtPickUpPoint:
+        return Colors.orange;
+      case OrderStatus.receivedGuests:
+        return Colors.orange;
+      case OrderStatus.ongoing:
+        return Colors.orange;
+      case OrderStatus.paid:
+        return Colors.green;
+      case OrderStatus.returnedTheCar:
+        return Colors.green;
       case OrderStatus.finished:
-        return 3;
+        return Colors.green;
     }
   }
 }

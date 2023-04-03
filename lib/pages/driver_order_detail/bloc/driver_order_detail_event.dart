@@ -5,4 +5,9 @@ class DriverOrderDetailEvent with _$DriverOrderDetailEvent {
   const factory DriverOrderDetailEvent.started({
     Order? order,
   }) = _Started;
+
+  const factory DriverOrderDetailEvent.orderStatusChanged({
+    required OrderStatus status,
+    required String orderId,
+  }) = _OrderStatusChanged;
 }

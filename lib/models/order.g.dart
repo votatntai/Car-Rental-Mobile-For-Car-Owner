@@ -47,10 +47,15 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
     };
 
 const _$OrderStatusEnumMap = {
-  OrderStatus.pending: 'pending',
-  OrderStatus.accepted: 'accepted',
-  OrderStatus.rejected: 'rejected',
-  OrderStatus.cancelled: 'cancelled',
-  OrderStatus.started: 'started',
-  OrderStatus.finished: 'finished',
+  OrderStatus.canceled: 'Canceled',
+  OrderStatus.pending: 'Pending',
+  OrderStatus.managerConfirmed: 'ManagerConfirmed',
+  OrderStatus.carOwnerApproved: 'CarOwnerApproved',
+  OrderStatus.receivedTheCar: 'ReceivedTheCar',
+  OrderStatus.arrivedAtPickUpPoint: 'ArrivedAtPickUpPoint',
+  OrderStatus.receivedGuests: 'ReceivedGuests',
+  OrderStatus.ongoing: 'Ongoing',
+  OrderStatus.paid: 'Paid',
+  OrderStatus.returnedTheCar: 'ReturnedTheCar',
+  OrderStatus.finished: 'Finished',
 };

@@ -309,9 +309,9 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                 ],
                               ),
                               if (successState.order.status !=
-                                      OrderStatus.cancelled &&
+                                      OrderStatus.canceled &&
                                   successState.order.status !=
-                                      OrderStatus.rejected)
+                                      OrderStatus.canceled)
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -355,11 +355,8 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                   ),
                                 ],
                               ),
-                              if (successState.order.status.step > 0 &&
-                                  successState.order.status !=
-                                      OrderStatus.rejected &&
-                                  successState.order.status !=
-                                      OrderStatus.cancelled)
+                              if (successState.order.status !=
+                                  OrderStatus.canceled)
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
