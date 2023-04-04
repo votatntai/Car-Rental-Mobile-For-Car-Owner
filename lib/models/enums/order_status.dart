@@ -38,7 +38,7 @@ extension OrderStatusX on OrderStatus {
       case OrderStatus.carOwnerApproved:
         return 'Chủ xe đã xác nhận';
       case OrderStatus.receivedTheCar:
-        return 'Đã nhận xe';
+        return 'Đã giao xe';
       case OrderStatus.arrivedAtPickUpPoint:
         return 'Đã đến điểm đón khách';
       case OrderStatus.receivedGuests:

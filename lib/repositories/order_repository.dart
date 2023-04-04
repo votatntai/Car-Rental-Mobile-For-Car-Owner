@@ -136,7 +136,7 @@ class OrderRepository {
   }) async {
     try {
       final result = await dio.put<JsonObject>(
-        'orders/$id',
+        'orders/status/$id',
         data: {
           'status': status.name,
         },
