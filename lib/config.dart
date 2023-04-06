@@ -71,7 +71,7 @@ Future<void> configDI() async {
     ..registerSingleton(tracking);
 
   await tracking.connect();
-  await tracking.startListening();
+  tracking.startListening();
 }
 
 void configureTimeago() {

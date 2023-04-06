@@ -7,19 +7,19 @@ import 'package:car_rental_for_car_owner/repositories/tracking_model.dart';
 import 'package:signalr_netcore/signalr_client.dart';
 
 class TrackingRepository {
-  TrackingRepository() {
-    connection = HubConnectionBuilder().withUrl(socketUrl).build();
-  }
+  TrackingRepository() {}
 
   late HubConnection connection;
   final StreamController<TrackingModel> carLocationController =
       StreamController.broadcast();
 
   Future<void> connect() async {
+    connection = HubConnectionBuilder().withUrl(socketUrl).build();
+
     await connection.start();
   }
 
-  Future<void> startListening() async {
+  void startListening() {
     connection.on('ReceiveLocation', (arguments) {
       try {
         if (arguments != null) {
