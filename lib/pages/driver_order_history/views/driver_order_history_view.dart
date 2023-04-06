@@ -40,7 +40,7 @@ class _DriverOrderHistoryViewState extends State<DriverOrderHistoryView> {
                 Expanded(
                     child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return OrderItem(
+                    return OrderItemForDriver(
                       order: successState.historyOrders[index],
                       onTap: (order) {
                         context.pushNamed(

@@ -113,7 +113,27 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                             fontSize: 16,
                           ),
                         ),
-                        const Spacer(),
+                        if (successState.order.status == OrderStatus.canceled &&
+                            successState.order.description != null &&
+                            successState.order.description!.isNotEmpty) ...[
+                          const SizedBox(
+                            width: s32,
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Lý do: ${successState.order.description!}',
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ] else
+                          const Spacer(),
                         if (successState.order.status ==
                             OrderStatus.managerConfirmed)
                           ElevatedButton(
@@ -186,7 +206,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                 positiveText: 'Xác nhận',
                               );
                             },
-                            child: const Text('Nhận xe'),
+                            child: const Text('Giao xe'),
                           ),
                         if (successState.order.status == OrderStatus.ongoing)
                           ElevatedButton(
@@ -216,7 +236,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                 positiveText: 'Xác nhận',
                               );
                             },
-                            child: const Text('Đã thanh toán'),
+                            child: const Text('Khách hàng thanh toán'),
                           ),
                         if (successState.order.status == OrderStatus.paid)
                           ElevatedButton(
@@ -224,12 +244,20 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                               showConfirmDialogCustom(
                                 context,
                                 onAccept: (c) async {
+                                  // context.read<CarOwnerOrderDetailBloc>().add(
+                                  //       CarOwnerOrderDetailEvent
+                                  //           .orderStatusChanged(
+                                  //         orderId: successState.order.id,
+                                  //         orderStatus:
+                                  //             OrderStatus.returnedTheCar,
+                                  //       ),
+                                  //     );
+
                                   context.read<CarOwnerOrderDetailBloc>().add(
                                         CarOwnerOrderDetailEvent
                                             .orderStatusChanged(
                                           orderId: successState.order.id,
-                                          orderStatus:
-                                              OrderStatus.returnedTheCar,
+                                          orderStatus: OrderStatus.finished,
                                         ),
                                       );
                                 },
@@ -247,7 +275,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                 positiveText: 'Xác nhận',
                               );
                             },
-                            child: const Text('Trả xe'),
+                            child: const Text('Nhận xe'),
                           ),
                         if (successState.order.status ==
                             OrderStatus.returnedTheCar)
@@ -500,7 +528,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                               Row(
                                 children: [
                                   const Text(
-                                    'Thanh toán cho chủ xe khi nhận xe',
+                                    'Thanh toán cho chủ xe',
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.bold,
@@ -512,32 +540,32 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                     style: const TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.bold,
-                                      color: CustomColors.flamingo,
+                                      color: Color.fromARGB(255, 153, 116, 113),
                                     ),
                                   ),
                                 ],
                               ),
-                              if (successState.order.isPaid == true)
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(
-                                      height: s02,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text(
-                                          'Đã thanh toán',
-                                          style: TextStyle(
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.bold,
-                                            color: CustomColors.dimGray,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                              // if (successState.order.isPaid == true)
+                              //   Column(
+                              //     crossAxisAlignment: CrossAxisAlignment.start,
+                              //     children: [
+                              //       const SizedBox(
+                              //         height: s02,
+                              //       ),
+                              //       Row(
+                              //         children: const [
+                              //           Text(
+                              //             'Đã thanh toán',
+                              //             style: TextStyle(
+                              //               fontSize: 11,
+                              //               fontWeight: FontWeight.bold,
+                              //               color: CustomColors.dimGray,
+                              //             ),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ],
+                              //   ),
                             ],
                           ),
                         ),
@@ -720,30 +748,38 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            showConfirmDialogCustom(
-                              context,
-                              onAccept: (c) async {
-                                context.read<CarOwnerOrderDetailBloc>().add(
-                                      CarOwnerOrderDetailEvent
-                                          .orderStatusChanged(
-                                        orderId: successState.order.id,
-                                        orderStatus: OrderStatus.canceled,
-                                      ),
-                                    );
-                              },
-                              dialogType: DialogType.CONFIRMATION,
-                              customCenterWidget: const Center(
-                                child: Icon(
-                                  Icons.check_circle,
-                                  color: CustomColors.flamingo,
-                                  size: 100,
-                                ),
-                              ),
-                              primaryColor: CustomColors.flamingo,
-                              title: 'Bạn muốn xác nhận?',
-                              negativeText: 'Hủy',
-                              positiveText: 'Đồng ý',
-                            );
+                            // showConfirmDialogCustom(
+                            //   context,
+                            //   onAccept: (c) async {
+                            //     context.read<CarOwnerOrderDetailBloc>().add(
+                            //           CarOwnerOrderDetailEvent
+                            //               .orderStatusChanged(
+                            //             orderId: successState.order.id,
+                            //             orderStatus: OrderStatus.canceled,
+                            //           ),
+                            //         );
+                            //   },
+                            //   dialogType: DialogType.CONFIRMATION,
+                            //   customCenterWidget: const Center(
+                            //     child: Icon(
+                            //       Icons.check_circle,
+                            //       color: CustomColors.flamingo,
+                            //       size: 100,
+                            //     ),
+                            //   ),
+                            //   primaryColor: CustomColors.flamingo,
+                            //   title: 'Bạn muốn xác nhận?',
+                            //   negativeText: 'Hủy',
+                            //   positiveText: 'Đồng ý',
+                            // );
+                            showDialog(
+                                context: context,
+                                builder: (builderContext) {
+                                  return confirmDialog(
+                                    context,
+                                    successState.order.id,
+                                  );
+                                });
                           },
                           child: const Text('Hủy chuyến'),
                         ),
@@ -757,6 +793,64 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
               ],
             ),
           ),
+        );
+      },
+    );
+  }
+
+  StatefulBuilder confirmDialog(
+    BuildContext rootContext,
+    String orderId,
+  ) {
+    String reason = '';
+
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return AlertDialog(
+          title: const Text('Xác nhận'),
+          content: SizedBox(
+            height: 130,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Lý do hủy chuyến:'),
+                const SizedBox(height: 8),
+                TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      reason = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Hủy'),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.of(context).pop();
+
+                rootContext.read<CarOwnerOrderDetailBloc>().add(
+                      CarOwnerOrderDetailEvent.cancelOrder(
+                        orderId: orderId,
+                        reason: reason,
+                      ),
+                    );
+              },
+              child: const Text('Đồng ý'),
+            ),
+          ],
         );
       },
     );

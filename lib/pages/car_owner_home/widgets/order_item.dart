@@ -1,6 +1,7 @@
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/utils.dart';
 import 'package:car_rental_for_car_owner/models/enums/order_status.dart';
+import 'package:car_rental_for_car_owner/models/enums/rental_car_type.dart';
 import 'package:car_rental_for_car_owner/models/order.dart';
 import 'package:flutter/material.dart';
 
@@ -29,24 +30,28 @@ class OrderItemForCarOwner extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Text(
-                      'Khách hàng:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    const SizedBox(
+                      width: 110,
+                      child: Text(
+                        'Khách hàng:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    const SizedBox(width: s32),
-                    Text(order.customer.name),
+                    Expanded(child: Text(order.customer.name)),
                   ],
                 ),
                 const SizedBox(height: s12),
                 Row(
                   children: [
-                    const Text(
-                      'Thời gian thuê:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    const SizedBox(
+                      width: 110,
+                      child: Text(
+                        'Thời gian thuê:',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    const SizedBox(width: 14),
                     Column(
                       children: [
                         Text(
@@ -76,13 +81,54 @@ class OrderItemForCarOwner extends StatelessWidget {
                 const SizedBox(height: s12),
                 Row(
                   children: [
-                    const Text(
-                      'Trạng thái:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    const SizedBox(
+                      width: 110,
+                      child: Text(
+                        'Xe:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                    const SizedBox(width: 40),
-                    Text(
-                      order.status.displayName,
+                    Expanded(
+                      child: Text(order.orderDetails.first.car.name ?? ''),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: s12),
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 110,
+                      child: Text(
+                        'Loại thuê xe:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        order.orderDetails.first.car.rentalCarType
+                            .getDisplayName(),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: s12),
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 110,
+                      child: Text(
+                        'Trạng thái:',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        order.status.displayName,
+                      ),
                     )
                   ],
                 ),

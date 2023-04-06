@@ -10,4 +10,9 @@ class CarOwnerOrderDetailEvent with _$CarOwnerOrderDetailEvent {
     required String orderId,
     required OrderStatus orderStatus,
   }) = _OrderStatusChanged;
+
+  const factory CarOwnerOrderDetailEvent.cancelOrder({
+    required String orderId,
+    required String reason,
+  }) = _CancelOrder;
 }

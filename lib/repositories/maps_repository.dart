@@ -49,7 +49,9 @@ class MapsRepository {
             'language': 'vi',
           });
 
-      if (result.data != null && result.statusCode == StatusCodes.status200OK) {
+      if (result.data != null &&
+          result.statusCode == StatusCodes.status200OK &&
+          result.data!['results'].isNotEmpty) {
         return ApiResponse.success(Place.fromJson(result.data!['results'][0]));
       }
 

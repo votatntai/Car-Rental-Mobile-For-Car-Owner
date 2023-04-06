@@ -21,9 +21,7 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       isPaid: json['isPaid'] as bool,
       status: $enumDecode(_$OrderStatusEnumMap, json['status']),
       description: json['description'] as String?,
-      createAt: json['createAt'] == null
-          ? null
-          : DateTime.parse(json['createAt'] as String),
+      createAt: DateTime.parse(json['createAt'] as String),
       promotion: json['promotion'] == null
           ? null
           : Promotion.fromJson(json['promotion'] as Map<String, dynamic>),
@@ -42,7 +40,7 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'isPaid': instance.isPaid,
       'status': _$OrderStatusEnumMap[instance.status]!,
       'description': instance.description,
-      'createAt': instance.createAt?.toIso8601String(),
+      'createAt': instance.createAt.toIso8601String(),
       'promotion': instance.promotion,
     };
 

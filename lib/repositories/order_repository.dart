@@ -42,6 +42,8 @@ class OrderRepository {
             .toList();
       }
 
+      currentOrder.sort((a, b) => -1 * a.createAt.compareTo(b.createAt));
+
       return ApiSuccess(currentOrder);
     } on DioError catch (e) {
       return e.getErrorMessage();
@@ -62,6 +64,8 @@ class OrderRepository {
             .toList();
       }
 
+      currentOrder.sort((a, b) => -1 * a.createAt.compareTo(b.createAt));
+
       return ApiSuccess(currentOrder);
     } on DioError catch (e) {
       return e.getErrorMessage();
@@ -81,6 +85,8 @@ class OrderRepository {
             // .where((element) => element.status == OrderStatus.accepted)
             .toList();
       }
+
+      currentOrder.sort((a, b) => -1 * a.createAt.compareTo(b.createAt));
       return ApiSuccess(currentOrder);
     } on DioError catch (e) {
       return e.getErrorMessage();
@@ -124,6 +130,8 @@ class OrderRepository {
                 element.status != OrderStatus.finished)
             .toList();
       }
+
+      currentOrder.sort((a, b) => -1 * a.createAt.compareTo(b.createAt));
       return ApiSuccess(currentOrder);
     } on DioError catch (e) {
       return e.getErrorMessage();
@@ -133,12 +141,14 @@ class OrderRepository {
   Future<bool> updateOrderStatus({
     required String id,
     required OrderStatus status,
+    String? description,
   }) async {
     try {
       final result = await dio.put<JsonObject>(
         'orders/status/$id',
         data: {
           'status': status.name,
+          'description': description,
         },
       );
 

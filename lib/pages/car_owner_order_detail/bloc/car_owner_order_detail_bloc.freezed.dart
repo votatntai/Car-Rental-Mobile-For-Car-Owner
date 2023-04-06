@@ -21,6 +21,7 @@ mixin _$CarOwnerOrderDetailEvent {
     required TResult Function(Order? order) started,
     required TResult Function(String orderId, OrderStatus orderStatus)
         orderStatusChanged,
+    required TResult Function(String orderId, String reason) cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$CarOwnerOrderDetailEvent {
     TResult? Function(Order? order)? started,
     TResult? Function(String orderId, OrderStatus orderStatus)?
         orderStatusChanged,
+    TResult? Function(String orderId, String reason)? cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$CarOwnerOrderDetailEvent {
     TResult Function(Order? order)? started,
     TResult Function(String orderId, OrderStatus orderStatus)?
         orderStatusChanged,
+    TResult Function(String orderId, String reason)? cancelOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,18 +45,21 @@ mixin _$CarOwnerOrderDetailEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OrderStatusChanged value) orderStatusChanged,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OrderStatusChanged value)? orderStatusChanged,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OrderStatusChanged value)? orderStatusChanged,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -158,6 +164,7 @@ class _$_Started implements _Started {
     required TResult Function(Order? order) started,
     required TResult Function(String orderId, OrderStatus orderStatus)
         orderStatusChanged,
+    required TResult Function(String orderId, String reason) cancelOrder,
   }) {
     return started(order);
   }
@@ -168,6 +175,7 @@ class _$_Started implements _Started {
     TResult? Function(Order? order)? started,
     TResult? Function(String orderId, OrderStatus orderStatus)?
         orderStatusChanged,
+    TResult? Function(String orderId, String reason)? cancelOrder,
   }) {
     return started?.call(order);
   }
@@ -178,6 +186,7 @@ class _$_Started implements _Started {
     TResult Function(Order? order)? started,
     TResult Function(String orderId, OrderStatus orderStatus)?
         orderStatusChanged,
+    TResult Function(String orderId, String reason)? cancelOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -191,6 +200,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OrderStatusChanged value) orderStatusChanged,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) {
     return started(this);
   }
@@ -200,6 +210,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OrderStatusChanged value)? orderStatusChanged,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
     return started?.call(this);
   }
@@ -209,6 +220,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OrderStatusChanged value)? orderStatusChanged,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -305,6 +317,7 @@ class _$_OrderStatusChanged implements _OrderStatusChanged {
     required TResult Function(Order? order) started,
     required TResult Function(String orderId, OrderStatus orderStatus)
         orderStatusChanged,
+    required TResult Function(String orderId, String reason) cancelOrder,
   }) {
     return orderStatusChanged(orderId, orderStatus);
   }
@@ -315,6 +328,7 @@ class _$_OrderStatusChanged implements _OrderStatusChanged {
     TResult? Function(Order? order)? started,
     TResult? Function(String orderId, OrderStatus orderStatus)?
         orderStatusChanged,
+    TResult? Function(String orderId, String reason)? cancelOrder,
   }) {
     return orderStatusChanged?.call(orderId, orderStatus);
   }
@@ -325,6 +339,7 @@ class _$_OrderStatusChanged implements _OrderStatusChanged {
     TResult Function(Order? order)? started,
     TResult Function(String orderId, OrderStatus orderStatus)?
         orderStatusChanged,
+    TResult Function(String orderId, String reason)? cancelOrder,
     required TResult orElse(),
   }) {
     if (orderStatusChanged != null) {
@@ -338,6 +353,7 @@ class _$_OrderStatusChanged implements _OrderStatusChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_OrderStatusChanged value) orderStatusChanged,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) {
     return orderStatusChanged(this);
   }
@@ -347,6 +363,7 @@ class _$_OrderStatusChanged implements _OrderStatusChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_OrderStatusChanged value)? orderStatusChanged,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
     return orderStatusChanged?.call(this);
   }
@@ -356,6 +373,7 @@ class _$_OrderStatusChanged implements _OrderStatusChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_OrderStatusChanged value)? orderStatusChanged,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) {
     if (orderStatusChanged != null) {
@@ -374,6 +392,159 @@ abstract class _OrderStatusChanged implements CarOwnerOrderDetailEvent {
   OrderStatus get orderStatus;
   @JsonKey(ignore: true)
   _$$_OrderStatusChangedCopyWith<_$_OrderStatusChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CancelOrderCopyWith<$Res> {
+  factory _$$_CancelOrderCopyWith(
+          _$_CancelOrder value, $Res Function(_$_CancelOrder) then) =
+      __$$_CancelOrderCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String orderId, String reason});
+}
+
+/// @nodoc
+class __$$_CancelOrderCopyWithImpl<$Res>
+    extends _$CarOwnerOrderDetailEventCopyWithImpl<$Res, _$_CancelOrder>
+    implements _$$_CancelOrderCopyWith<$Res> {
+  __$$_CancelOrderCopyWithImpl(
+      _$_CancelOrder _value, $Res Function(_$_CancelOrder) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+    Object? reason = null,
+  }) {
+    return _then(_$_CancelOrder(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      reason: null == reason
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CancelOrder implements _CancelOrder {
+  const _$_CancelOrder({required this.orderId, required this.reason});
+
+  @override
+  final String orderId;
+  @override
+  final String reason;
+
+  @override
+  String toString() {
+    return 'CarOwnerOrderDetailEvent.cancelOrder(orderId: $orderId, reason: $reason)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CancelOrder &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.reason, reason) || other.reason == reason));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId, reason);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CancelOrderCopyWith<_$_CancelOrder> get copyWith =>
+      __$$_CancelOrderCopyWithImpl<_$_CancelOrder>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Order? order) started,
+    required TResult Function(String orderId, OrderStatus orderStatus)
+        orderStatusChanged,
+    required TResult Function(String orderId, String reason) cancelOrder,
+  }) {
+    return cancelOrder(orderId, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Order? order)? started,
+    TResult? Function(String orderId, OrderStatus orderStatus)?
+        orderStatusChanged,
+    TResult? Function(String orderId, String reason)? cancelOrder,
+  }) {
+    return cancelOrder?.call(orderId, reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Order? order)? started,
+    TResult Function(String orderId, OrderStatus orderStatus)?
+        orderStatusChanged,
+    TResult Function(String orderId, String reason)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (cancelOrder != null) {
+      return cancelOrder(orderId, reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_OrderStatusChanged value) orderStatusChanged,
+    required TResult Function(_CancelOrder value) cancelOrder,
+  }) {
+    return cancelOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_OrderStatusChanged value)? orderStatusChanged,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+  }) {
+    return cancelOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_OrderStatusChanged value)? orderStatusChanged,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (cancelOrder != null) {
+      return cancelOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CancelOrder implements CarOwnerOrderDetailEvent {
+  const factory _CancelOrder(
+      {required final String orderId,
+      required final String reason}) = _$_CancelOrder;
+
+  String get orderId;
+  String get reason;
+  @JsonKey(ignore: true)
+  _$$_CancelOrderCopyWith<_$_CancelOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

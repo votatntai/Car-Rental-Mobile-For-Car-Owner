@@ -20,6 +20,7 @@ class CarOwnerOrderDetailBloc
   }) : super(const _Initial()) {
     on<_Started>(_onStarted);
     on<_OrderStatusChanged>(_onOrderStatusChanged);
+    on<_CancelOrder>(_onCancelOrder);
   }
 
   final OrderRepository orderRepository;
@@ -58,6 +59,27 @@ class CarOwnerOrderDetailBloc
     final orderResult = await orderRepository.updateOrderStatus(
       id: event.orderId,
       status: event.orderStatus,
+    );
+
+    LoadingDialogService.dispose();
+
+    if (orderResult == false) {
+      showMessageDialog(title: 'Lỗi', message: 'Cập nhật trạng thái thất bại');
+    }
+
+    add(_Started(order: (state as _Success).order));
+  }
+
+  FutureOr<void> _onCancelOrder(
+    _CancelOrder event,
+    Emitter<CarOwnerOrderDetailState> emit,
+  ) async {
+    LoadingDialogService.load();
+
+    final orderResult = await orderRepository.updateOrderStatus(
+      id: event.orderId,
+      status: OrderStatus.canceled,
+      description: event.reason,
     );
 
     LoadingDialogService.dispose();

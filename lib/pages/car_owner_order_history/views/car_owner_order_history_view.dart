@@ -41,7 +41,7 @@ class _CarOwnerOrderHistoryViewState extends State<CarOwnerOrderHistoryView> {
                 Expanded(
                     child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return OrderItem(
+                    return OrderItemForDriver(
                       order: successState.historyOrders[index],
                       onTap: (order) {
                         context.pushNamed(

@@ -36,60 +36,67 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
             titleText: 'Trang chủ',
             leading: false,
           ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (successState.pendingOrders.isNotEmpty)
+          body: RefreshIndicator(
+            onRefresh: () async {
+              context.read<CarOwnerHomeBloc>().add(
+                    const CarOwnerHomeEvent.started(),
+                  );
+            },
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (successState.pendingOrders.isNotEmpty)
+                      const Text(
+                        'Yêu cầu thuê xe',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    const SizedBox(height: s08),
+                    if (successState.pendingOrders.isNotEmpty)
+                      ...successState.pendingOrders.map(
+                        (order) {
+                          return OrderItemForCarOwner(
+                            order: order,
+                            onTap: (order) {
+                              context.pushNamed(
+                                RouteName.carOwnerOrderDetail,
+                                extra: order,
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    const SizedBox(height: 16),
                     const Text(
-                      'Yêu cầu thuê xe',
+                      'Xe của tôi',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  const SizedBox(height: s08),
-                  if (successState.pendingOrders.isNotEmpty)
-                    ...successState.pendingOrders.map(
-                      (order) {
-                        return OrderItemForCarOwner(
-                          order: order,
-                          onTap: (order) {
-                            context.pushNamed(
-                              RouteName.carOwnerOrderDetail,
-                              extra: order,
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Xe của tôi',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: s08),
-                  ...successState.myCars
-                      .map(
-                        (e) => CarItem(
-                          car: e,
-                          onTap: (id) {
-                            context.pushNamed(
-                              RouteName.carOwnerCarDetail,
-                              queryParams: {
-                                'car-id': id,
-                              },
-                            );
-                          },
-                        ),
-                      )
-                      .toList()
-                ],
+                    const SizedBox(height: s08),
+                    ...successState.myCars
+                        .map(
+                          (e) => CarItem(
+                            car: e,
+                            onTap: (id) {
+                              context.pushNamed(
+                                RouteName.carOwnerCarDetail,
+                                queryParams: {
+                                  'car-id': id,
+                                },
+                              );
+                            },
+                          ),
+                        )
+                        .toList()
+                  ],
+                ),
               ),
             ),
           ),

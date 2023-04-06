@@ -21,7 +21,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
       )..add(
           const DriverHomeEvent.started(),
         ),
-      child: const DriverHomeView(),
+      child: DriverHomeView(),
     );
   }
 }

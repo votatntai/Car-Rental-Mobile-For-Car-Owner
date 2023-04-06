@@ -32,7 +32,7 @@ mixin _$Order {
   bool get isPaid => throw _privateConstructorUsedError;
   OrderStatus get status => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  DateTime? get createAt => throw _privateConstructorUsedError;
+  DateTime get createAt => throw _privateConstructorUsedError;
   Promotion? get promotion => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,7 +58,7 @@ abstract class $OrderCopyWith<$Res> {
       bool isPaid,
       OrderStatus status,
       String? description,
-      DateTime? createAt,
+      DateTime createAt,
       Promotion? promotion});
 
   $CustomerCopyWith<$Res> get customer;
@@ -90,7 +90,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? isPaid = null,
     Object? status = null,
     Object? description = freezed,
-    Object? createAt = freezed,
+    Object? createAt = null,
     Object? promotion = freezed,
   }) {
     return _then(_value.copyWith(
@@ -142,10 +142,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      createAt: freezed == createAt
+      createAt: null == createAt
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       promotion: freezed == promotion
           ? _value.promotion
           : promotion // ignore: cast_nullable_to_non_nullable
@@ -193,7 +193,7 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       bool isPaid,
       OrderStatus status,
       String? description,
-      DateTime? createAt,
+      DateTime createAt,
       Promotion? promotion});
 
   @override
@@ -223,7 +223,7 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
     Object? isPaid = null,
     Object? status = null,
     Object? description = freezed,
-    Object? createAt = freezed,
+    Object? createAt = null,
     Object? promotion = freezed,
   }) {
     return _then(_$_Order(
@@ -275,10 +275,10 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      createAt: freezed == createAt
+      createAt: null == createAt
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       promotion: freezed == promotion
           ? _value.promotion
           : promotion // ignore: cast_nullable_to_non_nullable
@@ -303,7 +303,7 @@ class _$_Order implements _Order {
       required this.isPaid,
       required this.status,
       this.description,
-      this.createAt,
+      required this.createAt,
       this.promotion})
       : _orderDetails = orderDetails;
 
@@ -341,7 +341,7 @@ class _$_Order implements _Order {
   @override
   final String? description;
   @override
-  final DateTime? createAt;
+  final DateTime createAt;
   @override
   final Promotion? promotion;
 
@@ -427,7 +427,7 @@ abstract class _Order implements Order {
       required final bool isPaid,
       required final OrderStatus status,
       final String? description,
-      final DateTime? createAt,
+      required final DateTime createAt,
       final Promotion? promotion}) = _$_Order;
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
@@ -457,7 +457,7 @@ abstract class _Order implements Order {
   @override
   String? get description;
   @override
-  DateTime? get createAt;
+  DateTime get createAt;
   @override
   Promotion? get promotion;
   @override

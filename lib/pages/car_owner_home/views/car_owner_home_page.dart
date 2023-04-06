@@ -20,7 +20,7 @@ class CarOwnerHomePage extends StatelessWidget {
       )..add(
           const CarOwnerHomeEvent.started(),
         ),
-      child: const CarOwnerHomeView(),
+      child: CarOwnerHomeView(),
     );
   }
 }

@@ -19,8 +19,10 @@ class NotificationItem extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 85,
-          padding: const EdgeInsets.all(s04),
+          padding: const EdgeInsets.symmetric(
+            vertical: s08,
+            horizontal: s04,
+          ),
           color: notification.data?.isRead ?? true
               ? Colors.white
               : Colors.grey[100],
@@ -41,34 +43,36 @@ class NotificationItem extends StatelessWidget {
               const SizedBox(
                 width: s16,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: context.width() * 2 / 3,
-                    child: Text(
-                      notification.title,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: boldTextStyle(),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: context.width() * 2 / 3,
+                      child: Text(
+                        notification.title,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: boldTextStyle(),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: s02,
-                  ),
-                  Text(
-                    notification.body,
-                    style: secondaryTextStyle(),
-                  ),
-                  const SizedBox(
-                    height: s04,
-                  ),
-                  Text(
-                    timeagoString,
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
-                  ),
-                ],
+                    const SizedBox(
+                      height: s02,
+                    ),
+                    Text(
+                      notification.body,
+                      style: secondaryTextStyle(),
+                    ),
+                    const SizedBox(
+                      height: s04,
+                    ),
+                    Text(
+                      timeagoString,
+                      style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
+                  ],
+                ),
               )
             ],
           ),

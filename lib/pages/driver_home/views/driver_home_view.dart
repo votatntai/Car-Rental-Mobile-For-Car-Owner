@@ -34,67 +34,74 @@ class _DriverHomeViewState extends State<DriverHomeView> {
             titleText: 'Trang chủ',
             leading: false,
           ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Đơn hàng hiện tại',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  ...successState.currentOrders.map(
-                    (order) {
-                      return OrderItem(
-                        order: order,
-                        onTap: (order) {
-                          context.pushNamed(
-                            RouteName.driverOrderDetail,
-                            extra: order,
-                          );
-                        },
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Lịch',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 500,
-                    child: SfCalendar(
-                      view: CalendarView.month,
-                      // dataSource: _getCalendarDataSource(),
-                      dataSource: OrderDataSource(
-                        successState.calendarOrders,
+          body: RefreshIndicator(
+            onRefresh: () async {
+              context
+                  .read<DriverHomeBloc>()
+                  .add(const DriverHomeEvent.started());
+            },
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Đơn hàng hiện tại',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
-
-                      monthViewSettings: const MonthViewSettings(
-                        showAgenda: true,
-
-                        // appointmentDisplayMode:
-                        //     MonthAppointmentDisplayMode.appointment,
-                      ),
-                      onTap: (calendarTapDetails) {
-                        if (calendarTapDetails.targetElement ==
-                            CalendarElement.appointment) {
-                          context.pushNamed(
-                            RouteName.driverOrderDetail,
-                            extra: calendarTapDetails.appointments?.first,
-                          );
-                        }
+                    ),
+                    ...successState.currentOrders.map(
+                      (order) {
+                        return OrderItemForDriver(
+                          order: order,
+                          onTap: (order) {
+                            context.pushNamed(
+                              RouteName.driverOrderDetail,
+                              extra: order,
+                            );
+                          },
+                        );
                       },
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Lịch',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 500,
+                      child: SfCalendar(
+                        view: CalendarView.month,
+                        // dataSource: _getCalendarDataSource(),
+                        dataSource: OrderDataSource(
+                          successState.calendarOrders,
+                        ),
+
+                        monthViewSettings: const MonthViewSettings(
+                          showAgenda: true,
+
+                          // appointmentDisplayMode:
+                          //     MonthAppointmentDisplayMode.appointment,
+                        ),
+                        onTap: (calendarTapDetails) {
+                          if (calendarTapDetails.targetElement ==
+                              CalendarElement.appointment) {
+                            context.pushNamed(
+                              RouteName.driverOrderDetail,
+                              extra: calendarTapDetails.appointments?.first,
+                            );
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

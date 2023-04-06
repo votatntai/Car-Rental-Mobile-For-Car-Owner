@@ -67,7 +67,7 @@ class AppRoute {
             name: RouteName.driverHome,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const DriverHomePage(),
+              child: DriverHomePage(),
             ),
           ),
           GoRoute(
@@ -75,7 +75,7 @@ class AppRoute {
             name: RouteName.driverProfile,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const DriverProfilePage(),
+              child: DriverProfilePage(),
             ),
           ),
           GoRoute(
@@ -83,7 +83,7 @@ class AppRoute {
             name: RouteName.driverWallet,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const DriverWalletPage(),
+              child: DriverWalletPage(),
             ),
             // routes: [
             //   GoRoute(
@@ -110,7 +110,7 @@ class AppRoute {
             name: RouteName.driverNotification,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const DriverNotificationPage(),
+              child: DriverNotificationPage(),
             ),
           ),
           GoRoute(
@@ -118,7 +118,7 @@ class AppRoute {
             name: RouteName.driverOrderHistory,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const DriverOrderHistoryPage(),
+              child: DriverOrderHistoryPage(),
             ),
           ),
         ],
@@ -134,7 +134,7 @@ class AppRoute {
             name: RouteName.carOwnerHome,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const CarOwnerHomePage(),
+              child: CarOwnerHomePage(),
             ),
           ),
           GoRoute(
@@ -142,7 +142,7 @@ class AppRoute {
             name: RouteName.carOwnerProfile,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const CarOwnerProfilePage(),
+              child: CarOwnerProfilePage(),
             ),
           ),
           GoRoute(
@@ -150,7 +150,7 @@ class AppRoute {
             name: RouteName.carOwnerWallet,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const CarOwnerWalletPage(),
+              child: CarOwnerWalletPage(),
             ),
           ),
           GoRoute(
@@ -158,7 +158,7 @@ class AppRoute {
             name: RouteName.carOwnerNotification,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const CarOwnerNotificationPage(),
+              child: CarOwnerNotificationPage(),
             ),
           ),
           GoRoute(
@@ -166,7 +166,7 @@ class AppRoute {
             name: RouteName.carOwnerOrderHistory,
             pageBuilder: (context, state) => FadeTransitionPage(
               key: _shellNavigationKey,
-              child: const CarOwnerOrderHistoryPage(),
+              child: CarOwnerOrderHistoryPage(),
             ),
           ),
         ],

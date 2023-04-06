@@ -155,7 +155,7 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                                 positiveText: 'Đồng ý',
                               );
                             },
-                            child: const Text('Đã đến điểm đón'),
+                            child: const Text('Đến điểm đón'),
                           ),
                         if (successState.order.status ==
                             OrderStatus.arrivedAtPickUpPoint)
@@ -186,7 +186,7 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                                 positiveText: 'Đồng ý',
                               );
                             },
-                            child: const Text('Đã nhận khách'),
+                            child: const Text('Nhận khách'),
                           ),
                         if (successState.order.status ==
                             OrderStatus.receivedGuests)
@@ -217,7 +217,7 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                                 positiveText: 'Đồng ý',
                               );
                             },
-                            child: const Text('Đang di chuyển'),
+                            child: const Text('Bắt đầu di chuyển'),
                           ),
                         // if (successState.order.status == OrderStatus.paid)
                         //   ElevatedButton(

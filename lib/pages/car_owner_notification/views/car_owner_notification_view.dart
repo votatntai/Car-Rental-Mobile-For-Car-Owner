@@ -55,28 +55,23 @@ class _CarOwnerNotificationViewState extends State<CarOwnerNotificationView> {
           titleText: 'Thông báo',
           leading: false,
         ),
-        body: RefreshIndicator(
-          onRefresh: () => Future.sync(
-            () => _pagingController.refresh(),
-          ),
-          child: Container(
-            padding: const EdgeInsets.all(s08),
-            child: Column(
-              children: [
-                Expanded(
-                  child: PagedListView(
-                    scrollDirection: Axis.vertical,
-                    builderDelegate: PagedChildBuilderDelegate<
-                        notification_model.Notification>(
-                      animateTransitions: true,
-                      itemBuilder: (context, item, index) =>
-                          NotificationItem(notification: item),
-                    ),
-                    pagingController: _pagingController,
+        body: Container(
+          padding: const EdgeInsets.all(s08),
+          child: Column(
+            children: [
+              Expanded(
+                child: PagedListView(
+                  scrollDirection: Axis.vertical,
+                  builderDelegate: PagedChildBuilderDelegate<
+                      notification_model.Notification>(
+                    animateTransitions: true,
+                    itemBuilder: (context, item, index) =>
+                        NotificationItem(notification: item),
                   ),
+                  pagingController: _pagingController,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

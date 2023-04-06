@@ -22,7 +22,7 @@ class Order with _$Order {
     required bool isPaid,
     required OrderStatus status,
     String? description,
-    DateTime? createAt,
+    required DateTime createAt,
     Promotion? promotion,
   }) = _Order;
 
