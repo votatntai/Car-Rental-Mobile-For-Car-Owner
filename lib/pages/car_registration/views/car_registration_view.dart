@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
+import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/extensions.dart';
 import 'package:car_rental_for_car_owner/commons/loading_dialog_service.dart';
@@ -14,6 +17,7 @@ import 'package:car_rental_for_car_owner/repositories/car_registration_repositor
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CarRegistrationView extends StatefulWidget {
   const CarRegistrationView({super.key});
@@ -24,6 +28,9 @@ class CarRegistrationView extends StatefulWidget {
 
 class _CarRegistrationViewState extends State<CarRegistrationView> {
   final _formKey = GlobalKey<FormState>();
+
+  List<XFile> images = [];
+  List<XFile> carRegistrationImages = [];
 
   final nameController = TextEditingController();
   final licensePlateController = TextEditingController();
@@ -66,6 +73,21 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
     super.dispose();
   }
 
+  Widget divider = Column(
+    children: const [
+      SizedBox(
+        height: s08,
+      ),
+      Divider(
+        color: CustomColors.gainsboro,
+        thickness: 3,
+      ),
+      SizedBox(
+        height: s04,
+      ),
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CarRegistrationBloc, CarRegistrationState>(
@@ -75,6 +97,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
             context,
             titleText: 'Đăng ký xe',
           ),
+          backgroundColor: CustomColors.white,
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(s08),
@@ -94,6 +117,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         return null;
                       },
                     ),
+
                     TextFormFieldCustom(
                       controller: licensePlateController,
                       labelText: 'Biển số xe',
@@ -105,37 +129,122 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         return null;
                       },
                     ),
-                    // const Padding(
-                    //   padding: EdgeInsets.only(
-                    //     left: 8.0,
-                    //     bottom: 8,
-                    //   ),
-                    //   child: Text(
-                    //     'Hình ảnh xe',
-                    //     style: TextStyle(
-                    //       fontSize: 16,
-                    //     ),
-                    //   ),
-                    // ),
 
-                    // SingleChildScrollView(
-                    //   scrollDirection: Axis.horizontal,
-                    //   child: Row(
-                    //     children: [
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        left: 8.0,
+                        bottom: 8,
+                      ),
+                      child: Text(
+                        'Hình ảnh xe',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
 
-                    //     ],
-                    //   ),
-                    // ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        if (images.isNotEmpty)
+                          Expanded(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: images
+                                    .map(
+                                      (e) => Container(
+                                        margin: const EdgeInsets.only(left: 8),
+                                        height: 50,
+                                        child: Image.file(
+                                          File(
+                                            e.path,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ),
+                          ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            final ImagePicker picker = ImagePicker();
+                            final result = await picker.pickMultiImage();
 
-                    // const Padding(
-                    //   padding: EdgeInsets.only(left: 8.0, bottom: 8),
-                    //   child: Text(
-                    //     'Giấy tờ xe',
-                    //     style: TextStyle(
-                    //       fontSize: 16,
-                    //     ),
-                    //   ),
-                    // ),
+                            setState(() {
+                              images = result;
+                            });
+                          },
+                          child: const Text('Thêm ảnh'),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(
+                      height: s16,
+                    ),
+
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        left: 8.0,
+                        bottom: 8,
+                      ),
+                      child: Text(
+                        'Giấy tờ xe',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        if (carRegistrationImages.isNotEmpty)
+                          Expanded(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: images
+                                    .map(
+                                      (e) => Container(
+                                        margin: const EdgeInsets.only(left: 8),
+                                        height: 50,
+                                        child: Image.file(
+                                          File(
+                                            e.path,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ),
+                          ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            final ImagePicker picker = ImagePicker();
+                            final result = await picker.pickMultiImage();
+
+                            setState(() {
+                              carRegistrationImages = result;
+                            });
+                          },
+                          child: const Text('Thêm ảnh'),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(
+                      height: s16,
+                    ),
 
                     Row(
                       children: [
