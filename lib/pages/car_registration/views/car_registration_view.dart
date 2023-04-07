@@ -86,6 +86,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                     TextFormFieldCustom(
                       controller: nameController,
                       labelText: 'Tên xe',
+                      hintText: 'Ví dụ: Honda City',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Vui lòng nhập tên xe';
@@ -96,6 +97,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                     TextFormFieldCustom(
                       controller: licensePlateController,
                       labelText: 'Biển số xe',
+                      hintText: 'Ví dụ: 29A1-12345',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Vui lòng nhập biển số xe';
@@ -141,6 +143,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: transmissionController,
                             labelText: 'Truyền động',
+                            hintText: 'Ví dụ: 2 cầu',
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Vui lòng nhập truyền động';
@@ -153,6 +156,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: fuelTypeController,
                             labelText: 'Loại nhiên liệu',
+                            hintText: 'Ví dụ: Xăng',
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Vui lòng nhập Loại nhiên liệu';
@@ -182,6 +186,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: seaterController,
                             labelText: 'Số chỗ ngồi',
+                            hintText: 'Ví dụ: 4',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
@@ -197,6 +202,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: priceController,
                             labelText: 'Giá thuê',
+                            hintText: 'Ví dụ: 100000',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
@@ -216,6 +222,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: fuelConsumptionController,
                             labelText: 'Mức tiêu thụ xăng dầu',
+                            hintText: 'Ví dụ: 7 lít/100km',
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Vui long nhập mức tiệu thụ xăng dầu';
@@ -228,6 +235,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: chassisNumberController,
                             labelText: 'Khung gầm',
+                            hintText: 'Ví dụ: 123456789',
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Vui lòng nhập khung gầm';
@@ -244,6 +252,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: yearOfManufactureController,
                             labelText: 'Năm sản xuất',
+                            hintText: 'Ví dụ: 2020',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
@@ -273,6 +282,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                     TextFormFieldCustom(
                       controller: locationController,
                       labelText: 'Vị trí',
+                      hintText: 'Ví dụ: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Vui long nhập vị trí';
@@ -302,7 +312,8 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         Expanded(
                           child: TextFormFieldCustom(
                             controller: maximumDistanceController,
-                            labelText: 'Giới hạn quãng đường',
+                            labelText: 'Giới hạn quãng đường km',
+                            hintText: 'Ví dụ: 100km',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
@@ -317,7 +328,8 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         Expanded(
                           child: TextFormFieldCustom(
                             controller: distanceSurchargeController,
-                            labelText: 'Phụ phí vượt quãng đường',
+                            labelText: 'Phụ phí vượt quãng đường /km',
+                            hintText: 'Ví dụ: 10000',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
@@ -336,7 +348,8 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         Expanded(
                           child: TextFormFieldCustom(
                             controller: timeSurchargeController,
-                            labelText: 'Phụ phí vượt quá giờ',
+                            labelText: 'Phụ phí vượt quá giờ ',
+                            hintText: 'Ví dụ: 10000/giờ',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
