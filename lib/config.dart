@@ -8,6 +8,7 @@ import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/di.dart';
 import 'package:car_rental_for_car_owner/firebase_options.dart';
 import 'package:car_rental_for_car_owner/repositories/calendar_repository.dart';
+import 'package:car_rental_for_car_owner/repositories/car_registration_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/car_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/driver_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/fcm_token_repository.dart';
@@ -68,7 +69,8 @@ Future<void> configDI() async {
     ..registerSingleton(DriverRepository(dio: dio))
     ..registerSingleton(CalendarRepository(dio: dio))
     ..registerSingleton(FCMTokenRepository(dio: dio))
-    ..registerSingleton(tracking);
+    ..registerSingleton(tracking)
+    ..registerSingleton(CarRegistrationRepository(dio: dio));
 
   await tracking.connect();
   tracking.startListening();
