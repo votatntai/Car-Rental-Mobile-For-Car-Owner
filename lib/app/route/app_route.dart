@@ -13,6 +13,7 @@ import 'package:car_rental_for_car_owner/pages/car_owner_order_history/views/car
 import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner_profile_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_wallet/views/car_owner_wallet_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_registration/views/car_registration_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_tracking/views/car_tracking_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_detail/views/driver_order_detail_page.dart';
@@ -253,6 +254,14 @@ class AppRoute {
           return CarCalendarPage(
             carId: carId,
           );
+        },
+      ),
+      GoRoute(
+        path: '/car-registration',
+        name: RouteName.carRegistration,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          return CarRegistrationPage();
         },
       ),
     ],

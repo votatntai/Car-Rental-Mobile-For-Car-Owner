@@ -21,3 +21,10 @@ extension CompareToX on TimeOfDay {
     return hour == other.hour && minute == other.minute;
   }
 }
+
+extension StringValidatorX on String {
+  bool get isNumber {
+    final RegExp regex = RegExp(r'^\d+(\.\d+)?$');
+    return regex.hasMatch(this);
+  }
+}

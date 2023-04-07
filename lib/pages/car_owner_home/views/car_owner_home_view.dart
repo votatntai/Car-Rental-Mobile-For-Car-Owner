@@ -101,12 +101,16 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
             ),
           ),
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(
+                RouteName.carRegistration,
+              );
+            },
             backgroundColor: CustomColors.jetBlack,
             elevation: 0,
             label: const Center(
               child: Text(
-                'Thêm xe',
+                'Đăng ký xe',
               ),
             ),
             icon: const Icon(Icons.add),
