@@ -10,7 +10,7 @@ part 'calendar.g.dart';
 class Calendar with _$Calendar {
   factory Calendar({
     required String id,
-    @JsonKey(fromJson: weekdayFromJson) required Weekday weekDay,
+    @JsonKey(fromJson: weekdayFromJson) required Weekday weekday,
     @TimeOfDayConverter() required TimeOfDay startTime,
     @TimeOfDayConverter() required TimeOfDay endTime,
   }) = _Calendar;

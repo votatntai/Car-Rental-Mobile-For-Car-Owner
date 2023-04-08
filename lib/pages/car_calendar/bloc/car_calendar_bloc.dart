@@ -42,16 +42,17 @@ class CarCalendarBloc extends Bloc<CarCalendarEvent, CarCalendarState> {
       return;
     }
 
-    final carCalendars = (carCalendarResult as ApiSuccess).value;
+    final carCalendars =
+        (carCalendarResult as ApiSuccess<List<Calendar>>).value;
     final calendars = <Calendar>[];
 
     for (final weekday in Weekday.values) {
       // find calendar
       final calendar = carCalendars.firstWhere(
-        (element) => element.weekDay == weekday,
+        (element) => element.weekday == weekday,
         orElse: () => Calendar(
           id: weekday.name,
-          weekDay: weekday,
+          weekday: weekday,
           startTime: const TimeOfDay(
             hour: 0,
             minute: 0,
@@ -67,7 +68,7 @@ class CarCalendarBloc extends Bloc<CarCalendarEvent, CarCalendarState> {
     }
 
     calendars.sort(
-      (a, b) => a.weekDay.index.compareTo(b.weekDay.index),
+      (a, b) => a.weekday.index.compareTo(b.weekday.index),
     );
 
     emit(
@@ -95,7 +96,7 @@ class CarCalendarBloc extends Bloc<CarCalendarEvent, CarCalendarState> {
     calendars.add(event.calendar);
 
     calendars.sort(
-      (a, b) => a.weekDay.index.compareTo(b.weekDay.index),
+      (a, b) => a.weekday.index.compareTo(b.weekday.index),
     );
 
     emit(

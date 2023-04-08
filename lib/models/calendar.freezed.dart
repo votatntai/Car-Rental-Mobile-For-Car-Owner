@@ -22,7 +22,7 @@ Calendar _$CalendarFromJson(Map<String, dynamic> json) {
 mixin _$Calendar {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(fromJson: weekdayFromJson)
-  Weekday get weekDay => throw _privateConstructorUsedError;
+  Weekday get weekday => throw _privateConstructorUsedError;
   @TimeOfDayConverter()
   TimeOfDay get startTime => throw _privateConstructorUsedError;
   @TimeOfDayConverter()
@@ -41,7 +41,7 @@ abstract class $CalendarCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(fromJson: weekdayFromJson) Weekday weekDay,
+      @JsonKey(fromJson: weekdayFromJson) Weekday weekday,
       @TimeOfDayConverter() TimeOfDay startTime,
       @TimeOfDayConverter() TimeOfDay endTime});
 }
@@ -60,7 +60,7 @@ class _$CalendarCopyWithImpl<$Res, $Val extends Calendar>
   @override
   $Res call({
     Object? id = null,
-    Object? weekDay = null,
+    Object? weekday = null,
     Object? startTime = null,
     Object? endTime = null,
   }) {
@@ -69,9 +69,9 @@ class _$CalendarCopyWithImpl<$Res, $Val extends Calendar>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      weekDay: null == weekDay
-          ? _value.weekDay
-          : weekDay // ignore: cast_nullable_to_non_nullable
+      weekday: null == weekday
+          ? _value.weekday
+          : weekday // ignore: cast_nullable_to_non_nullable
               as Weekday,
       startTime: null == startTime
           ? _value.startTime
@@ -94,7 +94,7 @@ abstract class _$$_CalendarCopyWith<$Res> implements $CalendarCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(fromJson: weekdayFromJson) Weekday weekDay,
+      @JsonKey(fromJson: weekdayFromJson) Weekday weekday,
       @TimeOfDayConverter() TimeOfDay startTime,
       @TimeOfDayConverter() TimeOfDay endTime});
 }
@@ -111,7 +111,7 @@ class __$$_CalendarCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? weekDay = null,
+    Object? weekday = null,
     Object? startTime = null,
     Object? endTime = null,
   }) {
@@ -120,9 +120,9 @@ class __$$_CalendarCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      weekDay: null == weekDay
-          ? _value.weekDay
-          : weekDay // ignore: cast_nullable_to_non_nullable
+      weekday: null == weekday
+          ? _value.weekday
+          : weekday // ignore: cast_nullable_to_non_nullable
               as Weekday,
       startTime: null == startTime
           ? _value.startTime
@@ -141,7 +141,7 @@ class __$$_CalendarCopyWithImpl<$Res>
 class _$_Calendar implements _Calendar {
   _$_Calendar(
       {required this.id,
-      @JsonKey(fromJson: weekdayFromJson) required this.weekDay,
+      @JsonKey(fromJson: weekdayFromJson) required this.weekday,
       @TimeOfDayConverter() required this.startTime,
       @TimeOfDayConverter() required this.endTime});
 
@@ -152,7 +152,7 @@ class _$_Calendar implements _Calendar {
   final String id;
   @override
   @JsonKey(fromJson: weekdayFromJson)
-  final Weekday weekDay;
+  final Weekday weekday;
   @override
   @TimeOfDayConverter()
   final TimeOfDay startTime;
@@ -162,7 +162,7 @@ class _$_Calendar implements _Calendar {
 
   @override
   String toString() {
-    return 'Calendar(id: $id, weekDay: $weekDay, startTime: $startTime, endTime: $endTime)';
+    return 'Calendar(id: $id, weekday: $weekday, startTime: $startTime, endTime: $endTime)';
   }
 
   @override
@@ -171,7 +171,7 @@ class _$_Calendar implements _Calendar {
         (other.runtimeType == runtimeType &&
             other is _$_Calendar &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.weekDay, weekDay) || other.weekDay == weekDay) &&
+            (identical(other.weekday, weekday) || other.weekday == weekday) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime));
@@ -179,7 +179,7 @@ class _$_Calendar implements _Calendar {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, weekDay, startTime, endTime);
+  int get hashCode => Object.hash(runtimeType, id, weekday, startTime, endTime);
 
   @JsonKey(ignore: true)
   @override
@@ -198,7 +198,7 @@ class _$_Calendar implements _Calendar {
 abstract class _Calendar implements Calendar {
   factory _Calendar(
       {required final String id,
-      @JsonKey(fromJson: weekdayFromJson) required final Weekday weekDay,
+      @JsonKey(fromJson: weekdayFromJson) required final Weekday weekday,
       @TimeOfDayConverter() required final TimeOfDay startTime,
       @TimeOfDayConverter() required final TimeOfDay endTime}) = _$_Calendar;
 
@@ -208,7 +208,7 @@ abstract class _Calendar implements Calendar {
   String get id;
   @override
   @JsonKey(fromJson: weekdayFromJson)
-  Weekday get weekDay;
+  Weekday get weekday;
   @override
   @TimeOfDayConverter()
   TimeOfDay get startTime;

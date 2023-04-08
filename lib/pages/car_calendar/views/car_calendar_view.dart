@@ -64,7 +64,7 @@ class _CarCalendarViewState extends State<CarCalendarView> {
                         cells: [
                           DataCell(
                             Text(
-                              e.weekDay.displayName,
+                              e.weekday.displayName,
                               style: secondaryTextStyle(),
                             ),
                           ),

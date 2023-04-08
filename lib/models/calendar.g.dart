@@ -8,7 +8,7 @@ part of 'calendar.dart';
 
 _$_Calendar _$$_CalendarFromJson(Map<String, dynamic> json) => _$_Calendar(
       id: json['id'] as String,
-      weekDay: weekdayFromJson(json['weekDay'] as String),
+      weekday: weekdayFromJson(json['weekday'] as String),
       startTime:
           const TimeOfDayConverter().fromJson(json['startTime'] as String),
       endTime: const TimeOfDayConverter().fromJson(json['endTime'] as String),
@@ -17,7 +17,7 @@ _$_Calendar _$$_CalendarFromJson(Map<String, dynamic> json) => _$_Calendar(
 Map<String, dynamic> _$$_CalendarToJson(_$_Calendar instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'weekDay': _$WeekdayEnumMap[instance.weekDay]!,
+      'weekday': _$WeekdayEnumMap[instance.weekday]!,
       'startTime': const TimeOfDayConverter().toJson(instance.startTime),
       'endTime': const TimeOfDayConverter().toJson(instance.endTime),
     };
