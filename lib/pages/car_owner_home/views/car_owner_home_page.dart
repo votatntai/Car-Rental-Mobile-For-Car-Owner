@@ -1,6 +1,8 @@
 import 'package:car_rental_for_car_owner/di.dart';
+import 'package:car_rental_for_car_owner/models/car_registration.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/bloc/car_owner_home_bloc.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/views/car_owner_home_view.dart';
+import 'package:car_rental_for_car_owner/repositories/car_registration_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/car_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/order_repository.dart';
 import 'package:car_rental_for_car_owner/repositories/user_repository.dart';
@@ -17,6 +19,7 @@ class CarOwnerHomePage extends StatelessWidget {
         carRepository: getIt.get<CarRepository>(),
         orderRepository: getIt.get<OrderRepository>(),
         userRepository: getIt.get<UserRepository>(),
+        carRegistrationRepository: getIt.get<CarRegistrationRepository>(),
       )..add(
           const CarOwnerHomeEvent.started(),
         ),

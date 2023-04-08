@@ -5,6 +5,7 @@ import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/bloc/car_owner_home_bloc.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/widgets/car_item.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_home/widgets/car_registration_item.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,7 +72,52 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                           );
                         },
                       ),
-                    const SizedBox(height: 16),
+                    if (successState.carRegistrations.isNotEmpty)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: s16),
+                          Row(
+                            children: [
+                              const Text(
+                                'Đơn đăng ký xe',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const Spacer(),
+                              TextButton(
+                                onPressed: () {
+                                  context.goNamed(
+                                    RouteName.carRegistrationList,
+                                  );
+                                },
+                                child: const Text(
+                                  'Xem tất cả',
+                                  style: TextStyle(
+                                    color: CustomColors.jetBlack,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 200,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) =>
+                                  CarRegistrationItem(
+                                carRegistration:
+                                    successState.carRegistrations[index],
+                                onTap: (carRegistration) {},
+                              ),
+                              itemCount: successState.carRegistrations.length,
+                            ),
+                          ),
+                        ],
+                      ),
+                    const SizedBox(height: s16),
                     const Text(
                       'Xe của tôi',
                       style: TextStyle(

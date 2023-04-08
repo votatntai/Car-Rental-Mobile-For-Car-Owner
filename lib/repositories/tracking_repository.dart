@@ -13,10 +13,12 @@ class TrackingRepository {
   final StreamController<TrackingModel> carLocationController =
       StreamController.broadcast();
 
-  Future<void> connect() async {
+  void connect() {
     connection = HubConnectionBuilder().withUrl(socketUrl).build();
-
-    await connection.start();
+    connection.start()?.then((value) {
+      log('connect success');
+      startListening();
+    });
   }
 
   void startListening() {

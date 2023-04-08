@@ -126,6 +126,10 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         if (value == null || value.isEmpty) {
                           return 'Vui lòng nhập biển số xe';
                         }
+
+                        if (!value.isCarLicensePlate) {
+                          return 'Biển số xe không hợp lệ';
+                        }
                         return null;
                       },
                     ),

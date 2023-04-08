@@ -72,8 +72,7 @@ Future<void> configDI() async {
     ..registerSingleton(tracking)
     ..registerSingleton(CarRegistrationRepository(dio: dio));
 
-  await tracking.connect();
-  tracking.startListening();
+  tracking.connect();
 }
 
 void configureTimeago() {

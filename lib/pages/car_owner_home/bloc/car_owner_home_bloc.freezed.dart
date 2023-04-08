@@ -169,7 +169,8 @@ mixin _$CarOwnerHomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Car> myCars, List<Order> pendingOrders)
+    required TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)
         success,
     required TResult Function(String message) failure,
   }) =>
@@ -178,7 +179,9 @@ mixin _$CarOwnerHomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult? Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -186,7 +189,9 @@ mixin _$CarOwnerHomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -275,7 +280,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Car> myCars, List<Order> pendingOrders)
+    required TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)
         success,
     required TResult Function(String message) failure,
   }) {
@@ -287,7 +293,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult? Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -298,7 +306,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -389,7 +399,8 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Car> myCars, List<Order> pendingOrders)
+    required TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)
         success,
     required TResult Function(String message) failure,
   }) {
@@ -401,7 +412,9 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult? Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -412,7 +425,9 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -470,7 +485,10 @@ abstract class _$$_SuccessCopyWith<$Res> {
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Car> myCars, List<Order> pendingOrders});
+  $Res call(
+      {List<Car> myCars,
+      List<Order> pendingOrders,
+      List<CarRegistration> carRegistrations});
 }
 
 /// @nodoc
@@ -485,6 +503,7 @@ class __$$_SuccessCopyWithImpl<$Res>
   $Res call({
     Object? myCars = null,
     Object? pendingOrders = null,
+    Object? carRegistrations = null,
   }) {
     return _then(_$_Success(
       myCars: null == myCars
@@ -495,6 +514,10 @@ class __$$_SuccessCopyWithImpl<$Res>
           ? _value._pendingOrders
           : pendingOrders // ignore: cast_nullable_to_non_nullable
               as List<Order>,
+      carRegistrations: null == carRegistrations
+          ? _value._carRegistrations
+          : carRegistrations // ignore: cast_nullable_to_non_nullable
+              as List<CarRegistration>,
     ));
   }
 }
@@ -504,9 +527,11 @@ class __$$_SuccessCopyWithImpl<$Res>
 class _$_Success implements _Success {
   const _$_Success(
       {required final List<Car> myCars,
-      required final List<Order> pendingOrders})
+      required final List<Order> pendingOrders,
+      required final List<CarRegistration> carRegistrations})
       : _myCars = myCars,
-        _pendingOrders = pendingOrders;
+        _pendingOrders = pendingOrders,
+        _carRegistrations = carRegistrations;
 
   final List<Car> _myCars;
   @override
@@ -524,9 +549,18 @@ class _$_Success implements _Success {
     return EqualUnmodifiableListView(_pendingOrders);
   }
 
+  final List<CarRegistration> _carRegistrations;
+  @override
+  List<CarRegistration> get carRegistrations {
+    if (_carRegistrations is EqualUnmodifiableListView)
+      return _carRegistrations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_carRegistrations);
+  }
+
   @override
   String toString() {
-    return 'CarOwnerHomeState.success(myCars: $myCars, pendingOrders: $pendingOrders)';
+    return 'CarOwnerHomeState.success(myCars: $myCars, pendingOrders: $pendingOrders, carRegistrations: $carRegistrations)';
   }
 
   @override
@@ -536,14 +570,17 @@ class _$_Success implements _Success {
             other is _$_Success &&
             const DeepCollectionEquality().equals(other._myCars, _myCars) &&
             const DeepCollectionEquality()
-                .equals(other._pendingOrders, _pendingOrders));
+                .equals(other._pendingOrders, _pendingOrders) &&
+            const DeepCollectionEquality()
+                .equals(other._carRegistrations, _carRegistrations));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_myCars),
-      const DeepCollectionEquality().hash(_pendingOrders));
+      const DeepCollectionEquality().hash(_pendingOrders),
+      const DeepCollectionEquality().hash(_carRegistrations));
 
   @JsonKey(ignore: true)
   @override
@@ -556,11 +593,12 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Car> myCars, List<Order> pendingOrders)
+    required TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)
         success,
     required TResult Function(String message) failure,
   }) {
-    return success(myCars, pendingOrders);
+    return success(myCars, pendingOrders, carRegistrations);
   }
 
   @override
@@ -568,10 +606,12 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult? Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(myCars, pendingOrders);
+    return success?.call(myCars, pendingOrders, carRegistrations);
   }
 
   @override
@@ -579,12 +619,14 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(myCars, pendingOrders);
+      return success(myCars, pendingOrders, carRegistrations);
     }
     return orElse();
   }
@@ -630,10 +672,12 @@ class _$_Success implements _Success {
 abstract class _Success implements CarOwnerHomeState {
   const factory _Success(
       {required final List<Car> myCars,
-      required final List<Order> pendingOrders}) = _$_Success;
+      required final List<Order> pendingOrders,
+      required final List<CarRegistration> carRegistrations}) = _$_Success;
 
   List<Car> get myCars;
   List<Order> get pendingOrders;
+  List<CarRegistration> get carRegistrations;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -704,7 +748,8 @@ class _$_Failure implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Car> myCars, List<Order> pendingOrders)
+    required TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)
         success,
     required TResult Function(String message) failure,
   }) {
@@ -716,7 +761,9 @@ class _$_Failure implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult? Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -727,7 +774,9 @@ class _$_Failure implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Car> myCars, List<Order> pendingOrders)? success,
+    TResult Function(List<Car> myCars, List<Order> pendingOrders,
+            List<CarRegistration> carRegistrations)?
+        success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
