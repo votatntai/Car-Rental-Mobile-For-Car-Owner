@@ -103,7 +103,7 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                             ],
                           ),
                           SizedBox(
-                            height: 200,
+                            height: 230,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) =>

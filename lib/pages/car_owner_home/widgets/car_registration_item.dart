@@ -22,10 +22,10 @@ class CarRegistrationItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(carRegistration),
       child: SizedBox(
-        height: 200,
         width: 200,
         child: Card(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
@@ -101,6 +101,23 @@ class CarRegistrationItem extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: s08),
+                child: Text(
+                  carRegistration.status == true
+                      ? 'Đã được duyệt'
+                      : 'Chưa được duyệt',
+                  maxLines: 1,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: CustomColors.jetBlack,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: s08,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: s08),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -113,7 +130,7 @@ class CarRegistrationItem extends StatelessWidget {
                       child: Text(
                         carRegistration.location,
                         style: const TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: CustomColors.jetBlack,
                         ),
