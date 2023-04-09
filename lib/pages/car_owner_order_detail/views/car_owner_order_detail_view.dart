@@ -84,8 +84,8 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
 
         final deliveryFee = successState.order.deliveryFee;
 
-        final totalCost = rentCost + deliveryFee - promotionCost;
-        // final totalCost = successState.order.amount;
+        // final totalCost = rentCost + deliveryFee - promotionCost;
+        final totalCost = successState.order.amount;
         final deposit = successState.order.deposit;
         final remaining = totalCost - deposit;
 
@@ -166,8 +166,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                             },
                             child: const Text('Xác nhận cho thuê'),
                           ),
-                        if (successState.order.status ==
-                                OrderStatus.carOwnerApproved &&
+                        if (successState.order.status == OrderStatus.paid &&
                             successState.order.orderDetails.isNotEmpty &&
                             successState.order.orderDetails.first.driver ==
                                 null)
@@ -218,46 +217,8 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                         CarOwnerOrderDetailEvent
                                             .orderStatusChanged(
                                           orderId: successState.order.id,
-                                          orderStatus: OrderStatus.paid,
-                                        ),
-                                      );
-                                },
-                                dialogType: DialogType.CONFIRMATION,
-                                customCenterWidget: const Center(
-                                  child: Icon(
-                                    Icons.check_circle,
-                                    color: CustomColors.flamingo,
-                                    size: 100,
-                                  ),
-                                ),
-                                primaryColor: CustomColors.flamingo,
-                                title: 'Bạn muốn xác nhận?',
-                                negativeText: 'Hủy',
-                                positiveText: 'Xác nhận',
-                              );
-                            },
-                            child: const Text('Khách hàng thanh toán'),
-                          ),
-                        if (successState.order.status == OrderStatus.paid)
-                          ElevatedButton(
-                            onPressed: () {
-                              showConfirmDialogCustom(
-                                context,
-                                onAccept: (c) async {
-                                  // context.read<CarOwnerOrderDetailBloc>().add(
-                                  //       CarOwnerOrderDetailEvent
-                                  //           .orderStatusChanged(
-                                  //         orderId: successState.order.id,
-                                  //         orderStatus:
-                                  //             OrderStatus.returnedTheCar,
-                                  //       ),
-                                  //     );
-
-                                  context.read<CarOwnerOrderDetailBloc>().add(
-                                        CarOwnerOrderDetailEvent
-                                            .orderStatusChanged(
-                                          orderId: successState.order.id,
-                                          orderStatus: OrderStatus.finished,
+                                          orderStatus:
+                                              OrderStatus.returnedTheCar,
                                         ),
                                       );
                                 },
@@ -545,27 +506,27 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                                   ),
                                 ],
                               ),
-                              // if (successState.order.isPaid == true)
-                              //   Column(
-                              //     crossAxisAlignment: CrossAxisAlignment.start,
-                              //     children: [
-                              //       const SizedBox(
-                              //         height: s02,
-                              //       ),
-                              //       Row(
-                              //         children: const [
-                              //           Text(
-                              //             'Đã thanh toán',
-                              //             style: TextStyle(
-                              //               fontSize: 11,
-                              //               fontWeight: FontWeight.bold,
-                              //               color: CustomColors.dimGray,
-                              //             ),
-                              //           ),
-                              //         ],
-                              //       ),
-                              //     ],
-                              //   ),
+                              if (successState.order.status == OrderStatus.paid)
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      height: s02,
+                                    ),
+                                    Row(
+                                      children: const [
+                                        Text(
+                                          'Đã thanh toán',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.bold,
+                                            color: CustomColors.dimGray,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                             ],
                           ),
                         ),
@@ -589,11 +550,11 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                       },
                       child: Row(
                         children: [
-                          car.images.isNotEmpty
+                          car.images?.isNotEmpty == true
                               ? CachedNetworkImage(
                                   height: 60,
                                   width: 60,
-                                  imageUrl: car.images[0].url,
+                                  imageUrl: car.images![0].url,
                                   fit: BoxFit.fill,
                                   errorWidget: (context, url, error) {
                                     return const Icon(Icons.error);
@@ -891,7 +852,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
   }
 
   Widget carImage(BuildContext context, Car car) {
-    if (car.images.isEmpty) {
+    if (car.images == null && car.images?.isEmpty == true) {
       return Image.asset(
         Images.carExample,
         width: double.infinity,
@@ -906,13 +867,13 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
           height: MediaQuery.of(context).size.width * 0.65,
           child: PageView.builder(
             controller: pageController,
-            itemCount: car.images.length,
+            itemCount: car.images!.length,
             itemBuilder: (context, index) => Container(
               padding: const EdgeInsets.all(s08),
               alignment: Alignment.center,
               child: CachedNetworkImage(
                   width: double.infinity,
-                  imageUrl: car.images[index].url,
+                  imageUrl: car.images![index].url,
                   fit: BoxFit.fill,
                   errorWidget: (context, url, error) {
                     return const Icon(Icons.error);
@@ -927,7 +888,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
             alignment: Alignment.bottomCenter,
             child: SmoothPageIndicator(
               controller: pageController,
-              count: car.images.length,
+              count: car.images!.length,
               effect: CustomizableEffect(
                 spacing: 3,
                 activeDotDecoration: DotDecoration(

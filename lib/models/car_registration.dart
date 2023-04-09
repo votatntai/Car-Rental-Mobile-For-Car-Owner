@@ -27,7 +27,7 @@ class CarRegistration with _$CarRegistration {
     required bool status,
     required CarOwner carOwner,
     required AdditionalCharge additionalCharge,
-    required List<ImageModel> images,
+    List<ImageModel>? images,
     // List<Null> calendars,
   }) = _CarRegistration;
 

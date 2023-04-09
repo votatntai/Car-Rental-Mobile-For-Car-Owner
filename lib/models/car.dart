@@ -28,7 +28,7 @@ class Car with _$Car {
     required double price,
     required double rented,
     String? description,
-    required List<ImageModel> images,
+    List<ImageModel>? images,
     required List<FeedbackModel> feedBacks,
     required List<CarFeature> carFeatures,
     required List<CarType> carTypes,

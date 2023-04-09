@@ -27,8 +27,8 @@ _$_CarRegistration _$$_CarRegistrationFromJson(Map<String, dynamic> json) =>
       carOwner: CarOwner.fromJson(json['carOwner'] as Map<String, dynamic>),
       additionalCharge: AdditionalCharge.fromJson(
           json['additionalCharge'] as Map<String, dynamic>),
-      images: (json['images'] as List<dynamic>)
-          .map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

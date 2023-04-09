@@ -38,7 +38,7 @@ mixin _$CarRegistration {
   bool get status => throw _privateConstructorUsedError;
   CarOwner get carOwner => throw _privateConstructorUsedError;
   AdditionalCharge get additionalCharge => throw _privateConstructorUsedError;
-  List<ImageModel> get images => throw _privateConstructorUsedError;
+  List<ImageModel>? get images => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -71,7 +71,7 @@ abstract class $CarRegistrationCopyWith<$Res> {
       bool status,
       CarOwner carOwner,
       AdditionalCharge additionalCharge,
-      List<ImageModel> images});
+      List<ImageModel>? images});
 
   $CarOwnerCopyWith<$Res> get carOwner;
   $AdditionalChargeCopyWith<$Res> get additionalCharge;
@@ -108,7 +108,7 @@ class _$CarRegistrationCopyWithImpl<$Res, $Val extends CarRegistration>
     Object? status = null,
     Object? carOwner = null,
     Object? additionalCharge = null,
-    Object? images = null,
+    Object? images = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -183,10 +183,10 @@ class _$CarRegistrationCopyWithImpl<$Res, $Val extends CarRegistration>
           ? _value.additionalCharge
           : additionalCharge // ignore: cast_nullable_to_non_nullable
               as AdditionalCharge,
-      images: null == images
+      images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<ImageModel>,
+              as List<ImageModel>?,
     ) as $Val);
   }
 
@@ -234,7 +234,7 @@ abstract class _$$_CarRegistrationCopyWith<$Res>
       bool status,
       CarOwner carOwner,
       AdditionalCharge additionalCharge,
-      List<ImageModel> images});
+      List<ImageModel>? images});
 
   @override
   $CarOwnerCopyWith<$Res> get carOwner;
@@ -271,7 +271,7 @@ class __$$_CarRegistrationCopyWithImpl<$Res>
     Object? status = null,
     Object? carOwner = null,
     Object? additionalCharge = null,
-    Object? images = null,
+    Object? images = freezed,
   }) {
     return _then(_$_CarRegistration(
       id: null == id
@@ -346,10 +346,10 @@ class __$$_CarRegistrationCopyWithImpl<$Res>
           ? _value.additionalCharge
           : additionalCharge // ignore: cast_nullable_to_non_nullable
               as AdditionalCharge,
-      images: null == images
+      images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<ImageModel>,
+              as List<ImageModel>?,
     ));
   }
 }
@@ -376,7 +376,7 @@ class _$_CarRegistration implements _CarRegistration {
       required this.status,
       required this.carOwner,
       required this.additionalCharge,
-      required final List<ImageModel> images})
+      final List<ImageModel>? images})
       : _images = images;
 
   factory _$_CarRegistration.fromJson(Map<String, dynamic> json) =>
@@ -418,12 +418,14 @@ class _$_CarRegistration implements _CarRegistration {
   final CarOwner carOwner;
   @override
   final AdditionalCharge additionalCharge;
-  final List<ImageModel> _images;
+  final List<ImageModel>? _images;
   @override
-  List<ImageModel> get images {
+  List<ImageModel>? get images {
+    final value = _images;
+    if (value == null) return null;
     if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -527,7 +529,7 @@ abstract class _CarRegistration implements CarRegistration {
       required final bool status,
       required final CarOwner carOwner,
       required final AdditionalCharge additionalCharge,
-      required final List<ImageModel> images}) = _$_CarRegistration;
+      final List<ImageModel>? images}) = _$_CarRegistration;
 
   factory _CarRegistration.fromJson(Map<String, dynamic> json) =
       _$_CarRegistration.fromJson;
@@ -569,7 +571,7 @@ abstract class _CarRegistration implements CarRegistration {
   @override
   AdditionalCharge get additionalCharge;
   @override
-  List<ImageModel> get images;
+  List<ImageModel>? get images;
   @override
   @JsonKey(ignore: true)
   _$$_CarRegistrationCopyWith<_$_CarRegistration> get copyWith =>

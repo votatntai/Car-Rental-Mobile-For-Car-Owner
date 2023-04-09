@@ -13,8 +13,8 @@ _$_Car _$$_CarFromJson(Map<String, dynamic> json) => _$_Car(
       price: (json['price'] as num).toDouble(),
       rented: (json['rented'] as num).toDouble(),
       description: json['description'] as String?,
-      images: (json['images'] as List<dynamic>)
-          .map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       feedBacks: (json['feedBacks'] as List<dynamic>)
           .map((e) => FeedbackModel.fromJson(e as Map<String, dynamic>))

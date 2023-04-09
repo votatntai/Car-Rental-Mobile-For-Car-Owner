@@ -29,11 +29,11 @@ class CarRegistrationItemVertical extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  carRegistration.images.isNotEmpty
+                  carRegistration.images?.isNotEmpty == true
                       ? CachedNetworkImage(
                           height: 220,
                           width: double.infinity,
-                          imageUrl: carRegistration.images[0].url,
+                          imageUrl: carRegistration.images![0].url,
                           fit: BoxFit.fill,
                           errorWidget: (context, url, error) {
                             return const Icon(Icons.error);

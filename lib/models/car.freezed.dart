@@ -26,7 +26,7 @@ mixin _$Car {
   double get price => throw _privateConstructorUsedError;
   double get rented => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  List<ImageModel> get images => throw _privateConstructorUsedError;
+  List<ImageModel>? get images => throw _privateConstructorUsedError;
   List<FeedbackModel> get feedBacks => throw _privateConstructorUsedError;
   List<CarFeature> get carFeatures => throw _privateConstructorUsedError;
   List<CarType> get carTypes => throw _privateConstructorUsedError;
@@ -65,7 +65,7 @@ abstract class $CarCopyWith<$Res> {
       double price,
       double rented,
       String? description,
-      List<ImageModel> images,
+      List<ImageModel>? images,
       List<FeedbackModel> feedBacks,
       List<CarFeature> carFeatures,
       List<CarType> carTypes,
@@ -108,7 +108,7 @@ class _$CarCopyWithImpl<$Res, $Val extends Car> implements $CarCopyWith<$Res> {
     Object? price = null,
     Object? rented = null,
     Object? description = freezed,
-    Object? images = null,
+    Object? images = freezed,
     Object? feedBacks = null,
     Object? carFeatures = null,
     Object? carTypes = null,
@@ -150,10 +150,10 @@ class _$CarCopyWithImpl<$Res, $Val extends Car> implements $CarCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: null == images
+      images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<ImageModel>,
+              as List<ImageModel>?,
       feedBacks: null == feedBacks
           ? _value.feedBacks
           : feedBacks // ignore: cast_nullable_to_non_nullable
@@ -291,7 +291,7 @@ abstract class _$$_CarCopyWith<$Res> implements $CarCopyWith<$Res> {
       double price,
       double rented,
       String? description,
-      List<ImageModel> images,
+      List<ImageModel>? images,
       List<FeedbackModel> feedBacks,
       List<CarFeature> carFeatures,
       List<CarType> carTypes,
@@ -337,7 +337,7 @@ class __$$_CarCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$_Car>
     Object? price = null,
     Object? rented = null,
     Object? description = freezed,
-    Object? images = null,
+    Object? images = freezed,
     Object? feedBacks = null,
     Object? carFeatures = null,
     Object? carTypes = null,
@@ -379,10 +379,10 @@ class __$$_CarCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$_Car>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: null == images
+      images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<ImageModel>,
+              as List<ImageModel>?,
       feedBacks: null == feedBacks
           ? _value._feedBacks
           : feedBacks // ignore: cast_nullable_to_non_nullable
@@ -457,7 +457,7 @@ class _$_Car extends _Car {
       required this.price,
       required this.rented,
       this.description,
-      required final List<ImageModel> images,
+      final List<ImageModel>? images,
       required final List<FeedbackModel> feedBacks,
       required final List<CarFeature> carFeatures,
       required final List<CarType> carTypes,
@@ -493,12 +493,14 @@ class _$_Car extends _Car {
   final double rented;
   @override
   final String? description;
-  final List<ImageModel> _images;
+  final List<ImageModel>? _images;
   @override
-  List<ImageModel> get images {
+  List<ImageModel>? get images {
+    final value = _images;
+    if (value == null) return null;
     if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
+    return EqualUnmodifiableListView(value);
   }
 
   final List<FeedbackModel> _feedBacks;
@@ -650,7 +652,7 @@ abstract class _Car extends Car {
       required final double price,
       required final double rented,
       final String? description,
-      required final List<ImageModel> images,
+      final List<ImageModel>? images,
       required final List<FeedbackModel> feedBacks,
       required final List<CarFeature> carFeatures,
       required final List<CarType> carTypes,
@@ -683,7 +685,7 @@ abstract class _Car extends Car {
   @override
   String? get description;
   @override
-  List<ImageModel> get images;
+  List<ImageModel>? get images;
   @override
   List<FeedbackModel> get feedBacks;
   @override
