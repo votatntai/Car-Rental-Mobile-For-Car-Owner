@@ -118,14 +118,23 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                         ],
                       ),
                     const SizedBox(height: s16),
-                    const Text(
-                      'Xe của tôi',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                    if (successState.myCars.isNotEmpty)
+                      const Text(
+                        'Xe của tôi',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
                     const SizedBox(height: s08),
+                    if (successState.myCars.isEmpty)
+                      const Center(
+                        child: Text('Bạn chưa có xe nào',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
                     ...successState.myCars
                         .map(
                           (e) => CarItem(

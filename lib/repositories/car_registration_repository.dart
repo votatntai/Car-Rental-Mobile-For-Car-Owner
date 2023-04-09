@@ -20,9 +20,59 @@ class CarRegistrationRepository {
     CarRegistrationModel carRegistrationModel,
   ) async {
     try {
-      final result = await dio.post<JsonObject>(
+      List<MultipartFile> licenses = [];
+      List<MultipartFile> images = [];
+
+      for (final image in carRegistrationModel.images) {
+        final file = await MultipartFile.fromFile(image.path);
+        images.add(file);
+      }
+
+      for (final image in carRegistrationModel.licenses) {
+        final file = await MultipartFile.fromFile(image.path);
+        licenses.add(file);
+      }
+
+      final formData = FormData.fromMap({
+        'licenses': licenses,
+        'images': images,
+      });
+
+      final result = await dio.post<dynamic>(
         'car-registrations',
-        data: carRegistrationModel,
+        queryParameters: {
+          'model.name': carRegistrationModel.name,
+          'model.licensePlate': carRegistrationModel.licensePlate,
+          'model.transmissionType': carRegistrationModel.transmissionType,
+          'model.fuelType': carRegistrationModel.fuelType,
+          'model.model': carRegistrationModel.model,
+          'model.seater': carRegistrationModel.seater.toString(),
+          'model.price': carRegistrationModel.price.toString(),
+          'model.fuelConsumption': carRegistrationModel.fuelConsumption,
+          'model.chassis': carRegistrationModel.chassis,
+          'model.yearOfManufacture':
+              carRegistrationModel.yearOfManufacture.toString(),
+          'model.productionCompany': carRegistrationModel.productionCompany,
+          'model.location': carRegistrationModel.location,
+          'model.type': carRegistrationModel.type,
+          'model.description': carRegistrationModel.description,
+          'model.additionalCharge.maximumDistance':
+              carRegistrationModel.additionalCharge.maximumDistance.toString(),
+          'model.additionalCharge.distanceSurcharge': carRegistrationModel
+              .additionalCharge.distanceSurcharge
+              .toString(),
+          'model.additionalCharge.timeSurcharge':
+              carRegistrationModel.additionalCharge.timeSurcharge.toString(),
+          'model.additionalCharge.additionalDistance': carRegistrationModel
+              .additionalCharge.additionalDistance
+              .toString(),
+          'model.additionalCharge.additionalTime':
+              carRegistrationModel.additionalCharge.additionalTime.toString(),
+        },
+        data: formData,
+        options: Options(
+          contentType: Headers.multipartFormDataContentType,
+        ),
       );
 
       if (result.data != null &&

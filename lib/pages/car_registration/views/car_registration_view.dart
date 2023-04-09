@@ -29,8 +29,8 @@ class CarRegistrationView extends StatefulWidget {
 class _CarRegistrationViewState extends State<CarRegistrationView> {
   final _formKey = GlobalKey<FormState>();
 
-  List<XFile> images = [];
-  List<XFile> carRegistrationImages = [];
+  List<XFile> _carImages = [];
+  List<XFile> _carLicenseImages = [];
 
   final nameController = TextEditingController();
   final licensePlateController = TextEditingController();
@@ -150,12 +150,12 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (images.isNotEmpty)
+                        if (_carImages.isNotEmpty)
                           Expanded(
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
-                                children: images
+                                children: _carImages
                                     .map(
                                       (e) => Container(
                                         margin: const EdgeInsets.only(left: 8),
@@ -180,7 +180,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                             final result = await picker.pickMultiImage();
 
                             setState(() {
-                              images = result;
+                              _carImages = result;
                             });
                           },
                           child: const Text('Thêm ảnh'),
@@ -208,12 +208,12 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (carRegistrationImages.isNotEmpty)
+                        if (_carLicenseImages.isNotEmpty)
                           Expanded(
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
-                                children: images
+                                children: _carLicenseImages
                                     .map(
                                       (e) => Container(
                                         margin: const EdgeInsets.only(left: 8),
@@ -238,7 +238,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                             final result = await picker.pickMultiImage();
 
                             setState(() {
-                              carRegistrationImages = result;
+                              _carLicenseImages = result;
                             });
                           },
                           child: const Text('Thêm ảnh'),
@@ -531,6 +531,8 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                                         additionalDistance: 0,
                                         additionalTime: 0,
                                       ),
+                                      images: _carImages,
+                                      licenses: _carLicenseImages,
                                     ),
                                   );
                                   LoadingDialogService.dispose();

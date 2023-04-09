@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CarRegistrationModel _$CarRegistrationModelFromJson(Map<String, dynamic> json) {
-  return _CarRegistrationModel.fromJson(json);
-}
-
 /// @nodoc
 mixin _$CarRegistrationModel {
   String get name => throw _privateConstructorUsedError;
@@ -36,8 +32,9 @@ mixin _$CarRegistrationModel {
   String? get description => throw _privateConstructorUsedError;
   AdditionalChargeModel get additionalCharge =>
       throw _privateConstructorUsedError;
+  List<XFile> get images => throw _privateConstructorUsedError;
+  List<XFile> get licenses => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CarRegistrationModelCopyWith<CarRegistrationModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -64,7 +61,9 @@ abstract class $CarRegistrationModelCopyWith<$Res> {
       String location,
       String type,
       String? description,
-      AdditionalChargeModel additionalCharge});
+      AdditionalChargeModel additionalCharge,
+      List<XFile> images,
+      List<XFile> licenses});
 
   $AdditionalChargeModelCopyWith<$Res> get additionalCharge;
 }
@@ -98,6 +97,8 @@ class _$CarRegistrationModelCopyWithImpl<$Res,
     Object? type = null,
     Object? description = freezed,
     Object? additionalCharge = null,
+    Object? images = null,
+    Object? licenses = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -160,6 +161,14 @@ class _$CarRegistrationModelCopyWithImpl<$Res,
           ? _value.additionalCharge
           : additionalCharge // ignore: cast_nullable_to_non_nullable
               as AdditionalChargeModel,
+      images: null == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<XFile>,
+      licenses: null == licenses
+          ? _value.licenses
+          : licenses // ignore: cast_nullable_to_non_nullable
+              as List<XFile>,
     ) as $Val);
   }
 
@@ -196,7 +205,9 @@ abstract class _$$_CarRegistrationModelCopyWith<$Res>
       String location,
       String type,
       String? description,
-      AdditionalChargeModel additionalCharge});
+      AdditionalChargeModel additionalCharge,
+      List<XFile> images,
+      List<XFile> licenses});
 
   @override
   $AdditionalChargeModelCopyWith<$Res> get additionalCharge;
@@ -228,6 +239,8 @@ class __$$_CarRegistrationModelCopyWithImpl<$Res>
     Object? type = null,
     Object? description = freezed,
     Object? additionalCharge = null,
+    Object? images = null,
+    Object? licenses = null,
   }) {
     return _then(_$_CarRegistrationModel(
       name: null == name
@@ -290,12 +303,20 @@ class __$$_CarRegistrationModelCopyWithImpl<$Res>
           ? _value.additionalCharge
           : additionalCharge // ignore: cast_nullable_to_non_nullable
               as AdditionalChargeModel,
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<XFile>,
+      licenses: null == licenses
+          ? _value._licenses
+          : licenses // ignore: cast_nullable_to_non_nullable
+              as List<XFile>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_CarRegistrationModel implements _CarRegistrationModel {
   _$_CarRegistrationModel(
       {required this.name,
@@ -312,10 +333,11 @@ class _$_CarRegistrationModel implements _CarRegistrationModel {
       required this.location,
       required this.type,
       this.description,
-      required this.additionalCharge});
-
-  factory _$_CarRegistrationModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CarRegistrationModelFromJson(json);
+      required this.additionalCharge,
+      required final List<XFile> images,
+      required final List<XFile> licenses})
+      : _images = images,
+        _licenses = licenses;
 
   @override
   final String name;
@@ -347,10 +369,25 @@ class _$_CarRegistrationModel implements _CarRegistrationModel {
   final String? description;
   @override
   final AdditionalChargeModel additionalCharge;
+  final List<XFile> _images;
+  @override
+  List<XFile> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
+
+  final List<XFile> _licenses;
+  @override
+  List<XFile> get licenses {
+    if (_licenses is EqualUnmodifiableListView) return _licenses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_licenses);
+  }
 
   @override
   String toString() {
-    return 'CarRegistrationModel(name: $name, licensePlate: $licensePlate, transmissionType: $transmissionType, fuelType: $fuelType, model: $model, seater: $seater, price: $price, fuelConsumption: $fuelConsumption, chassis: $chassis, yearOfManufacture: $yearOfManufacture, productionCompany: $productionCompany, location: $location, type: $type, description: $description, additionalCharge: $additionalCharge)';
+    return 'CarRegistrationModel(name: $name, licensePlate: $licensePlate, transmissionType: $transmissionType, fuelType: $fuelType, model: $model, seater: $seater, price: $price, fuelConsumption: $fuelConsumption, chassis: $chassis, yearOfManufacture: $yearOfManufacture, productionCompany: $productionCompany, location: $location, type: $type, description: $description, additionalCharge: $additionalCharge, images: $images, licenses: $licenses)';
   }
 
   @override
@@ -381,10 +418,11 @@ class _$_CarRegistrationModel implements _CarRegistrationModel {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.additionalCharge, additionalCharge) ||
-                other.additionalCharge == additionalCharge));
+                other.additionalCharge == additionalCharge) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other._licenses, _licenses));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -402,7 +440,9 @@ class _$_CarRegistrationModel implements _CarRegistrationModel {
       location,
       type,
       description,
-      additionalCharge);
+      additionalCharge,
+      const DeepCollectionEquality().hash(_images),
+      const DeepCollectionEquality().hash(_licenses));
 
   @JsonKey(ignore: true)
   @override
@@ -410,36 +450,27 @@ class _$_CarRegistrationModel implements _CarRegistrationModel {
   _$$_CarRegistrationModelCopyWith<_$_CarRegistrationModel> get copyWith =>
       __$$_CarRegistrationModelCopyWithImpl<_$_CarRegistrationModel>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CarRegistrationModelToJson(
-      this,
-    );
-  }
 }
 
 abstract class _CarRegistrationModel implements CarRegistrationModel {
   factory _CarRegistrationModel(
-          {required final String name,
-          required final String licensePlate,
-          required final String transmissionType,
-          required final String fuelType,
-          required final String model,
-          required final int seater,
-          required final double price,
-          required final String fuelConsumption,
-          required final String chassis,
-          required final int yearOfManufacture,
-          required final String productionCompany,
-          required final String location,
-          required final String type,
-          final String? description,
-          required final AdditionalChargeModel additionalCharge}) =
-      _$_CarRegistrationModel;
-
-  factory _CarRegistrationModel.fromJson(Map<String, dynamic> json) =
-      _$_CarRegistrationModel.fromJson;
+      {required final String name,
+      required final String licensePlate,
+      required final String transmissionType,
+      required final String fuelType,
+      required final String model,
+      required final int seater,
+      required final double price,
+      required final String fuelConsumption,
+      required final String chassis,
+      required final int yearOfManufacture,
+      required final String productionCompany,
+      required final String location,
+      required final String type,
+      final String? description,
+      required final AdditionalChargeModel additionalCharge,
+      required final List<XFile> images,
+      required final List<XFile> licenses}) = _$_CarRegistrationModel;
 
   @override
   String get name;
@@ -471,6 +502,10 @@ abstract class _CarRegistrationModel implements CarRegistrationModel {
   String? get description;
   @override
   AdditionalChargeModel get additionalCharge;
+  @override
+  List<XFile> get images;
+  @override
+  List<XFile> get licenses;
   @override
   @JsonKey(ignore: true)
   _$$_CarRegistrationModelCopyWith<_$_CarRegistrationModel> get copyWith =>

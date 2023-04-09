@@ -1,8 +1,9 @@
 import 'package:car_rental_for_car_owner/pages/car_registration/models/additional_charge_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'car_registration_model.freezed.dart';
-part 'car_registration_model.g.dart';
+// part 'car_registration_model.g.dart';
 
 @freezed
 class CarRegistrationModel with _$CarRegistrationModel {
@@ -22,8 +23,10 @@ class CarRegistrationModel with _$CarRegistrationModel {
     required String type,
     String? description,
     required AdditionalChargeModel additionalCharge,
+    required List<XFile> images,
+    required List<XFile> licenses,
   }) = _CarRegistrationModel;
 
-  factory CarRegistrationModel.fromJson(Map<String, dynamic> json) =>
-      _$CarRegistrationModelFromJson(json);
+  // factory CarRegistrationModel.fromJson(Map<String, dynamic> json) =>
+  //     _$CarRegistrationModelFromJson(json);
 }
