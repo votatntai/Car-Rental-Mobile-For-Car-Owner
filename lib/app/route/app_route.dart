@@ -12,6 +12,7 @@ import 'package:car_rental_for_car_owner/pages/car_owner_order_detail/views/car_
 import 'package:car_rental_for_car_owner/pages/car_owner_order_history/views/car_owner_order_history_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner_profile_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_setting/views/car_owner_setting_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_wallet/views/car_owner_wallet_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_registration/views/car_registration_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_registration_list/views/car_registration_list_page.dart';
@@ -155,6 +156,15 @@ class AppRoute {
               key: _shellNavigationKey,
               child: CarOwnerProfilePage(),
             ),
+            routes: [
+              GoRoute(
+                path: 'car-owner-setting',
+                name: RouteName.carOwnerSetting,
+                builder: (context, state) {
+                  return CarOwnerSettingPage();
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: '/car-owner-wallet',

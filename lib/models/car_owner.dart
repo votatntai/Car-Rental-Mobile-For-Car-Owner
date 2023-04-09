@@ -13,6 +13,8 @@ class CarOwner with _$CarOwner {
     required String gender,
     String? avatarUrl,
     String? bankAccountNumber,
+    required bool status,
+    required bool isAutoAcceptOrder,
   }) = _CarOwner;
 
   factory CarOwner.fromJson(Map<String, dynamic> json) =>

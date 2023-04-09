@@ -71,7 +71,7 @@ class CarRegistrationRepository {
         },
         data: formData,
         options: Options(
-          contentType: Headers.multipartFormDataContentType,
+          contentType: 'multipart/form-data',
         ),
       );
 

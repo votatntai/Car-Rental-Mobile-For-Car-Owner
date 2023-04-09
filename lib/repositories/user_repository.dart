@@ -1,4 +1,5 @@
 import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
+import 'package:car_rental_for_car_owner/commons/type.dart';
 import 'package:car_rental_for_car_owner/models/car_owner.dart';
 import 'package:car_rental_for_car_owner/models/driver.dart';
 import 'package:dio/dio.dart';
@@ -39,5 +40,28 @@ class UserRepository {
       return null;
     }
     return null;
+  }
+
+  Future<CarOwner?> updateCarOwner({
+    required String id,
+    bool? isAutoAcceptOrder,
+  }) async {
+    try {
+      final result = await dio.put<JsonObject>(
+        'car-owners/$id',
+        data: {
+          'isAutoAcceptOrder': isAutoAcceptOrder.toString(),
+        },
+      );
+
+      if (result.statusCode == StatusCodes.status201Created) {
+        final data = CarOwner.fromJson(result.data!);
+        return data;
+      }
+
+      return null;
+    } on DioError catch (_) {
+      return null;
+    }
   }
 }

@@ -96,6 +96,22 @@ class _CarOwnerProfileViewState extends State<CarOwnerProfileView> {
                   ),
                 ),
                 SettingItemWidget(
+                  leading: Icon(
+                    Icons.settings_outlined,
+                    color: context.iconColor,
+                  ),
+                  title: 'Cài đặt',
+                  titleTextStyle: boldTextStyle(),
+                  onTap: () {
+                    context.goNamed(RouteName.carOwnerSetting);
+                  },
+                  trailing: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 18,
+                    color: context.iconColor,
+                  ),
+                ),
+                SettingItemWidget(
                   leading: Icon(Icons.login, color: context.iconColor),
                   title: 'Đăng xuất',
                   titleTextStyle: boldTextStyle(),

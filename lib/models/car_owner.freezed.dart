@@ -27,6 +27,8 @@ mixin _$CarOwner {
   String get gender => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
   String? get bankAccountNumber => throw _privateConstructorUsedError;
+  bool get status => throw _privateConstructorUsedError;
+  bool get isAutoAcceptOrder => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +48,9 @@ abstract class $CarOwnerCopyWith<$Res> {
       String phone,
       String gender,
       String? avatarUrl,
-      String? bankAccountNumber});
+      String? bankAccountNumber,
+      bool status,
+      bool isAutoAcceptOrder});
 }
 
 /// @nodoc
@@ -69,6 +73,8 @@ class _$CarOwnerCopyWithImpl<$Res, $Val extends CarOwner>
     Object? gender = null,
     Object? avatarUrl = freezed,
     Object? bankAccountNumber = freezed,
+    Object? status = null,
+    Object? isAutoAcceptOrder = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -99,6 +105,14 @@ class _$CarOwnerCopyWithImpl<$Res, $Val extends CarOwner>
           ? _value.bankAccountNumber
           : bankAccountNumber // ignore: cast_nullable_to_non_nullable
               as String?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAutoAcceptOrder: null == isAutoAcceptOrder
+          ? _value.isAutoAcceptOrder
+          : isAutoAcceptOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -117,7 +131,9 @@ abstract class _$$_CarOwnerCopyWith<$Res> implements $CarOwnerCopyWith<$Res> {
       String phone,
       String gender,
       String? avatarUrl,
-      String? bankAccountNumber});
+      String? bankAccountNumber,
+      bool status,
+      bool isAutoAcceptOrder});
 }
 
 /// @nodoc
@@ -138,6 +154,8 @@ class __$$_CarOwnerCopyWithImpl<$Res>
     Object? gender = null,
     Object? avatarUrl = freezed,
     Object? bankAccountNumber = freezed,
+    Object? status = null,
+    Object? isAutoAcceptOrder = null,
   }) {
     return _then(_$_CarOwner(
       id: null == id
@@ -168,6 +186,14 @@ class __$$_CarOwnerCopyWithImpl<$Res>
           ? _value.bankAccountNumber
           : bankAccountNumber // ignore: cast_nullable_to_non_nullable
               as String?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAutoAcceptOrder: null == isAutoAcceptOrder
+          ? _value.isAutoAcceptOrder
+          : isAutoAcceptOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -182,7 +208,9 @@ class _$_CarOwner implements _CarOwner {
       required this.phone,
       required this.gender,
       this.avatarUrl,
-      this.bankAccountNumber});
+      this.bankAccountNumber,
+      required this.status,
+      required this.isAutoAcceptOrder});
 
   factory _$_CarOwner.fromJson(Map<String, dynamic> json) =>
       _$$_CarOwnerFromJson(json);
@@ -201,10 +229,14 @@ class _$_CarOwner implements _CarOwner {
   final String? avatarUrl;
   @override
   final String? bankAccountNumber;
+  @override
+  final bool status;
+  @override
+  final bool isAutoAcceptOrder;
 
   @override
   String toString() {
-    return 'CarOwner(id: $id, name: $name, address: $address, phone: $phone, gender: $gender, avatarUrl: $avatarUrl, bankAccountNumber: $bankAccountNumber)';
+    return 'CarOwner(id: $id, name: $name, address: $address, phone: $phone, gender: $gender, avatarUrl: $avatarUrl, bankAccountNumber: $bankAccountNumber, status: $status, isAutoAcceptOrder: $isAutoAcceptOrder)';
   }
 
   @override
@@ -220,13 +252,16 @@ class _$_CarOwner implements _CarOwner {
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
             (identical(other.bankAccountNumber, bankAccountNumber) ||
-                other.bankAccountNumber == bankAccountNumber));
+                other.bankAccountNumber == bankAccountNumber) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.isAutoAcceptOrder, isAutoAcceptOrder) ||
+                other.isAutoAcceptOrder == isAutoAcceptOrder));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, address, phone, gender,
-      avatarUrl, bankAccountNumber);
+      avatarUrl, bankAccountNumber, status, isAutoAcceptOrder);
 
   @JsonKey(ignore: true)
   @override
@@ -250,7 +285,9 @@ abstract class _CarOwner implements CarOwner {
       required final String phone,
       required final String gender,
       final String? avatarUrl,
-      final String? bankAccountNumber}) = _$_CarOwner;
+      final String? bankAccountNumber,
+      required final bool status,
+      required final bool isAutoAcceptOrder}) = _$_CarOwner;
 
   factory _CarOwner.fromJson(Map<String, dynamic> json) = _$_CarOwner.fromJson;
 
@@ -268,6 +305,10 @@ abstract class _CarOwner implements CarOwner {
   String? get avatarUrl;
   @override
   String? get bankAccountNumber;
+  @override
+  bool get status;
+  @override
+  bool get isAutoAcceptOrder;
   @override
   @JsonKey(ignore: true)
   _$$_CarOwnerCopyWith<_$_CarOwner> get copyWith =>

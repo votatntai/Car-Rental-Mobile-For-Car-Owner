@@ -26,4 +26,5 @@ mixin RouteName {
   static const carCalendar = 'car-calendar';
   static const carRegistration = 'car-registration';
   static const carRegistrationList = 'car-registration-list';
+  static const carOwnerSetting = 'car-owner-setting';
 }

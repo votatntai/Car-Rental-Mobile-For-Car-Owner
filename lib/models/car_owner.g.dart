@@ -14,6 +14,8 @@ _$_CarOwner _$$_CarOwnerFromJson(Map<String, dynamic> json) => _$_CarOwner(
       gender: json['gender'] as String,
       avatarUrl: json['avatarUrl'] as String?,
       bankAccountNumber: json['bankAccountNumber'] as String?,
+      status: json['status'] as bool,
+      isAutoAcceptOrder: json['isAutoAcceptOrder'] as bool,
     );
 
 Map<String, dynamic> _$$_CarOwnerToJson(_$_CarOwner instance) =>
@@ -25,4 +27,6 @@ Map<String, dynamic> _$$_CarOwnerToJson(_$_CarOwner instance) =>
       'gender': instance.gender,
       'avatarUrl': instance.avatarUrl,
       'bankAccountNumber': instance.bankAccountNumber,
+      'status': instance.status,
+      'isAutoAcceptOrder': instance.isAutoAcceptOrder,
     };
