@@ -57,7 +57,7 @@ class CarItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: const Text(
-                        'CCCD gắn chip',
+                        'ETC',
                         style: TextStyle(
                           fontSize: 8,
                           fontWeight: FontWeight.w500,

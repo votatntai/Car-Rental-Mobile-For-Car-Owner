@@ -10,6 +10,8 @@ enum OrderStatus {
   managerConfirmed,
   @JsonValue('CarOwnerApproved')
   carOwnerApproved,
+  @JsonValue('Paid')
+  paid,
   @JsonValue('ReceivedTheCar')
   receivedTheCar,
   @JsonValue('ArrivedAtPickUpPoint')
@@ -18,8 +20,7 @@ enum OrderStatus {
   receivedGuests,
   @JsonValue('Ongoing')
   ongoing,
-  @JsonValue('Paid')
-  paid,
+
   @JsonValue('ReturnedTheCar')
   returnedTheCar,
   @JsonValue('Finished')

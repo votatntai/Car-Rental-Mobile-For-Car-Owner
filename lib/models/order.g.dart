@@ -49,11 +49,11 @@ const _$OrderStatusEnumMap = {
   OrderStatus.pending: 'Pending',
   OrderStatus.managerConfirmed: 'ManagerConfirmed',
   OrderStatus.carOwnerApproved: 'CarOwnerApproved',
+  OrderStatus.paid: 'Paid',
   OrderStatus.receivedTheCar: 'ReceivedTheCar',
   OrderStatus.arrivedAtPickUpPoint: 'ArrivedAtPickUpPoint',
   OrderStatus.receivedGuests: 'ReceivedGuests',
   OrderStatus.ongoing: 'Ongoing',
-  OrderStatus.paid: 'Paid',
   OrderStatus.returnedTheCar: 'ReturnedTheCar',
   OrderStatus.finished: 'Finished',
 };
