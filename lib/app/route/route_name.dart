@@ -29,4 +29,6 @@ mixin RouteName {
   static const carOwnerSetting = 'car-owner-setting';
   static const carOwnerRecharge = 'car-owner-recharge';
   static const carOwnerPaymentWebview = 'car-owner-payment-webview';
+  static const carOwnerTransactionHistory = 'car-owner-transaction-history';
+  static const carOwnerTransactionDetail = 'car-owner-transaction-detail';
 }

@@ -15,6 +15,8 @@ import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner
 import 'package:car_rental_for_car_owner/pages/car_owner_recharge/views/car_owner_recharge_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_setting/views/car_owner_setting_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_transaction_detail/views/car_owner_transaction_detail_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_transaction_history/views/car_owner_transaction_history_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_wallet/views/car_owner_wallet_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_registration/views/car_registration_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_registration_list/views/car_registration_list_page.dart';
@@ -176,6 +178,23 @@ class AppRoute {
                     child: CarOwnerWalletPage(),
                   ),
               routes: [
+                GoRoute(
+                  path: 'car-owner-transaction-history',
+                  name: RouteName.carOwnerTransactionHistory,
+                  builder: (context, state) {
+                    return CarOwnerTransactionHistoryPage();
+                  },
+                ),
+                GoRoute(
+                  path: 'car-owner-transaction-detail',
+                  name: RouteName.carOwnerTransactionDetail,
+                  builder: (context, state) {
+                    final transactionId = state.queryParams['transaction-id'];
+                    return CarOwnerTransactionDetailPage(
+                      transactionId: transactionId,
+                    );
+                  },
+                ),
                 GoRoute(
                     path: 'recharge',
                     name: RouteName.carOwnerRecharge,
