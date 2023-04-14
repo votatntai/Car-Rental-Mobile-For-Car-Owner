@@ -1,3 +1,4 @@
+import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/utils.dart';
@@ -7,6 +8,7 @@ import 'package:car_rental_for_car_owner/pages/car_owner_wallet/bloc/car_owner_w
 import 'package:car_rental_for_car_owner/pages/driver_wallet/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class CarOwnerWalletView extends StatefulWidget {
@@ -70,38 +72,43 @@ class _CarOwnerWalletViewState extends State<CarOwnerWalletView> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Column(
-                              children: const [
-                                Icon(
-                                  Icons.add_card_outlined,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  'Nạp tiền',
-                                  style: TextStyle(
+                            GestureDetector(
+                              onTap: () {
+                                context.goNamed(RouteName.carOwnerRecharge);
+                              },
+                              child: Column(
+                                children: const [
+                                  Icon(
+                                    Icons.add_card_outlined,
                                     color: Colors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
                                   ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: const [
-                                Icon(
-                                  Icons.account_balance_wallet_outlined,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  'Rút tiền',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
+                                  Text(
+                                    'Nạp tiền',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
+                            // Column(
+                            //   children: const [
+                            //     Icon(
+                            //       Icons.account_balance_wallet_outlined,
+                            //       color: Colors.white,
+                            //     ),
+                            //     Text(
+                            //       'Rút tiền',
+                            //       style: TextStyle(
+                            //         color: Colors.white,
+                            //         fontSize: 12,
+                            //         fontWeight: FontWeight.w500,
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
                             GestureDetector(
                               onTap: () {
                                 // context.goNamed(RouteName.transactionHistory);

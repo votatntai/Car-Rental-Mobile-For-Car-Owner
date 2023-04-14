@@ -9,11 +9,8 @@ part of 'transaction.dart';
 _$_Transaction _$$_TransactionFromJson(Map<String, dynamic> json) =>
     _$_Transaction(
       id: json['id'] as String,
-      userId: json['userId'] as String,
-      driverId: json['driverId'] as String,
-      customerId: json['customerId'] as String,
-      date: DateTime.parse(json['date'] as String),
-      type: $enumDecode(_$TransactionTypeEnumMap, json['type']),
+      createAt: DateTime.parse(json['createAt'] as String),
+      type: transactionTypeFromJson(json['type'] as String),
       amount: (json['amount'] as num).toDouble(),
       description: json['description'] as String?,
       status: json['status'] as String?,
@@ -22,10 +19,7 @@ _$_Transaction _$$_TransactionFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_TransactionToJson(_$_Transaction instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'userId': instance.userId,
-      'driverId': instance.driverId,
-      'customerId': instance.customerId,
-      'date': instance.date.toIso8601String(),
+      'createAt': instance.createAt.toIso8601String(),
       'type': _$TransactionTypeEnumMap[instance.type]!,
       'amount': instance.amount,
       'description': instance.description,

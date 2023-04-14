@@ -10,7 +10,9 @@ import 'package:car_rental_for_car_owner/pages/car_owner_home/car_owner_home.dar
 import 'package:car_rental_for_car_owner/pages/car_owner_notification/views/car_owner_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_order_detail/views/car_owner_order_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_order_history/views/car_owner_order_history_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_payment_webview/views/car_owner_payment_webview_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner_profile_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_recharge/views/car_owner_recharge_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_setting/views/car_owner_setting_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_wallet/views/car_owner_wallet_page.dart';
@@ -167,13 +169,34 @@ class AppRoute {
             ],
           ),
           GoRoute(
-            path: '/car-owner-wallet',
-            name: RouteName.carOwnerWallet,
-            pageBuilder: (context, state) => FadeTransitionPage(
-              key: _shellNavigationKey,
-              child: CarOwnerWalletPage(),
-            ),
-          ),
+              path: '/car-owner-wallet',
+              name: RouteName.carOwnerWallet,
+              pageBuilder: (context, state) => FadeTransitionPage(
+                    key: _shellNavigationKey,
+                    child: CarOwnerWalletPage(),
+                  ),
+              routes: [
+                GoRoute(
+                    path: 'recharge',
+                    name: RouteName.carOwnerRecharge,
+                    builder: (context, state) {
+                      return CarOwnerRechargePage();
+                    },
+                    routes: [
+                      GoRoute(
+                        path: 'payment-webview',
+                        name: RouteName.carOwnerPaymentWebview,
+                        parentNavigatorKey: rootNavigatorKey,
+                        builder: (context, state) {
+                          final url = state.queryParams['url'] ?? '';
+
+                          return CarOwnerPaymentWebviewPage(
+                            url: url,
+                          );
+                        },
+                      ),
+                    ]),
+              ]),
           GoRoute(
             path: '/car-owner-notification',
             name: RouteName.carOwnerNotification,

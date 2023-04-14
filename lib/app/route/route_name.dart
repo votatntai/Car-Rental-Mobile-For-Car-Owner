@@ -27,4 +27,6 @@ mixin RouteName {
   static const carRegistration = 'car-registration';
   static const carRegistrationList = 'car-registration-list';
   static const carOwnerSetting = 'car-owner-setting';
+  static const carOwnerRecharge = 'car-owner-recharge';
+  static const carOwnerPaymentWebview = 'car-owner-payment-webview';
 }

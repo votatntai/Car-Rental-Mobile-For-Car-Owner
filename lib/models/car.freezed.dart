@@ -27,9 +27,9 @@ mixin _$Car {
   double get rented => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   List<ImageModel>? get images => throw _privateConstructorUsedError;
-  List<FeedbackModel> get feedBacks => throw _privateConstructorUsedError;
-  List<CarFeature> get carFeatures => throw _privateConstructorUsedError;
-  List<CarType> get carTypes => throw _privateConstructorUsedError;
+  List<FeedbackModel>? get feedBacks => throw _privateConstructorUsedError;
+  List<CarFeature>? get carFeatures => throw _privateConstructorUsedError;
+  List<CarType>? get carTypes => throw _privateConstructorUsedError;
   ProductionCompany? get productionCompany =>
       throw _privateConstructorUsedError;
   CarModel get model => throw _privateConstructorUsedError;
@@ -66,9 +66,9 @@ abstract class $CarCopyWith<$Res> {
       double rented,
       String? description,
       List<ImageModel>? images,
-      List<FeedbackModel> feedBacks,
-      List<CarFeature> carFeatures,
-      List<CarType> carTypes,
+      List<FeedbackModel>? feedBacks,
+      List<CarFeature>? carFeatures,
+      List<CarType>? carTypes,
       ProductionCompany? productionCompany,
       CarModel model,
       CarOwner? carOwner,
@@ -109,9 +109,9 @@ class _$CarCopyWithImpl<$Res, $Val extends Car> implements $CarCopyWith<$Res> {
     Object? rented = null,
     Object? description = freezed,
     Object? images = freezed,
-    Object? feedBacks = null,
-    Object? carFeatures = null,
-    Object? carTypes = null,
+    Object? feedBacks = freezed,
+    Object? carFeatures = freezed,
+    Object? carTypes = freezed,
     Object? productionCompany = freezed,
     Object? model = null,
     Object? carOwner = freezed,
@@ -154,18 +154,18 @@ class _$CarCopyWithImpl<$Res, $Val extends Car> implements $CarCopyWith<$Res> {
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ImageModel>?,
-      feedBacks: null == feedBacks
+      feedBacks: freezed == feedBacks
           ? _value.feedBacks
           : feedBacks // ignore: cast_nullable_to_non_nullable
-              as List<FeedbackModel>,
-      carFeatures: null == carFeatures
+              as List<FeedbackModel>?,
+      carFeatures: freezed == carFeatures
           ? _value.carFeatures
           : carFeatures // ignore: cast_nullable_to_non_nullable
-              as List<CarFeature>,
-      carTypes: null == carTypes
+              as List<CarFeature>?,
+      carTypes: freezed == carTypes
           ? _value.carTypes
           : carTypes // ignore: cast_nullable_to_non_nullable
-              as List<CarType>,
+              as List<CarType>?,
       productionCompany: freezed == productionCompany
           ? _value.productionCompany
           : productionCompany // ignore: cast_nullable_to_non_nullable
@@ -292,9 +292,9 @@ abstract class _$$_CarCopyWith<$Res> implements $CarCopyWith<$Res> {
       double rented,
       String? description,
       List<ImageModel>? images,
-      List<FeedbackModel> feedBacks,
-      List<CarFeature> carFeatures,
-      List<CarType> carTypes,
+      List<FeedbackModel>? feedBacks,
+      List<CarFeature>? carFeatures,
+      List<CarType>? carTypes,
       ProductionCompany? productionCompany,
       CarModel model,
       CarOwner? carOwner,
@@ -338,9 +338,9 @@ class __$$_CarCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$_Car>
     Object? rented = null,
     Object? description = freezed,
     Object? images = freezed,
-    Object? feedBacks = null,
-    Object? carFeatures = null,
-    Object? carTypes = null,
+    Object? feedBacks = freezed,
+    Object? carFeatures = freezed,
+    Object? carTypes = freezed,
     Object? productionCompany = freezed,
     Object? model = null,
     Object? carOwner = freezed,
@@ -383,18 +383,18 @@ class __$$_CarCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$_Car>
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ImageModel>?,
-      feedBacks: null == feedBacks
+      feedBacks: freezed == feedBacks
           ? _value._feedBacks
           : feedBacks // ignore: cast_nullable_to_non_nullable
-              as List<FeedbackModel>,
-      carFeatures: null == carFeatures
+              as List<FeedbackModel>?,
+      carFeatures: freezed == carFeatures
           ? _value._carFeatures
           : carFeatures // ignore: cast_nullable_to_non_nullable
-              as List<CarFeature>,
-      carTypes: null == carTypes
+              as List<CarFeature>?,
+      carTypes: freezed == carTypes
           ? _value._carTypes
           : carTypes // ignore: cast_nullable_to_non_nullable
-              as List<CarType>,
+              as List<CarType>?,
       productionCompany: freezed == productionCompany
           ? _value.productionCompany
           : productionCompany // ignore: cast_nullable_to_non_nullable
@@ -458,9 +458,9 @@ class _$_Car extends _Car {
       required this.rented,
       this.description,
       final List<ImageModel>? images,
-      required final List<FeedbackModel> feedBacks,
-      required final List<CarFeature> carFeatures,
-      required final List<CarType> carTypes,
+      final List<FeedbackModel>? feedBacks,
+      final List<CarFeature>? carFeatures,
+      final List<CarType>? carTypes,
       this.productionCompany,
       required this.model,
       this.carOwner,
@@ -503,28 +503,34 @@ class _$_Car extends _Car {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<FeedbackModel> _feedBacks;
+  final List<FeedbackModel>? _feedBacks;
   @override
-  List<FeedbackModel> get feedBacks {
+  List<FeedbackModel>? get feedBacks {
+    final value = _feedBacks;
+    if (value == null) return null;
     if (_feedBacks is EqualUnmodifiableListView) return _feedBacks;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_feedBacks);
+    return EqualUnmodifiableListView(value);
   }
 
-  final List<CarFeature> _carFeatures;
+  final List<CarFeature>? _carFeatures;
   @override
-  List<CarFeature> get carFeatures {
+  List<CarFeature>? get carFeatures {
+    final value = _carFeatures;
+    if (value == null) return null;
     if (_carFeatures is EqualUnmodifiableListView) return _carFeatures;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_carFeatures);
+    return EqualUnmodifiableListView(value);
   }
 
-  final List<CarType> _carTypes;
+  final List<CarType>? _carTypes;
   @override
-  List<CarType> get carTypes {
+  List<CarType>? get carTypes {
+    final value = _carTypes;
+    if (value == null) return null;
     if (_carTypes is EqualUnmodifiableListView) return _carTypes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_carTypes);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -653,9 +659,9 @@ abstract class _Car extends Car {
       required final double rented,
       final String? description,
       final List<ImageModel>? images,
-      required final List<FeedbackModel> feedBacks,
-      required final List<CarFeature> carFeatures,
-      required final List<CarType> carTypes,
+      final List<FeedbackModel>? feedBacks,
+      final List<CarFeature>? carFeatures,
+      final List<CarType>? carTypes,
       final ProductionCompany? productionCompany,
       required final CarModel model,
       final CarOwner? carOwner,
@@ -687,11 +693,11 @@ abstract class _Car extends Car {
   @override
   List<ImageModel>? get images;
   @override
-  List<FeedbackModel> get feedBacks;
+  List<FeedbackModel>? get feedBacks;
   @override
-  List<CarFeature> get carFeatures;
+  List<CarFeature>? get carFeatures;
   @override
-  List<CarType> get carTypes;
+  List<CarType>? get carTypes;
   @override
   ProductionCompany? get productionCompany;
   @override

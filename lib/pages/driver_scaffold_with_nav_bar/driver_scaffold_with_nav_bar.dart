@@ -34,13 +34,13 @@ class DriverScaffoldWithNavBar extends StatelessWidget {
             ),
             activeIcon: Icon(Icons.receipt_long),
           ),
-          BottomNavigationBarItem(
-            label: 'Ví',
-            icon: Icon(
-              Icons.wallet_outlined,
-            ),
-            activeIcon: Icon(Icons.wallet),
-          ),
+          // BottomNavigationBarItem(
+          //   label: 'Ví',
+          //   icon: Icon(
+          //     Icons.wallet_outlined,
+          //   ),
+          //   activeIcon: Icon(Icons.wallet),
+          // ),
           BottomNavigationBarItem(
             label: 'Thông báo',
             icon: Icon(
@@ -72,14 +72,14 @@ class DriverScaffoldWithNavBar extends StatelessWidget {
       return 1;
     }
 
-    if (location.startsWith('/driver-wallet')) {
+    // if (location.startsWith('/driver-wallet')) {
+    //   return 2;
+    // }
+    if (location.startsWith('/driver-notification')) {
       return 2;
     }
-    if (location.startsWith('/driver-notification')) {
-      return 3;
-    }
     if (location.startsWith('/driver-profile')) {
-      return 4;
+      return 3;
     }
     return 0;
   }
@@ -92,13 +92,13 @@ class DriverScaffoldWithNavBar extends StatelessWidget {
       case 1:
         context.goNamed(RouteName.driverOrderHistory);
         break;
+      // case 2:
+      //   context.goNamed(RouteName.driverWallet);
+      //   break;
       case 2:
-        context.goNamed(RouteName.driverWallet);
-        break;
-      case 3:
         context.goNamed(RouteName.driverNotification);
         break;
-      case 4:
+      case 3:
         context.goNamed(RouteName.driverProfile);
         break;
     }

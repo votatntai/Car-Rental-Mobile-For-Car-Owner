@@ -281,10 +281,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                     child: Column(
                       children: [
                         Text(
-                          successState.order.orderDetails.first.car.driver ==
-                                  null
-                              ? RentalCarType.selfDrivingCar.getDisplayName()
-                              : RentalCarType.carWithDriver.getDisplayName(),
+                          successState.order.hasDriverDisplay,
                         )
                       ],
                     ),

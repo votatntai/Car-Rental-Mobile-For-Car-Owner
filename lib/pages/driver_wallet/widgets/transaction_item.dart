@@ -32,11 +32,20 @@ class TransactionItem extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 13,
                     color: Colors.black,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: s08),
                 Text(
-                  DateFormat('dd/MM/yyyy HH:mm').format(transaction.date),
+                  'Trạng thái: ${transaction.status}',
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: s08),
+                Text(
+                  DateFormat('dd/MM/yyyy HH:mm').format(transaction.createAt),
                   style: const TextStyle(
                     fontSize: 11,
                     color: CustomColors.dimGray,

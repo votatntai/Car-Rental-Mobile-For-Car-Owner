@@ -20,11 +20,12 @@ Transaction _$TransactionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Transaction {
-  String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  String get driverId => throw _privateConstructorUsedError;
-  String get customerId => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
+  String get id =>
+      throw _privateConstructorUsedError; // required String userId,
+// required String driverId,
+// required String customerId,
+  DateTime get createAt => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: transactionTypeFromJson)
   TransactionType get type => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -44,11 +45,8 @@ abstract class $TransactionCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
-      String driverId,
-      String customerId,
-      DateTime date,
-      TransactionType type,
+      DateTime createAt,
+      @JsonKey(fromJson: transactionTypeFromJson) TransactionType type,
       double amount,
       String? description,
       String? status});
@@ -68,10 +66,7 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? driverId = null,
-    Object? customerId = null,
-    Object? date = null,
+    Object? createAt = null,
     Object? type = null,
     Object? amount = null,
     Object? description = freezed,
@@ -82,21 +77,9 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      driverId: null == driverId
-          ? _value.driverId
-          : driverId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
+      createAt: null == createAt
+          ? _value.createAt
+          : createAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       type: null == type
           ? _value.type
@@ -128,11 +111,8 @@ abstract class _$$_TransactionCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String userId,
-      String driverId,
-      String customerId,
-      DateTime date,
-      TransactionType type,
+      DateTime createAt,
+      @JsonKey(fromJson: transactionTypeFromJson) TransactionType type,
       double amount,
       String? description,
       String? status});
@@ -150,10 +130,7 @@ class __$$_TransactionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? driverId = null,
-    Object? customerId = null,
-    Object? date = null,
+    Object? createAt = null,
     Object? type = null,
     Object? amount = null,
     Object? description = freezed,
@@ -164,21 +141,9 @@ class __$$_TransactionCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      driverId: null == driverId
-          ? _value.driverId
-          : driverId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
+      createAt: null == createAt
+          ? _value.createAt
+          : createAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       type: null == type
           ? _value.type
@@ -205,11 +170,8 @@ class __$$_TransactionCopyWithImpl<$Res>
 class _$_Transaction implements _Transaction {
   const _$_Transaction(
       {required this.id,
-      required this.userId,
-      required this.driverId,
-      required this.customerId,
-      required this.date,
-      required this.type,
+      required this.createAt,
+      @JsonKey(fromJson: transactionTypeFromJson) required this.type,
       required this.amount,
       this.description,
       this.status});
@@ -219,15 +181,13 @@ class _$_Transaction implements _Transaction {
 
   @override
   final String id;
+// required String userId,
+// required String driverId,
+// required String customerId,
   @override
-  final String userId;
+  final DateTime createAt;
   @override
-  final String driverId;
-  @override
-  final String customerId;
-  @override
-  final DateTime date;
-  @override
+  @JsonKey(fromJson: transactionTypeFromJson)
   final TransactionType type;
   @override
   final double amount;
@@ -238,7 +198,7 @@ class _$_Transaction implements _Transaction {
 
   @override
   String toString() {
-    return 'Transaction(id: $id, userId: $userId, driverId: $driverId, customerId: $customerId, date: $date, type: $type, amount: $amount, description: $description, status: $status)';
+    return 'Transaction(id: $id, createAt: $createAt, type: $type, amount: $amount, description: $description, status: $status)';
   }
 
   @override
@@ -247,12 +207,8 @@ class _$_Transaction implements _Transaction {
         (other.runtimeType == runtimeType &&
             other is _$_Transaction &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.driverId, driverId) ||
-                other.driverId == driverId) &&
-            (identical(other.customerId, customerId) ||
-                other.customerId == customerId) &&
-            (identical(other.date, date) || other.date == date) &&
+            (identical(other.createAt, createAt) ||
+                other.createAt == createAt) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.description, description) ||
@@ -262,8 +218,8 @@ class _$_Transaction implements _Transaction {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, driverId, customerId,
-      date, type, amount, description, status);
+  int get hashCode =>
+      Object.hash(runtimeType, id, createAt, type, amount, description, status);
 
   @JsonKey(ignore: true)
   @override
@@ -282,11 +238,9 @@ class _$_Transaction implements _Transaction {
 abstract class _Transaction implements Transaction {
   const factory _Transaction(
       {required final String id,
-      required final String userId,
-      required final String driverId,
-      required final String customerId,
-      required final DateTime date,
-      required final TransactionType type,
+      required final DateTime createAt,
+      @JsonKey(fromJson: transactionTypeFromJson)
+          required final TransactionType type,
       required final double amount,
       final String? description,
       final String? status}) = _$_Transaction;
@@ -296,15 +250,12 @@ abstract class _Transaction implements Transaction {
 
   @override
   String get id;
+  @override // required String userId,
+// required String driverId,
+// required String customerId,
+  DateTime get createAt;
   @override
-  String get userId;
-  @override
-  String get driverId;
-  @override
-  String get customerId;
-  @override
-  DateTime get date;
-  @override
+  @JsonKey(fromJson: transactionTypeFromJson)
   TransactionType get type;
   @override
   double get amount;

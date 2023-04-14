@@ -16,14 +16,14 @@ _$_Car _$$_CarFromJson(Map<String, dynamic> json) => _$_Car(
       images: (json['images'] as List<dynamic>?)
           ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      feedBacks: (json['feedBacks'] as List<dynamic>)
-          .map((e) => FeedbackModel.fromJson(e as Map<String, dynamic>))
+      feedBacks: (json['feedBacks'] as List<dynamic>?)
+          ?.map((e) => FeedbackModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      carFeatures: (json['carFeatures'] as List<dynamic>)
-          .map((e) => CarFeature.fromJson(e as Map<String, dynamic>))
+      carFeatures: (json['carFeatures'] as List<dynamic>?)
+          ?.map((e) => CarFeature.fromJson(e as Map<String, dynamic>))
           .toList(),
-      carTypes: (json['carTypes'] as List<dynamic>)
-          .map((e) => CarType.fromJson(e as Map<String, dynamic>))
+      carTypes: (json['carTypes'] as List<dynamic>?)
+          ?.map((e) => CarType.fromJson(e as Map<String, dynamic>))
           .toList(),
       productionCompany: json['productionCompany'] == null
           ? null

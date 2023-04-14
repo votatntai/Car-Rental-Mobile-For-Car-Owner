@@ -9,6 +9,8 @@ part 'order.g.dart';
 
 @freezed
 class Order with _$Order {
+  const Order._();
+
   const factory Order({
     required String id,
     required Customer customer,
@@ -27,4 +29,20 @@ class Order with _$Order {
   }) = _Order;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
+
+  bool get hasDriver {
+    if (orderDetails.isEmpty) {
+      return false;
+    }
+
+    return orderDetails.first.driver != null;
+  }
+
+  String get hasDriverDisplay {
+    if (hasDriver) {
+      return 'Xe có tài xế';
+    } else {
+      return 'Xe tự lái';
+    }
+  }
 }

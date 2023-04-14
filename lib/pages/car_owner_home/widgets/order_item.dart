@@ -109,8 +109,7 @@ class OrderItemForCarOwner extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        order.orderDetails.first.car.rentalCarType
-                            .getDisplayName(),
+                        order.hasDriverDisplay,
                       ),
                     ),
                   ],

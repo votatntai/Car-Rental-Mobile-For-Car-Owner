@@ -155,7 +155,7 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                     ),
                   ),
                   divider,
-                  if (successState.car.carFeatures.isNotEmpty)
+                  if (successState.car.carFeatures?.isNotEmpty == true)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -166,27 +166,28 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: successState.car.carFeatures
-                                  .map(
-                                    (e) => Padding(
-                                      padding: const EdgeInsets.only(
-                                        bottom: s04,
-                                      ),
-                                      child: Text(
-                                        '- ${e.feature.name}',
-                                        style: const TextStyle(
-                                          fontSize: 12,
+                                      ?.map(
+                                        (e) => Padding(
+                                          padding: const EdgeInsets.only(
+                                            bottom: s04,
+                                          ),
+                                          child: Text(
+                                            '- ${e.feature.name}',
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
+                                      )
+                                      .toList() ??
+                                  [],
                             ),
                           ),
                         ),
                         divider,
                       ],
                     ),
-                  if (successState.car.carTypes.isNotEmpty)
+                  if (successState.car.carTypes?.isNotEmpty == true)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -197,20 +198,21 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: successState.car.carTypes
-                                  .map(
-                                    (e) => Padding(
-                                      padding: const EdgeInsets.only(
-                                        bottom: s04,
-                                      ),
-                                      child: Text(
-                                        '- ${e.type.name}',
-                                        style: const TextStyle(
-                                          fontSize: 12,
+                                      ?.map(
+                                        (e) => Padding(
+                                          padding: const EdgeInsets.only(
+                                            bottom: s04,
+                                          ),
+                                          child: Text(
+                                            '- ${e.type.name}',
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
+                                      )
+                                      .toList() ??
+                                  [],
                             ),
                           ),
                         ),

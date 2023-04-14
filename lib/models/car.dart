@@ -29,9 +29,9 @@ class Car with _$Car {
     required double rented,
     String? description,
     List<ImageModel>? images,
-    required List<FeedbackModel> feedBacks,
-    required List<CarFeature> carFeatures,
-    required List<CarType> carTypes,
+    List<FeedbackModel>? feedBacks,
+    List<CarFeature>? carFeatures,
+    List<CarType>? carTypes,
     ProductionCompany? productionCompany,
     required CarModel model,
     CarOwner? carOwner,
@@ -48,8 +48,8 @@ class Car with _$Car {
 
   factory Car.fromJson(Map<String, dynamic> json) => _$CarFromJson(json);
 
-  RentalCarType get rentalCarType {
-    if (driver == null) return RentalCarType.selfDrivingCar;
-    return RentalCarType.carWithDriver;
-  }
+  // RentalCarType get rentalCarType {
+  //   if (driver == null) return RentalCarType.selfDrivingCar;
+  //   return RentalCarType.carWithDriver;
+  // }
 }
