@@ -72,27 +72,27 @@ class _CarOwnerWalletViewState extends State<CarOwnerWalletView> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                context.goNamed(RouteName.carOwnerRecharge);
-                              },
-                              child: Column(
-                                children: const [
-                                  Icon(
-                                    Icons.add_card_outlined,
-                                    color: Colors.white,
-                                  ),
-                                  Text(
-                                    'Nạp tiền',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     context.goNamed(RouteName.carOwnerRecharge);
+                            //   },
+                            //   child: Column(
+                            //     children: const [
+                            //       Icon(
+                            //         Icons.add_card_outlined,
+                            //         color: Colors.white,
+                            //       ),
+                            //       Text(
+                            //         'Nạp tiền',
+                            //         style: TextStyle(
+                            //           color: Colors.white,
+                            //           fontSize: 12,
+                            //           fontWeight: FontWeight.w500,
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                             // Column(
                             //   children: const [
                             //     Icon(
@@ -111,7 +111,9 @@ class _CarOwnerWalletViewState extends State<CarOwnerWalletView> {
                             // ),
                             GestureDetector(
                               onTap: () {
-                                // context.goNamed(RouteName.transactionHistory);
+                                context.goNamed(
+                                  RouteName.carOwnerTransactionHistory,
+                                );
                               },
                               child: Column(
                                 children: const [
@@ -145,7 +147,9 @@ class _CarOwnerWalletViewState extends State<CarOwnerWalletView> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // context.goNamed(RouteName.transactionHistory);
+                        context.goNamed(
+                          RouteName.carOwnerTransactionHistory,
+                        );
                       },
                       child: Text(
                         'Xem tất cả',
@@ -169,12 +173,12 @@ class _CarOwnerWalletViewState extends State<CarOwnerWalletView> {
                     return TransactionItem(
                       transaction: successState.transactions[index],
                       onTap: (transaction) {
-                        // context.goNamed(
-                        //   RouteName.transactionDetail,
-                        //   queryParams: {
-                        //     'transaction-id': transaction.id,
-                        //   },
-                        // );
+                        context.goNamed(
+                          RouteName.carOwnerTransactionDetail,
+                          queryParams: {
+                            'transaction-id': transaction.id,
+                          },
+                        );
                       },
                     );
                   },
