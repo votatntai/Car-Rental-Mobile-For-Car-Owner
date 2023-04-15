@@ -7,9 +7,11 @@ part 'feedback.g.dart';
 class FeedbackModel with _$FeedbackModel {
   const factory FeedbackModel({
     required String id,
-    required String orderId,
-    required String customerId,
-    required int start,
+    String? orderId,
+    String? customerId,
+    String? driverId,
+    String? carId,
+    int? start,
     String? content,
   }) = _FeedbackModel;
 

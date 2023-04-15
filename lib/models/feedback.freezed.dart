@@ -21,9 +21,11 @@ FeedbackModel _$FeedbackModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FeedbackModel {
   String get id => throw _privateConstructorUsedError;
-  String get orderId => throw _privateConstructorUsedError;
-  String get customerId => throw _privateConstructorUsedError;
-  int get start => throw _privateConstructorUsedError;
+  String? get orderId => throw _privateConstructorUsedError;
+  String? get customerId => throw _privateConstructorUsedError;
+  String? get driverId => throw _privateConstructorUsedError;
+  String? get carId => throw _privateConstructorUsedError;
+  int? get start => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,9 +42,11 @@ abstract class $FeedbackModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String orderId,
-      String customerId,
-      int start,
+      String? orderId,
+      String? customerId,
+      String? driverId,
+      String? carId,
+      int? start,
       String? content});
 }
 
@@ -60,9 +64,11 @@ class _$FeedbackModelCopyWithImpl<$Res, $Val extends FeedbackModel>
   @override
   $Res call({
     Object? id = null,
-    Object? orderId = null,
-    Object? customerId = null,
-    Object? start = null,
+    Object? orderId = freezed,
+    Object? customerId = freezed,
+    Object? driverId = freezed,
+    Object? carId = freezed,
+    Object? start = freezed,
     Object? content = freezed,
   }) {
     return _then(_value.copyWith(
@@ -70,18 +76,26 @@ class _$FeedbackModelCopyWithImpl<$Res, $Val extends FeedbackModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      orderId: null == orderId
+      orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
+              as String?,
+      customerId: freezed == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      start: null == start
+              as String?,
+      driverId: freezed == driverId
+          ? _value.driverId
+          : driverId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      carId: freezed == carId
+          ? _value.carId
+          : carId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start: freezed == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -100,9 +114,11 @@ abstract class _$$_FeedbackModelCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String orderId,
-      String customerId,
-      int start,
+      String? orderId,
+      String? customerId,
+      String? driverId,
+      String? carId,
+      int? start,
       String? content});
 }
 
@@ -118,9 +134,11 @@ class __$$_FeedbackModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? orderId = null,
-    Object? customerId = null,
-    Object? start = null,
+    Object? orderId = freezed,
+    Object? customerId = freezed,
+    Object? driverId = freezed,
+    Object? carId = freezed,
+    Object? start = freezed,
     Object? content = freezed,
   }) {
     return _then(_$_FeedbackModel(
@@ -128,18 +146,26 @@ class __$$_FeedbackModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      orderId: null == orderId
+      orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      customerId: null == customerId
+              as String?,
+      customerId: freezed == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      start: null == start
+              as String?,
+      driverId: freezed == driverId
+          ? _value.driverId
+          : driverId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      carId: freezed == carId
+          ? _value.carId
+          : carId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start: freezed == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -153,9 +179,11 @@ class __$$_FeedbackModelCopyWithImpl<$Res>
 class _$_FeedbackModel implements _FeedbackModel {
   const _$_FeedbackModel(
       {required this.id,
-      required this.orderId,
-      required this.customerId,
-      required this.start,
+      this.orderId,
+      this.customerId,
+      this.driverId,
+      this.carId,
+      this.start,
       this.content});
 
   factory _$_FeedbackModel.fromJson(Map<String, dynamic> json) =>
@@ -164,17 +192,21 @@ class _$_FeedbackModel implements _FeedbackModel {
   @override
   final String id;
   @override
-  final String orderId;
+  final String? orderId;
   @override
-  final String customerId;
+  final String? customerId;
   @override
-  final int start;
+  final String? driverId;
+  @override
+  final String? carId;
+  @override
+  final int? start;
   @override
   final String? content;
 
   @override
   String toString() {
-    return 'FeedbackModel(id: $id, orderId: $orderId, customerId: $customerId, start: $start, content: $content)';
+    return 'FeedbackModel(id: $id, orderId: $orderId, customerId: $customerId, driverId: $driverId, carId: $carId, start: $start, content: $content)';
   }
 
   @override
@@ -186,14 +218,17 @@ class _$_FeedbackModel implements _FeedbackModel {
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.customerId, customerId) ||
                 other.customerId == customerId) &&
+            (identical(other.driverId, driverId) ||
+                other.driverId == driverId) &&
+            (identical(other.carId, carId) || other.carId == carId) &&
             (identical(other.start, start) || other.start == start) &&
             (identical(other.content, content) || other.content == content));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, orderId, customerId, start, content);
+  int get hashCode => Object.hash(
+      runtimeType, id, orderId, customerId, driverId, carId, start, content);
 
   @JsonKey(ignore: true)
   @override
@@ -212,9 +247,11 @@ class _$_FeedbackModel implements _FeedbackModel {
 abstract class _FeedbackModel implements FeedbackModel {
   const factory _FeedbackModel(
       {required final String id,
-      required final String orderId,
-      required final String customerId,
-      required final int start,
+      final String? orderId,
+      final String? customerId,
+      final String? driverId,
+      final String? carId,
+      final int? start,
       final String? content}) = _$_FeedbackModel;
 
   factory _FeedbackModel.fromJson(Map<String, dynamic> json) =
@@ -223,11 +260,15 @@ abstract class _FeedbackModel implements FeedbackModel {
   @override
   String get id;
   @override
-  String get orderId;
+  String? get orderId;
   @override
-  String get customerId;
+  String? get customerId;
   @override
-  int get start;
+  String? get driverId;
+  @override
+  String? get carId;
+  @override
+  int? get start;
   @override
   String? get content;
   @override
