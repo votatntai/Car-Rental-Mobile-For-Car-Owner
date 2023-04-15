@@ -8,7 +8,7 @@ class FeedbackModel with _$FeedbackModel {
   const factory FeedbackModel({
     required String id,
     required String orderId,
-    required double customerId,
+    required String customerId,
     required int start,
     String? content,
   }) = _FeedbackModel;

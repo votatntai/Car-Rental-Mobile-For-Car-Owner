@@ -10,7 +10,7 @@ _$_FeedbackModel _$$_FeedbackModelFromJson(Map<String, dynamic> json) =>
     _$_FeedbackModel(
       id: json['id'] as String,
       orderId: json['orderId'] as String,
-      customerId: (json['customerId'] as num).toDouble(),
+      customerId: json['customerId'] as String,
       start: json['start'] as int,
       content: json['content'] as String?,
     );

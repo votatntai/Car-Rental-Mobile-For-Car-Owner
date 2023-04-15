@@ -22,7 +22,7 @@ FeedbackModel _$FeedbackModelFromJson(Map<String, dynamic> json) {
 mixin _$FeedbackModel {
   String get id => throw _privateConstructorUsedError;
   String get orderId => throw _privateConstructorUsedError;
-  double get customerId => throw _privateConstructorUsedError;
+  String get customerId => throw _privateConstructorUsedError;
   int get start => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
 
@@ -41,7 +41,7 @@ abstract class $FeedbackModelCopyWith<$Res> {
   $Res call(
       {String id,
       String orderId,
-      double customerId,
+      String customerId,
       int start,
       String? content});
 }
@@ -77,7 +77,7 @@ class _$FeedbackModelCopyWithImpl<$Res, $Val extends FeedbackModel>
       customerId: null == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -101,7 +101,7 @@ abstract class _$$_FeedbackModelCopyWith<$Res>
   $Res call(
       {String id,
       String orderId,
-      double customerId,
+      String customerId,
       int start,
       String? content});
 }
@@ -135,7 +135,7 @@ class __$$_FeedbackModelCopyWithImpl<$Res>
       customerId: null == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -166,7 +166,7 @@ class _$_FeedbackModel implements _FeedbackModel {
   @override
   final String orderId;
   @override
-  final double customerId;
+  final String customerId;
   @override
   final int start;
   @override
@@ -213,7 +213,7 @@ abstract class _FeedbackModel implements FeedbackModel {
   const factory _FeedbackModel(
       {required final String id,
       required final String orderId,
-      required final double customerId,
+      required final String customerId,
       required final int start,
       final String? content}) = _$_FeedbackModel;
 
@@ -225,7 +225,7 @@ abstract class _FeedbackModel implements FeedbackModel {
   @override
   String get orderId;
   @override
-  double get customerId;
+  String get customerId;
   @override
   int get start;
   @override
