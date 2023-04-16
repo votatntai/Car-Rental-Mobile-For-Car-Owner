@@ -64,7 +64,11 @@ Future<void> configDI() async {
     ..registerSingleton(WalletRepository(dio: dio))
     ..registerSingleton(OrderRepository(dio: dio))
     ..registerSingleton(
-      MapsRepository(key: mapsApiKey, options: dioOptions),
+      MapsRepository(
+        key: mapsApiKey,
+        options: dioOptions,
+        prefs: sharedPreferences,
+      ),
     )
     ..registerSingleton(CarRepository(dio: dio))
     ..registerSingleton(DriverRepository(dio: dio))
