@@ -672,10 +672,10 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                               width: context.width() * 0.8,
                               child: LocationText(
                                 longitude: successState.order.orderDetails.first
-                                        ?.deliveryLocation?.longitude ??
+                                        .deliveryLocation?.longitude ??
                                     0,
                                 latitude: successState.order.orderDetails.first
-                                        ?.deliveryLocation?.latitude ??
+                                        .deliveryLocation?.latitude ??
                                     0,
                                 style: const TextStyle(
                                   fontSize: 13,
@@ -688,10 +688,10 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                         ),
                         GoogleMapWidget(
                           latitude: successState.order.orderDetails.first
-                                  ?.deliveryLocation?.latitude ??
+                                  .deliveryLocation?.latitude ??
                               0,
                           longitude: successState.order.orderDetails.first
-                                  ?.deliveryLocation?.longitude ??
+                                  .deliveryLocation?.longitude ??
                               0,
                         ),
                       ],
@@ -699,52 +699,53 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
                   ),
                 ),
                 divider,
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // showConfirmDialogCustom(
-                            //   context,
-                            //   onAccept: (c) async {
-                            //     context.read<CarOwnerOrderDetailBloc>().add(
-                            //           CarOwnerOrderDetailEvent
-                            //               .orderStatusChanged(
-                            //             orderId: successState.order.id,
-                            //             orderStatus: OrderStatus.canceled,
-                            //           ),
-                            //         );
-                            //   },
-                            //   dialogType: DialogType.CONFIRMATION,
-                            //   customCenterWidget: const Center(
-                            //     child: Icon(
-                            //       Icons.check_circle,
-                            //       color: CustomColors.flamingo,
-                            //       size: 100,
-                            //     ),
-                            //   ),
-                            //   primaryColor: CustomColors.flamingo,
-                            //   title: 'Bạn muốn xác nhận?',
-                            //   negativeText: 'Hủy',
-                            //   positiveText: 'Đồng ý',
-                            // );
-                            showDialog(
-                                context: context,
-                                builder: (builderContext) {
-                                  return confirmDialog(
-                                    context,
-                                    successState.order.id,
-                                  );
-                                });
-                          },
-                          child: const Text('Hủy chuyến'),
+                if (successState.order.status == OrderStatus.managerConfirmed)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // showConfirmDialogCustom(
+                              //   context,
+                              //   onAccept: (c) async {
+                              //     context.read<CarOwnerOrderDetailBloc>().add(
+                              //           CarOwnerOrderDetailEvent
+                              //               .orderStatusChanged(
+                              //             orderId: successState.order.id,
+                              //             orderStatus: OrderStatus.canceled,
+                              //           ),
+                              //         );
+                              //   },
+                              //   dialogType: DialogType.CONFIRMATION,
+                              //   customCenterWidget: const Center(
+                              //     child: Icon(
+                              //       Icons.check_circle,
+                              //       color: CustomColors.flamingo,
+                              //       size: 100,
+                              //     ),
+                              //   ),
+                              //   primaryColor: CustomColors.flamingo,
+                              //   title: 'Bạn muốn xác nhận?',
+                              //   negativeText: 'Hủy',
+                              //   positiveText: 'Đồng ý',
+                              // );
+                              showDialog(
+                                  context: context,
+                                  builder: (builderContext) {
+                                    return confirmDialog(
+                                      context,
+                                      successState.order.id,
+                                    );
+                                  });
+                            },
+                            child: const Text('Hủy chuyến'),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
                 const SizedBox(
                   height: s32,
                 ),
@@ -767,7 +768,7 @@ class _CarOwnerOrderDetailViewState extends State<CarOwnerOrderDetailView> {
         return AlertDialog(
           title: const Text('Xác nhận'),
           content: SizedBox(
-            height: 130,
+            height: 150,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
