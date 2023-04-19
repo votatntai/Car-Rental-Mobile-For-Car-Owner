@@ -1,1 +1,1 @@
-export 'views/car_owner_profile_detail_page.dart';
+export 'views/driver_profile_detail_page.dart';

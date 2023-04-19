@@ -19,12 +19,25 @@ class CarItem extends StatelessWidget {
   final Car car;
   final Function(String id) onTap;
 
+  String carStatus(String carStatus) {
+    if (carStatus == 'ongoing') {
+      return 'Đang thuê';
+    }
+    if (carStatus == 'blocked') {
+      return 'Đã bị khóa';
+    }
+    if (carStatus == 'idle') {
+      return 'Đang trống';
+    }
+    return 'Đang thuê';
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => onTap(car.id),
       child: SizedBox(
-        height: 300,
+        // height: 300,
         child: Card(
           child: Column(
             children: [
@@ -177,6 +190,38 @@ class CarItem extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: s08,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: s08),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 15,
+                      height: 15,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CustomColors.flamingo,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        carStatus(car.status.toLowerCase()),
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: s08,
               ),
             ],
           ),
