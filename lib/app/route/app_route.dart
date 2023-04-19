@@ -12,6 +12,8 @@ import 'package:car_rental_for_car_owner/pages/car_owner_order_detail/views/car_
 import 'package:car_rental_for_car_owner/pages/car_owner_order_history/views/car_owner_order_history_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_payment_webview/views/car_owner_payment_webview_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_profile/views/car_owner_profile_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_profile_detail/bloc/car_owner_profile_detail_bloc.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_profile_detail/views/car_owner_profile_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_recharge/views/car_owner_recharge_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_scaffold_with_nav_bar/car_owner_driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_setting/views/car_owner_setting_page.dart';
@@ -24,6 +26,7 @@ import 'package:car_rental_for_car_owner/pages/car_tracking/views/car_tracking_p
 import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_detail/views/driver_order_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_history/views/driver_order_history_page.dart';
+import 'package:car_rental_for_car_owner/pages/driver_profile_detail/views/driver_profile_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_scaffold_with_nav_bar/driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/driver_home/driver_home.dart';
 import 'package:car_rental_for_car_owner/pages/driver_wallet/views/driver_wallet_page.dart';
@@ -84,6 +87,14 @@ class AppRoute {
               key: _shellNavigationKey,
               child: DriverProfilePage(),
             ),
+            routes: [
+              GoRoute(
+                path: 'driver-profile-detail',
+                parentNavigatorKey: rootNavigatorKey,
+                name: RouteName.driverProfileDetail,
+                builder: (context, state) => DriverProfileDetailPage(),
+              ),
+            ],
           ),
           GoRoute(
             path: '/driver-wallet',
@@ -167,6 +178,12 @@ class AppRoute {
                 builder: (context, state) {
                   return CarOwnerSettingPage();
                 },
+              ),
+              GoRoute(
+                path: 'car-owner-profile-detail',
+                parentNavigatorKey: rootNavigatorKey,
+                name: RouteName.carOwnerProfileDetail,
+                builder: (context, state) => CarOwnerProfileDetailPage(),
               ),
             ],
           ),

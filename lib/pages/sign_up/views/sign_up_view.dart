@@ -1,12 +1,20 @@
+import 'dart:async';
+
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:car_rental_for_car_owner/commons/constants/images.dart';
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/constants/theme.dart';
+import 'package:car_rental_for_car_owner/commons/loading_dialog_service.dart';
 import 'package:car_rental_for_car_owner/commons/utils.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/input_decoration.dart';
+import 'package:car_rental_for_car_owner/commons/widgets/message_dialog.dart';
+import 'package:car_rental_for_car_owner/commons/widgets/place_autocomplete.dart';
+import 'package:car_rental_for_car_owner/di.dart';
+import 'package:car_rental_for_car_owner/models/api_response.dart';
 import 'package:car_rental_for_car_owner/models/enums/gender.dart';
+import 'package:car_rental_for_car_owner/repositories/repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -26,16 +34,19 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController? _nameController;
   TextEditingController? _dateOfBirthController;
   TextEditingController? _phoneNumberController;
+  TextEditingController? _confirmPasswordController;
 
   FocusNode focusEmail = FocusNode();
   FocusNode focusPassword = FocusNode();
   FocusNode focusName = FocusNode();
   FocusNode focusDateOfBirth = FocusNode();
   FocusNode focusPhoneNumber = FocusNode();
+  FocusNode focusConfirmPassword = FocusNode();
 
-  bool isIconTrue = false;
+  bool isIconTrue = true;
   DateTime? selectedDate;
   Gender _gender = Gender.male;
+  String address = '';
 
   @override
   void initState() {
@@ -44,6 +55,8 @@ class _SignUpViewState extends State<SignUpView> {
     _nameController = TextEditingController();
     _dateOfBirthController = TextEditingController();
     _phoneNumberController = TextEditingController();
+    _confirmPasswordController = TextEditingController();
+
     super.initState();
   }
 
@@ -54,12 +67,14 @@ class _SignUpViewState extends State<SignUpView> {
     _nameController?.dispose();
     _dateOfBirthController?.dispose();
     _phoneNumberController?.dispose();
+    _confirmPasswordController?.dispose();
 
     focusDateOfBirth.dispose();
     focusEmail.dispose();
     focusName.dispose();
     focusPassword.dispose();
     focusPhoneNumber.dispose();
+    focusConfirmPassword.dispose();
 
     super.dispose();
   }
@@ -67,7 +82,7 @@ class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       appBar: appAppBar(context),
       body: SingleChildScrollView(
         child: Container(
@@ -87,14 +102,14 @@ class _SignUpViewState extends State<SignUpView> {
                   image: AssetImage(Images.car),
                 ),
                 const SizedBox(height: s16),
-                Text('Create Your Account', style: boldTextStyle(size: 24)),
+                Text('Tạo tài khoản của bạn', style: boldTextStyle(size: 24)),
                 const SizedBox(height: s40),
                 TextFormField(
                   autofocus: false,
                   validator: (value) {
-                    if (!value!.contains('@') || !value.endsWith(".com")) {
-                      return 'Please enter the correct email';
-                    }
+                    // if (!value!.contains('@') || !value.endsWith(".com")) {
+                    //   return 'Please enter the correct email';
+                    // }
                     return null;
                   },
                   focusNode: focusEmail,
@@ -107,7 +122,7 @@ class _SignUpViewState extends State<SignUpView> {
                   decoration: inputDecoration(
                     context,
                     prefixIcon: Icons.mail_rounded,
-                    hintText: "Email",
+                    hintText: 'Tên đăng nhập',
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -117,24 +132,59 @@ class _SignUpViewState extends State<SignUpView> {
                   controller: _passwordController,
                   obscureText: isIconTrue,
                   validator: (value) {
-                    if (value == null) return null;
-                    if (value.length < 8) {
-                      return 'password must be more than 8 character';
-                    } else if (value.length > 16) {
-                      return 'password must be  less than 16 character';
-                    } else if (value.isEmpty) {
-                      return 'Please enter password';
+                    return passwordValidator(value);
+                  },
+                  onFieldSubmitted: (v) {
+                    focusPassword.unfocus();
+                    FocusScope.of(context).requestFocus(focusConfirmPassword);
+                  },
+                  decoration: inputDecoration(
+                    context,
+                    prefixIcon: Icons.lock,
+                    hintText: 'Mật khẩu',
+                    suffixIcon: Theme(
+                      data: ThemeData(
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                      ),
+                      child: IconButton(
+                        highlightColor: Colors.transparent,
+                        onPressed: () {
+                          setState(() {
+                            isIconTrue = !isIconTrue;
+                          });
+                        },
+                        icon: Icon(
+                          (isIconTrue)
+                              ? Icons.visibility_rounded
+                              : Icons.visibility_off,
+                          size: 16,
+                          color: gray,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  autofocus: false,
+                  focusNode: focusConfirmPassword,
+                  controller: _confirmPasswordController,
+                  obscureText: isIconTrue,
+                  validator: (value) {
+                    if (value != _passwordController?.text) {
+                      return 'Mật khẩu không khớp';
                     }
                     return null;
                   },
                   onFieldSubmitted: (v) {
-                    focusName.unfocus();
+                    focusConfirmPassword.unfocus();
                     FocusScope.of(context).requestFocus(focusName);
                   },
                   decoration: inputDecoration(
                     context,
                     prefixIcon: Icons.lock,
-                    hintText: "Password",
+                    hintText: 'Nhập lại mật khẩu',
                     suffixIcon: Theme(
                       data: ThemeData(
                           splashColor: Colors.transparent,
@@ -163,67 +213,65 @@ class _SignUpViewState extends State<SignUpView> {
                   focusNode: focusName,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter user name';
+                      return 'Nhập tên của bạn';
                     }
                     return null;
                   },
                   onFieldSubmitted: (v) {
                     focusName.unfocus();
-                    FocusScope.of(context).requestFocus(focusDateOfBirth);
-                  },
-                  decoration: inputDecoration(
-                    context,
-                    hintText: "Full name",
-                    prefixIcon: Icons.person,
-                  ),
-                ),
-                const SizedBox(height: s16),
-                TextFormField(
-                  controller: _dateOfBirthController,
-                  focusNode: focusDateOfBirth,
-                  readOnly: true,
-                  onTap: () {
-                    selectDateAndTime(context);
-                  },
-                  onFieldSubmitted: (v) {
-                    focusDateOfBirth.unfocus();
                     FocusScope.of(context).requestFocus(focusPhoneNumber);
                   },
                   decoration: inputDecoration(
                     context,
-                    hintText: "Date of Birth",
-                    // suffixIcon: const Icon(
-                    //   Icons.calendar_month_rounded,
-                    //   size: 16,
-                    //   color: gray,
-                    // ),
-                    prefixIcon: Icons.date_range_rounded,
+                    hintText: 'Tên của bạn',
+                    prefixIcon: Icons.person,
                   ),
                 ),
+                // const SizedBox(height: s16),
+                // TextFormField(
+                //   controller: _dateOfBirthController,
+                //   focusNode: focusDateOfBirth,
+                //   readOnly: true,
+                //   onTap: () {
+                //     selectDateAndTime(context);
+                //   },
+                //   onFieldSubmitted: (v) {
+                //     focusDateOfBirth.unfocus();
+                //     FocusScope.of(context).requestFocus(focusPhoneNumber);
+                //   },
+                //   decoration: inputDecoration(
+                //     context,
+                //     hintText: "Date of Birth",
+                //     prefixIcon: Icons.date_range_rounded,
+                //   ),
+                // ),
                 const SizedBox(height: s16),
                 TextFormField(
                   controller: _phoneNumberController,
                   focusNode: focusPhoneNumber,
                   validator: (value) {
                     if (int.tryParse(value!) == null) {
-                      return 'Only Number are allowed';
+                      return 'Xin nhập số điện thoại';
                     }
                     return null;
                   },
                   onFieldSubmitted: (v) {
                     focusPhoneNumber.unfocus();
+                    // FocusScope.of(context).requestFocus(focusAddress);
                   },
                   keyboardType: TextInputType.number,
                   decoration: inputDecoration(
                     context,
-                    hintText: "Phone Number",
-                    // suffixIcon: const Icon(
-                    //   Icons.calendar_month_rounded,
-                    //   size: 16,
-                    //   color: gray,
-                    // ),
+                    hintText: 'Số điện thoại',
                     prefixIcon: Icons.phone,
                   ),
+                ),
+
+                const SizedBox(height: s16),
+                PlaceAutocomplete(
+                  onSelected: (option) {
+                    address = option;
+                  },
                 ),
                 const SizedBox(height: s16),
                 Container(
@@ -238,7 +286,7 @@ class _SignUpViewState extends State<SignUpView> {
                     value: _gender,
                     elevation: 16,
                     style: primaryTextStyle(),
-                    hint: Text('Gender', style: primaryTextStyle()),
+                    hint: Text('Giới tính', style: primaryTextStyle()),
                     isExpanded: true,
                     underline: Container(
                       height: 0,
@@ -254,7 +302,7 @@ class _SignUpViewState extends State<SignUpView> {
                         .map<DropdownMenuItem<Gender>>((Gender value) {
                       return DropdownMenuItem<Gender>(
                         value: value,
-                        child: Text(value.name),
+                        child: Text(value.getDisplayName()),
                       );
                     }).toList(),
                   ),
@@ -271,7 +319,7 @@ class _SignUpViewState extends State<SignUpView> {
                           const BorderRadius.all(Radius.circular(s40)),
                       backgroundColor: black,
                     ),
-                    child: Text('Sign Up', style: boldTextStyle(color: white)),
+                    child: Text('Đăng ký', style: boldTextStyle(color: white)),
                   ),
                 ),
                 const SizedBox(height: s16),
@@ -281,10 +329,10 @@ class _SignUpViewState extends State<SignUpView> {
                   },
                   child: Text.rich(
                     TextSpan(
-                      text: "Already have account? ",
+                      text: 'Đã có tài khoản? ',
                       style: secondaryTextStyle(),
                       children: [
-                        TextSpan(text: ' Sign in', style: primaryTextStyle()),
+                        TextSpan(text: 'Đăng nhập', style: boldTextStyle()),
                       ],
                     ),
                   ),
@@ -319,11 +367,24 @@ class _SignUpViewState extends State<SignUpView> {
     });
   }
 
-  void submit() {
+  FutureOr<void> submit() async {
     if (_formKey.currentState!.validate()) {
-      //TODO: sign up
+      LoadingDialogService.load();
+      var result = await getIt.get<AuthenticationRepository>().carOwnerSignUp(
+            username: _emailController?.text ?? '',
+            password: _passwordController?.text ?? '',
+            name: _nameController?.text ?? '',
+            phone: _phoneNumberController?.text ?? '',
+            gender: _gender,
+            address: address,
+          );
 
-      // context.goNamed(RouteName.home);
+      LoadingDialogService.dispose();
+
+      if (result is ApiError) {
+        var message = (result as ApiError).error;
+        showMessageDialog(message: message);
+      }
     }
   }
 }

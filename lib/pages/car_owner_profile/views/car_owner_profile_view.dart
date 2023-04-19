@@ -75,7 +75,9 @@ class _CarOwnerProfileViewState extends State<CarOwnerProfileView> {
                   leading: Icon(Icons.person_outline, color: context.iconColor),
                   title: 'Sửa hồ sơ',
                   titleTextStyle: boldTextStyle(),
-                  onTap: () {},
+                  onTap: () {
+                    context.goNamed(RouteName.carOwnerProfileDetail);
+                  },
                   trailing: Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 18,

@@ -11,6 +11,7 @@ mixin RouteName {
   static const driverWallet = 'driver-wallet';
   static const driverOrderHistory = 'driver-order-history';
   static const driverOrderDetail = 'driver-order-detail';
+  static const driverProfileDetail = 'driver-profile-detail';
 
   // car owner
   static const carOwnerHome = 'car-owner-home';
@@ -31,4 +32,5 @@ mixin RouteName {
   static const carOwnerPaymentWebview = 'car-owner-payment-webview';
   static const carOwnerTransactionHistory = 'car-owner-transaction-history';
   static const carOwnerTransactionDetail = 'car-owner-transaction-detail';
+  static const carOwnerProfileDetail = 'car-owner-profile-detail';
 }

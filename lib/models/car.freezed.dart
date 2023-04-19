@@ -465,7 +465,8 @@ class _$_Car extends _Car {
       required this.model,
       this.carOwner,
       this.driver,
-      required this.location,
+      this.location =
+          const Location(id: '', longitude: 106.660172, latitude: 10.762622),
       required this.additionalCharge,
       required this.star,
       required this.status,
@@ -542,6 +543,7 @@ class _$_Car extends _Car {
   @override
   final Driver? driver;
   @override
+  @JsonKey()
   final Location location;
   @override
   final AdditionalCharge additionalCharge;
@@ -666,7 +668,7 @@ abstract class _Car extends Car {
       required final CarModel model,
       final CarOwner? carOwner,
       final Driver? driver,
-      required final Location location,
+      final Location location,
       required final AdditionalCharge additionalCharge,
       required final double star,
       required final String status,

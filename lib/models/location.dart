@@ -5,7 +5,7 @@ part 'location.g.dart';
 
 @freezed
 class Location with _$Location {
-  factory Location({
+  const factory Location({
     required String id,
     required double longitude,
     required double latitude,

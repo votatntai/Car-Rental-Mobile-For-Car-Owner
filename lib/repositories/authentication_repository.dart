@@ -6,6 +6,7 @@ import 'package:car_rental_for_car_owner/commons/extensions.dart';
 import 'package:car_rental_for_car_owner/models/api_response.dart';
 import 'package:car_rental_for_car_owner/models/auth_data.dart';
 import 'package:car_rental_for_car_owner/models/authentication_result.dart';
+import 'package:car_rental_for_car_owner/models/enums/gender.dart';
 import 'package:car_rental_for_car_owner/models/enums/role.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -101,6 +102,38 @@ class AuthenticationRepository {
       }
 
       return const ApiError(error: 'Lỗi không xác định');
+    } on DioError catch (e) {
+      return e.getErrorMessage();
+    }
+  }
+
+  Future<ApiResponse<bool>> carOwnerSignUp({
+    required String username,
+    required String password,
+    required String name,
+    required String phone,
+    required Gender gender,
+    String? address,
+  }) async {
+    try {
+      final result = await dio.post<Map<String, dynamic>>(
+        'car-owners',
+        data: {
+          'username': username.toLowerCase().trim(),
+          'password': password.toLowerCase().trim(),
+          'name': name,
+          'phone': phone,
+          'gender': gender.getDisplayName(),
+          'address': address,
+        },
+      );
+
+      if (result.data != null &&
+          result.statusCode == StatusCodes.status201Created) {
+        return await carOwnerLogin(username, password);
+      }
+
+      return const ApiError(error: 'Unknown error');
     } on DioError catch (e) {
       return e.getErrorMessage();
     }

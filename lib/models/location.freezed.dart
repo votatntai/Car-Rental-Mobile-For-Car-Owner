@@ -117,7 +117,7 @@ class __$$_LocationCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Location implements _Location {
-  _$_Location(
+  const _$_Location(
       {required this.id, required this.longitude, required this.latitude});
 
   factory _$_Location.fromJson(Map<String, dynamic> json) =>
@@ -166,7 +166,7 @@ class _$_Location implements _Location {
 }
 
 abstract class _Location implements Location {
-  factory _Location(
+  const factory _Location(
       {required final String id,
       required final double longitude,
       required final double latitude}) = _$_Location;

@@ -47,6 +47,10 @@ class CarOwnerSettingBloc
       final carOwner = await userRepository.updateCarOwner(
         id: _carOwner!.id,
         isAutoAcceptOrder: event.isAutoAcceptOrder,
+        name: _carOwner?.name,
+        address: _carOwner?.address,
+        gender: _carOwner?.gender,
+        phone: _carOwner?.phone,
       );
 
       if (carOwner != null) {

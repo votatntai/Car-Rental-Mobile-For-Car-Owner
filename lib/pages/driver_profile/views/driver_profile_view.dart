@@ -70,7 +70,9 @@ class DriverProfileView extends StatelessWidget {
                   leading: Icon(Icons.person_outline, color: context.iconColor),
                   title: 'Sửa hồ sơ',
                   titleTextStyle: boldTextStyle(),
-                  onTap: () {},
+                  onTap: () {
+                    context.goNamed(RouteName.driverProfileDetail);
+                  },
                   trailing: Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 18,

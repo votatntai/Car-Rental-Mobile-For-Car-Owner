@@ -2,6 +2,7 @@ import 'package:car_rental_for_car_owner/commons/constants/networks.dart';
 import 'package:car_rental_for_car_owner/commons/type.dart';
 import 'package:car_rental_for_car_owner/models/car_owner.dart';
 import 'package:car_rental_for_car_owner/models/driver.dart';
+import 'package:car_rental_for_car_owner/models/enums/gender.dart';
 import 'package:dio/dio.dart';
 
 class UserRepository {
@@ -45,17 +46,54 @@ class UserRepository {
   Future<CarOwner?> updateCarOwner({
     required String id,
     bool? isAutoAcceptOrder,
+    String? name,
+    String? address,
+    String? phone,
+    String? gender,
   }) async {
     try {
       final result = await dio.put<JsonObject>(
         'car-owners/$id',
         data: {
+          'name': name,
+          'address': address,
+          'phone': phone,
+          'gender': gender,
           'isAutoAcceptOrder': isAutoAcceptOrder.toString(),
         },
       );
 
       if (result.statusCode == StatusCodes.status201Created) {
         final data = CarOwner.fromJson(result.data!);
+        return data;
+      }
+
+      return null;
+    } on DioError catch (_) {
+      return null;
+    }
+  }
+
+  Future<Driver?> updateDriver({
+    required String id,
+    String? name,
+    String? address,
+    String? phone,
+    String? gender,
+  }) async {
+    try {
+      final result = await dio.put<JsonObject>(
+        'drivers/$id',
+        data: {
+          'name': name,
+          'address': address,
+          'phone': phone,
+          'gender': gender,
+        },
+      );
+
+      if (result.statusCode == StatusCodes.status201Created) {
+        final data = Driver.fromJson(result.data!);
         return data;
       }
 

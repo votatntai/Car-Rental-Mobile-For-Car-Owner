@@ -36,14 +36,25 @@ class Car with _$Car {
     required CarModel model,
     CarOwner? carOwner,
     Driver? driver,
-    required Location location,
+    @Default(
+      Location(
+        id: '',
+        longitude: 106.660172,
+        latitude: 10.762622,
+      ),
+    )
+        Location location,
     required AdditionalCharge additionalCharge,
     required double star,
     required String status,
-    @TimeOfDayConverter() required TimeOfDay receiveStartTime,
-    @TimeOfDayConverter() required TimeOfDay receiveEndTime,
-    @TimeOfDayConverter() required TimeOfDay returnStartTime,
-    @TimeOfDayConverter() required TimeOfDay returnEndTime,
+    @TimeOfDayConverter()
+        required TimeOfDay receiveStartTime,
+    @TimeOfDayConverter()
+        required TimeOfDay receiveEndTime,
+    @TimeOfDayConverter()
+        required TimeOfDay returnStartTime,
+    @TimeOfDayConverter()
+        required TimeOfDay returnEndTime,
   }) = _Car;
 
   factory Car.fromJson(Map<String, dynamic> json) => _$CarFromJson(json);

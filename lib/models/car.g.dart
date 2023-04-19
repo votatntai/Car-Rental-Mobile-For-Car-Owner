@@ -36,7 +36,9 @@ _$_Car _$$_CarFromJson(Map<String, dynamic> json) => _$_Car(
       driver: json['driver'] == null
           ? null
           : Driver.fromJson(json['driver'] as Map<String, dynamic>),
-      location: Location.fromJson(json['location'] as Map<String, dynamic>),
+      location: json['location'] == null
+          ? const Location(id: '', longitude: 106.660172, latitude: 10.762622)
+          : Location.fromJson(json['location'] as Map<String, dynamic>),
       additionalCharge: AdditionalCharge.fromJson(
           json['additionalCharge'] as Map<String, dynamic>),
       star: (json['star'] as num).toDouble(),

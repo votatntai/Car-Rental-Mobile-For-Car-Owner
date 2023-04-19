@@ -49,12 +49,22 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (successState.pendingOrders.isNotEmpty)
-                      const Text(
-                        'Yêu cầu thuê xe',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                    const Text(
+                      'Yêu cầu thuê xe',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    if (successState.pendingOrders.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.only(top: s08),
+                        child: Text(
+                          'Bạn chưa có yêu cầu nào',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     const SizedBox(height: s08),

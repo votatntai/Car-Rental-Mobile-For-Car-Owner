@@ -16,3 +16,16 @@ Gender genderFromJson(String value) {
       return Gender.other;
   }
 }
+
+extension GenderName on Gender {
+  String getDisplayName() {
+    switch (this) {
+      case Gender.male:
+        return 'Nam';
+      case Gender.female:
+        return 'Nữ';
+      case Gender.other:
+        return 'Khác';
+    }
+  }
+}
