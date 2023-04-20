@@ -13,6 +13,6 @@ class TimeOfDayConverter extends JsonConverter<TimeOfDay, String> {
 
   @override
   String toJson(TimeOfDay object) {
-    return '${NumberFormat('00').format(object.hour)}:${NumberFormat('00').format(object.minute)}:00}';
+    return '${NumberFormat('00').format(object.hour)}:${NumberFormat('00').format(object.minute)}:00';
   }
 }

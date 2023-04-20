@@ -5,6 +5,9 @@ import 'package:car_rental_for_car_owner/models/api_response.dart';
 import 'package:car_rental_for_car_owner/models/calendar.dart';
 import 'package:car_rental_for_car_owner/models/enums/weekday.dart';
 import 'package:car_rental_for_car_owner/repositories/calendar_repository.dart';
+import 'package:car_rental_for_car_owner/repositories/car_repository.dart';
+import 'package:car_rental_for_car_owner/repositories/models/car_calendar.dart';
+import 'package:car_rental_for_car_owner/repositories/models/update_car_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,12 +19,16 @@ part 'car_calendar_bloc.freezed.dart';
 class CarCalendarBloc extends Bloc<CarCalendarEvent, CarCalendarState> {
   CarCalendarBloc({
     required this.calendarRepository,
+    required this.carRepository,
   }) : super(const _Initial()) {
     on<_Started>(_onStarted);
     on<_UpdateCalendar>(_onUpdateCalendar);
   }
 
   final CalendarRepository calendarRepository;
+  final CarRepository carRepository;
+
+  String? carId;
 
   FutureOr<void> _onStarted(
     _Started event,
@@ -33,6 +40,8 @@ class CarCalendarBloc extends Bloc<CarCalendarEvent, CarCalendarState> {
       emit(const CarCalendarState.failure(message: 'Lỗi không xác định'));
       return;
     }
+
+    carId = event.carId;
 
     final carCalendarResult =
         await calendarRepository.carCalendar(carId: event.carId!);
@@ -103,6 +112,24 @@ class CarCalendarBloc extends Bloc<CarCalendarEvent, CarCalendarState> {
       CarCalendarState.success(
         calendars: calendars,
       ),
+    );
+
+    if (carId == null) {
+      return;
+    }
+
+    final carCalendars = calendars
+        .map(
+          (e) => CarCalendar(
+            description: '',
+            calendar: e,
+          ),
+        )
+        .toList();
+
+    await carRepository.updateCar(
+      id: carId!,
+      model: UpdateCarModel(carCalendars: carCalendars),
     );
   }
 }
