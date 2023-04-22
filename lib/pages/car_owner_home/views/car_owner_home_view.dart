@@ -120,7 +120,14 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                                   CarRegistrationItem(
                                 carRegistration:
                                     successState.carRegistrations[index],
-                                onTap: (carRegistration) {},
+                                onTap: (carRegistration) {
+                                  context.pushNamed(
+                                    RouteName.carRegistrationDetail,
+                                    queryParams: {
+                                      'car-registration-id': carRegistration.id,
+                                    },
+                                  );
+                                },
                               ),
                               itemCount: successState.carRegistrations.length,
                             ),

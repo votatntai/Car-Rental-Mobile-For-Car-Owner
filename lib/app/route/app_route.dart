@@ -21,6 +21,7 @@ import 'package:car_rental_for_car_owner/pages/car_owner_transaction_detail/view
 import 'package:car_rental_for_car_owner/pages/car_owner_transaction_history/views/car_owner_transaction_history_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_wallet/views/car_owner_wallet_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_registration/views/car_registration_page.dart';
+import 'package:car_rental_for_car_owner/pages/car_registration_detail/views/car_registration_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_registration_list/views/car_registration_list_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_tracking/views/car_tracking_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
@@ -341,6 +342,17 @@ class AppRoute {
         parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) {
           return CarRegistrationPage();
+        },
+      ),
+
+      GoRoute(
+        path: '/car-registration-detail',
+        name: RouteName.carRegistrationDetail,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          final carRegistrationId = state.queryParams['car-registration-id'];
+
+          return CarRegistrationDetailPage(id: carRegistrationId);
         },
       ),
     ],

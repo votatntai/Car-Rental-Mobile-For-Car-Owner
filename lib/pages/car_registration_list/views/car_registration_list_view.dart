@@ -69,7 +69,14 @@ class _CarRegistrationListViewState extends State<CarRegistrationListView> {
                     itemBuilder: (context, item, index) =>
                         CarRegistrationItemVertical(
                       carRegistration: item,
-                      onTap: (carRegistration) {},
+                      onTap: (carRegistration) {
+                        context.pushNamed(
+                          RouteName.carRegistrationDetail,
+                          queryParams: {
+                            'car-registration-id': carRegistration.id,
+                          },
+                        );
+                      },
                     ),
                   ),
                   pagingController: _pagingController,

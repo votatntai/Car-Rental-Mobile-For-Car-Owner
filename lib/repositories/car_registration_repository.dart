@@ -122,4 +122,26 @@ class CarRegistrationRepository {
       return e.getErrorMessage();
     }
   }
+
+  Future<ApiResponse<CarRegistration>> getCarRegistrationById(
+    String id,
+  ) async {
+    try {
+      final result = await dio.get<JsonObject>(
+        'car-registrations/$id',
+      );
+
+      if (result.data != null && result.statusCode == StatusCodes.status200OK) {
+        final carRegistration = CarRegistration.fromJson(result.data!);
+
+        return ApiSuccess(carRegistration);
+      }
+
+      return const ApiError(
+        error: 'Lỗi không xác định',
+      );
+    } on DioError catch (e) {
+      return e.getErrorMessage();
+    }
+  }
 }

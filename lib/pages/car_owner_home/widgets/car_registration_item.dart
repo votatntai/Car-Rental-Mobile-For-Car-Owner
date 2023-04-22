@@ -104,7 +104,11 @@ class CarRegistrationItem extends StatelessWidget {
                 child: Text(
                   carRegistration.status == true
                       ? 'Đã được duyệt'
-                      : 'Chưa được duyệt',
+                      : carRegistration.status == false &&
+                              carRegistration.description != null &&
+                              carRegistration.description?.isNotEmpty == true
+                          ? 'Bị từ chối'
+                          : 'Chưa được duyệt',
                   maxLines: 1,
                   style: const TextStyle(
                     fontSize: 13,
