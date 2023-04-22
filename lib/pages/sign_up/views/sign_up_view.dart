@@ -5,6 +5,7 @@ import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:car_rental_for_car_owner/commons/constants/images.dart';
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/constants/theme.dart';
+import 'package:car_rental_for_car_owner/commons/extensions.dart';
 import 'package:car_rental_for_car_owner/commons/loading_dialog_service.dart';
 import 'package:car_rental_for_car_owner/commons/utils.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
@@ -250,7 +251,7 @@ class _SignUpViewState extends State<SignUpView> {
                   controller: _phoneNumberController,
                   focusNode: focusPhoneNumber,
                   validator: (value) {
-                    if (int.tryParse(value!) == null) {
+                    if (value == null || value.isPhoneNumber == false) {
                       return 'Xin nhập số điện thoại';
                     }
                     return null;

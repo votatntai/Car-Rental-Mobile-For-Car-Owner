@@ -1,6 +1,7 @@
 import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:car_rental_for_car_owner/commons/constants/images.dart';
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
+import 'package:car_rental_for_car_owner/commons/extensions.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/input_decoration.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/place_autocomplete.dart';
@@ -187,8 +188,9 @@ class _DriverProfileDetailViewState extends State<DriverProfileDetailView> {
                               controller: _phoneNumberController,
                               focusNode: _phoneNumberFocus,
                               validator: (value) {
-                                if (int.tryParse(value!) == null) {
-                                  return 'Xin vui lòng nhập số điện thoại';
+                                if (value == null ||
+                                    value.isPhoneNumber == false) {
+                                  return 'Xin nhập số điện thoại';
                                 }
                                 return null;
                               },
