@@ -8,6 +8,7 @@ class ImageModel with _$ImageModel {
   const factory ImageModel({
     required String id,
     required String url,
+    String? type,
   }) = _ImageModel;
 
   factory ImageModel.fromJson(Map<String, dynamic> json) =>

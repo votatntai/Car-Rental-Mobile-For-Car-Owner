@@ -485,7 +485,7 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
   }
 
   Widget carImage(BuildContext context, Car car) {
-    if (car.images == null || car.images?.isEmpty == true) {
+    if (car.thumbnails == null || car.thumbnails?.isEmpty == true) {
       return Image.asset(
         Images.carExample,
         width: double.infinity,
@@ -500,13 +500,13 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
           height: MediaQuery.of(context).size.width * 0.65,
           child: PageView.builder(
             controller: pageController,
-            itemCount: car.images!.length,
+            itemCount: car.thumbnails!.length,
             itemBuilder: (context, index) => Container(
               padding: const EdgeInsets.all(s08),
               alignment: Alignment.center,
               child: CachedNetworkImage(
                   width: double.infinity,
-                  imageUrl: car.images![index].url,
+                  imageUrl: car.thumbnails![index].url,
                   fit: BoxFit.fill,
                   errorWidget: (context, url, error) {
                     return const Icon(Icons.error);
@@ -521,7 +521,7 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
             alignment: Alignment.bottomCenter,
             child: SmoothPageIndicator(
               controller: pageController,
-              count: car.images!.length,
+              count: car.thumbnails!.length,
               effect: CustomizableEffect(
                 spacing: 3,
                 activeDotDecoration: DotDecoration(
