@@ -37,26 +37,26 @@ class DriverProfileView extends StatelessWidget {
                       width: 100,
                       fit: BoxFit.cover,
                     ).cornerRadiusWithClipRRect(60),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: Container(
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.all(s04),
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          border: Border.all(
-                            color: Colors.black.withOpacity(0.1),
-                          ),
-                          borderRadius: BorderRadius.circular(s08),
-                        ),
-                        child: const Icon(
-                          Icons.edit,
-                          color: white,
-                          size: s16,
-                        ),
-                      ).onTap(() {}),
-                    ),
+                    // Positioned(
+                    //   right: 0,
+                    //   bottom: 0,
+                    //   child: Container(
+                    //     alignment: Alignment.center,
+                    //     padding: const EdgeInsets.all(s04),
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.black,
+                    //       border: Border.all(
+                    //         color: Colors.black.withOpacity(0.1),
+                    //       ),
+                    //       borderRadius: BorderRadius.circular(s08),
+                    //     ),
+                    //     child: const Icon(
+                    //       Icons.edit,
+                    //       color: white,
+                    //       size: s16,
+                    //     ),
+                    //   ).onTap(() {}),
+                    // ),
                   ],
                 ),
                 const SizedBox(height: s16),
@@ -68,7 +68,7 @@ class DriverProfileView extends StatelessWidget {
                 const SizedBox(height: s16),
                 SettingItemWidget(
                   leading: Icon(Icons.person_outline, color: context.iconColor),
-                  title: 'Sửa hồ sơ',
+                  title: 'Hồ sơ',
                   titleTextStyle: boldTextStyle(),
                   onTap: () {
                     context.goNamed(RouteName.driverProfileDetail);

@@ -124,42 +124,42 @@ class _DriverProfileDetailViewState extends State<DriverProfileDetailView> {
                                     width: 100,
                                   ).cornerRadiusWithClipRRect(60),
                                 ),
-                                Positioned(
-                                  right: 0,
-                                  bottom: 8,
-                                  child: GestureDetector(
-                                    onTap: () async {
-                                      // if (UserImage != null) {
-                                      //   imagePath = UserImage;
-                                      // }
-                                      // try {
-                                      //   await pr_ob.pickImage();
-                                      //   imagePath = pr_ob.pickedFile!.path;
-                                      // } catch (e) {
-                                      //   print(e);
-                                      // }
+                                // Positioned(
+                                //   right: 0,
+                                //   bottom: 8,
+                                //   child: GestureDetector(
+                                //     onTap: () async {
+                                //       // if (UserImage != null) {
+                                //       //   imagePath = UserImage;
+                                //       // }
+                                //       // try {
+                                //       //   await pr_ob.pickImage();
+                                //       //   imagePath = pr_ob.pickedFile!.path;
+                                //       // } catch (e) {
+                                //       //   print(e);
+                                //       // }
 
-                                      //TODO: pick image
-                                    },
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      padding: const EdgeInsets.all(s04),
-                                      decoration: BoxDecoration(
-                                        color: Colors.black,
-                                        border: Border.all(
-                                          color: Colors.black.withOpacity(0.1),
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(s08),
-                                      ),
-                                      child: const Icon(
-                                        Icons.edit,
-                                        color: white,
-                                        size: s16,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                //       //TODO: pick image
+                                //     },
+                                //     child: Container(
+                                //       alignment: Alignment.center,
+                                //       padding: const EdgeInsets.all(s04),
+                                //       decoration: BoxDecoration(
+                                //         color: Colors.black,
+                                //         border: Border.all(
+                                //           color: Colors.black.withOpacity(0.1),
+                                //         ),
+                                //         borderRadius:
+                                //             BorderRadius.circular(s08),
+                                //       ),
+                                //       child: const Icon(
+                                //         Icons.edit,
+                                //         color: white,
+                                //         size: s16,
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
                               ],
                             ),
                             const SizedBox(height: s32),
@@ -233,37 +233,37 @@ class _DriverProfileDetailViewState extends State<DriverProfileDetailView> {
                               defaultText: _address,
                             ),
                             const SizedBox(height: s32),
-                            GestureDetector(
-                              onTap: () {
-                                unfocus();
-                                var name = _nameController.text;
-                                var phone = _phoneNumberController.text;
-                                var address = _address;
-                                var gender = _genderController.text;
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     unfocus();
+                            //     var name = _nameController.text;
+                            //     var phone = _phoneNumberController.text;
+                            //     var address = _address;
+                            //     var gender = _genderController.text;
 
-                                context.read<DriverProfileDetailBloc>().add(
-                                      DriverProfileDetailEvent.saved(
-                                        name: name,
-                                        phone: phone,
-                                        address: address,
-                                        gender: gender,
-                                      ),
-                                    );
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: s16),
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(45),
-                                ),
-                                child: Text(
-                                  'Lưu',
-                                  style: boldTextStyle(color: white),
-                                ),
-                              ),
-                            ),
+                            //     context.read<DriverProfileDetailBloc>().add(
+                            //           DriverProfileDetailEvent.saved(
+                            //             name: name,
+                            //             phone: phone,
+                            //             address: address,
+                            //             gender: gender,
+                            //           ),
+                            //         );
+                            //   },
+                            //   child: Container(
+                            //     alignment: Alignment.center,
+                            //     padding:
+                            //         const EdgeInsets.symmetric(vertical: s16),
+                            //     decoration: BoxDecoration(
+                            //       color: Colors.black,
+                            //       borderRadius: BorderRadius.circular(45),
+                            //     ),
+                            //     child: Text(
+                            //       'Lưu',
+                            //       style: boldTextStyle(color: white),
+                            //     ),
+                            //   ),
+                            // ),
                             const SizedBox(height: s08),
                           ],
                         ),
