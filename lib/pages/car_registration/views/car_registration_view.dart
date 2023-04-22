@@ -154,7 +154,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                       hintText: 'Ví dụ: Xe 4 chỗ',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Vui long nhập loại xe';
+                          return 'Vui lòng nhập loại xe';
                         }
                         return null;
                       },
@@ -163,7 +163,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                     TextFormFieldCustom(
                       controller: licensePlateController,
                       labelText: 'Biển số xe',
-                      hintText: 'Ví dụ: 29A1-12345',
+                      hintText: 'Ví dụ: 72B-14.546',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Vui lòng nhập biển số xe';
