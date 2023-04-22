@@ -13,12 +13,28 @@ class TrackingRepository {
   final StreamController<TrackingModel> carLocationController =
       StreamController.broadcast();
 
-  void connect() {
+  // void connect() {
+  //   connection = HubConnectionBuilder().withUrl(socketUrl).build();
+
+  //   connection.start()?.then((value) {
+  //     log('connect success');
+  //     startListening();
+  //   });
+  // }
+
+  Future<void> connect() async {
     connection = HubConnectionBuilder().withUrl(socketUrl).build();
-    connection.start()?.then((value) {
-      log('connect success');
-      startListening();
-    });
+    if (connection.state != HubConnectionState.Connected) {
+      try {
+        await connection.start();
+        log('Connected to SignalR server');
+        startListening();
+        // ignore: empty_catches
+      } catch (e) {
+        log('------------------');
+        log(e.toString());
+      }
+    }
   }
 
   void startListening() {

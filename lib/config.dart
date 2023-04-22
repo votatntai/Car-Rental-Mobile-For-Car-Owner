@@ -78,7 +78,7 @@ Future<void> configDI() async {
     ..registerSingleton(CarRegistrationRepository(dio: dio))
     ..registerSingleton(PaymentRepository(dio: dio));
 
-  tracking.connect();
+  await tracking.connect();
 }
 
 void configureTimeago() {
