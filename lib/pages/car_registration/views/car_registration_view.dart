@@ -106,6 +106,36 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormFieldCustom(
+                            controller: productionCompanyController,
+                            labelText: 'Hãng xe',
+                            hintText: 'Ví dụ: Honda',
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Vui lòng nhập hãng xe';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          child: TextFormFieldCustom(
+                            controller: modelController,
+                            labelText: 'Dòng xe',
+                            hintText: 'Ví dụ: Honda City',
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Vui lòng nhập dòng xe';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                     TextFormFieldCustom(
                       controller: nameController,
                       labelText: 'Tên xe',
@@ -113,6 +143,18 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Vui lòng nhập tên xe';
+                        }
+                        return null;
+                      },
+                    ),
+
+                    TextFormFieldCustom(
+                      controller: typeController,
+                      labelText: 'Loại xe',
+                      hintText: 'Ví dụ: Xe 4 chỗ',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Vui long nhập loại xe';
                         }
                         return null;
                       },
@@ -254,47 +296,20 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                       children: [
                         Expanded(
                           child: TextFormFieldCustom(
-                            controller: transmissionController,
-                            labelText: 'Truyền động',
-                            hintText: 'Ví dụ: 2 cầu',
+                            controller: yearOfManufactureController,
+                            labelText: 'Năm sản xuất',
+                            hintText: 'Ví dụ: 2020',
+                            keyboardType: TextInputType.number,
                             validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Vui lòng nhập truyền động';
+                              if (value == null ||
+                                  value.isEmpty ||
+                                  !value.isNumber) {
+                                return 'Vui long nhập nắm sản xuất';
                               }
                               return null;
                             },
                           ),
                         ),
-                        Expanded(
-                          child: TextFormFieldCustom(
-                            controller: fuelTypeController,
-                            labelText: 'Loại nhiên liệu',
-                            hintText: 'Ví dụ: Xăng',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Vui lòng nhập Loại nhiên liệu';
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    // model of car
-                    TextFormFieldCustom(
-                      controller: modelController,
-                      labelText: 'Dòng xe',
-                      hintText: 'Ví dụ: Honda City',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Vui lòng nhập dòng xe';
-                        }
-                        return null;
-                      },
-                    ),
-
-                    Row(
-                      children: [
                         Expanded(
                           child: TextFormFieldCustom(
                             controller: seaterController,
@@ -311,34 +326,19 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                             },
                           ),
                         ),
-                        Expanded(
-                          child: TextFormFieldCustom(
-                            controller: priceController,
-                            labelText: 'Giá thuê',
-                            hintText: 'Ví dụ: 100000',
-                            keyboardType: TextInputType.number,
-                            validator: (value) {
-                              if (value == null ||
-                                  value.isEmpty ||
-                                  !value.isNumber) {
-                                return 'Vui lòng nhập giá thuê';
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
                       ],
                     ),
+
                     Row(
                       children: [
                         Expanded(
                           child: TextFormFieldCustom(
-                            controller: fuelConsumptionController,
-                            labelText: 'Mức tiêu thụ xăng dầu',
-                            hintText: 'Ví dụ: 7 lít/100km',
+                            controller: transmissionController,
+                            labelText: 'Truyền động',
+                            hintText: 'Ví dụ: Số tự động',
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Vui long nhập mức tiệu thụ xăng dầu';
+                                return 'Vui lòng nhập truyền động';
                               }
                               return null;
                             },
@@ -359,19 +359,18 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         ),
                       ],
                     ),
+                    // model of car
+
                     Row(
                       children: [
                         Expanded(
                           child: TextFormFieldCustom(
-                            controller: yearOfManufactureController,
-                            labelText: 'Năm sản xuất',
-                            hintText: 'Ví dụ: 2020',
-                            keyboardType: TextInputType.number,
+                            controller: fuelTypeController,
+                            labelText: 'Loại nhiên liệu',
+                            hintText: 'Ví dụ: Xăng',
                             validator: (value) {
-                              if (value == null ||
-                                  value.isEmpty ||
-                                  !value.isNumber) {
-                                return 'Vui long nhập nắm sản xuất';
+                              if (value == null || value.isEmpty) {
+                                return 'Vui lòng nhập Loại nhiên liệu';
                               }
                               return null;
                             },
@@ -379,12 +378,12 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         ),
                         Expanded(
                           child: TextFormFieldCustom(
-                            controller: productionCompanyController,
-                            labelText: 'Hãng xe',
-                            hintText: 'Ví dụ: Honda',
+                            controller: fuelConsumptionController,
+                            labelText: 'Mức tiêu thụ nguyên liệu',
+                            hintText: 'Ví dụ: 7 lít/100km',
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Vui lòng nhập hãng xe';
+                                return 'Vui long nhập mức tiệu thụ xăng dầu';
                               }
                               return null;
                             },
@@ -392,6 +391,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         ),
                       ],
                     ),
+
                     TextFormFieldCustom(
                       controller: locationController,
                       labelText: 'Vị trí',
@@ -403,25 +403,25 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         return null;
                       },
                     ),
-                    TextFormFieldCustom(
-                      controller: typeController,
-                      labelText: 'Loại xe',
-                      hintText: 'Ví dụ: Xe 4 chỗ',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Vui long nhập loại xe';
-                        }
-                        return null;
-                      },
-                    ),
-                    // TextFormFieldCustom(
-                    //   controller: descriptionController,
-                    //   labelText: 'Mô tả',
-                    //   maxLines: 3,
-                    // ),
 
                     Row(
                       children: [
+                        Expanded(
+                          child: TextFormFieldCustom(
+                            controller: priceController,
+                            labelText: 'Giá thuê',
+                            hintText: 'Ví dụ: 100000 VND',
+                            keyboardType: TextInputType.number,
+                            validator: (value) {
+                              if (value == null ||
+                                  value.isEmpty ||
+                                  !value.isNumber) {
+                                return 'Vui lòng nhập giá thuê';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
                         Expanded(
                           child: TextFormFieldCustom(
                             controller: maximumDistanceController,
@@ -438,11 +438,22 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                             },
                           ),
                         ),
+                      ],
+                    ),
+
+                    // TextFormFieldCustom(
+                    //   controller: descriptionController,
+                    //   labelText: 'Mô tả',
+                    //   maxLines: 3,
+                    // ),
+
+                    Row(
+                      children: [
                         Expanded(
                           child: TextFormFieldCustom(
                             controller: distanceSurchargeController,
-                            labelText: 'Phụ phí vượt quãng đường /km',
-                            hintText: 'Ví dụ: 10000',
+                            labelText: 'Phụ phí vượt quãng đường',
+                            hintText: 'Ví dụ: 10000 VND/km',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
@@ -462,7 +473,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: timeSurchargeController,
                             labelText: 'Phụ phí vượt quá giờ ',
-                            hintText: 'Ví dụ: 10000/giờ',
+                            hintText: 'Ví dụ: 100000 VND/h',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
