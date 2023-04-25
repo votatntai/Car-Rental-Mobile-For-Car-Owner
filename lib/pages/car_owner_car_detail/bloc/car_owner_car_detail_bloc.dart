@@ -16,9 +16,12 @@ class CarOwnerCarDetailBloc
     required this.carRepository,
   }) : super(const _Initial()) {
     on<_Started>(_onStarted);
+    on<_StatusChanged>(_onStatusChanged);
   }
 
   final CarRepository carRepository;
+
+  String? carId;
 
   FutureOr<void> _onStarted(
     _Started event,
@@ -28,6 +31,8 @@ class CarOwnerCarDetailBloc
       emit(const CarOwnerCarDetailState.failure(message: 'Xe không tồn tại'));
       return;
     }
+
+    carId = event.carId;
 
     final carResult = await carRepository.carById(event.carId!);
 
@@ -39,5 +44,14 @@ class CarOwnerCarDetailBloc
     final car = (carResult as ApiSuccess<Car>).value;
 
     emit(CarOwnerCarDetailState.success(car: car));
+  }
+
+  FutureOr<void> _onStatusChanged(
+    _StatusChanged event,
+    Emitter<CarOwnerCarDetailState> emit,
+  ) async {
+    if (carId == null) return;
+
+    add(_Started(carId: carId!));
   }
 }

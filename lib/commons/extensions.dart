@@ -39,7 +39,7 @@ extension StringValidatorX on String {
   }
 
   bool get isCarLicensePlate {
-    final RegExp regex = RegExp(r'^[0-9]{1,2}[A-Za-z]-[0-9]{1,2}.[0-9]{3,4}$');
+    final RegExp regex = RegExp(r'^[0-9]{2}[A-Z][\-][0-9]{3}[\.][0-9]{2}$');
     return regex.hasMatch(this);
   }
 }

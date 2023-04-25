@@ -9,6 +9,7 @@ class TextFormFieldCustom extends StatelessWidget {
     this.controller,
     this.hintText,
     this.maxLines,
+    this.suffix,
   });
 
   final String labelText;
@@ -17,6 +18,7 @@ class TextFormFieldCustom extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
   final int? maxLines;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,11 @@ class TextFormFieldCustom extends StatelessWidget {
           border: const OutlineInputBorder(),
           labelText: labelText,
           hintText: hintText,
+          suffix: suffix,
+          contentPadding: const EdgeInsets.only(
+            left: 12,
+            right: 12,
+          ),
         ),
         validator: validator,
         keyboardType: keyboardType,

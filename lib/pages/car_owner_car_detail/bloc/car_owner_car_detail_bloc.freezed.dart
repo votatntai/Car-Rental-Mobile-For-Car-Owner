@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CarOwnerCarDetailEvent {
-  String? get carId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? carId) started,
+    required TResult Function(String status) statusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? carId)? started,
+    TResult? Function(String status)? statusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? carId)? started,
+    TResult Function(String status)? statusChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_StatusChanged value) statusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_StatusChanged value)? statusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_StatusChanged value)? statusChanged,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CarOwnerCarDetailEventCopyWith<CarOwnerCarDetailEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $CarOwnerCarDetailEventCopyWith<$Res> {
   factory $CarOwnerCarDetailEventCopyWith(CarOwnerCarDetailEvent value,
           $Res Function(CarOwnerCarDetailEvent) then) =
       _$CarOwnerCarDetailEventCopyWithImpl<$Res, CarOwnerCarDetailEvent>;
-  @useResult
-  $Res call({String? carId});
 }
 
 /// @nodoc
@@ -74,28 +73,13 @@ class _$CarOwnerCarDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? carId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      carId: freezed == carId
-          ? _value.carId
-          : carId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res>
-    implements $CarOwnerCarDetailEventCopyWith<$Res> {
+abstract class _$$_StartedCopyWith<$Res> {
   factory _$$_StartedCopyWith(
           _$_Started value, $Res Function(_$_Started) then) =
       __$$_StartedCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String? carId});
 }
@@ -155,6 +139,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? carId) started,
+    required TResult Function(String status) statusChanged,
   }) {
     return started(carId);
   }
@@ -163,6 +148,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? carId)? started,
+    TResult? Function(String status)? statusChanged,
   }) {
     return started?.call(carId);
   }
@@ -171,6 +157,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? carId)? started,
+    TResult Function(String status)? statusChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -183,6 +170,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_StatusChanged value) statusChanged,
   }) {
     return started(this);
   }
@@ -191,6 +179,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_StatusChanged value)? statusChanged,
   }) {
     return started?.call(this);
   }
@@ -199,6 +188,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_StatusChanged value)? statusChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -211,11 +201,143 @@ class _$_Started implements _Started {
 abstract class _Started implements CarOwnerCarDetailEvent {
   const factory _Started({final String? carId}) = _$_Started;
 
-  @override
   String? get carId;
-  @override
   @JsonKey(ignore: true)
   _$$_StartedCopyWith<_$_Started> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_StatusChangedCopyWith<$Res> {
+  factory _$$_StatusChangedCopyWith(
+          _$_StatusChanged value, $Res Function(_$_StatusChanged) then) =
+      __$$_StatusChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String status});
+}
+
+/// @nodoc
+class __$$_StatusChangedCopyWithImpl<$Res>
+    extends _$CarOwnerCarDetailEventCopyWithImpl<$Res, _$_StatusChanged>
+    implements _$$_StatusChangedCopyWith<$Res> {
+  __$$_StatusChangedCopyWithImpl(
+      _$_StatusChanged _value, $Res Function(_$_StatusChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$_StatusChanged(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_StatusChanged implements _StatusChanged {
+  const _$_StatusChanged({required this.status});
+
+  @override
+  final String status;
+
+  @override
+  String toString() {
+    return 'CarOwnerCarDetailEvent.statusChanged(status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StatusChanged &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StatusChangedCopyWith<_$_StatusChanged> get copyWith =>
+      __$$_StatusChangedCopyWithImpl<_$_StatusChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? carId) started,
+    required TResult Function(String status) statusChanged,
+  }) {
+    return statusChanged(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? carId)? started,
+    TResult? Function(String status)? statusChanged,
+  }) {
+    return statusChanged?.call(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? carId)? started,
+    TResult Function(String status)? statusChanged,
+    required TResult orElse(),
+  }) {
+    if (statusChanged != null) {
+      return statusChanged(status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_StatusChanged value) statusChanged,
+  }) {
+    return statusChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_StatusChanged value)? statusChanged,
+  }) {
+    return statusChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_StatusChanged value)? statusChanged,
+    required TResult orElse(),
+  }) {
+    if (statusChanged != null) {
+      return statusChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StatusChanged implements CarOwnerCarDetailEvent {
+  const factory _StatusChanged({required final String status}) =
+      _$_StatusChanged;
+
+  String get status;
+  @JsonKey(ignore: true)
+  _$$_StatusChangedCopyWith<_$_StatusChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

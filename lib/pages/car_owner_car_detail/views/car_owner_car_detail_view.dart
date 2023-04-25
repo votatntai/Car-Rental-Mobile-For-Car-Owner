@@ -37,6 +37,19 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
     super.dispose();
   }
 
+  String carStatus(String carStatus) {
+    if (carStatus == 'ongoing') {
+      return 'Đang thuê';
+    }
+    if (carStatus == 'blocked') {
+      return 'Đã bị khóa';
+    }
+    if (carStatus == 'idle') {
+      return 'Đang trống';
+    }
+    return 'Đang thuê';
+  }
+
   Widget divider = Column(
     children: const [
       SizedBox(
@@ -80,21 +93,21 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                 });
               },
             ),
-            actionWidget2: IconButton(
-              onPressed: () {
-                context.pushNamed(
-                  RouteName.carCalendar,
-                  queryParams: {
-                    'car-id': successState.car.id,
-                  },
-                );
-              },
-              icon: const Icon(
-                Icons.calendar_month_outlined,
-                color: Colors.black,
-                size: 24,
-              ),
-            ),
+            // actionWidget2: IconButton(
+            //   onPressed: () {
+            //     context.pushNamed(
+            //       RouteName.carCalendar,
+            //       queryParams: {
+            //         'car-id': successState.car.id,
+            //       },
+            //     );
+            //   },
+            //   icon: const Icon(
+            //     Icons.calendar_month_outlined,
+            //     color: Colors.black,
+            //     size: 24,
+            //   ),
+            // ),
             // actionWidget3: IconButton(
             //   onPressed: () {},
             //   icon: const Icon(
@@ -114,6 +127,20 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                 children: [
                   carImage(context, successState.car),
                   carTitle(context, successState.car),
+                  divider,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: s16),
+                    child: ContainerWithLabel(
+                      label: 'Trạng thái',
+                      child: Text(
+                        carStatus(successState.car.status.toLowerCase()),
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
                   divider,
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: s16),
@@ -366,7 +393,72 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                       ),
                     ),
                   ),
-                  divider,
+                  const SizedBox(
+                    height: s32,
+                  ),
+                  if (successState.car.status.toLowerCase() == 'idle')
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                showConfirmDialogCustom(
+                                  context,
+                                  onAccept: (c) {
+                                    context.read<CarOwnerCarDetailBloc>().add(
+                                          const CarOwnerCarDetailEvent
+                                              .statusChanged(status: 'blocked'),
+                                        );
+                                  },
+                                  dialogType: DialogType.CONFIRMATION,
+                                  primaryColor: context.primaryColor,
+                                  title:
+                                      'Bạn có chắc chắn muốn khoá xe này không?',
+                                  negativeText: 'Hủy',
+                                  positiveText: 'Đồng ý',
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: CustomColors.red,
+                              ),
+                              child: const Text('Khoá xe'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  if (successState.car.status.toLowerCase() == 'blocked')
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                showConfirmDialogCustom(
+                                  context,
+                                  onAccept: (c) {
+                                    context.read<CarOwnerCarDetailBloc>().add(
+                                          const CarOwnerCarDetailEvent
+                                              .statusChanged(status: 'idle'),
+                                        );
+                                  },
+                                  dialogType: DialogType.CONFIRMATION,
+                                  primaryColor: context.primaryColor,
+                                  title:
+                                      'Bạn có chắc chắn muốn mở khoá xe này không?',
+                                  negativeText: 'Hủy',
+                                  positiveText: 'Đồng ý',
+                                );
+                              },
+                              child: const Text('Mở khoá xe'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             ),

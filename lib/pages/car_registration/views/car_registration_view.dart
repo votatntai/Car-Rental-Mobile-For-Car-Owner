@@ -18,6 +18,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nb_utils/nb_utils.dart';
+
+List<String> carTypes = [
+  '4 chỗ (Mini)',
+  '5 chỗ (Sedan)',
+  '5 chỗ (Hatchback)',
+  '7 chỗ (MPV)',
+  '7 chỗ (SUV)'
+];
+
+List<String> carTransmissions = ['Số sàn', 'Số tự động'];
+
+List<String> carFuelTypes = ['Xăng', 'Dầu'];
 
 class CarRegistrationView extends StatefulWidget {
   const CarRegistrationView({super.key});
@@ -34,17 +47,17 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
 
   final nameController = TextEditingController();
   final licensePlateController = TextEditingController();
-  final transmissionController = TextEditingController();
-  final fuelTypeController = TextEditingController();
-  final modelController = TextEditingController();
+  // final transmissionController = TextEditingController();
+  // final fuelTypeController = TextEditingController();
+  // final modelController = TextEditingController();
   final seaterController = TextEditingController();
   final priceController = TextEditingController();
   final fuelConsumptionController = TextEditingController();
-  final chassisNumberController = TextEditingController();
+  // final chassisNumberController = TextEditingController();
   final yearOfManufactureController = TextEditingController();
   final productionCompanyController = TextEditingController();
   final locationController = TextEditingController();
-  final typeController = TextEditingController();
+  // final typeController = TextEditingController();
   final descriptionController = TextEditingController();
   final maximumDistanceController = TextEditingController();
   final distanceSurchargeController = TextEditingController();
@@ -54,17 +67,17 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
   void dispose() {
     nameController.dispose();
     licensePlateController.dispose();
-    transmissionController.dispose();
-    fuelTypeController.dispose();
-    modelController.dispose();
+    // transmissionController.dispose();
+    // fuelTypeController.dispose();
+    // modelController.dispose();
     seaterController.dispose();
     priceController.dispose();
     fuelConsumptionController.dispose();
-    chassisNumberController.dispose();
+    // chassisNumberController.dispose();
     yearOfManufactureController.dispose();
     productionCompanyController.dispose();
     locationController.dispose();
-    typeController.dispose();
+    // typeController.dispose();
     descriptionController.dispose();
     maximumDistanceController.dispose();
     distanceSurchargeController.dispose();
@@ -72,6 +85,10 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
 
     super.dispose();
   }
+
+  String _carType = carTypes[0];
+  String _carTransmission = carTransmissions[0];
+  String _carFuelType = carFuelTypes[0];
 
   Widget divider = Column(
     children: const [
@@ -121,25 +138,25 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                             },
                           ),
                         ),
-                        Expanded(
-                          child: TextFormFieldCustom(
-                            controller: modelController,
-                            labelText: 'Dòng xe',
-                            hintText: 'Ví dụ: Honda City',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Vui lòng nhập dòng xe';
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
+                        // Expanded(
+                        //   child: TextFormFieldCustom(
+                        //     controller: modelController,
+                        //     labelText: 'Dòng xe',
+                        //     hintText: 'Ví dụ: Honda City',
+                        //     validator: (value) {
+                        //       if (value == null || value.isEmpty) {
+                        //         return 'Vui lòng nhập dòng xe';
+                        //       }
+                        //       return null;
+                        //     },
+                        //   ),
+                        // ),
                       ],
                     ),
                     TextFormFieldCustom(
                       controller: nameController,
                       labelText: 'Tên xe',
-                      hintText: 'Ví dụ: Honda City',
+                      hintText: 'Ví dụ: City',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Vui lòng nhập tên xe';
@@ -148,22 +165,61 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                       },
                     ),
 
-                    TextFormFieldCustom(
-                      controller: typeController,
-                      labelText: 'Loại xe',
-                      hintText: 'Ví dụ: Xe 4 chỗ',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Vui lòng nhập loại xe';
-                        }
-                        return null;
-                      },
+                    // TextFormFieldCustom(
+                    //   controller: typeController,
+                    //   labelText: 'Loại xe',
+                    //   hintText: 'Ví dụ: Xe 4 chỗ',
+                    //   validator: (value) {
+                    //     if (value == null || value.isEmpty) {
+                    //       return 'Vui lòng nhập loại xe';
+                    //     }
+                    //     return null;
+                    //   },
+                    // ),
+
+                    Container(
+                      padding: const EdgeInsets.only(
+                        bottom: 12,
+                        left: 6,
+                        right: 6,
+                      ),
+                      child: InputDecorator(
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Số chỗ ngồi',
+                          contentPadding: EdgeInsets.only(
+                            left: 12,
+                            right: 12,
+                          ),
+                        ),
+                        child: DropdownButton<String>(
+                          isExpanded: true,
+                          elevation: 16,
+                          value: _carType,
+                          underline: Container(
+                            height: 0,
+                          ),
+                          items: carTypes
+                              .map((e) => DropdownMenuItem<String>(
+                                    value: e,
+                                    child: Text(e),
+                                  ))
+                              .toList(),
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                _carType = value;
+                              });
+                            }
+                          },
+                        ),
+                      ),
                     ),
 
                     TextFormFieldCustom(
                       controller: licensePlateController,
                       labelText: 'Biển số xe',
-                      hintText: 'Ví dụ: 72B-14.546',
+                      hintText: 'Ví dụ: 72B-145.46',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Vui lòng nhập biển số xe';
@@ -329,51 +385,129 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                       ],
                     ),
 
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextFormFieldCustom(
-                            controller: transmissionController,
-                            labelText: 'Truyền động',
-                            hintText: 'Ví dụ: Số tự động',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Vui lòng nhập truyền động';
-                              }
-                              return null;
-                            },
+                    // Row(
+                    //   children: [
+                    //     Expanded(
+                    //       child: TextFormFieldCustom(
+                    //         controller: transmissionController,
+                    //         labelText: 'Truyền động',
+                    //         hintText: 'Ví dụ: Số tự động',
+                    //         validator: (value) {
+                    //           if (value == null || value.isEmpty) {
+                    //             return 'Vui lòng nhập truyền động';
+                    //           }
+                    //           return null;
+                    //         },
+                    //       ),
+                    //     ),
+                    //     Expanded(
+                    //       child: TextFormFieldCustom(
+                    //         controller: chassisNumberController,
+                    //         labelText: 'Khung gầm',
+                    //         hintText: 'Ví dụ: 123456789',
+                    //         validator: (value) {
+                    //           if (value == null || value.isEmpty) {
+                    //             return 'Vui lòng nhập khung gầm';
+                    //           }
+                    //           return null;
+                    //         },
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+
+                    Container(
+                      padding: const EdgeInsets.only(
+                        bottom: 12,
+                        left: 6,
+                        right: 6,
+                      ),
+                      child: InputDecorator(
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Hộp số',
+                          contentPadding: EdgeInsets.only(
+                            left: 12,
+                            right: 12,
                           ),
                         ),
-                        Expanded(
-                          child: TextFormFieldCustom(
-                            controller: chassisNumberController,
-                            labelText: 'Khung gầm',
-                            hintText: 'Ví dụ: 123456789',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Vui lòng nhập khung gầm';
-                              }
-                              return null;
-                            },
+                        child: DropdownButton<String>(
+                          isExpanded: true,
+                          elevation: 16,
+                          value: _carTransmission,
+                          underline: Container(
+                            height: 0,
                           ),
+                          items: carTransmissions
+                              .map((e) => DropdownMenuItem<String>(
+                                    value: e,
+                                    child: Text(e),
+                                  ))
+                              .toList(),
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                _carTransmission = value;
+                              });
+                            }
+                          },
                         ),
-                      ],
+                      ),
                     ),
-                    // model of car
 
                     Row(
                       children: [
+                        // Expanded(
+                        //   child: TextFormFieldCustom(
+                        //     controller: fuelTypeController,
+                        //     labelText: 'Loại nhiên liệu',
+                        //     hintText: 'Ví dụ: Xăng',
+                        //     validator: (value) {
+                        //       if (value == null || value.isEmpty) {
+                        //         return 'Vui lòng nhập Loại nhiên liệu';
+                        //       }
+                        //       return null;
+                        //     },
+                        //   ),
+                        // ),
                         Expanded(
-                          child: TextFormFieldCustom(
-                            controller: fuelTypeController,
-                            labelText: 'Loại nhiên liệu',
-                            hintText: 'Ví dụ: Xăng',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Vui lòng nhập Loại nhiên liệu';
-                              }
-                              return null;
-                            },
+                          child: Container(
+                            padding: const EdgeInsets.only(
+                              bottom: 12,
+                              left: 6,
+                              right: 6,
+                            ),
+                            child: InputDecorator(
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Loại nhiên liệu',
+                                contentPadding: EdgeInsets.only(
+                                  left: 12,
+                                  right: 12,
+                                ),
+                              ),
+                              child: DropdownButton<String>(
+                                isExpanded: true,
+                                elevation: 16,
+                                value: _carFuelType,
+                                underline: Container(
+                                  height: 0,
+                                ),
+                                items: carFuelTypes
+                                    .map((e) => DropdownMenuItem<String>(
+                                          value: e,
+                                          child: Text(e),
+                                        ))
+                                    .toList(),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    setState(() {
+                                      _carFuelType = value;
+                                    });
+                                  }
+                                },
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
@@ -394,7 +528,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
 
                     TextFormFieldCustom(
                       controller: locationController,
-                      labelText: 'Vị trí',
+                      labelText: 'Vị trí xe',
                       hintText: 'Ví dụ: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -409,7 +543,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                         Expanded(
                           child: TextFormFieldCustom(
                             controller: priceController,
-                            labelText: 'Giá thuê',
+                            labelText: 'Giá thuê xe',
                             hintText: 'Ví dụ: 100000 VND',
                             keyboardType: TextInputType.number,
                             validator: (value) {
@@ -420,6 +554,14 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                               }
                               return null;
                             },
+                            suffix: const Text(
+                              'VND',
+                              style: TextStyle(
+                                color: CustomColors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                         Expanded(
@@ -436,6 +578,14 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                               }
                               return null;
                             },
+                            suffix: const Text(
+                              'KM',
+                              style: TextStyle(
+                                color: CustomColors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -463,6 +613,14 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                               }
                               return null;
                             },
+                            suffix: const Text(
+                              'VND/KM',
+                              style: TextStyle(
+                                color: CustomColors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -473,7 +631,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                           child: TextFormFieldCustom(
                             controller: timeSurchargeController,
                             labelText: 'Phụ phí vượt quá giờ ',
-                            hintText: 'Ví dụ: 100000 VND/h',
+                            hintText: 'Ví dụ: 100000 VND/H',
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null ||
@@ -483,6 +641,14 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                               }
                               return null;
                             },
+                            suffix: const Text(
+                              'VND/H',
+                              style: TextStyle(
+                                color: CustomColors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -507,18 +673,18 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                                     CarRegistrationModel(
                                       name: nameController.text,
                                       licensePlate: licensePlateController.text,
-                                      transmissionType:
-                                          transmissionController.text,
-                                      fuelType: fuelTypeController.text,
-                                      model: modelController.text,
+                                      transmissionType: _carTransmission,
+                                      fuelType: _carFuelType,
+                                      model: 'model',
                                       seater:
                                           int.tryParse(seaterController.text) ??
                                               0,
                                       price: double.tryParse(
                                               priceController.text) ??
                                           0,
-                                      fuelConsumption: fuelTypeController.text,
-                                      chassis: chassisNumberController.text,
+                                      fuelConsumption:
+                                          fuelConsumptionController.text,
+                                      chassis: 'chassis',
                                       yearOfManufacture: int.tryParse(
                                               yearOfManufactureController
                                                   .text) ??
@@ -526,7 +692,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                                       productionCompany:
                                           productionCompanyController.text,
                                       location: locationController.text,
-                                      type: typeController.text,
+                                      type: _carType,
                                       additionalCharge: AdditionalChargeModel(
                                         maximumDistance: int.tryParse(
                                                 maximumDistanceController
