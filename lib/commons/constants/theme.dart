@@ -5,12 +5,5 @@ import 'package:google_fonts/google_fonts.dart';
 
 ThemeData lightTheme = ThemeData(
   primarySwatch: CustomColors.primaryMaterialColor,
-  appBarTheme: const AppBarTheme(
-    color: CustomColors.white,
-    systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarIconBrightness: Brightness.dark,
-      statusBarColor: CustomColors.white,
-    ),
-  ),
   fontFamily: GoogleFonts.sourceSansPro().fontFamily,
 );

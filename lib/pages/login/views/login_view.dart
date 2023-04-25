@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
+import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:car_rental_for_car_owner/commons/constants/images.dart';
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/loading_dialog_service.dart';
@@ -24,14 +25,19 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  TextEditingController? _emailController;
-  TextEditingController? _passwordController;
+  TextEditingController? _carOwnerUserNameController;
+  TextEditingController? _carOwnerPasswordController;
+  TextEditingController? _driverUserNameController;
+  TextEditingController? _driverPasswordController;
 
   bool isIconTrue = true;
   bool isChecked = false;
 
-  FocusNode f1 = FocusNode();
-  FocusNode f2 = FocusNode();
+  FocusNode cf1 = FocusNode();
+  FocusNode cf2 = FocusNode();
+
+  FocusNode df1 = FocusNode();
+  FocusNode df2 = FocusNode();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -39,17 +45,26 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void initState() {
-    _emailController = TextEditingController();
-    _passwordController = TextEditingController();
+    _carOwnerUserNameController = TextEditingController();
+    _carOwnerPasswordController = TextEditingController();
+    _driverUserNameController = TextEditingController();
+    _driverPasswordController = TextEditingController();
+
     super.initState();
   }
 
   @override
   void dispose() {
-    _emailController?.dispose();
-    _passwordController?.dispose();
-    f1.dispose();
-    f2.dispose();
+    _carOwnerUserNameController!.dispose();
+    _carOwnerPasswordController!.dispose();
+    _driverUserNameController!.dispose();
+    _driverPasswordController!.dispose();
+
+    cf1.dispose();
+    cf2.dispose();
+    df1.dispose();
+    df2.dispose();
+
     super.dispose();
   }
 
@@ -62,7 +77,11 @@ class _LoginViewState extends State<LoginView> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: appAppBar(context, leading: false),
+        appBar: appAppBar(
+          context,
+          leading: false,
+          backgroundColor: Colors.transparent,
+        ),
         body: DefaultTabController(
           length: 2,
           initialIndex: 0,
@@ -122,10 +141,10 @@ class _LoginViewState extends State<LoginView> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             TextFormField(
-                              focusNode: f1,
+                              focusNode: cf1,
                               onFieldSubmitted: (v) {
-                                f1.unfocus();
-                                FocusScope.of(context).requestFocus(f2);
+                                cf1.unfocus();
+                                FocusScope.of(context).requestFocus(cf2);
                               },
                               validator: (k) {
                                 // if (!k!.contains('@')) {
@@ -133,7 +152,7 @@ class _LoginViewState extends State<LoginView> {
                                 // }
                                 return null;
                               },
-                              controller: _emailController,
+                              controller: _carOwnerUserNameController,
                               decoration: inputDecoration(
                                 context,
                                 prefixIcon: Icons.mail_rounded,
@@ -142,14 +161,14 @@ class _LoginViewState extends State<LoginView> {
                             ),
                             const SizedBox(height: 20),
                             TextFormField(
-                              controller: _passwordController,
+                              controller: _carOwnerPasswordController,
                               obscureText: isIconTrue,
-                              focusNode: f2,
+                              focusNode: cf2,
                               validator: (value) {
                                 return passwordValidator(value);
                               },
                               onFieldSubmitted: (v) {
-                                f2.unfocus();
+                                cf2.unfocus();
                                 carOwnerSubmit();
                               },
                               decoration: inputDecoration(
@@ -190,7 +209,7 @@ class _LoginViewState extends State<LoginView> {
                                 decoration: boxDecorationWithRoundedCorners(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(45)),
-                                  backgroundColor: black,
+                                  backgroundColor: CustomColors.primary,
                                 ),
                                 child: Text('Đăng nhập',
                                     style: boldTextStyle(color: white)),
@@ -225,10 +244,10 @@ class _LoginViewState extends State<LoginView> {
                         Column(
                           children: [
                             TextFormField(
-                              focusNode: f1,
+                              focusNode: df1,
                               onFieldSubmitted: (v) {
-                                f1.unfocus();
-                                FocusScope.of(context).requestFocus(f2);
+                                df1.unfocus();
+                                FocusScope.of(context).requestFocus(df2);
                               },
                               validator: (k) {
                                 // if (!k!.contains('@')) {
@@ -236,7 +255,7 @@ class _LoginViewState extends State<LoginView> {
                                 // }
                                 return null;
                               },
-                              controller: _emailController,
+                              controller: _driverUserNameController,
                               decoration: inputDecoration(
                                 context,
                                 prefixIcon: Icons.mail_rounded,
@@ -245,14 +264,14 @@ class _LoginViewState extends State<LoginView> {
                             ),
                             const SizedBox(height: 20),
                             TextFormField(
-                              controller: _passwordController,
+                              controller: _driverPasswordController,
                               obscureText: isIconTrue,
-                              focusNode: f2,
+                              focusNode: df2,
                               validator: (value) {
                                 return passwordValidator(value);
                               },
                               onFieldSubmitted: (v) {
-                                f2.unfocus();
+                                df2.unfocus();
                                 driverSubmit();
                               },
                               decoration: inputDecoration(
@@ -293,10 +312,12 @@ class _LoginViewState extends State<LoginView> {
                                 decoration: boxDecorationWithRoundedCorners(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(45)),
-                                  backgroundColor: black,
+                                  backgroundColor: CustomColors.primary,
                                 ),
-                                child: Text('Đăng nhập',
-                                    style: boldTextStyle(color: white)),
+                                child: Text(
+                                  'Đăng nhập',
+                                  style: boldTextStyle(color: white),
+                                ),
                               ),
                             ),
                             // const SizedBox(height: 10),
@@ -320,15 +341,18 @@ class _LoginViewState extends State<LoginView> {
   }
 
   FutureOr<void> driverSubmit() async {
-    f1.unfocus();
-    f2.unfocus();
+    df1.unfocus();
+    df2.unfocus();
+    cf1.unfocus();
+    cf2.unfocus();
+
     if (_formKey.currentState!.validate()) {
       // show loading dialog
       LoadingDialogService.load();
 
       var result = await getIt.get<AuthenticationRepository>().driverLogin(
-            _emailController?.text ?? '',
-            _passwordController?.text ?? '',
+            _driverUserNameController?.text ?? '',
+            _driverPasswordController?.text ?? '',
           );
 
       LoadingDialogService.dispose();
@@ -342,15 +366,17 @@ class _LoginViewState extends State<LoginView> {
   }
 
   FutureOr<void> carOwnerSubmit() async {
-    f1.unfocus();
-    f2.unfocus();
+    df1.unfocus();
+    df2.unfocus();
+    cf1.unfocus();
+    cf2.unfocus();
     if (_formKey.currentState!.validate()) {
       // show loading dialog
       LoadingDialogService.load();
 
       var result = await getIt.get<AuthenticationRepository>().carOwnerLogin(
-            _emailController?.text ?? '',
-            _passwordController?.text ?? '',
+            _carOwnerUserNameController?.text ?? '',
+            _carOwnerPasswordController?.text ?? '',
           );
 
       LoadingDialogService.dispose();

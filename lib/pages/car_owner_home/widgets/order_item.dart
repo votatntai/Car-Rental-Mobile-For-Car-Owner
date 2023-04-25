@@ -39,7 +39,15 @@ class OrderItemForCarOwner extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Expanded(child: Text(order.customer.name)),
+                    Expanded(
+                      child: Text(
+                        order.customer.name,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: s12),
@@ -56,10 +64,16 @@ class OrderItemForCarOwner extends StatelessWidget {
                       children: [
                         Text(
                           order.orderDetails.first.startTime.format('HH:mm'),
+                          style: const TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                         Text(
                           order.orderDetails.first.startTime
                               .format('dd/MM/yyyy'),
+                          style: const TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                       ],
                     ),
@@ -70,9 +84,15 @@ class OrderItemForCarOwner extends StatelessWidget {
                       children: [
                         Text(
                           order.orderDetails.first.endTime.format('HH:mm'),
+                          style: const TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                         Text(
                           order.orderDetails.first.endTime.format('dd/MM/yyyy'),
+                          style: const TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                       ],
                     ),
@@ -91,7 +111,12 @@ class OrderItemForCarOwner extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Text(order.orderDetails.first.car.name ?? ''),
+                      child: Text(
+                        order.orderDetails.first.car.name ?? '',
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -110,6 +135,9 @@ class OrderItemForCarOwner extends StatelessWidget {
                     Expanded(
                       child: Text(
                         order.hasDriverDisplay,
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ],
@@ -121,12 +149,19 @@ class OrderItemForCarOwner extends StatelessWidget {
                       width: 110,
                       child: Text(
                         'Trạng thái:',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     Expanded(
                       child: Text(
                         order.status.displayName,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: order.status.displayColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     )
                   ],

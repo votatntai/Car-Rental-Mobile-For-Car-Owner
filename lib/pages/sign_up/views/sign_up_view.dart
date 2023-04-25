@@ -84,7 +84,10 @@ class _SignUpViewState extends State<SignUpView> {
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      appBar: appAppBar(context),
+      appBar: appAppBar(
+        context,
+        backgroundColor: Colors.transparent,
+      ),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
@@ -318,7 +321,7 @@ class _SignUpViewState extends State<SignUpView> {
                     decoration: boxDecorationWithRoundedCorners(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(s40)),
-                      backgroundColor: black,
+                      backgroundColor: CustomColors.primary,
                     ),
                     child: Text('Đăng ký', style: boldTextStyle(color: white)),
                   ),

@@ -178,7 +178,7 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                 RouteName.carRegistration,
               );
             },
-            backgroundColor: CustomColors.jetBlack,
+            backgroundColor: CustomColors.primary,
             elevation: 0,
             label: const Center(
               child: Text(

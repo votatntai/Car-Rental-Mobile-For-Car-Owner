@@ -84,7 +84,6 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
             actionWidget: IconButton(
               icon: const Icon(
                 Icons.my_location_outlined,
-                color: Colors.black,
                 size: 24,
               ),
               onPressed: () {

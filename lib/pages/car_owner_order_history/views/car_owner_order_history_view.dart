@@ -1,6 +1,7 @@
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_home/widgets/order_item.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_order_history/bloc/car_owner_order_history_bloc.dart';
 import 'package:car_rental_for_car_owner/pages/driver_home/widgets/order_item.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _CarOwnerOrderHistoryViewState extends State<CarOwnerOrderHistoryView> {
                 Expanded(
                     child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return OrderItemForDriver(
+                    return OrderItemForCarOwner(
                       order: successState.historyOrders[index],
                       onTap: (order) {
                         context.pushNamed(

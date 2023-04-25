@@ -56,6 +56,9 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: s04,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: s16),
                   child: ContainerWithLabel(
