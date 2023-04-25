@@ -199,7 +199,7 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                         childAspectRatio: 4,
                         children: <Widget>[
                           Text('Hãng xe: ${carRegistration.productionCompany}'),
-                          Text('Dòng xe: ${carRegistration.model}'),
+                          // Text('Dòng xe: ${carRegistration.model}'),
                           Text('Tên xe: ${carRegistration.name}'),
                           Text('Biển số xe: ${carRegistration.licensePlate}'),
                           Text(
@@ -207,7 +207,7 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                           Text('Số chỗ ngồi: ${carRegistration.seater}'),
                           Text(
                               'Truyền động: ${carRegistration.transmissionType}'),
-                          Text('Khung gầm: ${carRegistration.chassis}'),
+                          // Text('Khung gầm: ${carRegistration.chassis}'),
                           Text('Loại nguyên liệu: ${carRegistration.fuelType}'),
                           Text(
                               'Mức tiêu thụ nguyên liệu: ${carRegistration.fuelConsumption}'),
@@ -235,7 +235,7 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                         childAspectRatio: 3,
                         children: <Widget>[
                           Text(
-                              'Giới hạn quãng đường: ${carRegistration.additionalCharge.maximumDistance}'),
+                              'Giới hạn quãng đường: ${carRegistration.additionalCharge.maximumDistance} km'),
                           Text(
                               'Phụ phí vượt quãng đường: ${carRegistration.additionalCharge.distanceSurcharge} đ/km'),
                           Text(

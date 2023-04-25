@@ -21,6 +21,7 @@ UpdateCarModel _$UpdateCarModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UpdateCarModel {
   List<CarCalendar>? get carCalendars => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $UpdateCarModelCopyWith<$Res> {
           UpdateCarModel value, $Res Function(UpdateCarModel) then) =
       _$UpdateCarModelCopyWithImpl<$Res, UpdateCarModel>;
   @useResult
-  $Res call({List<CarCalendar>? carCalendars});
+  $Res call({List<CarCalendar>? carCalendars, String? status});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$UpdateCarModelCopyWithImpl<$Res, $Val extends UpdateCarModel>
   @override
   $Res call({
     Object? carCalendars = freezed,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       carCalendars: freezed == carCalendars
           ? _value.carCalendars
           : carCalendars // ignore: cast_nullable_to_non_nullable
               as List<CarCalendar>?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$_UpdateCarModelCopyWith<$Res>
       __$$_UpdateCarModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CarCalendar>? carCalendars});
+  $Res call({List<CarCalendar>? carCalendars, String? status});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$_UpdateCarModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? carCalendars = freezed,
+    Object? status = freezed,
   }) {
     return _then(_$_UpdateCarModel(
       carCalendars: freezed == carCalendars
           ? _value._carCalendars
           : carCalendars // ignore: cast_nullable_to_non_nullable
               as List<CarCalendar>?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -97,7 +108,7 @@ class __$$_UpdateCarModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UpdateCarModel implements _UpdateCarModel {
-  _$_UpdateCarModel({final List<CarCalendar>? carCalendars})
+  _$_UpdateCarModel({final List<CarCalendar>? carCalendars, this.status})
       : _carCalendars = carCalendars;
 
   factory _$_UpdateCarModel.fromJson(Map<String, dynamic> json) =>
@@ -114,8 +125,11 @@ class _$_UpdateCarModel implements _UpdateCarModel {
   }
 
   @override
+  final String? status;
+
+  @override
   String toString() {
-    return 'UpdateCarModel(carCalendars: $carCalendars)';
+    return 'UpdateCarModel(carCalendars: $carCalendars, status: $status)';
   }
 
   @override
@@ -124,13 +138,14 @@ class _$_UpdateCarModel implements _UpdateCarModel {
         (other.runtimeType == runtimeType &&
             other is _$_UpdateCarModel &&
             const DeepCollectionEquality()
-                .equals(other._carCalendars, _carCalendars));
+                .equals(other._carCalendars, _carCalendars) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_carCalendars));
+      runtimeType, const DeepCollectionEquality().hash(_carCalendars), status);
 
   @JsonKey(ignore: true)
   @override
@@ -147,14 +162,17 @@ class _$_UpdateCarModel implements _UpdateCarModel {
 }
 
 abstract class _UpdateCarModel implements UpdateCarModel {
-  factory _UpdateCarModel({final List<CarCalendar>? carCalendars}) =
-      _$_UpdateCarModel;
+  factory _UpdateCarModel(
+      {final List<CarCalendar>? carCalendars,
+      final String? status}) = _$_UpdateCarModel;
 
   factory _UpdateCarModel.fromJson(Map<String, dynamic> json) =
       _$_UpdateCarModel.fromJson;
 
   @override
   List<CarCalendar>? get carCalendars;
+  @override
+  String? get status;
   @override
   @JsonKey(ignore: true)
   _$$_UpdateCarModelCopyWith<_$_UpdateCarModel> get copyWith =>

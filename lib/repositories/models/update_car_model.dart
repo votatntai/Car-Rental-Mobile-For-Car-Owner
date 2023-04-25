@@ -8,6 +8,7 @@ part 'update_car_model.g.dart';
 class UpdateCarModel with _$UpdateCarModel {
   factory UpdateCarModel({
     List<CarCalendar>? carCalendars,
+    String? status,
   }) = _UpdateCarModel;
 
   factory UpdateCarModel.fromJson(Map<String, dynamic> json) =>

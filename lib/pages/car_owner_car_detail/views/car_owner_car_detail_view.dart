@@ -409,7 +409,7 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                                   onAccept: (c) {
                                     context.read<CarOwnerCarDetailBloc>().add(
                                           const CarOwnerCarDetailEvent
-                                              .statusChanged(status: 'blocked'),
+                                              .statusChanged(status: 'Blocked'),
                                         );
                                   },
                                   dialogType: DialogType.CONFIRMATION,
@@ -442,7 +442,7 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                                   onAccept: (c) {
                                     context.read<CarOwnerCarDetailBloc>().add(
                                           const CarOwnerCarDetailEvent
-                                              .statusChanged(status: 'idle'),
+                                              .statusChanged(status: 'Idle'),
                                         );
                                   },
                                   dialogType: DialogType.CONFIRMATION,
