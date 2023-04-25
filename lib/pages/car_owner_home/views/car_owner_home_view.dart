@@ -49,16 +49,19 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Yêu cầu thuê xe',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                    const Padding(
+                      padding: EdgeInsets.only(left: s04),
+                      child: Text(
+                        'Yêu cầu thuê xe',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     if (successState.pendingOrders.isEmpty)
                       const Padding(
-                        padding: EdgeInsets.only(top: s08),
+                        padding: EdgeInsets.only(top: s08, left: s04),
                         child: Text(
                           'Bạn chưa có yêu cầu nào',
                           style: TextStyle(
@@ -136,11 +139,14 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
                       ),
                     const SizedBox(height: s16),
                     if (successState.myCars.isNotEmpty)
-                      const Text(
-                        'Xe của tôi',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      const Padding(
+                        padding: EdgeInsets.only(left: s04),
+                        child: Text(
+                          'Xe của tôi',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     const SizedBox(height: s08),

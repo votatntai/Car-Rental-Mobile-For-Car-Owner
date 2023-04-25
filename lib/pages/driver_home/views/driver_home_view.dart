@@ -1,4 +1,5 @@
 import 'package:car_rental_for_car_owner/app/route/route_name.dart';
+import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
 import 'package:car_rental_for_car_owner/pages/driver_home/bloc/driver_home_bloc.dart';
@@ -46,32 +47,50 @@ class _DriverHomeViewState extends State<DriverHomeView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Đơn hàng hiện tại',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                    const Padding(
+                      padding: EdgeInsets.only(left: s04),
+                      child: Text(
+                        'Đơn hàng hiện tại',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    ...successState.currentOrders.map(
-                      (order) {
-                        return OrderItemForDriver(
-                          order: order,
-                          onTap: (order) {
-                            context.pushNamed(
-                              RouteName.driverOrderDetail,
-                              extra: order,
-                            );
-                          },
-                        );
-                      },
-                    ),
+                    if (successState.currentOrders.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.only(top: s08, left: s04),
+                        child: Text(
+                          'Bạn chưa có đơn hàng nào',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    else
+                      ...successState.currentOrders.map(
+                        (order) {
+                          return OrderItemForDriver(
+                            order: order,
+                            onTap: (order) {
+                              context.pushNamed(
+                                RouteName.driverOrderDetail,
+                                extra: order,
+                              );
+                            },
+                          );
+                        },
+                      ),
                     const SizedBox(height: 16),
-                    const Text(
-                      'Lịch',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                    const Padding(
+                      padding: EdgeInsets.only(left: s04),
+                      child: Text(
+                        'Lịch',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     SizedBox(
