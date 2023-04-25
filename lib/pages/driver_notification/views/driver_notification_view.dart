@@ -64,6 +64,18 @@ class _DriverNotificationViewState extends State<DriverNotificationView> {
                   builderDelegate: PagedChildBuilderDelegate<
                       notification_model.Notification>(
                     animateTransitions: true,
+                    noItemsFoundIndicatorBuilder: (context) {
+                      return Column(
+                        children: const [
+                          Text(
+                            'Không có thông báo nào',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                     itemBuilder: (context, item, index) =>
                         NotificationItem(notification: item),
                   ),

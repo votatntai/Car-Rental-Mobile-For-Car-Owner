@@ -58,7 +58,7 @@ class LoadDialog extends IDialog {
             height: 15,
           ),
           // Some text
-          Text('Loading...')
+          Text('Đang tải...')
         ],
       ),
     );

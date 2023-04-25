@@ -66,6 +66,18 @@ class _CarRegistrationListViewState extends State<CarRegistrationListView> {
                   scrollDirection: Axis.vertical,
                   builderDelegate: PagedChildBuilderDelegate<CarRegistration>(
                     animateTransitions: true,
+                    noItemsFoundIndicatorBuilder: (context) {
+                      return Column(
+                        children: const [
+                          Text(
+                            'Không có xe đăng ký nào',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                     itemBuilder: (context, item, index) =>
                         CarRegistrationItemVertical(
                       carRegistration: item,
