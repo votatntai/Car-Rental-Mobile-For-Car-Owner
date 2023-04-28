@@ -60,7 +60,11 @@ class _CarOwnerProfileViewState extends State<CarOwnerProfileView> {
                           color: white,
                           size: s16,
                         ),
-                      ).onTap(() {}),
+                      ).onTap(
+                        () {
+                          context.goNamed(RouteName.carOwnerProfileDetail);
+                        },
+                      ),
                     ),
                   ],
                 ),

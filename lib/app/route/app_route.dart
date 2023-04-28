@@ -31,6 +31,7 @@ import 'package:car_rental_for_car_owner/pages/driver_profile_detail/views/drive
 import 'package:car_rental_for_car_owner/pages/driver_scaffold_with_nav_bar/driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/driver_home/driver_home.dart';
 import 'package:car_rental_for_car_owner/pages/driver_wallet/views/driver_wallet_page.dart';
+import 'package:car_rental_for_car_owner/pages/forgot_password/views/forgot_password_page.dart';
 import 'package:car_rental_for_car_owner/pages/login/login.dart';
 import 'package:car_rental_for_car_owner/pages/driver_profile/driver_profile.dart';
 import 'package:car_rental_for_car_owner/pages/sign_up/sign_up.dart';
@@ -65,6 +66,11 @@ class AppRoute {
             path: 'sign-up',
             name: RouteName.signUp,
             builder: (context, state) => const SignUpPage(),
+          ),
+          GoRoute(
+            path: 'forgot-password',
+            name: RouteName.forgotPassword,
+            builder: (context, state) => const ForgotPasswordPage(),
           ),
         ],
       ),

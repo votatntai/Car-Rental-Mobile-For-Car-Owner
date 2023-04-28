@@ -197,7 +197,27 @@ class _LoginViewState extends State<LoginView> {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: s64),
+
+                            const SizedBox(height: s12),
+                            GestureDetector(
+                              onTap: () {
+                                context.goNamed(RouteName.forgotPassword);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: const [
+                                  Text(
+                                    'Quên mật khẩu?',
+                                    style: TextStyle(
+                                      color: CustomColors.primary,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 40),
                             GestureDetector(
                               onTap: () {
                                 carOwnerSubmit();
