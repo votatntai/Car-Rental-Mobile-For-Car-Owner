@@ -11,8 +11,9 @@ class FeedbackModel with _$FeedbackModel {
     String? customerId,
     String? driverId,
     String? carId,
-    int? start,
+    int? star,
     String? content,
+    required DateTime createAt,
   }) = _FeedbackModel;
 
   factory FeedbackModel.fromJson(Map<String, dynamic> json) =>

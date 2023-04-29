@@ -35,4 +35,5 @@ mixin RouteName {
   static const carOwnerProfileDetail = 'car-owner-profile-detail';
   static const carRegistrationDetail = 'car-registration-detail';
   static const forgotPassword = 'forgot-password';
+  static const feedbackList = 'feedback-list';
 }

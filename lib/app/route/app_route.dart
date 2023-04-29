@@ -31,6 +31,7 @@ import 'package:car_rental_for_car_owner/pages/driver_profile_detail/views/drive
 import 'package:car_rental_for_car_owner/pages/driver_scaffold_with_nav_bar/driver_scaffold_with_nav_bar.dart';
 import 'package:car_rental_for_car_owner/pages/driver_home/driver_home.dart';
 import 'package:car_rental_for_car_owner/pages/driver_wallet/views/driver_wallet_page.dart';
+import 'package:car_rental_for_car_owner/pages/feedback_list/views/feedback_list_page.dart';
 import 'package:car_rental_for_car_owner/pages/forgot_password/views/forgot_password_page.dart';
 import 'package:car_rental_for_car_owner/pages/login/login.dart';
 import 'package:car_rental_for_car_owner/pages/driver_profile/driver_profile.dart';
@@ -359,6 +360,20 @@ class AppRoute {
           final carRegistrationId = state.queryParams['car-registration-id'];
 
           return CarRegistrationDetailPage(id: carRegistrationId);
+        },
+      ),
+      GoRoute(
+        path: '/feedback-list',
+        name: RouteName.feedbackList,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          final carId = state.queryParams['car-id'];
+          final driverId = state.queryParams['driver-id'];
+
+          return FeedbackListPage(
+            carId: carId,
+            driverId: driverId,
+          );
         },
       ),
     ],

@@ -13,7 +13,9 @@ import 'package:car_rental_for_car_owner/commons/widgets/google_map_widget.dart'
 import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/location_text.dart';
 import 'package:car_rental_for_car_owner/models/car.dart';
+import 'package:car_rental_for_car_owner/models/feedback.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/bloc/car_owner_car_detail_bloc.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/widgets/feedback_item.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/widgets/surcharge_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -89,6 +91,9 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
             body: LoadingWidget(),
           );
         }
+
+        List<FeedbackModel> feedbacks = [...successState.car.feedBacks ?? []];
+        feedbacks.sort((a, b) => b.createAt.compareTo(a.createAt));
 
         return Scaffold(
           appBar: appAppBar(
@@ -408,6 +413,42 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                       ),
                     ),
                   ),
+                  if (feedbacks.isNotEmpty)
+                    Column(
+                      children: [
+                        divider,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: s16),
+                          child: ContainerWithLabel(
+                            label: 'Đánh giá từ khách thuê xe',
+                            trailing: TextButton(
+                              onPressed: () {
+                                context.pushNamed(
+                                  RouteName.feedbackList,
+                                  queryParams: {
+                                    'car-id': successState.car.id,
+                                  },
+                                );
+                              },
+                              child: const Text(
+                                'Xem thêm',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: CustomColors.jetBlack,
+                                ),
+                              ),
+                            ),
+                            child: Column(
+                              children: feedbacks
+                                  .map((e) => FeedbackItem(feedback: e))
+                                  .take(3)
+                                  .toList(),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   const SizedBox(
                     height: s32,
                   ),

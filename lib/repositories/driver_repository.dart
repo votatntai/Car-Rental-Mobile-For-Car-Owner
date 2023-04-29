@@ -31,4 +31,20 @@ class DriverRepository {
       return e.getErrorMessage();
     }
   }
+
+  Future<Driver?> driver(String id) async {
+    try {
+      final result = await dio.get<JsonObject>(
+        'drivers/$id',
+      );
+
+      if (result.data != null && result.statusCode == StatusCodes.status200OK) {
+        return Driver.fromJson(result.data!);
+      }
+
+      return null;
+    } on DioError catch (e) {
+      return null;
+    }
+  }
 }

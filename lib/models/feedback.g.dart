@@ -13,8 +13,9 @@ _$_FeedbackModel _$$_FeedbackModelFromJson(Map<String, dynamic> json) =>
       customerId: json['customerId'] as String?,
       driverId: json['driverId'] as String?,
       carId: json['carId'] as String?,
-      start: json['start'] as int?,
+      star: json['star'] as int?,
       content: json['content'] as String?,
+      createAt: DateTime.parse(json['createAt'] as String),
     );
 
 Map<String, dynamic> _$$_FeedbackModelToJson(_$_FeedbackModel instance) =>
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$_FeedbackModelToJson(_$_FeedbackModel instance) =>
       'customerId': instance.customerId,
       'driverId': instance.driverId,
       'carId': instance.carId,
-      'start': instance.start,
+      'star': instance.star,
       'content': instance.content,
+      'createAt': instance.createAt.toIso8601String(),
     };
