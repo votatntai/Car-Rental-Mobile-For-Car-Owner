@@ -25,7 +25,8 @@ List<String> carTypes = [
   '5 chỗ (Sedan)',
   '5 chỗ (Hatchback)',
   '7 chỗ (MPV)',
-  '7 chỗ (SUV)'
+  '7 chỗ (SUV)',
+  'Bán tải (Pickup)',
 ];
 
 List<String> carTransmissions = ['Số sàn', 'Số tự động'];
@@ -186,7 +187,7 @@ class _CarRegistrationViewState extends State<CarRegistrationView> {
                       child: InputDecorator(
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Số chỗ ngồi',
+                          labelText: 'Loại xe',
                           contentPadding: EdgeInsets.only(
                             left: 12,
                             right: 12,
