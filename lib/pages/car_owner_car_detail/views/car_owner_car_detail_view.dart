@@ -50,6 +50,19 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
     return 'Đang thuê';
   }
 
+  Color carStatusColor(String carStatus) {
+    if (carStatus == 'ongoing') {
+      return Colors.red;
+    }
+    if (carStatus == 'blocked') {
+      return Colors.grey;
+    }
+    if (carStatus == 'idle') {
+      return Colors.green;
+    }
+    return Colors.red;
+  }
+
   Widget divider = Column(
     children: const [
       SizedBox(
@@ -133,9 +146,11 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                       label: 'Trạng thái',
                       child: Text(
                         carStatus(successState.car.status.toLowerCase()),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
+                          color: carStatusColor(
+                              successState.car.status.toLowerCase()),
                         ),
                       ),
                     ),
@@ -261,9 +276,10 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                                     bottom: s04,
                                   ),
                                   child: Text(
-                                    '- ${successState.car.productionCompany!.name}',
+                                    successState.car.productionCompany!.name,
                                     style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),

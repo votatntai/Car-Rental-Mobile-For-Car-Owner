@@ -166,7 +166,8 @@ class _DriverProfileDetailViewState extends State<DriverProfileDetailView> {
                             const SizedBox(height: s32),
                             TextFormField(
                               controller: _nameController,
-                              focusNode: _nameFocus,
+                              // focusNode: _nameFocus,
+                              enabled: false,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Xin vui lòng nhập tên đầy đủ';
@@ -185,6 +186,7 @@ class _DriverProfileDetailViewState extends State<DriverProfileDetailView> {
                             ),
                             const SizedBox(height: s16),
                             TextFormField(
+                              enabled: false,
                               controller: _phoneNumberController,
                               focusNode: _phoneNumberFocus,
                               validator: (value) {
@@ -207,6 +209,7 @@ class _DriverProfileDetailViewState extends State<DriverProfileDetailView> {
                             ),
                             const SizedBox(height: s16),
                             TextFormField(
+                              enabled: false,
                               controller: _genderController,
                               focusNode: _genderFocus,
                               validator: (value) {
@@ -225,6 +228,7 @@ class _DriverProfileDetailViewState extends State<DriverProfileDetailView> {
                             ),
                             const SizedBox(height: s16),
                             PlaceAutocomplete(
+                              enabled: false,
                               decoration: inputDecoration(
                                 context,
                                 hintText: 'Địa chỉ',

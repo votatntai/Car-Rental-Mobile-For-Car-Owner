@@ -10,11 +10,13 @@ class PlaceAutocomplete extends StatefulWidget {
     this.validator,
     this.decoration,
     this.defaultText,
+    this.enabled,
   });
   final void Function(String option)? onSelected;
   final String? Function(String? value)? validator;
   final InputDecoration? decoration;
   final String? defaultText;
+  final bool? enabled;
 
   @override
   State<PlaceAutocomplete> createState() => _PlaceAutocompleteState();
@@ -38,6 +40,7 @@ class _PlaceAutocompleteState extends State<PlaceAutocomplete> {
         onFieldSubmitted,
       ) {
         return TextFormField(
+          enabled: widget.enabled,
           controller: textEditingController,
           focusNode: focusNode,
           validator: widget.validator ??

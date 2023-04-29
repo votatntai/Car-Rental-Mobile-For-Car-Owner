@@ -32,6 +32,19 @@ class CarItem extends StatelessWidget {
     return 'Đang thuê';
   }
 
+  Color carStatusColor(String carStatus) {
+    if (carStatus == 'ongoing') {
+      return Colors.red;
+    }
+    if (carStatus == 'blocked') {
+      return Colors.grey;
+    }
+    if (carStatus == 'idle') {
+      return Colors.green;
+    }
+    return Colors.red;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -204,7 +217,7 @@ class CarItem extends StatelessWidget {
                       height: 15,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: CustomColors.flamingo,
+                        color: carStatusColor(car.status.toLowerCase()),
                       ),
                     ),
                     const SizedBox(width: 6),
