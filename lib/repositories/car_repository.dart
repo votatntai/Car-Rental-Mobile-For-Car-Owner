@@ -97,4 +97,37 @@ class CarRepository {
       return e.getErrorMessage();
     }
   }
+
+  Future<ApiResponse<List<Car>>> carByCarOwner({
+    required String carOwnerId,
+  }) async {
+    try {
+      final result = await dio.get<JsonObject>(
+        'cars/for-car-owners/$carOwnerId',
+        queryParameters: {
+          'pageNumber': 0,
+          'pageSize': 1000,
+        },
+      );
+
+      if (result.data != null && result.statusCode == StatusCodes.status200OK) {
+        final paginationResult = PaginationResult<Car>.fromJson(
+          result.data!,
+          (object) => Car.fromJson(object as JsonObject),
+        );
+
+        // final cars = paginationResult.data
+        //     .where((element) => element.carOwner?.id == carOwnerId)
+        //     .toList();
+
+        final cars = paginationResult.data;
+
+        return ApiSuccess(cars);
+      }
+
+      return const ApiError(error: 'Lỗi không xác định');
+    } on DioError catch (e) {
+      return e.getErrorMessage();
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/commons/constants/colors.dart';
 import 'package:car_rental_for_car_owner/commons/constants/images.dart';
 import 'package:car_rental_for_car_owner/commons/constants/sizes.dart';
@@ -5,6 +6,7 @@ import 'package:car_rental_for_car_owner/commons/utils.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/app_app_bar.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/car_owner_widget.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/container_with_label.dart';
+import 'package:car_rental_for_car_owner/commons/widgets/customer_widget.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/google_map_widget.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/location_text.dart';
@@ -14,6 +16,7 @@ import 'package:car_rental_for_car_owner/pages/driver_order_detail/bloc/driver_o
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -467,7 +470,33 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                     label: 'Chủ xe',
                     child: CarOwnerWidget(
                       car: successState.order.orderDetails.first.car,
-                      onTap: () {},
+                      onTap: () {
+                        context.pushNamed(
+                          RouteName.carOwnerDetail,
+                          queryParams: {
+                            'car-owner-id': successState
+                                .order.orderDetails.first.car.carOwner!.id,
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                divider,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: s16),
+                  child: ContainerWithLabel(
+                    label: 'Khách hàng',
+                    child: CustomerWidget(
+                      customer: successState.order.customer,
+                      onTap: (customer) {
+                        context.pushNamed(
+                          RouteName.customerDetail,
+                          queryParams: {
+                            'customer-id': customer.id,
+                          },
+                        );
+                      },
                     ),
                   ),
                 ),

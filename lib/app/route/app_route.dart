@@ -5,6 +5,7 @@ import 'package:car_rental_for_car_owner/app/route/route_name.dart';
 import 'package:car_rental_for_car_owner/models/order.dart';
 import 'package:car_rental_for_car_owner/pages/car_calendar/views/car_calendar_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/car_owner_car_detail.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_detail/views/car_owner_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_driver_detail/views/car_owner_driver_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_home/car_owner_home.dart';
 import 'package:car_rental_for_car_owner/pages/car_owner_notification/views/car_owner_notification_page.dart';
@@ -24,6 +25,7 @@ import 'package:car_rental_for_car_owner/pages/car_registration/views/car_regist
 import 'package:car_rental_for_car_owner/pages/car_registration_detail/views/car_registration_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_registration_list/views/car_registration_list_page.dart';
 import 'package:car_rental_for_car_owner/pages/car_tracking/views/car_tracking_page.dart';
+import 'package:car_rental_for_car_owner/pages/customer_detail/views/customer_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_notification/views/driver_notification_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_detail/views/driver_order_detail_page.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_history/views/driver_order_history_page.dart';
@@ -373,6 +375,32 @@ class AppRoute {
           return FeedbackListPage(
             carId: carId,
             driverId: driverId,
+          );
+        },
+      ),
+
+      GoRoute(
+        path: '/car-owner-detail',
+        name: RouteName.carOwnerDetail,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          final carOwnerId = state.queryParams['car-owner-id'] ?? '';
+
+          return CarOwnerDetailPage(
+            carOwnerId: carOwnerId,
+          );
+        },
+      ),
+
+      GoRoute(
+        path: '/customer-detail',
+        name: RouteName.customerDetail,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          final customerId = state.queryParams['customer-id'] ?? '';
+
+          return CustomerDetailPage(
+            customerId: customerId,
           );
         },
       ),
