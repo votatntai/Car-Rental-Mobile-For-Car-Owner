@@ -295,6 +295,35 @@ class _CarOwnerCarDetailViewState extends State<CarOwnerCarDetailView> {
                         divider,
                       ],
                     ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: s16),
+                        child: ContainerWithLabel(
+                          label: 'Dòng xe',
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: s04,
+                                ),
+                                child: Text(
+                                  successState.car.model.name,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      divider,
+                    ],
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: s16),
                     child: ContainerWithLabel(
