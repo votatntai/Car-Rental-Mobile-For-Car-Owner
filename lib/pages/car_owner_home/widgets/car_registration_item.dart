@@ -97,7 +97,7 @@ class CarRegistrationItem extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: s08,
+                height: s12,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: s08),
@@ -110,10 +110,16 @@ class CarRegistrationItem extends StatelessWidget {
                           ? 'Bị từ chối'
                           : 'Chưa được duyệt',
                   maxLines: 1,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    color: CustomColors.jetBlack,
+                    fontWeight: FontWeight.w600,
+                    color: carRegistration.status == true
+                        ? CustomColors.emerald
+                        : carRegistration.status == false &&
+                                carRegistration.description != null &&
+                                carRegistration.description?.isNotEmpty == true
+                            ? CustomColors.red
+                            : CustomColors.dimGray,
                   ),
                 ),
               ),

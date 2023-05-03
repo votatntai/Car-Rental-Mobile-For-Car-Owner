@@ -58,4 +58,6 @@ mixin CustomColors {
   static const peacock = Color(0xff039be5);
   static const lavender = Color(0xff7986cb);
   static const graphite = Color(0xff616161);
+
+  static const emerald = Color(0xff159570);
 }

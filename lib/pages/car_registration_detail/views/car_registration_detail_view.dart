@@ -76,10 +76,18 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                                   ? 'Bị từ chối'
                                   : 'Chưa được duyệt',
                           maxLines: 1,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: CustomColors.jetBlack,
+                            fontWeight: FontWeight.w600,
+                            color: carRegistration.status == true
+                                ? CustomColors.emerald
+                                : carRegistration.status == false &&
+                                        carRegistration.description != null &&
+                                        carRegistration
+                                                .description?.isNotEmpty ==
+                                            true
+                                    ? CustomColors.red
+                                    : CustomColors.dimGray,
                           ),
                         ),
                         const SizedBox(
@@ -191,32 +199,188 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                   child: ContainerWithLabel(
                     label: 'Thông tin',
                     child: SizedBox(
-                      height: 280,
+                      height: 320,
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         primary: false,
                         padding: const EdgeInsets.all(8),
-                        crossAxisSpacing: 20,
+                        crossAxisSpacing: 1,
                         mainAxisSpacing: 4,
                         crossAxisCount: 2,
-                        childAspectRatio: 4,
+                        childAspectRatio: 3,
                         children: <Widget>[
-                          Text('Hãng xe: ${carRegistration.productionCompany}'),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Hãng xe',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(carRegistration.productionCompany),
+                            ],
+                          ),
+
                           // Text('Dòng xe: ${carRegistration.model}'),
-                          Text('Tên xe: ${carRegistration.name}'),
-                          Text('Biển số xe: ${carRegistration.licensePlate}'),
-                          Text(
-                              'Năm sản xuất: ${carRegistration.yearOfManufacture}'),
-                          Text('Số chỗ ngồi: ${carRegistration.seater}'),
-                          Text(
-                              'Truyền động: ${carRegistration.transmissionType}'),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Tên xe',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(carRegistration.name ?? ''),
+                            ],
+                          ),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Biển số xe',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(carRegistration.licensePlate),
+                            ],
+                          ),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Năm sản xuất',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(
+                                  carRegistration.yearOfManufacture.toString()),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Số chỗ ngồi',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(carRegistration.seater.toString()),
+                            ],
+                          ),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Hộp số',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(carRegistration.transmissionType.toString()),
+                            ],
+                          ),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Loại nguyên liệu',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(carRegistration.fuelType.toString()),
+                            ],
+                          ),
                           // Text('Khung gầm: ${carRegistration.chassis}'),
-                          Text('Loại nguyên liệu: ${carRegistration.fuelType}'),
-                          Text(
-                              'Mức tiêu thụ nguyên liệu: ${carRegistration.fuelConsumption}'),
-                          Text('Vị trí: ${carRegistration.location}'),
-                          Text(
-                              'Giá thuê: ${formatCurrency(carRegistration.price)}'),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Mức tiêu thụ nguyên liệu',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(carRegistration.fuelConsumption.toString()),
+                            ],
+                          ),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Vị trí',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(carRegistration.location.toString()),
+                            ],
+                          ),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Giá thuê',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(formatCurrency(carRegistration.price)),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -237,12 +401,57 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                         crossAxisCount: 2,
                         childAspectRatio: 3,
                         children: <Widget>[
-                          Text(
-                              'Giới hạn quãng đường: ${carRegistration.additionalCharge.maximumDistance} km'),
-                          Text(
-                              'Phụ phí vượt quãng đường: ${carRegistration.additionalCharge.distanceSurcharge} đ/km'),
-                          Text(
-                              'Phụ phí vượt quá giờ: ${carRegistration.additionalCharge.timeSurcharge} đ/h'),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Giới hạn quãng đường',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(
+                                  '${carRegistration.additionalCharge.maximumDistance} km'),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Phụ phí vượt quãng đườn',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(
+                                  '${carRegistration.additionalCharge.distanceSurcharge} đ/km'),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Phụ phí vượt quá giờ',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: s02,
+                              ),
+                              Text(
+                                  '${carRegistration.additionalCharge.timeSurcharge} đ/h'),
+                            ],
+                          ),
                         ],
                       ),
                     ),
