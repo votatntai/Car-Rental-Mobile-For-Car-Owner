@@ -222,7 +222,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(carRegistration.productionCompany),
+                              Text(
+                                carRegistration.productionCompany,
+                                maxLines: 2,
+                              ),
                             ],
                           ),
 
@@ -241,7 +244,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(carRegistration.name ?? ''),
+                              Text(
+                                carRegistration.name ?? '',
+                                maxLines: 2,
+                              ),
                             ],
                           ),
 
@@ -258,7 +264,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(carRegistration.licensePlate),
+                              Text(
+                                carRegistration.licensePlate,
+                                maxLines: 2,
+                              ),
                             ],
                           ),
 
@@ -292,7 +301,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(carRegistration.seater.toString()),
+                              Text(
+                                carRegistration.seater.toString(),
+                                maxLines: 2,
+                              ),
                             ],
                           ),
 
@@ -309,7 +321,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(carRegistration.transmissionType.toString()),
+                              Text(
+                                carRegistration.transmissionType.toString(),
+                                maxLines: 2,
+                              ),
                             ],
                           ),
 
@@ -326,7 +341,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(carRegistration.fuelType.toString()),
+                              Text(
+                                carRegistration.fuelType.toString(),
+                                maxLines: 2,
+                              ),
                             ],
                           ),
                           // Text('Khung gầm: ${carRegistration.chassis}'),
@@ -344,7 +362,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(carRegistration.fuelConsumption.toString()),
+                              Text(
+                                carRegistration.fuelConsumption.toString(),
+                                maxLines: 2,
+                              ),
                             ],
                           ),
 
@@ -361,7 +382,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(carRegistration.location.toString()),
+                              Text(
+                                carRegistration.location.toString(),
+                                maxLines: 2,
+                              ),
                             ],
                           ),
 
@@ -378,7 +402,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                               const SizedBox(
                                 height: s02,
                               ),
-                              Text(formatCurrency(carRegistration.price)),
+                              Text(
+                                formatCurrency(carRegistration.price),
+                                maxLines: 2,
+                              ),
                             ],
                           ),
                         ],
@@ -415,7 +442,9 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                                 height: s02,
                               ),
                               Text(
-                                  '${carRegistration.additionalCharge.maximumDistance} km'),
+                                '${carRegistration.additionalCharge.maximumDistance} km',
+                                maxLines: 2,
+                              ),
                             ],
                           ),
                           Column(
@@ -432,7 +461,9 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                                 height: s02,
                               ),
                               Text(
-                                  '${carRegistration.additionalCharge.distanceSurcharge} đ/km'),
+                                '${carRegistration.additionalCharge.distanceSurcharge} đ/km',
+                                maxLines: 2,
+                              ),
                             ],
                           ),
                           Column(
@@ -449,7 +480,9 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                                 height: s02,
                               ),
                               Text(
-                                  '${carRegistration.additionalCharge.timeSurcharge} đ/h'),
+                                '${carRegistration.additionalCharge.timeSurcharge} đ/h',
+                                maxLines: 2,
+                              ),
                             ],
                           ),
                         ],
