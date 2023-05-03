@@ -110,6 +110,28 @@ class DriverProfileView extends StatelessWidget {
                   ),
                 ),
 
+                // SettingItemWidget(
+                //   leading: Icon(
+                //     Icons.comment_outlined,
+                //     color: context.iconColor,
+                //   ),
+                //   title: 'Đánh giá từ khách hàng',
+                //   titleTextStyle: boldTextStyle(),
+                //   onTap: () {
+                //     context.pushNamed(
+                //       RouteName.feedbackList,
+                //       queryParams: {
+                //         'driver-id': user?.id ?? '',
+                //       },
+                //     );
+                //   },
+                //   trailing: Icon(
+                //     Icons.arrow_forward_ios_rounded,
+                //     size: 18,
+                //     color: context.iconColor,
+                //   ),
+                // ),
+
                 SettingItemWidget(
                   leading: Icon(Icons.login, color: context.iconColor),
                   title: 'Đăng xuất',

@@ -375,7 +375,7 @@ mixin _$DriverOrderDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Order order) success,
+    required TResult Function(Order order, FeedbackModel? feedback) success,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -383,7 +383,7 @@ mixin _$DriverOrderDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Order order)? success,
+    TResult? Function(Order order, FeedbackModel? feedback)? success,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -391,7 +391,7 @@ mixin _$DriverOrderDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Order order)? success,
+    TResult Function(Order order, FeedbackModel? feedback)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -481,7 +481,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Order order) success,
+    required TResult Function(Order order, FeedbackModel? feedback) success,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -492,7 +492,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Order order)? success,
+    TResult? Function(Order order, FeedbackModel? feedback)? success,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -503,7 +503,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Order order)? success,
+    TResult Function(Order order, FeedbackModel? feedback)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -594,7 +594,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Order order) success,
+    required TResult Function(Order order, FeedbackModel? feedback) success,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -605,7 +605,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Order order)? success,
+    TResult? Function(Order order, FeedbackModel? feedback)? success,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -616,7 +616,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Order order)? success,
+    TResult Function(Order order, FeedbackModel? feedback)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -674,7 +674,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({Order order});
+  $Res call({Order order, FeedbackModel? feedback});
 
   $OrderCopyWith<$Res> get order;
 }
@@ -690,12 +690,17 @@ class __$$_SuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? order = null,
+    Object? feedback = freezed,
   }) {
     return _then(_$_Success(
       order: null == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as Order,
+      feedback: freezed == feedback
+          ? _value.feedback
+          : feedback // ignore: cast_nullable_to_non_nullable
+              as FeedbackModel?,
     ));
   }
 
@@ -711,14 +716,16 @@ class __$$_SuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success({required this.order});
+  const _$_Success({required this.order, this.feedback});
 
   @override
   final Order order;
+  @override
+  final FeedbackModel? feedback;
 
   @override
   String toString() {
-    return 'DriverOrderDetailState.success(order: $order)';
+    return 'DriverOrderDetailState.success(order: $order, feedback: $feedback)';
   }
 
   @override
@@ -726,11 +733,13 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            (identical(other.order, order) || other.order == order));
+            (identical(other.order, order) || other.order == order) &&
+            const DeepCollectionEquality().equals(other.feedback, feedback));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, order);
+  int get hashCode => Object.hash(
+      runtimeType, order, const DeepCollectionEquality().hash(feedback));
 
   @JsonKey(ignore: true)
   @override
@@ -743,10 +752,10 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Order order) success,
+    required TResult Function(Order order, FeedbackModel? feedback) success,
     required TResult Function(String message) failure,
   }) {
-    return success(order);
+    return success(order, feedback);
   }
 
   @override
@@ -754,10 +763,10 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Order order)? success,
+    TResult? Function(Order order, FeedbackModel? feedback)? success,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(order);
+    return success?.call(order, feedback);
   }
 
   @override
@@ -765,12 +774,12 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Order order)? success,
+    TResult Function(Order order, FeedbackModel? feedback)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(order);
+      return success(order, feedback);
     }
     return orElse();
   }
@@ -814,9 +823,11 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements DriverOrderDetailState {
-  const factory _Success({required final Order order}) = _$_Success;
+  const factory _Success(
+      {required final Order order, final FeedbackModel? feedback}) = _$_Success;
 
   Order get order;
+  FeedbackModel? get feedback;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -887,7 +898,7 @@ class _$_Failure implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Order order) success,
+    required TResult Function(Order order, FeedbackModel? feedback) success,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -898,7 +909,7 @@ class _$_Failure implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Order order)? success,
+    TResult? Function(Order order, FeedbackModel? feedback)? success,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -909,7 +920,7 @@ class _$_Failure implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Order order)? success,
+    TResult Function(Order order, FeedbackModel? feedback)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {

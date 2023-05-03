@@ -12,6 +12,7 @@ import 'package:car_rental_for_car_owner/commons/widgets/loading_widget.dart';
 import 'package:car_rental_for_car_owner/commons/widgets/location_text.dart';
 import 'package:car_rental_for_car_owner/models/car.dart';
 import 'package:car_rental_for_car_owner/models/enums/order_status.dart';
+import 'package:car_rental_for_car_owner/pages/car_owner_car_detail/widgets/feedback_item.dart';
 import 'package:car_rental_for_car_owner/pages/driver_order_detail/bloc/driver_order_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -500,6 +501,23 @@ class _DriverOrderDetailViewState extends State<DriverOrderDetailView> {
                     ),
                   ),
                 ),
+                if (successState.feedback != null)
+                  Column(
+                    children: [
+                      divider,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: s16),
+                        child: ContainerWithLabel(
+                          label: 'Đánh giá từ khách thuê xe',
+                          child: Column(
+                            children: [
+                              FeedbackItem(feedback: successState.feedback!),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 const SizedBox(
                   height: s32,
                 ),
