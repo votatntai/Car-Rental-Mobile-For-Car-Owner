@@ -199,15 +199,15 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                   child: ContainerWithLabel(
                     label: 'Thông tin',
                     child: SizedBox(
-                      height: 320,
+                      height: 380,
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         primary: false,
                         padding: const EdgeInsets.all(8),
-                        crossAxisSpacing: 1,
+                        crossAxisSpacing: 10,
                         mainAxisSpacing: 4,
                         crossAxisCount: 2,
-                        childAspectRatio: 3,
+                        childAspectRatio: 2.5,
                         children: <Widget>[
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -423,10 +423,10 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                       child: GridView.count(
                         primary: false,
                         padding: const EdgeInsets.all(8),
-                        crossAxisSpacing: 20,
+                        crossAxisSpacing: 10,
                         mainAxisSpacing: 4,
                         crossAxisCount: 2,
-                        childAspectRatio: 3,
+                        childAspectRatio: 2.5,
                         children: <Widget>[
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -451,7 +451,7 @@ class _CarRegistrationDetailViewState extends State<CarRegistrationDetailView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                'Phụ phí vượt quãng đườn',
+                                'Phụ phí vượt quãng đường',
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,

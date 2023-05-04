@@ -37,6 +37,18 @@ class _DriverOrderHistoryViewState extends State<DriverOrderHistoryView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (successState.historyOrders.isEmpty)
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 8),
+                      child: Text(
+                        'Bạn chưa có đơn hàng nào',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
                 Expanded(
                     child: ListView.builder(
                   itemBuilder: (context, index) {
